@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
+import Carrito from "./components/Carrito/Carrito";
+import { products } from "@/mocks/products";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -23,6 +25,7 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+
   return (
     <html lang="en">
       <body
@@ -34,9 +37,13 @@ export default function RootLayout({
             <div className="flex-1">
               <input type="text" className="w-full rounded border border-gray-300" />
             </div>
-            <div className="bg-slate-400 flex-1">MainMenu</div>
+            <div className="bg-slate-400 flex-1">
+              {/* MainMenu */}
+              <Carrito products={products} />
+            </div>
           </nav>
         </div>
+        
         <div className="h-[510px] bg-gray200 w-full">
         </div>
         {children}
