@@ -1,6 +1,6 @@
-import { Icon as IconType } from "./types/IconTypes";
-const Icon = (icon: IconType) => {
-  switch (icon) {
+import { IconProps } from "./types/IconTypes";
+const Icon = ({iconType}: IconProps) => {
+  switch (iconType) {
     case "boxTick":
       return (
         <svg
