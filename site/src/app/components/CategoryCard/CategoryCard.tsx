@@ -7,15 +7,15 @@ type CategoryCardProps = {
 
 const CategoryCard = ({ name, alt, src, width, height }: CategoryCardProps) => {
   return (
-    <div className='w-full h-44'>
+    <div className='relative w-full'>
       <Image 
         alt={ alt } 
         src={ src || '/images/product-placeholder.webp' } 
         width={width} 
         height={height}
-        className='-z-50'
+        className='-z-50 border'
       />
-      <h2 className='-mt-20 text-center'>{ name }</h2>
+      <h2 className='absolute text-center left-20 bottom-10'>{ name }</h2>
     </div>
   )
 }

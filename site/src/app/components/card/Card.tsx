@@ -24,7 +24,7 @@ const Card = ({ title, category, price }: CardProps) => {
         {/* <span>descuento</span> */}
       </div>
       <button className="w-40 mx-auto bg-gray1000 text-white rounded-full font-bold py-1 px-2">
-        agregar al carrito
+        Agregar al carrito
       </button>
     </div>
   );
