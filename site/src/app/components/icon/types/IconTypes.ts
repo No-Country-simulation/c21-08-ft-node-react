@@ -13,4 +13,5 @@ export type IconProps = {
             | "trash"
             | "user"
             | "whatsapp"
+            | "rightArrow"
 }
