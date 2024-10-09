@@ -1,7 +1,3 @@
-<<<<<<< Updated upstream
-=======
-import Image from "next/image";
->>>>>>> Stashed changes
 import CategoryCard from "./components/CategoryCard/CategoryCard";
 
 export default function Home() {

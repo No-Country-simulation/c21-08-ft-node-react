@@ -1,11 +1,8 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
-<<<<<<< Updated upstream
 import Carrito from "./components/Carrito/Carrito";
 import { products } from "@/mocks/products";
-=======
->>>>>>> Stashed changes
 import Image from "next/image";
 
 const geistSans = localFont({
@@ -47,12 +44,9 @@ export default function RootLayout({
             </div>
           </nav>
         </div>
-<<<<<<< Updated upstream
         
         <div className="h-[510px] bg-gray200 w-full">
         </div>
-=======
->>>>>>> Stashed changes
 
         {children}
 
