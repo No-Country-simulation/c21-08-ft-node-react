@@ -51,15 +51,15 @@ export default function RootLayout({
               </div>
             </div>
             <div className="flex gap-4 justify-end items-center flex-1">
-              <div className="flex gap-2">
+              <div className="flex gap-2 items-center">
                 <Icon iconType="category"/>
                 <span>Categorías</span>
               </div>
-              <div className="flex gap-2">
+              <div className="flex gap-2 items-center">
                 <Icon iconType="user"/>
                 <span>Joel</span>
               </div>
-              <div className="flex gap-2">
+              <div className="flex gap-2 items-center">
                 <Carrito products={products} />
               </div>
             </div>

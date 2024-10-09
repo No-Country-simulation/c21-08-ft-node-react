@@ -93,89 +93,21 @@ const Icon = ({ iconType }: IconProps) => {
       );
     case "cartSmall":
       return (
-        <svg
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-          fill="currentColor"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M2 2H3.74001C4.82001 2 5.67 2.93 5.58 4L4.75 13.96C4.61 15.59 5.89999 16.99 7.53999 16.99H18.19C19.63 16.99 20.89 15.81 21 14.38L21.54 6.88C21.66 5.22 20.4 3.87 18.73 3.87H5.82001"
-            stroke="#292D32"
-            stroke-width="1.5"
-            stroke-miterlimit="10"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-          <path
-            d="M16.25 22C16.9404 22 17.5 21.4404 17.5 20.75C17.5 20.0596 16.9404 19.5 16.25 19.5C15.5596 19.5 15 20.0596 15 20.75C15 21.4404 15.5596 22 16.25 22Z"
-            stroke="#292D32"
-            stroke-width="1.5"
-            stroke-miterlimit="10"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-          <path
-            d="M8.25 22C8.94036 22 9.5 21.4404 9.5 20.75C9.5 20.0596 8.94036 19.5 8.25 19.5C7.55964 19.5 7 20.0596 7 20.75C7 21.4404 7.55964 22 8.25 22Z"
-            stroke="#292D32"
-            stroke-width="1.5"
-            stroke-miterlimit="10"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-          <path
-            d="M9 8H21"
-            stroke="#292D32"
-            stroke-width="1.5"
-            stroke-miterlimit="10"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-        </svg>
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M2 2H3.74001C4.82001 2 5.67 2.93 5.58 4L4.75 13.96C4.61 15.59 5.89999 16.99 7.53999 16.99H18.19C19.63 16.99 20.89 15.81 21 14.38L21.54 6.88C21.66 5.22 20.4 3.87 18.73 3.87H5.82001" stroke="#292D32" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M16.25 22C16.9404 22 17.5 21.4404 17.5 20.75C17.5 20.0596 16.9404 19.5 16.25 19.5C15.5596 19.5 15 20.0596 15 20.75C15 21.4404 15.5596 22 16.25 22Z" stroke="#292D32" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M8.25 22C8.94036 22 9.5 21.4404 9.5 20.75C9.5 20.0596 8.94036 19.5 8.25 19.5C7.55964 19.5 7 20.0596 7 20.75C7 21.4404 7.55964 22 8.25 22Z" stroke="#292D32" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M9 8H21" stroke="#292D32" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
       );
     case "category":
       return (
-        <svg
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-          fill="currentColor"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M17.54 8.1628C18.8986 8.1628 20 7.06142 20 5.7028C20 4.34418 18.8986 3.2428 17.54 3.2428C16.1814 3.2428 15.08 4.34418 15.08 5.7028C15.08 7.06142 16.1814 8.1628 17.54 8.1628Z"
-            stroke="#292D32"
-            stroke-width="1.5"
-            stroke-miterlimit="10"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-          <path
-            d="M6.46001 8.1628C7.81863 8.1628 8.92 7.06142 8.92 5.7028C8.92 4.34418 7.81863 3.2428 6.46001 3.2428C5.10139 3.2428 4 4.34418 4 5.7028C4 7.06142 5.10139 8.1628 6.46001 8.1628Z"
-            stroke="#292D32"
-            stroke-width="1.5"
-            stroke-miterlimit="10"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-          <path
-            d="M17.54 20.4628C18.8986 20.4628 20 19.3615 20 18.0028C20 16.6442 18.8986 15.5428 17.54 15.5428C16.1814 15.5428 15.08 16.6442 15.08 18.0028C15.08 19.3615 16.1814 20.4628 17.54 20.4628Z"
-            stroke="#292D32"
-            stroke-width="1.5"
-            stroke-miterlimit="10"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-          <path
-            d="M6.46001 20.4628C7.81863 20.4628 8.92 19.3615 8.92 18.0028C8.92 16.6442 7.81863 15.5428 6.46001 15.5428C5.10139 15.5428 4 16.6442 4 18.0028C4 19.3615 5.10139 20.4628 6.46001 20.4628Z"
-            stroke="#292D32"
-            stroke-width="1.5"
-            stroke-miterlimit="10"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-        </svg>
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M17.54 8.1628C18.8986 8.1628 20 7.06142 20 5.7028C20 4.34418 18.8986 3.2428 17.54 3.2428C16.1814 3.2428 15.08 4.34418 15.08 5.7028C15.08 7.06142 16.1814 8.1628 17.54 8.1628Z" stroke="#292D32" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M6.46001 8.1628C7.81863 8.1628 8.92 7.06142 8.92 5.7028C8.92 4.34418 7.81863 3.2428 6.46001 3.2428C5.10139 3.2428 4 4.34418 4 5.7028C4 7.06142 5.10139 8.1628 6.46001 8.1628Z" stroke="#292D32" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M17.54 20.4628C18.8986 20.4628 20 19.3615 20 18.0028C20 16.6442 18.8986 15.5428 17.54 15.5428C16.1814 15.5428 15.08 16.6442 15.08 18.0028C15.08 19.3615 16.1814 20.4628 17.54 20.4628Z" stroke="#292D32" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M6.46001 20.4628C7.81863 20.4628 8.92 19.3615 8.92 18.0028C8.92 16.6442 7.81863 15.5428 6.46001 15.5428C5.10139 15.5428 4 16.6442 4 18.0028C4 19.3615 5.10139 20.4628 6.46001 20.4628Z" stroke="#292D32" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
       );
     case "delivery":
       return (
@@ -246,21 +178,9 @@ const Icon = ({ iconType }: IconProps) => {
       );
     case "heart":
       return (
-        <svg
-          width="25"
-          height="24"
-          viewBox="0 0 25 24"
-          fill="currentColor"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M12.953 20.6628C12.613 20.7828 12.053 20.7828 11.713 20.6628C8.81301 19.6728 2.33301 15.5428 2.33301 8.54276C2.33301 5.45276 4.82301 2.95276 7.89301 2.95276C9.71301 2.95276 11.323 3.83276 12.333 5.19276C13.343 3.83276 14.963 2.95276 16.773 2.95276C19.843 2.95276 22.333 5.45276 22.333 8.54276C22.333 15.5428 15.853 19.6728 12.953 20.6628Z"
-            stroke="#292D32"
-            stroke-width="1.5"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-        </svg>
+<svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M12.953 20.6628C12.613 20.7828 12.053 20.7828 11.713 20.6628C8.81301 19.6728 2.33301 15.5428 2.33301 8.54276C2.33301 5.45276 4.82301 2.95276 7.89301 2.95276C9.71301 2.95276 11.323 3.83276 12.333 5.19276C13.343 3.83276 14.963 2.95276 16.773 2.95276C19.843 2.95276 22.333 5.45276 22.333 8.54276C22.333 15.5428 15.853 19.6728 12.953 20.6628Z" stroke="#292D32" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
       );
     case "heartFilled":
       return (
