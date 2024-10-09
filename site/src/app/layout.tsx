@@ -28,7 +28,17 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <nav className='w-[1000px] py-6 bg-gray'>TEST</nav>
+        <div className="w-full bg-gray100">
+          <nav className='w-[1000px] py-6 bg-gray flex justify-between gap-9 m-auto'>
+            <div className="bg-slate-400 flex-1 ">Logo</div>
+            <div className="flex-1">
+              <input type="text" className="w-full rounded border border-gray-300" />
+            </div>
+            <div className="bg-slate-400 flex-1">MainMenu</div>
+          </nav>
+        </div>
+        <div className="h-[510px] bg-gray200 w-full">
+        </div>
         {children}
       </body>
     </html>

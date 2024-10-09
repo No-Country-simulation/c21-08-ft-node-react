@@ -31,6 +31,7 @@ const config: Config = {
         gray200: '#EBEBEB',
         gray300: '#D9D9D9',
         gray400: '#C1C1C1',
+        gray1000: '#292D32',
       },
     },
   },
