@@ -1,9 +1,11 @@
 import { IconProps } from "./types/IconProps.type";
-const Icon = ({ iconType }: IconProps) => {
-  switch (iconType) {
+const Icon = ({ iconType, style=""}: IconProps) => {
+  
+   switch (iconType) {
     case "boxTick":
       return (
         <svg
+        className={style}
           width="49"
           height="48"
           viewBox="0 0 49 48"
@@ -49,8 +51,8 @@ const Icon = ({ iconType }: IconProps) => {
         </svg>
       );
     case "boxTickLarge":
-      return (
-<svg width="49" height="48" viewBox="0 0 49 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+      return (      
+<svg   className={style} width="49" height="48" viewBox="0 0 49 48" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M46.666 35.82C46.706 37.32 46.306 38.74 45.586 39.96C45.186 40.68 44.646 41.34 44.046 41.88C42.666 43.16 40.846 43.94 38.826 44C35.906 44.06 33.326 42.56 31.906 40.26C31.146 39.08 30.686 37.66 30.666 36.16C30.606 33.64 31.726 31.36 33.526 29.86C34.886 28.74 36.606 28.04 38.486 28C42.906 27.9 46.566 31.4 46.666 35.82Z" stroke="#292D32" stroke-width="3" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
 <path d="M35.546 36.0601L37.566 37.98L41.746 33.9399" stroke="#292D32" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
 <path d="M7.0061 14.88L24.6661 25.1L42.2061 14.9399" stroke="#292D32" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
@@ -61,7 +63,7 @@ const Icon = ({ iconType }: IconProps) => {
       )
     case "cartLarge":
       return (
-<svg width="53" height="53" viewBox="0 0 53 53" fill="none" xmlns="http://www.w3.org/2000/svg">
+<svg   className={style} width="53" height="53" viewBox="0 0 53 53" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M4.87335 4.51685H8.64336C10.9834 4.51685 12.825 6.53185 12.63 8.85018L10.8317 30.4302C10.5284 33.9618 13.3233 36.9952 16.8767 36.9952H39.9517C43.0717 36.9952 45.8017 34.4385 46.04 31.3402L47.21 15.0902C47.47 11.4935 44.74 8.5685 41.1217 8.5685H13.15" stroke="#292D32" stroke-width="3" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
 <path d="M35.7484 47.8501C37.2441 47.8501 38.4567 46.6376 38.4567 45.1418C38.4567 43.646 37.2441 42.4335 35.7484 42.4335C34.2526 42.4335 33.04 43.646 33.04 45.1418C33.04 46.6376 34.2526 47.8501 35.7484 47.8501Z" stroke="#292D32" stroke-width="3" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
 <path d="M18.4151 47.8501C19.9108 47.8501 21.1234 46.6376 21.1234 45.1418C21.1234 43.646 19.9108 42.4335 18.4151 42.4335C16.9193 42.4335 15.7067 43.646 15.7067 45.1418C15.7067 46.6376 16.9193 47.8501 18.4151 47.8501Z" stroke="#292D32" stroke-width="3" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
@@ -70,7 +72,7 @@ const Icon = ({ iconType }: IconProps) => {
       );
     case "cartSmall":
       return (
-<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<svg   className={style} width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M2 2H3.74001C4.82001 2 5.67 2.93 5.58 4L4.75 13.96C4.61 15.59 5.89999 16.99 7.53999 16.99H18.19C19.63 16.99 20.89 15.81 21 14.38L21.54 6.88C21.66 5.22 20.4 3.87 18.73 3.87H5.82001" stroke="#292D32" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
 <path d="M16.25 22C16.9404 22 17.5 21.4404 17.5 20.75C17.5 20.0596 16.9404 19.5 16.25 19.5C15.5596 19.5 15 20.0596 15 20.75C15 21.4404 15.5596 22 16.25 22Z" stroke="#292D32" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
 <path d="M8.25 22C8.94036 22 9.5 21.4404 9.5 20.75C9.5 20.0596 8.94036 19.5 8.25 19.5C7.55964 19.5 7 20.0596 7 20.75C7 21.4404 7.55964 22 8.25 22Z" stroke="#292D32" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
@@ -79,7 +81,7 @@ const Icon = ({ iconType }: IconProps) => {
       );
     case "category":
       return (
-<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<svg   className={style} width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M17.54 8.1628C18.8986 8.1628 20 7.06142 20 5.7028C20 4.34418 18.8986 3.2428 17.54 3.2428C16.1814 3.2428 15.08 4.34418 15.08 5.7028C15.08 7.06142 16.1814 8.1628 17.54 8.1628Z" stroke="#292D32" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
 <path d="M6.46001 8.1628C7.81863 8.1628 8.92 7.06142 8.92 5.7028C8.92 4.34418 7.81863 3.2428 6.46001 3.2428C5.10139 3.2428 4 4.34418 4 5.7028C4 7.06142 5.10139 8.1628 6.46001 8.1628Z" stroke="#292D32" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
 <path d="M17.54 20.4628C18.8986 20.4628 20 19.3615 20 18.0028C20 16.6442 18.8986 15.5428 17.54 15.5428C16.1814 15.5428 15.08 16.6442 15.08 18.0028C15.08 19.3615 16.1814 20.4628 17.54 20.4628Z" stroke="#292D32" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
@@ -88,7 +90,7 @@ const Icon = ({ iconType }: IconProps) => {
       );
     case "delivery":
       return (
-<svg width="49" height="48" viewBox="0 0 49 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+<svg   className={style} width="49" height="48" viewBox="0 0 49 48" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M24.276 28H26.276C28.476 28 30.276 26.2 30.276 24V4H12.276C9.276 4 6.65602 5.65998 5.29602 8.09998" stroke="#292D32" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
 <path d="M4.276 34C4.276 37.32 6.956 40 10.276 40H12.276C12.276 37.8 14.076 36 16.276 36C18.476 36 20.276 37.8 20.276 40H28.276C28.276 37.8 30.076 36 32.276 36C34.476 36 36.276 37.8 36.276 40H38.276C41.596 40 44.276 37.32 44.276 34V28H38.276C37.176 28 36.276 27.1 36.276 26V20C36.276 18.9 37.176 18 38.276 18H40.856L37.436 12.02C36.716 10.78 35.3961 10 33.9561 10H30.276V24C30.276 26.2 28.476 28 26.276 28H24.276" stroke="#292D32" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
 <path d="M16.276 44C18.4851 44 20.276 42.2091 20.276 40C20.276 37.7909 18.4851 36 16.276 36C14.0669 36 12.276 37.7909 12.276 40C12.276 42.2091 14.0669 44 16.276 44Z" stroke="#292D32" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
@@ -101,13 +103,14 @@ const Icon = ({ iconType }: IconProps) => {
       );
     case "heart":
       return (
-<svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<svg   className={style} width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M12.953 20.6628C12.613 20.7828 12.053 20.7828 11.713 20.6628C8.81301 19.6728 2.33301 15.5428 2.33301 8.54276C2.33301 5.45276 4.82301 2.95276 7.89301 2.95276C9.71301 2.95276 11.323 3.83276 12.333 5.19276C13.343 3.83276 14.963 2.95276 16.773 2.95276C19.843 2.95276 22.333 5.45276 22.333 8.54276C22.333 15.5428 15.853 19.6728 12.953 20.6628Z" stroke="#292D32" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
 </svg>
       );
     case "heartFilled":
       return (
         <svg
+        className={style}
           width="25"
           height="24"
           viewBox="0 0 25 24"
@@ -123,6 +126,7 @@ const Icon = ({ iconType }: IconProps) => {
     case "minus":
       return (
         <svg
+        className={style}
           width="25"
           height="24"
           viewBox="0 0 25 24"
@@ -141,6 +145,7 @@ const Icon = ({ iconType }: IconProps) => {
     case "plus":
       return (
         <svg
+        className={style}
           width="25"
           height="24"
           viewBox="0 0 25 24"
@@ -166,6 +171,7 @@ const Icon = ({ iconType }: IconProps) => {
     case "search":
       return (
         <svg
+        className={style}
           width="25"
           height="24"
           viewBox="0 0 25 24"
@@ -191,6 +197,7 @@ const Icon = ({ iconType }: IconProps) => {
     case "shop":
       return (
         <svg
+        className={style}
           width="48"
           height="49"
           viewBox="0 0 48 49"
@@ -237,6 +244,7 @@ const Icon = ({ iconType }: IconProps) => {
     case "trash":
       return (
         <svg
+        className={style}
           width="24"
           height="24"
           viewBox="0 0 24 24"
@@ -283,6 +291,7 @@ const Icon = ({ iconType }: IconProps) => {
     case "user":
       return (
         <svg
+        className={style}
           width="24"
           height="24"
           viewBox="0 0 24 24"
@@ -308,6 +317,7 @@ const Icon = ({ iconType }: IconProps) => {
     case "whatsapp":
       return (
         <svg
+        className={style}
           width="49"
           height="49"
           viewBox="0 0 49 49"
@@ -323,6 +333,7 @@ const Icon = ({ iconType }: IconProps) => {
     case "rightArrow":
       return (
         <svg
+        className={style}
           width="24"
           height="24"
           viewBox="0 0 24 24"
