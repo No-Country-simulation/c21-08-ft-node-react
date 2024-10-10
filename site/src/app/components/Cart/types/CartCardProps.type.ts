@@ -1,3 +1,3 @@
-import { Product } from "@/app/types/Product"
+import { Product } from "../../../types/Product.type"
 
 export type CartCardProps = Pick<Product, 'name' | 'price' | 'imgUrl'> 
