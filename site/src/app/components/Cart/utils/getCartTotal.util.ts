@@ -1,4 +1,4 @@
-import { Product } from "@/app/types/Product"
+import { Product } from "../../../types/Product.type"
 
 export const getCartTotal = (products: Product[]) => {
     let total = 0
