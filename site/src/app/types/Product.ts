@@ -1,15 +1,15 @@
-// type Promotion = {
-//     promotionID: string,
-//     discount: number
-// }
+type Promotion = {
+    promotionID: string,
+    discount: number
+}
 
 export type Product = {
-    // productID: string,
+    productID: string,
     name: string,
-    // description: string,
+    description: string,
     price: number,
     imgUrl: string,
-    // categoryID: string,
-    // stock: number,
-    // promotion?: Promotion 
+    categoryID: string,
+    stock: number,
+    promotion?: Promotion 
 }
