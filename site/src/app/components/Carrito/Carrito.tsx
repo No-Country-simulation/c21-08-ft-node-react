@@ -15,7 +15,7 @@ const Carrito = ({products}: CarritoProps) => {
     return (
         <div id="carrito-btn">
             <button className="flex justify-end gap-2" onClick={() => changeCartVisibility()}><Icon iconType="cartSmall"/><span>3</span></button>
-            <div className={`${isCartVisible ? 'flex' : 'hidden'} flex-col h-[calc(100vh-73.6px)] justify-between fixed right-0 top-[73.6px] bg-white px-8 py-4 shadow-xl`}>
+            <div className={`${isCartVisible ? 'flex' : 'hidden'} flex-col h-[calc(100vh-89.7px)] justify-between fixed right-0 top-[89.7px] bg-white px-8 py-4 shadow-xl`}>
                 <div className="flex flex-col gap-8">
                     <div className="flex cursor-pointer" onClick={changeCartVisibility}>
                         <h2>Tu carrito</h2>
