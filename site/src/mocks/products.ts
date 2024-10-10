@@ -1,4 +1,4 @@
-import { Product } from "@/app/types/ItemCarritoProps";
+import { Product } from "@/app/types/Product";
 
 export const products: Product[] = [
     {
