@@ -5,7 +5,7 @@ export const products: Product[] = [
         productID: 'P001',
         name: 'Galletas de Chocolate',
         description: 'Galletas crocantes con trozos de chocolate.',
-        price: 1999,
+        price: 1999.99,
         imgUrl: '/images/product-placeholder.webp',
         categoryID: 'C001',
         stock: 50
@@ -14,7 +14,7 @@ export const products: Product[] = [
         productID: 'P002',
         name: 'Papas Fritas',
         description: 'Papas fritas crujientes con sal.',
-        price: 2199,
+        price: 2199.99,
         imgUrl: '/images/product-placeholder.webp',
         categoryID: 'C002',
         stock: 30
@@ -23,7 +23,7 @@ export const products: Product[] = [
         productID: 'P003',
         name: 'Gomitas de Frutas',
         description: 'Gomitas dulces con sabor a frutas.',
-        price: 699,
+        price: 699.99,
         imgUrl: '/images/product-placeholder.webp',
         categoryID: 'C003',
         stock: 100
