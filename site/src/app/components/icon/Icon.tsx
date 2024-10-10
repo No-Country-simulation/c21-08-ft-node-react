@@ -48,48 +48,25 @@ const Icon = ({ iconType }: IconProps) => {
           />
         </svg>
       );
+    case "boxTickLarge":
+      return (
+<svg width="49" height="48" viewBox="0 0 49 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M46.666 35.82C46.706 37.32 46.306 38.74 45.586 39.96C45.186 40.68 44.646 41.34 44.046 41.88C42.666 43.16 40.846 43.94 38.826 44C35.906 44.06 33.326 42.56 31.906 40.26C31.146 39.08 30.686 37.66 30.666 36.16C30.606 33.64 31.726 31.36 33.526 29.86C34.886 28.74 36.606 28.04 38.486 28C42.906 27.9 46.566 31.4 46.666 35.82Z" stroke="#292D32" stroke-width="3" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M35.546 36.0601L37.566 37.98L41.746 33.9399" stroke="#292D32" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M7.0061 14.88L24.6661 25.1L42.2061 14.9399" stroke="#292D32" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M24.666 43.22V25.08" stroke="#292D32" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M43.886 18.34V29.6601C43.886 29.7601 43.886 29.84 43.866 29.94C42.466 28.72 40.666 28 38.666 28C36.786 28 35.046 28.66 33.666 29.76C31.826 31.22 30.666 33.48 30.666 36C30.666 37.5 31.086 38.92 31.826 40.12C32.006 40.44 32.226 40.7401 32.466 41.0201L28.806 43.0401C26.526 44.3201 22.806 44.3201 20.526 43.0401L9.84601 37.12C7.42601 35.78 5.44604 32.4201 5.44604 29.6601V18.34C5.44604 15.58 7.42601 12.22 9.84601 10.88L20.526 4.96C22.806 3.68 26.526 3.68 28.806 4.96L39.486 10.88C41.906 12.22 43.886 15.58 43.886 18.34Z" stroke="#292D32" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+
+      )
     case "cartLarge":
       return (
-        <svg
-          width="53"
-          height="53"
-          viewBox="0 0 53 53"
-          fill="currentColor"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M4.87335 4.51685H8.64336C10.9834 4.51685 12.825 6.53185 12.63 8.85018L10.8317 30.4302C10.5284 33.9618 13.3233 36.9952 16.8767 36.9952H39.9517C43.0717 36.9952 45.8017 34.4385 46.04 31.3402L47.21 15.0902C47.47 11.4935 44.74 8.5685 41.1217 8.5685H13.15"
-            stroke="#292D32"
-            stroke-width="3"
-            stroke-miterlimit="10"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-          <path
-            d="M35.7484 47.8501C37.2441 47.8501 38.4567 46.6376 38.4567 45.1418C38.4567 43.646 37.2441 42.4335 35.7484 42.4335C34.2526 42.4335 33.04 43.646 33.04 45.1418C33.04 46.6376 34.2526 47.8501 35.7484 47.8501Z"
-            stroke="#292D32"
-            stroke-width="3"
-            stroke-miterlimit="10"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-          <path
-            d="M18.4151 47.8501C19.9108 47.8501 21.1234 46.6376 21.1234 45.1418C21.1234 43.646 19.9108 42.4335 18.4151 42.4335C16.9193 42.4335 15.7067 43.646 15.7067 45.1418C15.7067 46.6376 16.9193 47.8501 18.4151 47.8501Z"
-            stroke="#292D32"
-            stroke-width="3"
-            stroke-miterlimit="10"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-          <path
-            d="M20.04 17.5168H46.04"
-            stroke="#292D32"
-            stroke-width="3"
-            stroke-miterlimit="10"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-        </svg>
+<svg width="53" height="53" viewBox="0 0 53 53" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M4.87335 4.51685H8.64336C10.9834 4.51685 12.825 6.53185 12.63 8.85018L10.8317 30.4302C10.5284 33.9618 13.3233 36.9952 16.8767 36.9952H39.9517C43.0717 36.9952 45.8017 34.4385 46.04 31.3402L47.21 15.0902C47.47 11.4935 44.74 8.5685 41.1217 8.5685H13.15" stroke="#292D32" stroke-width="3" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M35.7484 47.8501C37.2441 47.8501 38.4567 46.6376 38.4567 45.1418C38.4567 43.646 37.2441 42.4335 35.7484 42.4335C34.2526 42.4335 33.04 43.646 33.04 45.1418C33.04 46.6376 34.2526 47.8501 35.7484 47.8501Z" stroke="#292D32" stroke-width="3" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M18.4151 47.8501C19.9108 47.8501 21.1234 46.6376 21.1234 45.1418C21.1234 43.646 19.9108 42.4335 18.4151 42.4335C16.9193 42.4335 15.7067 43.646 15.7067 45.1418C15.7067 46.6376 16.9193 47.8501 18.4151 47.8501Z" stroke="#292D32" stroke-width="3" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M20.04 17.5168H46.04" stroke="#292D32" stroke-width="3" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
       );
     case "cartSmall":
       return (
@@ -111,70 +88,16 @@ const Icon = ({ iconType }: IconProps) => {
       );
     case "delivery":
       return (
-        <svg
-          width="49"
-          height="48"
-          viewBox="0 0 49 48"
-          fill="currentColor"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M24.276 28H26.276C28.476 28 30.276 26.2 30.276 24V4H12.276C9.276 4 6.65602 5.65998 5.29602 8.09998"
-            stroke="#292D32"
-            stroke-width="3"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-          <path
-            d="M4.276 34C4.276 37.32 6.956 40 10.276 40H12.276C12.276 37.8 14.076 36 16.276 36C18.476 36 20.276 37.8 20.276 40H28.276C28.276 37.8 30.076 36 32.276 36C34.476 36 36.276 37.8 36.276 40H38.276C41.596 40 44.276 37.32 44.276 34V28H38.276C37.176 28 36.276 27.1 36.276 26V20C36.276 18.9 37.176 18 38.276 18H40.856L37.436 12.02C36.716 10.78 35.3961 10 33.9561 10H30.276V24C30.276 26.2 28.476 28 26.276 28H24.276"
-            stroke="#292D32"
-            stroke-width="3"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-          <path
-            d="M16.276 44C18.4851 44 20.276 42.2091 20.276 40C20.276 37.7909 18.4851 36 16.276 36C14.0669 36 12.276 37.7909 12.276 40C12.276 42.2091 14.0669 44 16.276 44Z"
-            stroke="#292D32"
-            stroke-width="3"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-          <path
-            d="M32.276 44C34.4851 44 36.276 42.2091 36.276 40C36.276 37.7909 34.4851 36 32.276 36C30.0669 36 28.276 37.7909 28.276 40C28.276 42.2091 30.0669 44 32.276 44Z"
-            stroke="#292D32"
-            stroke-width="3"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-          <path
-            d="M44.276 24V28H38.276C37.176 28 36.276 27.1 36.276 26V20C36.276 18.9 37.176 18 38.276 18H40.856L44.276 24Z"
-            stroke="#292D32"
-            stroke-width="3"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-          <path
-            d="M4.276 16H16.276"
-            stroke="#292D32"
-            stroke-width="3"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-          <path
-            d="M4.276 22H12.276"
-            stroke="#292D32"
-            stroke-width="3"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-          <path
-            d="M4.276 28H8.276"
-            stroke="#292D32"
-            stroke-width="3"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-        </svg>
+<svg width="49" height="48" viewBox="0 0 49 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M24.276 28H26.276C28.476 28 30.276 26.2 30.276 24V4H12.276C9.276 4 6.65602 5.65998 5.29602 8.09998" stroke="#292D32" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M4.276 34C4.276 37.32 6.956 40 10.276 40H12.276C12.276 37.8 14.076 36 16.276 36C18.476 36 20.276 37.8 20.276 40H28.276C28.276 37.8 30.076 36 32.276 36C34.476 36 36.276 37.8 36.276 40H38.276C41.596 40 44.276 37.32 44.276 34V28H38.276C37.176 28 36.276 27.1 36.276 26V20C36.276 18.9 37.176 18 38.276 18H40.856L37.436 12.02C36.716 10.78 35.3961 10 33.9561 10H30.276V24C30.276 26.2 28.476 28 26.276 28H24.276" stroke="#292D32" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M16.276 44C18.4851 44 20.276 42.2091 20.276 40C20.276 37.7909 18.4851 36 16.276 36C14.0669 36 12.276 37.7909 12.276 40C12.276 42.2091 14.0669 44 16.276 44Z" stroke="#292D32" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M32.276 44C34.4851 44 36.276 42.2091 36.276 40C36.276 37.7909 34.4851 36 32.276 36C30.0669 36 28.276 37.7909 28.276 40C28.276 42.2091 30.0669 44 32.276 44Z" stroke="#292D32" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M44.276 24V28H38.276C37.176 28 36.276 27.1 36.276 26V20C36.276 18.9 37.176 18 38.276 18H40.856L44.276 24Z" stroke="#292D32" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M4.276 16H16.276" stroke="#292D32" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M4.276 22H12.276" stroke="#292D32" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M4.276 28H8.276" stroke="#292D32" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
       );
     case "heart":
       return (

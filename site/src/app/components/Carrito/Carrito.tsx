@@ -9,8 +9,12 @@ import { getCartTotal } from "./utils/getCartTotal"
 const Carrito = ({products}: CarritoProps) => {
 
     const [isCartVisible, setIsCartVisible] = useState(false)
+    console.log('is client rendering..');
 
-    const changeCartVisibility = () => setIsCartVisible(prevIsCartVisible => !prevIsCartVisible)
+    const changeCartVisibility = () => {
+    console.log('clicked');
+    setIsCartVisible(prevIsCartVisible => !prevIsCartVisible) 
+  }
 
     return (
         <div id="carrito-btn">

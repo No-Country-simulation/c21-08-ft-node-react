@@ -1,5 +1,7 @@
 import CategoryCard from "./components/CategoryCard/CategoryCard";
 import Card from "./components/card/Card";
+import CustomerStep from "./components/CustomerStep/CustomerStep";
+import Icon from "./components/icon/Icon";
 
 export default function Home() {
   return (
@@ -48,9 +50,41 @@ export default function Home() {
           </div>
         </section>
       </div>
-      {/* <div> */}
-      {/*   <section className="h-44 bg-indigo-500">BBBB</section> */}
-      {/* </div> */}
+      <div className="w-full">
+        <section className="w-[1000px] mx-auto flex gap-14">
+          <div className="flex flex-col gap-10">
+            <CustomerStep
+              icon={ <Icon iconType="cartLarge" /> }
+              title={ "Elijes lo que necesitas" }
+              desc={ "Lorem ipsum dolor sit amet, consectetur adipiscing elit." }
+            />
+            <CustomerStep
+              icon={ <Icon iconType="whatsapp" /> }
+              title={ "Nos confirmas por whatsapp" }
+              desc={ "Lorem ipsum dolor sit amet, consectetur adipiscing elit." }
+            />
+          </div>
+          <div className="flex flex-col justify-center">
+            <CustomerStep
+              icon={ <Icon iconType="boxTickLarge" /> }
+              title={ "Preparamos tu pedido" }
+              desc={ "Lorem ipsum dolor sit amet, consectetur adipiscing elit." }
+            />
+          </div>
+          <div className="flex flex-col gap-10 justify-between">
+            <CustomerStep
+              icon={ <Icon iconType="delivery" /> }
+              title={ "Te lo llevamos a casa" }
+              desc={ "Lorem ipsum dolor sit amet, consectetur adipiscing elit." }
+            />
+            <CustomerStep
+              icon={ <Icon iconType="shop" /> }
+              title={ "Lo recojes en tienda" }
+              desc={ "Lorem ipsum dolor sit amet, consectetur adipiscing elit." }
+            />
+          </div>
+        </section>
+      </div>
     </div>
   );
 }

@@ -1,6 +1,7 @@
 export type IconProps = {
   iconType:
     | "boxTick"
+    | "boxTickLarge"
     | "cartLarge"
     | "cartSmall"
     | "category"
