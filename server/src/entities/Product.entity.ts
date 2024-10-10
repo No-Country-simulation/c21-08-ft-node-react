@@ -1,6 +1,17 @@
-import { Column, Entity, JoinTable, ManyToMany, PrimaryColumn } from "typeorm";
+import {
+  Column,
+  Entity,
+  JoinTable,
+  ManyToMany,
+  ManyToOne,
+  OneToMany,
+  PrimaryColumn,
+} from "typeorm";
 import { Measurement } from "../common/measurement.enum";
 import { User } from "./User.entity";
+import { Category } from "./Category.entity";
+import { CartProduct } from "./CartProduct.entity";
+import { OrderProduct } from "./OrderProduct.entity";
 
 @Entity()
 export class Product {
@@ -35,4 +46,13 @@ export class Product {
     },
   })
   user!: User[];
+
+  @ManyToOne(() => Category, (category) => category.product)
+  category!: Category;
+
+  @OneToMany(() => CartProduct, (CartProduct) => CartProduct.product)
+  cartProduct!: CartProduct[];
+
+  @OneToMany(() => OrderProduct, orderProduct => orderProduct.product)
+  orderProduct!: OrderProduct[];
 }

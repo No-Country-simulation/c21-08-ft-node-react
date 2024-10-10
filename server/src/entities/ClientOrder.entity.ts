@@ -1,5 +1,6 @@
-import { Column, Entity, ManyToOne, OneToOne, PrimaryColumn } from "typeorm";
+import { Column, Entity, ManyToOne, OneToMany, PrimaryColumn } from "typeorm";
 import { OrderStatus } from "../common/orderStatus.enum";
+import { OrderProduct } from "./OrderProduct.entity";
 import { User } from "./User.entity";
 
 @Entity()
@@ -15,4 +16,7 @@ export class ClientOrder {
 
   @ManyToOne(() => User, (user) => user.order)
   user!: User;
+
+  @OneToMany(() => OrderProduct, (orderProduct) => orderProduct.clientOrder)
+  orderProduct!: OrderProduct[];
 }

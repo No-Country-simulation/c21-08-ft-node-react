@@ -3,8 +3,8 @@ import { User } from "./User.entity";
 
 @Entity()
 export class Facturation {
-  @PrimaryColumn()
-  facturationId!: number;
+  @PrimaryColumn("uuid")
+  facturationId!: string;
 
   @Column()
   address!: string;
