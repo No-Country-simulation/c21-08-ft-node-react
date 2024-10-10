@@ -1,5 +1,3 @@
-import Icon from "../icon/Icon";
-
 type CustomerStepProps = {
   icon: React.ReactNode
   title: string
