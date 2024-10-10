@@ -1,12 +1,12 @@
 'use client'
 
 import { useState } from "react"
-import Icon from "../icon/Icon"
-import ItemCarrito from "./ItemCarrito"
-import { CarritoProps } from './types/CarritoProps'
-import { getCartTotal } from "./utils/getCartTotal"
+import Icon from "../Icon/Icon.component"
+import CartCard from "./CartCard.component"
+import { CartProps } from './types/CartProps.type'
+import { getCartTotal } from "./utils/getCartTotal.util"
 
-const Carrito = ({products}: CarritoProps) => {
+const Cart = ({products}: CartProps) => {
 
     const [isCartVisible, setIsCartVisible] = useState(false)
     console.log('is client rendering..');
@@ -30,7 +30,7 @@ const Carrito = ({products}: CarritoProps) => {
                     <ul className="flex flex-col gap-4">
                     {products.map((product, i) => 
                         (<li key={i}>
-                            <ItemCarrito 
+                            <CartCard 
                                 name={product.name} 
                                 price={product.price} 
                                 imgUrl={product.imgUrl} 
@@ -47,4 +47,4 @@ const Carrito = ({products}: CarritoProps) => {
     )
 }
 
-export default Carrito
+export default Cart

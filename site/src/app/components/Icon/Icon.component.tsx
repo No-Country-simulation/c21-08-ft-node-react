@@ -1,4 +1,4 @@
-import { IconProps } from "./types/IconTypes";
+import { IconProps } from "./types/IconProps.type";
 const Icon = ({ iconType }: IconProps) => {
   switch (iconType) {
     case "boxTick":

@@ -1,11 +1,11 @@
 "use client"
 
 import { useState } from "react"
-import { ItemCarritoProps } from './types/ItemCarritoProps'
+import { CartCardProps } from './types/CartCardProps.type'
 import Image from "next/image"
-import Icon from "../icon/Icon"
+import Icon from "../Icon/Icon.component"
 
-const ItemCarrito = ({name, imgUrl, price}: ItemCarritoProps) => {
+const CartCard = ({name, imgUrl, price}: CartCardProps) => {
 
     const [itemQty, setItemQty] = useState(0)
     
@@ -38,4 +38,4 @@ const ItemCarrito = ({name, imgUrl, price}: ItemCarritoProps) => {
     )
 }
 
-export default ItemCarrito
+export default CartCard

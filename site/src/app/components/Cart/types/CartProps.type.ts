@@ -1,5 +1,5 @@
 import { Product } from "@/app/types/Product"
 
-export type CarritoProps = {
+export type CartProps = {
     products: Product[],
 }

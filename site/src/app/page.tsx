@@ -1,7 +1,7 @@
-import CategoryCard from "./components/CategoryCard/CategoryCard";
-import Card from "./components/card/Card";
-import CustomerStep from "./components/CustomerStep/CustomerStep";
-import Icon from "./components/icon/Icon";
+import CategoryCard from "./components/CategoryCard/CategoryCard.component";
+import Card from "./components/Card/Card.component";
+import CustomerStep from "./components/CustomerStep/CustomerStep.component";
+import Icon from "./components/Icon/Icon.component";
 
 export default function Home() {
   return (

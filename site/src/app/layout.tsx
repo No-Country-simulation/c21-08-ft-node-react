@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
-import Carrito from "./components/Carrito/Carrito";
-import { products } from "@/mocks/products";
+import Cart from "./components/Cart/Cart.component";
+import { products } from "@/mocks/products.mock";
 import Image from "next/image";
-import Icon from "./components/icon/Icon";
+import Icon from "./components/Icon/Icon.component";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -60,7 +60,7 @@ export default function RootLayout({
                 <span>Joel</span>
               </div>
               <div className="flex gap-2 items-center">
-                <Carrito products={products} />
+                <Cart products={products} />
               </div>
             </div>
           </nav>

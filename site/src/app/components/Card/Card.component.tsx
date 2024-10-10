@@ -1,7 +1,7 @@
-import { CardProps } from "./types/CardTypes";
-import Icon from "../icon/Icon";
-
+import { CardProps } from './types/CardProps.type';
+import Icon from "../Icon/Icon.component";
 import Image from "next/image";
+
 const Card = ({ title, category, price }: CardProps) => {
   // const discountedPrice = promotion? price*promotion : null
   //const discount = promotion? promotion * 10:null
