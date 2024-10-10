@@ -1,0 +1,43 @@
+import {
+  Column,
+  Entity,
+  ManyToMany,
+  OneToMany,
+  OneToOne,
+  PrimaryColumn,
+} from "typeorm";
+import { Role } from "../common/role.enum";
+import { Facturation } from "./Facturation.entity";
+import { Cart } from "./Cart.entity";
+import { ClientOrder } from "./ClientOrder.entity";
+import { Product } from "./Product.entity";
+
+@Entity()
+export class User {
+  @PrimaryColumn("uuid")
+  userId!: string;
+
+  @Column()
+  name!: string;
+
+  @Column()
+  email!: string;
+
+  @Column()
+  password!: string;
+
+  @Column({ type: "enum", enum: Role, default: Role.CLIENT })
+  role!: Role;
+
+  @OneToOne(() => Facturation, (facturation) => facturation.user)
+  facturation!: Facturation;
+
+  @OneToOne(() => Cart, (cart) => cart.user)
+  cart!: Cart;
+
+  @OneToMany(() => ClientOrder, (clientOrder) => clientOrder.user)
+  order!: ClientOrder[];
+
+  @ManyToMany(() => Product, (product) => product.user)
+  product!: Product[];
+}
