@@ -5,16 +5,16 @@ import Cart from "./components/Cart/Cart.component";
 import Image from "next/image";
 import Icon from "./components/Icon/Icon.component";
 
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
-});
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
-});
+// const geistSans = localFont({
+//   src: "./fonts/GeistVF.woff",
+//   variable: "--font-geist-sans",
+//   weight: "100 900",
+// });
+// const geistMono = localFont({
+//   src: "./fonts/GeistMonoVF.woff",
+//   variable: "--font-geist-mono",
+//   weight: "100 900",
+// });
 
 export const metadata: Metadata = {
   title: "Kramer Minimarket",
@@ -30,7 +30,6 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <div className="w-full bg-gray100 flex items-center fixed z-[100]">
           <nav className='w-[1000px] py-6 bg-gray flex justify-between gap-9 m-auto'>
