@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import Cart from "./components/Cart/Cart.component";
-import { products } from "@/mocks/products.mock";
 import Image from "next/image";
 import Icon from "./components/Icon/Icon.component";
 
@@ -60,7 +59,7 @@ export default function RootLayout({
                 <span>Joel</span>
               </div>
               <div className="flex gap-2 items-center">
-                <Cart products={products} />
+                <Cart />
               </div>
             </div>
           </nav>
