@@ -1,5 +1,7 @@
 export const getIntAndDecSplited = (price: number) => {
-    const [int, dec] = String(price).split('.')
+    const [int, dec = '00'] = String(price).split('.')
 
-    return {int, dec: dec ? dec : '00'}
+    const formatedDec = dec.padEnd(2, '0') // Asegura que siempre tenga 2 dígitos.
+
+    return { int, dec: formatedDec }
 }
