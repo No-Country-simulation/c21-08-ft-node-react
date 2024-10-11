@@ -1,10 +1,6 @@
 import Price from "../Price/Price.component"
-import { ProductInCart } from "./types/ProductInCart.type"
 import { getCartTotal } from "./utils/getCartTotal.util"
-
-type CartFooterProps = {
-    productsInCart: ProductInCart[]
-}
+import { CartFooterProps } from "./types/CartFooterProps.type"
 
 const CartFooter = ({productsInCart}: CartFooterProps) => {
 
