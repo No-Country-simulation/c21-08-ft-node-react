@@ -1,3 +1,8 @@
-import { Product } from "../../../types/Product.type"
+import { ProductInCart } from "./ProductInCart.type"
 
-export type CartCardProps = Pick<Product, 'name' | 'price' | 'imgUrl'> 
+export type CartCardProps = {
+    product: ProductInCart
+    incrementProductQty: (id: string) => void
+    decrementProductQty: (id: string) => void
+    removeProduct: (id: string) => void
+}

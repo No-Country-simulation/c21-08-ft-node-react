@@ -1,37 +1,38 @@
 "use client"
 
-import { useState } from "react"
 import { CartCardProps } from './types/CartCardProps.type'
 import Image from "next/image"
 import Icon from "../Icon/Icon.component"
+import ProductQtyInput from "./ProductQtyInput.component"
+import Price from '../Price/Price.component'
+import { getProductImageAlt } from '../../utils/getProductImageAlt.util'
 
-const CartCard = ({name, imgUrl, price}: CartCardProps) => {
-
-    const [itemQty, setItemQty] = useState(0)
+const CartCard = ({product, incrementProductQty, decrementProductQty, removeProduct}: CartCardProps) => {
     
     return (
-    <div className="flex bg-gray100 w-[400px] h-[112px] rounded-lg border border-gray300">
+    <div className="flex bg-gray100 w-[400px] h-[112px] rounded-lg outline outline-1 outline-gray-200">
         <div className="w-[112px] overflow-hidden">
             <Image 
-                className="rounded-lg"
-                src={imgUrl} 
-                alt={name}
+                className="rounded-l-lg"
+                src={product.imgUrl} 
+                alt={getProductImageAlt(product.name)}
                 width={112}
                 height={112}
             />
         </div>
         <div className="flex flex-col justify-between w-[288px] p-4">
             <div className="flex justify-between">
-                <h3>{name}</h3>
-                <button><Icon iconType="trash"/></button>
+                <h3>{product.name}</h3>
+                <button onClick={() => removeProduct(product.productID)}><Icon iconType="trash"/></button>
             </div>
             <div className="flex justify-between">
-                <p>{price}</p>
-                <div className="flex">
-                    <button onClick={() => setItemQty(prevItemQty => --prevItemQty)}><Icon iconType="minus"/></button>
-                    <p>{itemQty}</p>
-                    <button onClick={() => setItemQty(prevItemQty => ++prevItemQty)}><Icon iconType="plus"/></button>
-                </div>
+                <Price size='S' price={product.price}/>
+                <ProductQtyInput
+                    productID={product.productID}
+                    productQty={product.productQty} 
+                    incrementProductQty={incrementProductQty} 
+                    decrementProductQty={decrementProductQty} 
+                />
             </div>
         </div>
     </div>

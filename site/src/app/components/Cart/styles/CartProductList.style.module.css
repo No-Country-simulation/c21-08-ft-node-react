@@ -1,0 +1,12 @@
+/* SCROLLBARS */
+
+.cartProductList::-webkit-scrollbar-thumb {
+    border-radius: .25rem;
+    width: .25rem;
+    border: solid 0.625rem #5E5E5E;
+}
+
+.cartProductList::-webkit-scrollbar {
+    width: .5rem;
+    background-color: transparent;
+}
