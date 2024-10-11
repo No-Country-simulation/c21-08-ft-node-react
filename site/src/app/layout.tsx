@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
-import Cart from "./components/Cart/Cart.component";
 import Image from "next/image";
 import Icon from "./components/Icon/Icon.component";
+import CartWithContext from "./components/Cart/CartWithContext.component";
 
 // const geistSans = localFont({
 //   src: "./fonts/GeistVF.woff",
@@ -58,7 +58,7 @@ export default function RootLayout({
                 <span>Joel</span>
               </div>
               <div className="flex gap-2 items-center">
-                <Cart />
+                <CartWithContext />
               </div>
             </div>
           </nav>
