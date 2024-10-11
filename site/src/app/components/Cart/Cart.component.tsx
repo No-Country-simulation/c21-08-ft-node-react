@@ -1,15 +1,14 @@
 'use client'
 
-import { useState } from "react"
+import { useContext, useState } from "react"
 import Icon from "../Icon/Icon.component"
-import { useCartReducer } from "./hooks/useCartReducer.hook"
 import CartHeader from "./CartHeader.component"
 import CartFooter from "./CartFooter.component"
 import CartProductList from "./CartProductList.component"
+import { CartContext } from "@/app/contexts/cart.context"
 
 const Cart = () => {
-
-    const {productsInCart, incrementProductQty, decrementProductQty, removeProduct} = useCartReducer()
+    const {productsInCart, incrementProductQty,decrementProductQty, removeProduct} = useContext(CartContext)
     const [isCartVisible, setIsCartVisible] = useState(false)
 
     const changeCartVisibility = () => {
