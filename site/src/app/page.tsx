@@ -43,7 +43,7 @@ export default function Home() {
         <section className="w-[1000px] mx-auto flex flex-col gap-y-10">
           <h2 className="text-4xl font-bold">Descuentos</h2>
           <div className="flex justify-between">
-            <Card title={'Producto 1'} category={"Categoria 1"} price={1000} />
+            <Card title={'Producto 1'} category={"Categoria 1"} price={1000} promotion={0.3}/>
             <Card title={'Producto 1'} category={"Categoria 1"} price={1000} />
             <Card title={'Producto 1'} category={"Categoria 1"} price={1000} />
             <Card title={'Producto 1'} category={"Categoria 1"} price={1000} />
