@@ -10,7 +10,6 @@ import {
 import { Measurement } from "../common/measurement.enum";
 import { User } from "./User.entity";
 import { Category } from "./Category.entity";
-import { CartProduct } from "./CartProduct.entity";
 import { OrderProduct } from "./OrderProduct.entity";
 
 @Entity()
@@ -33,6 +32,9 @@ export class Product {
   @Column()
   stock!: number;
 
+  @Column({ nullable: true })
+  imgUrl!: string;
+
   @ManyToMany(() => User, (user) => user.product)
   @JoinTable({
     name: "favorite",
@@ -50,9 +52,6 @@ export class Product {
   @ManyToOne(() => Category, (category) => category.product)
   category!: Category;
 
-  @OneToMany(() => CartProduct, (CartProduct) => CartProduct.product)
-  cartProduct!: CartProduct[];
-
-  @OneToMany(() => OrderProduct, orderProduct => orderProduct.product)
+  @OneToMany(() => OrderProduct, (orderProduct) => orderProduct.product)
   orderProduct!: OrderProduct[];
 }

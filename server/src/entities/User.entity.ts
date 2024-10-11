@@ -8,7 +8,6 @@ import {
 } from "typeorm";
 import { Role } from "../common/role.enum";
 import { Facturation } from "./Facturation.entity";
-import { Cart } from "./Cart.entity";
 import { ClientOrder } from "./ClientOrder.entity";
 import { Product } from "./Product.entity";
 
@@ -31,9 +30,6 @@ export class User {
 
   @OneToOne(() => Facturation, (facturation) => facturation.user)
   facturation!: Facturation;
-
-  @OneToOne(() => Cart, (cart) => cart.user)
-  cart!: Cart;
 
   @OneToMany(() => ClientOrder, (clientOrder) => clientOrder.user)
   order!: ClientOrder[];
