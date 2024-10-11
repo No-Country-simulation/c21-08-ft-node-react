@@ -8,7 +8,7 @@ export default function Home() {
     <div className="flex flex-col gap-20">
       <div className="h-[560px] bg-gray200 w-full"></div>
       <div className="w-full -mt-48">
-        <section className="w-[1000px] flex gap-6 mx-auto">
+        <section className="max-w-[1000px] flex gap-6 mx-auto">
           <CategoryCard
             name={"Frutas"}
             alt="Frutas"
@@ -40,7 +40,7 @@ export default function Home() {
         </section>
       </div>
       <div className="w-full">
-        <section className="w-[1000px] mx-auto flex flex-col gap-y-10">
+        <section className="max-w-[1000px] mx-auto flex flex-col gap-y-10">
           <h2 className="text-4xl font-bold">Descuentos</h2>
           <div className="flex justify-between">
             <Card title={'Producto 1'} category={"Categoria 1"} price={1000} promotion={0.3}/>
@@ -51,7 +51,7 @@ export default function Home() {
         </section>
       </div>
       <div className="w-full">
-        <section className="w-[1000px] mx-auto flex gap-14">
+        <section className="max-w-[1000px] mx-auto flex gap-14">
           <div className="flex flex-col gap-10">
             <CustomerStep
               icon={ <Icon iconType="cartLarge" /> }
