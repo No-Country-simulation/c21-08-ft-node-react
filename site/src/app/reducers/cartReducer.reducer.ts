@@ -1,56 +1,64 @@
-import { ProductInCart } from "../types/ProductInCart.type";
-import { CartAction } from "../types/CartAction.type";
+import { ProductInCart } from "../components/Cart/types/ProductInCart.type";
+import { CartAction } from "../components/Cart/types/CartAction.type";
+import { updateCartLS } from '../utils/updateCartLS.util';
 
 export const cartReducer = (state: ProductInCart[], action: CartAction) => {
     const { type } = action
 
     if (type === "ADD_TO_CART") {
         const { product } = action;
-        const newState = structuredClone(state);
+        const stateCopy = structuredClone(state);
     
-        const existingProduct = newState.find(
+        const existingProduct = stateCopy.find(
           (item: ProductInCart) => item.productID === product.productID
         );
     
         if (existingProduct) {
-          return newState.map(item =>
+          const newState = stateCopy.map(item =>
             item.productID === product.productID
               ? { ...item, productQty: item.productQty + 1 }
               : item
           );
+          updateCartLS(newState)
+          return newState
         } else {
           const newProductInCart: ProductInCart = { ...product, productQty: 1 };
-          return [...newState, newProductInCart];
+          const newState = [...stateCopy, newProductInCart]
+          updateCartLS(newState)
+          return newState
         }
       }
 
     if (type === "INCREMENT_QTY") {
         const { id } = action;
-        const newState = structuredClone(state);
-    
-        return newState.map(productInCart =>
+        const stateCopy = structuredClone(state);
+        const newState = stateCopy.map(productInCart =>
           productInCart.productID === id
             ? { ...productInCart, productQty: productInCart.productQty + 1 }
             : productInCart
         );
+        updateCartLS(newState)
+        return newState
       }
 
     if (type === "DECREMENT_QTY") {
         const { id } = action;
-        const newState = structuredClone(state);
-    
-        return newState.map(productInCart =>
+        const stateCopy = structuredClone(state);
+        const newState = stateCopy.map(productInCart =>
           productInCart.productID === id && productInCart.productQty > 1
             ? { ...productInCart, productQty: productInCart.productQty - 1 }
             : productInCart
         );
+        updateCartLS(newState)
+        return newState
       }
     
       if (type === "REMOVE_FROM_CART") {
         const { id } = action;
-        const newState = structuredClone(state);
-    
-        return newState.filter(productInCart => productInCart.productID !== id);
+        const stateCopy = structuredClone(state);
+        const newState = stateCopy.filter(productInCart => productInCart.productID !== id);
+        updateCartLS(newState)
+        return newState
       }
 
       return state

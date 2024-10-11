@@ -1,11 +1,13 @@
 import { useReducer } from "react"
-import { cartReducer } from "../reducers/cart.reducer"
-import { productsInCart as productsInCartMock } from "../mocks/ProductsInCart.mock"
-import { Product } from '../../../types/Product.type'
+import { cartReducer } from "../reducers/cartReducer.reducer"
+import { Product } from '../types/Product.type'
+import { getCartLS } from "@/app/utils/getCartLS.util"
 
+export const cartInitialState = getCartLS()
+  
 export const useCartReducer = () => {
 
-    const [productsInCart, dispatch] = useReducer(cartReducer, productsInCartMock)
+    const [productsInCart, dispatch] = useReducer(cartReducer, cartInitialState)
 
 
     const addToCart = (product: Product) => {
