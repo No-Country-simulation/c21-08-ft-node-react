@@ -6,12 +6,9 @@ import { useSearchParams } from 'next/navigation'
 import { strParseOut } from '@/app/utils/functions.utils'
 import { useRouter } from 'next/navigation'
 import Icon from '@/app/components/Icon/Icon.component'
+import { products } from '@/mocks/products.mock'
 
-type ProductsPanel = {
-  products: Product[]
-}
-
-const ProductsPanel = ({ products }: ProductsPanel) => {
+const ProductsPanel = () => {
   const searchParams = useSearchParams()
   const currentCategory = strParseOut(searchParams.get('name') || 'unknown category')
   const router = useRouter()
@@ -29,7 +26,7 @@ const ProductsPanel = ({ products }: ProductsPanel) => {
       {/* <div>...</div> */}
       <div className='inline-grid w-full grid-cols-3 justify-between gap-10'>
         {products.map((p, idx) => (
-          <Card key={`card-${idx}`} title={p.name} category={p.categoryID} price={p.price} />
+          <Card key={`card-${idx}`} product={p} />
         ))}
       </div>
     </div>

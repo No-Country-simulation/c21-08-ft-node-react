@@ -1,10 +1,10 @@
-'use client';
-import { CardProps } from './types/CardProps.type';
-import { useContext, useState } from 'react';
-import Price from '../Price/Price.component';
-import Icon from '../Icon/Icon.component';
-import Image from 'next/image';
-import { CartContext } from '../../contexts/cart.context';
+'use client'
+import { CardProps } from './types/CardProps.type'
+import { useContext, useState } from 'react'
+import Price from '../Price/Price.component'
+import Icon from '../Icon/Icon.component'
+import Image from 'next/image'
+import { CartContext } from '../../contexts/cart.context'
 // import Link from "next/link"; activar cuando usemos la interactividad con otras paginas
 
 //cambiar la prop imgURl cuando tengamos acceso a los enpoint (quitar el ? a la propiedad)
@@ -14,25 +14,25 @@ import { CartContext } from '../../contexts/cart.context';
 // agregar al button "agregar al carrito" la funcion de agregar al carrito con el contexto facu
 
 const Card = ({ styleSlider, product }: CardProps) => {
-  const [favorite, setFavorite] = useState<boolean>(false);
-  const { addToCart, productsInCart } = useContext(CartContext);
+  const [favorite, setFavorite] = useState<boolean>(false)
+  const { addToCart, productsInCart } = useContext(CartContext)
 
-  const { name, price, promotion, categoryID } = product;
+  const { name, price, promotion, categoryID } = product
 
   const handleFavorite = () => {
-    setFavorite(prevState => !prevState);
-  };
+    setFavorite(prevState => !prevState)
+  }
 
   const handleAddToCart = () => {
-    console.log('agregando producto al carrito', product);
-    console.log('productos del carro', productsInCart);
-    addToCart(product);
-  };
-  const discountedPrice = promotion ? price - price * promotion.discount : null;
-  const discount = promotion ? promotion.discount * 100 : null;
+    console.log('agregando producto al carrito', product)
+    console.log('productos del carro', productsInCart)
+    addToCart(product)
+  }
+  const discountedPrice = promotion ? price - price * promotion.discount : null
+  const discount = promotion ? promotion.discount * 100 : null
   return (
     <div
-      className={`${styleSlider} flex w-96 flex-col justify-between border border-black bg-gray1000 p-4 sm:w-2/3 sm:flex-row sm:items-center`}
+      className={`${styleSlider} flex w-full flex-col justify-between border border-black bg-gray1000 p-4 sm:w-2/3 sm:flex-row sm:items-center`}
     >
       <div className='me-4 flex items-center justify-center sm:w-1/2'>
         <Image
@@ -80,7 +80,7 @@ const Card = ({ styleSlider, product }: CardProps) => {
         </button>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Card;
+export default Card
