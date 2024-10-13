@@ -1,38 +1,84 @@
+'use client';
 import { CardProps } from './types/CardProps.type';
-import Icon from "../Icon/Icon.component";
-import Image from "next/image";
+import { useContext, useState } from 'react';
+import Price from '../Price/Price.component';
+import Icon from '../Icon/Icon.component';
+import Image from 'next/image';
+import { CartContext } from '../../contexts/cart.context';
+// import Link from "next/link"; activar cuando usemos la interactividad con otras paginas
 
 //cambiar la prop imgURl cuando tengamos acceso a los enpoint (quitar el ? a la propiedad)
-const Card = ({ title, category, price, promotion }: CardProps) => {
-    const discountedPrice = promotion? price-(price*promotion) : null
-   const discount = promotion? promotion * 100:null
+//ver colores de descuento cuando tengamos colores
+// agregar la tarjeta link desde el primer div hasta el button para que vaya al detalle del producto
+// sumar al handleFavorite la funcion de agregar a la seccion de productos
+// agregar al button "agregar al carrito" la funcion de agregar al carrito con el contexto facu
+
+const Card = ({ styleSlider, product }: CardProps) => {
+  const [favorite, setFavorite] = useState<boolean>(false);
+  const { addToCart, productsInCart } = useContext(CartContext);
+
+  const { name, price, promotion, categoryID } = product;
+
+  const handleFavorite = () => {
+    setFavorite(prevState => !prevState);
+  };
+
+  const handleAddToCart = () => {
+    console.log('agregando producto al carrito', product);
+    console.log('productos del carro', productsInCart);
+    addToCart(product);
+  };
+  const discountedPrice = promotion ? price - price * promotion.discount : null;
+  const discount = promotion ? promotion.discount * 100 : null;
   return (
-    <div className="w-56 p-3 bg-gray200 flex flex-col justify-center rounded-lg">
-      <Image
-        className=""
-        src={"/images/product-placeholder.webp"}
-        alt={`imagen de ${title}`}
-        width={480}
-        height={480}
-      />
-      <div className="flex justify-between items-center  my-2 mx-1">
-        <h3 className="font-bold text-lg">{title}</h3>
-        <Icon iconType={"heart"}></Icon>
+    <div
+      className={`${styleSlider} flex w-96 flex-col justify-between border border-black bg-gray1000 p-4 sm:w-2/3 sm:flex-row sm:items-center`}
+    >
+      <div className='me-4 flex items-center justify-center sm:w-1/2'>
+        <Image
+          className='sm:min-w-[120px]'
+          src={'/images/product-placeholder.webp'}
+          alt={`imagen de ${name}`}
+          width={480}
+          height={480}
+        />
       </div>
-      <h4 className='ms-1'>{category}</h4>
-      
-      {!promotion ? (<div className="flex justify-between my-2 mx-1">
-        <span>{`$${price}`}</span>
-        </div>):(<div className="flex justify-between items-center my-2 mx-1">
-          <div className='flex-col'>
-          <div className="line-through text-xs">${price}</div>
-          <div className='font-bold text-base'>${discountedPrice}</div>
+      <div className='flex flex-col items-center'>
+        <div className='my-2 flex w-full items-center justify-between px-4'>
+          <h3 className='line-clamp-2 text-lg font-bold'>{name}</h3>
+          {!favorite ? (
+            <button onClick={handleFavorite}>
+              <Icon iconType={'heart'}></Icon>
+            </button>
+          ) : (
+            <button onClick={handleFavorite}>
+              <Icon iconType={'heartFilled'}></Icon>
+            </button>
+          )}
+        </div>
+        <h4 className='me-auto ms-4'>{categoryID}</h4>
+        {!discountedPrice ? (
+          <div className='mx-1 my-2 flex justify-between'>
+            <Price price={price} size={'S'}></Price>
           </div>
-          <div className='flex items-center bg-gray300 ps-2 rounded-xl font-bold'>{`%${discount}`}<Icon style={"h-4 rotate-90"} iconType='rightArrow'></Icon></div>
-          </div>)}
-      <button className="w-40 mx-auto bg-gray1000 text-white rounded-full font-bold py-1 px-2">
-        Agregar al carrito
-      </button>
+        ) : (
+          <div className='flex w-full justify-between px-4 py-2'>
+            <div className='flex-col items-center'>
+              <div className='text-xs line-through'>${price}</div>
+              <div className='text-base font-bold'>
+                <Price price={discountedPrice} size={'S'}></Price>
+              </div>
+            </div>
+            <div className='me-2 flex items-center'>{`%${discount}`}</div>
+          </div>
+        )}
+        <button
+          onClick={handleAddToCart}
+          className='mx-auto w-40 rounded-full bg-gray1000 px-2 py-1 font-bold text-white'
+        >
+          Agregar al carrito
+        </button>
+      </div>
     </div>
   );
 };

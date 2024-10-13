@@ -1,7 +1,3 @@
-export type CardProps = {
-  title: string;
-  category: string;
-  imgSrc?: string;
-  price: number;
-  promotion?: number;
-};
+import { Product } from '../../../types/Product.type';
+
+export type CardProps = { product: Product } & { styleSlider: string };
