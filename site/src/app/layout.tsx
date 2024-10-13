@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import localFont from "next/font/local";
 import "./globals.css";
 import Image from "next/image";
@@ -29,19 +30,17 @@ export default function RootLayout({
 
   return (
     <html lang="en">
-      <body
-      >
+      <body className="bg-gray100">
         <div className="w-full bg-gray100 flex items-center fixed z-[100]">
-          <nav className='w-[1000px] py-6 bg-gray flex justify-between gap-9 m-auto'>
-            <div>
+          <nav className='w-[1000px] h-24 bg-gray flex justify-between gap-9 m-auto border border-t-4'>
+            <Link href="/" className="flex items-center">
               <Image 
                 alt={ "logo" } 
                 src={ '/images/logo-final-color.png' } 
                 width={184.1} 
                 height={41.741}
-                className='-z-50'
               />
-            </div>
+            </Link>
             <div className="relative flex-1 flex items-center">
               <input type="text" className="w-full h-10 rounded border border-gray-300" />
               <div className="absolute end-0">
@@ -66,8 +65,8 @@ export default function RootLayout({
 
         {children}
 
-        <div className="w-full bg-gray100">
-          <footer className="w-[1000px] m-auto flex py-20 mt-20 gap-24 justify-between px-24">
+        <div className="w-full bg-gray200">
+          <footer className="w-[1000px] m-auto flex py-20 mt-20 gap-24 justify-between">
             <div>
               <Image 
                 alt={ "logo" } 

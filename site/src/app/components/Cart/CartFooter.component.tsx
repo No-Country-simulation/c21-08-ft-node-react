@@ -10,7 +10,7 @@ const CartFooter = ({productsInCart}: CartFooterProps) => {
                 <h2 className="text-[32px]">Total</h2>
                 <Price size="L" price={getCartTotal(productsInCart)}/>
             </div>
-            <button className="w-full bg-gray1000 h-12 rounded-lg mb-0 text-white">Ir a la caja</button>
+            <button className="w-full bg-gray1000 h-12 rounded-lg mb-0 text-white text-2xl">Ir a la caja</button>
         </div>
     )
 }

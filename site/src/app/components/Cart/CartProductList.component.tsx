@@ -5,7 +5,7 @@ import style from './styles/CartProductList.style.module.css'
 const CartProductList = ({productsInCart, incrementProductQty, decrementProductQty, removeProduct}: CartProductListProps) => {
 
     return (
-        <ul className={`flex flex-col gap-4 h-[368px] overflow-x-hidden overflow-y-auto scroll-pr-4 ${style.cartProductList}`}>
+        <ul className={`flex flex-col grow gap-4 h-[368px] overflow-x-hidden overflow-y-auto scroll-pr-4 ${style.cartProductList}`}>
         {productsInCart.map((productInCart, i) => 
             (<li key={i}>
                 <CartCard 
