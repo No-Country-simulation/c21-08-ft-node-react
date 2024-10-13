@@ -3,12 +3,16 @@ import { UserService } from "../services/user.service";
 import { User } from "../entities/User.entity";
 
 export class UserController {
-  constructor(private readonly userService: UserService) {}
+  private readonly userService: UserService;
+  constructor() {
+    this.userService = new UserService();
+  }
 
   async getAllUsers(req: Request, res: Response): Promise<any> {
     try {
-      const users: User[] = await this.userService.getAllUsers();
-      return res.json(users);
+      const users = await this.userService.getAllUsers();
+
+      return res.status(200).json(users);
     } catch (error) {
       return res
         .status(500)

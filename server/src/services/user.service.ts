@@ -2,7 +2,7 @@ import { User } from "../entities/User.entity";
 import { userRepository } from "../repositories/userRepository";
 
 export class UserService {
-  async getAllUsers(): Promise<User[]> {
+  async getAllUsers() {
     try {
       return await userRepository.find();
     } catch (error) {

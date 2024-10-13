@@ -1,4 +1,4 @@
-import { Column, Entity, OneToOne, PrimaryColumn } from "typeorm";
+import { Column, Entity, JoinColumn, OneToOne, PrimaryColumn } from "typeorm";
 import { User } from "./User.entity";
 
 @Entity()
@@ -13,5 +13,6 @@ export class Facturation {
   phone!: string;
 
   @OneToOne(() => User, (user) => user.facturation)
+  @JoinColumn({ name: "user" })
   user!: User;
 }

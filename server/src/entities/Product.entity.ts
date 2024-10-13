@@ -1,16 +1,18 @@
 import {
   Column,
   Entity,
+  JoinColumn,
   JoinTable,
   ManyToMany,
   ManyToOne,
   OneToMany,
-  PrimaryColumn,
+  PrimaryColumn
 } from "typeorm";
 import { Measurement } from "../common/measurement.enum";
-import { User } from "./User.entity";
 import { Category } from "./Category.entity";
 import { OrderProduct } from "./OrderProduct.entity";
+import { Promotion } from "./Promotion.entity";
+import { User } from "./User.entity";
 
 @Entity()
 export class Product {
@@ -50,8 +52,13 @@ export class Product {
   user!: User[];
 
   @ManyToOne(() => Category, (category) => category.product)
+  @JoinColumn({ name: "category" })
   category!: Category;
 
   @OneToMany(() => OrderProduct, (orderProduct) => orderProduct.product)
   orderProduct!: OrderProduct[];
+
+  @ManyToOne(() => Promotion, (promotion) => promotion)
+  @JoinColumn({ name: "promotion" })
+  promotion!: Promotion;
 }
