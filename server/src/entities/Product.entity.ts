@@ -6,7 +6,7 @@ import {
   ManyToMany,
   ManyToOne,
   OneToMany,
-  PrimaryColumn
+  PrimaryColumn,
 } from "typeorm";
 import { Measurement } from "../common/measurement.enum";
 import { Category } from "./Category.entity";
@@ -51,7 +51,9 @@ export class Product {
   })
   user!: User[];
 
-  @ManyToOne(() => Category, (category) => category.product)
+  @ManyToOne(() => Category, (category) => category.product, {
+    onDelete: "CASCADE",
+  })
   @JoinColumn({ name: "category" })
   category!: Category;
 

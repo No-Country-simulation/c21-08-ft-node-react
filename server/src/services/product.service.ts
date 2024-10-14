@@ -1,5 +1,5 @@
 import { Product } from "../entities/Product.entity";
-import { productRepository } from "../repositories/productRepository";
+import { productRepository } from "../repositories/product.repository";
 
 export class ProductService {
   async getAllProducts(): Promise<Product[]> {

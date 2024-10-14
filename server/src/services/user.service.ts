@@ -1,8 +1,8 @@
 import { User } from "../entities/User.entity";
-import { userRepository } from "../repositories/userRepository";
+import { userRepository } from "../repositories/user.repository";
 
 export class UserService {
-  async getAllUsers() {
+  async getAllUsers(): Promise<User[]> {
     try {
       return await userRepository.find();
     } catch (error) {
