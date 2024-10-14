@@ -30,8 +30,8 @@ export default function RootLayout({
   return (
     <html lang='en'>
       <body className='bg-gray100'>
-        <div className='fixed z-[100] flex w-full items-center bg-gray100'>
-          <nav className='bg-gray m-auto flex h-24 w-[1000px] justify-between gap-9 border border-t-4'>
+        <div className='fixed z-[100] flex w-full items-center border-b-2 border-solid border-gray300 bg-gray100'>
+          <nav className='bg-gray m-auto flex h-24 w-[1000px] justify-between gap-9'>
             <Link href='/' className='flex items-center'>
               <Image
                 alt={'logo'}

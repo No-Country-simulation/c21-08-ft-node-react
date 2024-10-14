@@ -43,37 +43,40 @@ export default async function Home() {
         </section>
       </div>
       <div className='w-full'>
-        <section className='mx-auto flex max-w-[1000px] gap-14'>
-          <div className='flex flex-col gap-10'>
-            <CustomerStep
-              icon={<Icon iconType='cartLarge' />}
-              title={'Elijes lo que necesitas'}
-              desc={'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'}
-            />
-            <CustomerStep
-              icon={<Icon iconType='whatsapp' />}
-              title={'Nos confirmas por whatsapp'}
-              desc={'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'}
-            />
-          </div>
-          <div className='flex flex-col justify-center'>
-            <CustomerStep
-              icon={<Icon iconType='boxTickLarge' />}
-              title={'Preparamos tu pedido'}
-              desc={'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'}
-            />
-          </div>
-          <div className='flex flex-col justify-between gap-10'>
-            <CustomerStep
-              icon={<Icon iconType='delivery' />}
-              title={'Te lo llevamos a casa'}
-              desc={'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'}
-            />
-            <CustomerStep
-              icon={<Icon iconType='shop' />}
-              title={'Lo recojes en tienda'}
-              desc={'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'}
-            />
+        <section className='mx-auto flex max-w-[1000px] flex-col justify-center gap-y-20'>
+          <h2 className='text-center text-4xl font-bold'>Cómo trabajamos</h2>
+          <div className='flex gap-14'>
+            <div className='flex flex-col gap-10'>
+              <CustomerStep
+                icon={<Icon iconType='cartLarge' />}
+                title={'Elijes lo que necesitas'}
+                desc={'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'}
+              />
+              <CustomerStep
+                icon={<Icon iconType='whatsapp' />}
+                title={'Nos confirmas por whatsapp'}
+                desc={'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'}
+              />
+            </div>
+            <div className='flex flex-col justify-center'>
+              <CustomerStep
+                icon={<Icon iconType='boxTickLarge' />}
+                title={'Preparamos tu pedido'}
+                desc={'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'}
+              />
+            </div>
+            <div className='flex flex-col justify-between gap-10'>
+              <CustomerStep
+                icon={<Icon iconType='delivery' />}
+                title={'Te lo llevamos a casa'}
+                desc={'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'}
+              />
+              <CustomerStep
+                icon={<Icon iconType='shop' />}
+                title={'Lo recojes en tienda'}
+                desc={'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'}
+              />
+            </div>
           </div>
         </section>
       </div>

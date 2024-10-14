@@ -17,7 +17,7 @@ const ProductsPanel = () => {
     <div className='flex w-3/4 w-full flex-col gap-10'>
       <div className='flex flex-col gap-2'>
         <span className='flex cursor-pointer items-center gap-1' onClick={() => router.back()}>
-          <Icon iconType='chev' style='rotate-180 h-5' />
+          <Icon iconType='chev' style='-rotate-90 h-5' />
           <button>Página de inicio</button>
         </span>
         <h3 className='text-4xl font-bold'>{currentCategory}</h3>
