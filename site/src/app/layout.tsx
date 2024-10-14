@@ -1,10 +1,8 @@
 import type { Metadata } from "next";
-import Link from "next/link";
-import localFont from "next/font/local";
+// import localFont from "next/font/local";
 import "./globals.css";
 import Image from "next/image";
-import Icon from "./components/Icon/Icon.component";
-import CartWithContext from "./components/Cart/CartWithContext.component";
+import Navbar from './components/Navbar/Navbar.component'
 
 // const geistSans = localFont({
 //   src: "./fonts/GeistVF.woff",
@@ -31,40 +29,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="bg-gray100">
-        <div className="w-full bg-gray100 flex items-center fixed z-[100]">
-          <nav className='w-[1000px] h-24 bg-gray flex justify-between gap-9 m-auto border border-t-4'>
-            <Link href="/" className="flex items-center">
-              <Image 
-                alt={ "logo" } 
-                src={ '/images/logo-final-color.png' } 
-                width={184.1} 
-                height={41.741}
-              />
-            </Link>
-            <div className="relative flex-1 flex items-center">
-              <input type="text" className="w-full h-10 rounded border border-gray-300" />
-              <div className="absolute end-0">
-                <Icon iconType="search"/>
-              </div>
-            </div>
-            <div className="flex gap-4 justify-end items-center flex-1">
-              <div className="flex gap-2 items-center">
-                <Icon iconType="category"/>
-                <span>Categorías</span>
-              </div>
-              <div className="flex gap-2 items-center">
-                <Icon iconType="user"/>
-                <span>Joel</span>
-              </div>
-              <div className="flex gap-2 items-center">
-                <CartWithContext />
-              </div>
-            </div>
-          </nav>
-        </div>
-
+        <Navbar />
         {children}
-
         <div className="w-full bg-gray200">
           <footer className="w-[1000px] m-auto flex py-20 mt-20 gap-24 justify-between">
             <div>
