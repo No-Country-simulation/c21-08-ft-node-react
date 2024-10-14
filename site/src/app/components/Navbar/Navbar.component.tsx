@@ -3,7 +3,6 @@
 import Icon from '../Icon/Icon.component'
 import Cart from '../Cart/Cart.component'
 import { useState } from 'react'
-import { CartContextProvider } from '@/app/contexts/cart.context'
 import CartButton from './CartButton.component'
 import CategoriesPanel from '../CategoriesPanel/CategoriesPanel.component'
 import Logo from './Logo.component'
@@ -45,12 +44,10 @@ const Navbar = () => {
             <span>Joel</span>
           </div>
           <div className='flex items-center gap-2'>
-            <CartContextProvider>
               <CartButton changeCartVisibility={changeCartVisibility} />
               {isCartVisible && (
                 <Cart changeCartVisibility={changeCartVisibility} isCartVisible={isCartVisible} />
               )}
-            </CartContextProvider>
           </div>
         </div>
       </nav>

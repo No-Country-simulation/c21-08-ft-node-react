@@ -1,7 +1,6 @@
 "use client"
 import "keen-slider/keen-slider.min.css"
 import { useKeenSlider } from "keen-slider/react"
-import { CartContextProvider } from "../../contexts/cart.context"
 import { useEffect, useState } from "react"
 import Card from "../Card/Card.component"
 import { products } from "../../../mocks/products.mock"
@@ -64,7 +63,6 @@ const DiscountContainer = () => {
   })
   if (loading) return <h3>loading</h3>
   return (
-    <CartContextProvider>
       <div
         ref={ref}
         className="keen-slider mx-auto max-w-[1000px] sm:w-[600px]"
@@ -78,7 +76,6 @@ const DiscountContainer = () => {
           </div>
         ))}
       </div>
-    </CartContextProvider>
   )
 }
 
