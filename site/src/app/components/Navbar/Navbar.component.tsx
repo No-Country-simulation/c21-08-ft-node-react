@@ -7,6 +7,8 @@ import Cart from '../Cart/Cart.component'
 import { useState } from 'react'
 import { CartContextProvider } from '@/app/contexts/cart.context'
 import CartButton from './CartButton.component'
+import CategoriesPanel from '../CategoriesPanel/CategoriesPanel.component'
+import Logo from './Logo.component'
 
 const Navbar = () => {
   const [isCartVisible, setIsCartVisible] = useState(false)
@@ -18,9 +20,7 @@ const Navbar = () => {
   return (
     <div className='fixed z-[100] flex w-full items-center bg-gray100'>
       <nav className='bg-gray m-auto flex h-24 w-[1000px] justify-between gap-9 border border-t-4'>
-        <Link href='/' className='flex items-center'>
-          <Image alt={'logo'} src={'/images/logo-final-color.png'} width={184.1} height={41.741} />
-        </Link>
+        <Logo />
         <div className='relative flex flex-1 items-center'>
           <input type='text' className='h-10 w-full rounded border border-gray-300' />
           <div className='absolute end-0'>
