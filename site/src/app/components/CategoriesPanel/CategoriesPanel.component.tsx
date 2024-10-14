@@ -1,14 +1,12 @@
 import Icon from '../Icon/Icon.component'
 import Category from './Category.component'
 import { CategoriesPanelProps } from './types/CategoriesPanelProps.type'
+import Overlay from '../Overlay/Overlay.component'
 
 const CategoriesPanel = ({ changeCategoriesVisibility }: CategoriesPanelProps) => {
   return (
     <>
-      <div
-        onClick={changeCategoriesVisibility}
-        className='fixed left-0 top-[96px] z-[-1000] h-dvh w-dvw bg-black opacity-30'
-      />
+      <Overlay changeVisibility={changeCategoriesVisibility} />
       <div className='fixed left-0 top-[96px] h-[332px] w-full bg-white'>
         <nav className='mx-auto grid h-full max-w-[1000px] grid-cols-4 grid-rows-2 gap-5 py-5'>
           <Category name='Almacén' route='/categoria?name=almacén'><Icon iconType='category' /></Category>

@@ -6,6 +6,7 @@ import CartFooter from './CartFooter.component'
 import CartProductList from './CartProductList.component'
 import { CartContext } from '@/app/contexts/cart.context'
 import { CartProps } from './types/CartProps.type'
+import Overlay from '../Overlay/Overlay.component'
 
 const Cart = ({ changeCartVisibility, isCartVisible }: CartProps) => {
   const { productsInCart, incrementProductQty, decrementProductQty, removeProduct } =
@@ -13,10 +14,7 @@ const Cart = ({ changeCartVisibility, isCartVisible }: CartProps) => {
 
   return (
     <>
-      <div
-        onClick={changeCartVisibility}
-        className='fixed left-0 top-[96px] z-[-1000] h-dvh w-dvw bg-black opacity-30'
-      />
+      <Overlay changeVisibility={changeCartVisibility} />
       <div
         className={`${isCartVisible ? 'flex' : 'hidden'} fixed right-0 top-[96px] h-[calc(100vh-96px)] w-[480px] flex-col gap-4 bg-white px-8 py-4 shadow-xl`}
       >
