@@ -9,6 +9,10 @@ export const products: Product[] = [
     imgUrl: '/images/product-placeholder.webp',
     categoryID: 'C001',
     stock: 50,
+    promotion:{
+      promotionID: "string",
+      discount: 0.1
+    }
   },
   {
     productID: 'P002',
