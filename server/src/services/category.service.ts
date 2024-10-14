@@ -1,3 +1,4 @@
+import { CategoryException } from "../exceptions/CategoryException";
 import { categoryRepository } from "../repositories/category.repository";
 
 export class CategoryService {
@@ -6,7 +7,7 @@ export class CategoryService {
       return await categoryRepository.find();
     } catch (error) {
       console.error(error);
-      throw new Error("Error getting all categories");
+      throw new CategoryException("Error getting all categories", 500);
     }
   }
 }
