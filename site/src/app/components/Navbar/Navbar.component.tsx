@@ -1,20 +1,26 @@
 'use client'
 
 import Icon from '../Icon/Icon.component'
-import Image from 'next/image'
-import Link from 'next/link'
 import Cart from '../Cart/Cart.component'
 import { useState } from 'react'
 import { CartContextProvider } from '@/app/contexts/cart.context'
 import CartButton from './CartButton.component'
 import CategoriesPanel from '../CategoriesPanel/CategoriesPanel.component'
 import Logo from './Logo.component'
+import CategoriesButton from './CategoriesButton.component'
 
 const Navbar = () => {
   const [isCartVisible, setIsCartVisible] = useState(false)
+  const [isCategoriesVisible, setIsCategoriesVisible] = useState(false)
 
   const changeCartVisibility = () => {
+    if (isCategoriesVisible) setIsCategoriesVisible(false)
     setIsCartVisible(prevIsCartVisible => !prevIsCartVisible)
+  }
+
+  const changeCategoriesVisibility = () => {
+    if (isCartVisible) setIsCartVisible(false)
+    setIsCategoriesVisible(prevIsCategoriesVisible => !prevIsCategoriesVisible)
   }
 
   return (
@@ -29,8 +35,10 @@ const Navbar = () => {
         </div>
         <div className='flex flex-1 items-center justify-end gap-4'>
           <div className='flex items-center gap-2'>
-            <Icon iconType='category' />
-            <span>Categorías</span>
+            <CategoriesButton changeCategoriesVisibility={changeCategoriesVisibility} />
+            {isCategoriesVisible && (
+              <CategoriesPanel changeCategoriesVisibility={changeCategoriesVisibility}/>
+            )}
           </div>
           <div className='flex items-center gap-2'>
             <Icon iconType='user' />
