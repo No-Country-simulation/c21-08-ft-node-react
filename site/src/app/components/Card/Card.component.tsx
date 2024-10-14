@@ -32,9 +32,9 @@ const Card = ({ styleSlider, product }: CardProps) => {
   const discount = promotion ? promotion.discount * 100 : null
   return (
     <div
-      className={`${styleSlider} flex w-full flex-col justify-between border border-black bg-gray1000 p-4 sm:w-2/3 sm:flex-row sm:items-center`}
+      className={`${styleSlider} flex  w-full max-w-[240px] max-h-[440px] flex-col justify-between border items-center border-black bg-gray200 p-3 sm:max-w-[480px] sm:flex-row sm:items-center `}
     >
-      <div className='me-4 flex items-center justify-center sm:w-1/2'>
+      <div className='m-4 flex items-center justify-center sm:w-1/2'>
         <Image
           className='sm:min-w-[120px]'
           src={'/images/product-placeholder.webp'}
@@ -43,8 +43,8 @@ const Card = ({ styleSlider, product }: CardProps) => {
           height={480}
         />
       </div>
-      <div className='flex flex-col items-center'>
-        <div className='my-2 flex w-full items-center justify-between px-4'>
+      <div className='flex flex-col items-center sm:h-full sm:justify-between sm:py-5'>
+        <div className='flex w-[200px] items-center justify-between my-2 sm:my-0'>
           <h3 className='line-clamp-2 text-lg font-bold'>{name}</h3>
           {!favorite ? (
             <button onClick={handleFavorite}>
@@ -56,13 +56,13 @@ const Card = ({ styleSlider, product }: CardProps) => {
             </button>
           )}
         </div>
-        <h4 className='me-auto ms-4'>{categoryID}</h4>
+        <h4 className='me-auto mb-4'>{categoryID}</h4>
         {!discountedPrice ? (
-          <div className='mx-1 my-2 flex justify-between'>
+          <div className='mx-1 my-2 flex justify-start w-full'>
             <Price price={price} size={'S'}></Price>
           </div>
         ) : (
-          <div className='flex w-full justify-between px-4 py-2'>
+          <div className='flex w-full justify-between my-2'>
             <div className='flex-col items-center'>
               <div className='text-xs line-through'>${price}</div>
               <div className='text-base font-bold'>
@@ -74,7 +74,7 @@ const Card = ({ styleSlider, product }: CardProps) => {
         )}
         <button
           onClick={handleAddToCart}
-          className='mx-auto w-40 rounded-full bg-gray1000 px-2 py-1 font-bold text-white'
+          className='mx-auto w-40 rounded-full bg-gray1000 px-2 py-1 my-1 font-bold text-white'
         >
           Agregar al carrito
         </button>

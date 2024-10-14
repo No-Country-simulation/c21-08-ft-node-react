@@ -16,16 +16,15 @@ import Navbar from './components/Navbar/Navbar.component'
 // });
 
 export const metadata: Metadata = {
-  title: "Kramer Minimarket",
-  description: "Minimarket",
-};
+  title: 'Kramer Minimarket',
+  description: 'Minimarket',
+}
 
 export default function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode;
+  children: React.ReactNode
 }>) {
-
   return (
     <html lang="en">
       <body className="bg-gray100">
@@ -34,17 +33,17 @@ export default function RootLayout({
         <div className="w-full bg-gray200">
           <footer className="w-[1000px] m-auto flex py-20 mt-20 gap-24 justify-between">
             <div>
-              <Image 
-                alt={ "logo" } 
-                src={ '/images/logo-positivo.png' } 
-                width={184.1} 
+              <Image
+                alt={'logo'}
+                src={'/images/logo-positivo.png'}
+                width={184.1}
                 height={41.741}
                 className='-z-50'
               />
             </div>
-            <div className="flex flex-col gap-5">
-              <h2 className="text-2xl font-bold">¿Qué necesitas hoy?</h2>
-              <div className="flex gap-12">
+            <div className='flex flex-col gap-5'>
+              <h2 className='text-2xl font-bold'>¿Qué necesitas hoy?</h2>
+              <div className='flex gap-12'>
                 <ul>
                   <li>Frutas</li>
                   <li>Verduras</li>
@@ -59,8 +58,8 @@ export default function RootLayout({
                 </ul>
               </div>
             </div>
-            <div className="flex flex-col gap-5">
-              <h2 className="text-2xl font-bold">Conversemos</h2>
+            <div className='flex flex-col gap-5'>
+              <h2 className='text-2xl font-bold'>Conversemos</h2>
               <ul>
                 <li>Facebook</li>
                 <li>Instagram</li>
@@ -70,5 +69,5 @@ export default function RootLayout({
         </div>
       </body>
     </html>
-  );
+  )
 }
