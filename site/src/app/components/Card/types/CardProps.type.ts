@@ -1,3 +1,7 @@
-import { Product } from '../../../types/Product.type'
+import { Product } from "../../../types/Product.type"
 
-export type CardProps = { product: Product } & { styleSlider?: string }
+type width = "fixed" | "fluid"
+
+export type CardProps = { product: Product } & { styleSlider?: string } & {
+  width?: width
+}
