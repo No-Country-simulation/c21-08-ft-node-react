@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import { CategoryService } from "../services/category.service";
 import { CategoryException } from "../exceptions/CategoryException";
+import { Category } from "../entities/Category.entity";
 
 export class CategoryController {
   private readonly categoryService: CategoryService;
@@ -10,7 +11,8 @@ export class CategoryController {
 
   async getAllCategories(req: Request, res: Response): Promise<any> {
     try {
-      const categories = await this.categoryService.getAllCategories();
+      const categories: Category[] =
+        await this.categoryService.getAllCategories();
 
       return res.json(categories);
     } catch (error) {

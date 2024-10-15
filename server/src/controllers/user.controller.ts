@@ -10,7 +10,7 @@ export class UserController {
 
   async getAllUsers(req: Request, res: Response): Promise<any> {
     try {
-      const users = await this.userService.getAllUsers();
+      const users: User[] = await this.userService.getAllUsers();
 
       return res.status(200).json(users);
     } catch (error) {

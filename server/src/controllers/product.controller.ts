@@ -1,23 +1,36 @@
 import { Request, Response } from "express";
 import { ProductService } from "../services/product.service";
+import { Product } from "../entities/Product.entity";
 
 export class ProductController {
   private readonly productService: ProductService;
   constructor() {
-    console.log("Instantiating UserService in the controller...");
     this.productService = new ProductService();
   }
 
+  // Obtener todos los productos
   async getAllProducts(req: Request, res: Response): Promise<any> {
     try {
-      console.log("wefwe")
       const products = await this.productService.getAllProducts();
 
-      console.log("wwxcs")
-
-      return res.json(products);
+      return res.status(200).json(products);
     } catch (error) {
       return res.status(500).json({ message: "Error getting all products" });
+    }
+  }
+
+  // Obtener todos los productos por categoria
+  async getProductsByCategory(req: Request, res: Response): Promise<any> {
+    try {
+      const categoryId: string = req.params.categoryId;
+      const products: Product[] | undefined =
+        await this.productService.getProductsByCategory(categoryId);
+
+      return res.status(200).json(products);
+    } catch (error) {
+      return res
+        .status(500)
+        .json({ message: "Error getting products by category" });
     }
   }
 }

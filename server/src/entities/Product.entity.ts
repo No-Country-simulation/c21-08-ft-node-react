@@ -26,7 +26,7 @@ export class Product {
   price!: number;
 
   @Column({ type: "enum", enum: Measurement, default: Measurement.UNITARY })
-  unitOfMeasurement!: string;
+  unitOfMeasurement!: Measurement;
 
   @Column()
   description!: string;
@@ -36,6 +36,9 @@ export class Product {
 
   @Column({ nullable: true })
   imgUrl!: string;
+
+  @Column({ nullable: true })
+  brand!: string;
 
   @ManyToMany(() => User, (user) => user.product)
   @JoinTable({
