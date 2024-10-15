@@ -7,7 +7,7 @@ const CategoriesPanel = ({ changeCategoriesVisibility, isCategoriesVisible }: Ca
   return (
     <>
       <Overlay isVisible={isCategoriesVisible} changeVisibility={changeCategoriesVisibility} />
-      <div className='fixed left-0 top-[96px] h-[332px] w-full bg-white'>
+      <div className={`${isCategoriesVisible ? 'block' : 'hidden'} fixed left-0 top-[96px] h-[332px] w-full bg-white`}>
         <nav className='mx-auto grid h-full max-w-[1000px] grid-cols-4 grid-rows-2 gap-5 py-5'>
           <Category name='Almacén' route='/categoria?name=almacén'><Icon iconType='category' /></Category>
           <Category name='Congelados' route='/categoria?name=congelados'><Icon iconType='category' /></Category>
