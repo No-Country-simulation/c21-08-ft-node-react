@@ -35,9 +35,7 @@ const Navbar = () => {
         <div className='flex flex-1 items-center justify-end gap-4'>
           <div className='flex items-center gap-2'>
             <CategoriesButton changeCategoriesVisibility={changeCategoriesVisibility} />
-            {isCategoriesVisible && (
-              <CategoriesPanel changeCategoriesVisibility={changeCategoriesVisibility}/>
-            )}
+            <CategoriesPanel changeCategoriesVisibility={changeCategoriesVisibility} isCategoriesVisible={isCategoriesVisible} />
           </div>
           <div className='flex items-center gap-2'>
             <Icon iconType='user' />
@@ -45,9 +43,7 @@ const Navbar = () => {
           </div>
           <div className='flex items-center gap-2'>
               <CartButton changeCartVisibility={changeCartVisibility} />
-              {isCartVisible && (
-                <Cart changeCartVisibility={changeCartVisibility} isCartVisible={isCartVisible} />
-              )}
+              <Cart changeCartVisibility={changeCartVisibility} isCartVisible={isCartVisible} />
           </div>
         </div>
       </nav>

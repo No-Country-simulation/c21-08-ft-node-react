@@ -14,7 +14,7 @@ const Cart = ({ changeCartVisibility, isCartVisible }: CartProps) => {
 
   return (
     <>
-      <Overlay changeVisibility={changeCartVisibility} />
+      <Overlay isVisible={isCartVisible} changeVisibility={changeCartVisibility} />
       <div
         className={`${isCartVisible ? 'flex' : 'hidden'} fixed right-0 top-[96px] h-[calc(100vh-96px)] w-[480px] flex-col gap-4 bg-white px-8 py-4 shadow-xl`}
       >
