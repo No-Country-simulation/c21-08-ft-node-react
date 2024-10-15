@@ -2,6 +2,7 @@ import CategoryCard from "./components/CategoryCard/CategoryCard.component"
 import CustomerStep from "./components/CustomerStep/CustomerStep.component"
 import Icon from "./components/Icon/Icon.component"
 import DiscountContainer from "./components/DiscountContainer/DiscountContainer.component"
+import { IsClientProvider } from "./contexts/isClient.context"
 
 export default async function Home() {
   return (
@@ -42,10 +43,12 @@ export default async function Home() {
       <section className="w-full">
         <div className="mx-auto flex max-w-[1000px] flex-col gap-y-10">
           <h2 className="text-4xl font-bold">Descuentos</h2>
-          <DiscountContainer />
+          <IsClientProvider>
+            <DiscountContainer />
+          </IsClientProvider>
         </div>
       </section>
-      <section className="w-full mb-20">
+      <section className="mb-20 w-full">
         <div className="mx-auto max-w-[1000px]">
           <h2 className="text-center text-4xl font-bold">Como trabajamos</h2>
           <div className="mt-20 grid grid-cols-3 grid-rows-1 gap-x-14">

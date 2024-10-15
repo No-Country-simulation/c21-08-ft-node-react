@@ -1,14 +1,16 @@
 "use client"
 import "keen-slider/keen-slider.min.css"
 import { useKeenSlider } from "keen-slider/react"
-import { useEffect, useState } from "react"
+import { useEffect, useState, useContext } from "react"
 import Card from "../Card/Card.component"
 import { products } from "../../../mocks/products.mock"
 import { Product } from "@/app/types/Product.type"
+import { IsClient } from "@/app/contexts/isClient.context"
 
 const DiscountContainer = () => {
   const [discountProducts, setDiscountProducts] = useState<Product[]>([])
   const [loading, setLoading] = useState<boolean>(false)
+  const isClientCtx = useContext(IsClient)
   useEffect(() => {
     setLoading(true)
     const getDiscountedProducts = async () => {
@@ -61,21 +63,21 @@ const DiscountContainer = () => {
       },
     },
   })
+
   if (loading) return <h3>loading</h3>
-  return (
-      <div
-        ref={ref}
-        className="keen-slider mx-auto max-w-[1000px] sm:w-[600px]"
-      >
-        {discountProducts.map((product, index) => (
-          <div
-            className="keen-slider__slide m-0 flex w-[240px] justify-center p-0"
-            key={index}
-          >
-            <Card product={product} width={"fixed"}></Card>
-          </div>
-        ))}
-      </div>
+  return isClientCtx ? (
+    <div ref={ref} className="keen-slider mx-auto max-w-[1000px] sm:w-[600px]">
+      {discountProducts.map((product, index) => (
+        <div
+          className="keen-slider__slide m-0 flex w-[240px] justify-center p-0"
+          key={index}
+        >
+          <Card product={product} width={"fixed"}></Card>
+        </div>
+      ))}
+    </div>
+  ) : (
+    ""
   )
 }
 
