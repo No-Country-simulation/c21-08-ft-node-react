@@ -5,10 +5,10 @@ import DiscountContainer from "./components/DiscountContainer/DiscountContainer.
 
 export default async function Home() {
   return (
-    <div className="flex flex-col gap-20">
-      <div className="h-[560px] w-full bg-gray200"></div>
-      <div className="-mt-48 w-full">
-        <section className="mx-auto flex max-w-[1000px] gap-6">
+    <main className="mt-24 flex flex-col gap-20">
+      <section className="hero h-[560px]" />
+      <section className="-mt-48 w-full">
+        <div className="mx-auto flex max-w-[1000px] gap-6">
           <CategoryCard
             name={"Frutas"}
             alt="Frutas"
@@ -37,18 +37,18 @@ export default async function Home() {
             width={480}
             height={480}
           />
-        </section>
-      </div>
-      <div className="w-full">
-        <section className="mx-auto flex max-w-[1000px] flex-col gap-y-10">
+        </div>
+      </section>
+      <section className="w-full">
+        <div className="mx-auto flex max-w-[1000px] flex-col gap-y-10">
           <h2 className="text-4xl font-bold">Descuentos</h2>
           <DiscountContainer />
-        </section>
-      </div>
-      <div className="w-full">
-        <section className="mx-auto flex max-w-[1000px] flex-col justify-center gap-y-20">
-          <h2 className="text-center text-4xl font-bold">Cómo trabajamos</h2>
-          <div className="flex gap-14">
+        </div>
+      </section>
+      <section className="w-full mb-20">
+        <div className="mx-auto max-w-[1000px]">
+          <h2 className="text-center text-4xl font-bold">Como trabajamos</h2>
+          <div className="mt-20 grid grid-cols-3 grid-rows-1 gap-x-14">
             <div className="flex flex-col gap-10">
               <CustomerStep
                 icon={<Icon iconType="cartLarge" />}
@@ -65,7 +65,7 @@ export default async function Home() {
                 }
               />
             </div>
-            <div className="flex flex-col justify-center">
+            <div className="flex items-center">
               <CustomerStep
                 icon={<Icon iconType="boxTickLarge" />}
                 title={"Preparamos tu pedido"}
@@ -74,7 +74,7 @@ export default async function Home() {
                 }
               />
             </div>
-            <div className="flex flex-col justify-between gap-10">
+            <div className="flex flex-col gap-10">
               <CustomerStep
                 icon={<Icon iconType="delivery" />}
                 title={"Te lo llevamos a casa"}
@@ -91,8 +91,8 @@ export default async function Home() {
               />
             </div>
           </div>
-        </section>
-      </div>
-    </div>
+        </div>
+      </section>
+    </main>
   )
 }
