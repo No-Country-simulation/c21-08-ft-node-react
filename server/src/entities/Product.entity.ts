@@ -57,13 +57,14 @@ export class Product {
   @ManyToOne(() => Category, (category) => category.product, {
     onDelete: "CASCADE",
   })
+
   @JoinColumn({ name: "category" })
   category!: Category;
 
   @OneToMany(() => OrderProduct, (orderProduct) => orderProduct.product)
   orderProduct!: OrderProduct[];
 
-  @ManyToOne(() => Promotion, (promotion) => promotion)
+  @ManyToOne(() => Promotion, (promotion) => promotion.product)
   @JoinColumn({ name: "promotion" })
   promotion!: Promotion;
 }
