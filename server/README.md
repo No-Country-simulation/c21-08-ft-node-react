@@ -78,4 +78,11 @@ src/
 
 ## 5. Endpoints de la API
 
-### **Autenticacion de usuarios**
+### **Categorias**
+
+#### **Endpoint: Obtener todas las categorias**
+
+- **Metodo HTTP:** `GET`
+- **URL:** `/category`
+- **Descripcion:** Metodo que devuelve un arreglo con todas las categorias disponibles en la base de datos
+- **Parametros:**
