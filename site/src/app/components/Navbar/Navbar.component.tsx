@@ -23,31 +23,41 @@ const Navbar = () => {
   }
 
   return (
-    <div className='fixed z-[100] flex w-full items-center bg-gray100'>
-      <nav className='bg-gray m-auto flex h-24 w-[1000px] justify-between gap-9'>
+    <header className="fixed top-0 z-50 w-full bg-gray100">
+      <div className="mx-auto flex min-h-24 max-w-[1000px] items-center justify-between">
         <Logo />
-        <div className='relative flex flex-1 items-center'>
-          <input type='text' className='h-10 w-full rounded border border-gray-300' />
-          <div className='absolute end-0'>
-            <Icon iconType='search' />
-          </div>
+        <div className="flex items-center">
+          <input className="py-1 pl-1" type="text" name="" id="" />
+          <button className="bg-white py-1 pr-1">
+            <Icon iconType="search" />
+          </button>
         </div>
-        <div className='flex flex-1 items-center justify-end gap-4'>
-          <div className='flex items-center gap-2'>
-            <CategoriesButton changeCategoriesVisibility={changeCategoriesVisibility} />
-            <CategoriesPanel changeCategoriesVisibility={changeCategoriesVisibility} isCategoriesVisible={isCategoriesVisible} />
-          </div>
-          <div className='flex items-center gap-2'>
-            <Icon iconType='user' />
-            <span>Joel</span>
-          </div>
-          <div className='flex items-center gap-2'>
+        <nav>
+          <ul className="flex gap-4">
+            <li className="flex gap-2">
+              <CategoriesButton
+                changeCategoriesVisibility={changeCategoriesVisibility}
+              />
+              <CategoriesPanel
+                changeCategoriesVisibility={changeCategoriesVisibility}
+                isCategoriesVisible={isCategoriesVisible}
+              />
+            </li>
+            <li className="flex gap-2">
+              <Icon iconType="user" />
+              <span>Joel</span>
+            </li>
+            <li className="flex gap-2">
               <CartButton changeCartVisibility={changeCartVisibility} />
-              <Cart changeCartVisibility={changeCartVisibility} isCartVisible={isCartVisible} />
-          </div>
-        </div>
-      </nav>
-    </div>
+              <Cart
+                changeCartVisibility={changeCartVisibility}
+                isCartVisible={isCartVisible}
+              />
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
   )
 }
 
