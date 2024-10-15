@@ -24,7 +24,7 @@ const Navbar = () => {
 
   return (
     <div className='fixed z-[100] flex w-full items-center bg-gray100'>
-      <nav className='bg-gray m-auto flex h-24 w-[1000px] justify-between gap-9 border border-t-4'>
+      <nav className='bg-gray m-auto flex h-24 w-[1000px] justify-between gap-9'>
         <Logo />
         <div className='relative flex flex-1 items-center'>
           <input type='text' className='h-10 w-full rounded border border-gray-300' />
