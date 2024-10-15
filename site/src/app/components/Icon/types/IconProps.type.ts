@@ -1,21 +1,28 @@
 export type IconProps = {
   iconType:
-    | 'chev'
-    | 'boxTick'
-    | 'boxTickLarge'
-    | 'cartLarge'
-    | 'cartSmall'
-    | 'category'
-    | 'delivery'
-    | 'heart'
-    | 'heartFilled'
-    | 'minus'
-    | 'plus'
-    | 'search'
-    | 'shop'
-    | 'trash'
-    | 'user'
-    | 'whatsapp'
-    | 'rightArrow'
+    | "chev"
+    | "boxTick"
+    | "boxTickLarge"
+    | "cartLarge"
+    | "cartSmall"
+    | "category"
+    | "delivery"
+    | "heart"
+    | "heartFilled"
+    | "minus"
+    | "plus"
+    | "search"
+    | "shop"
+    | "trash"
+    | "user"
+    | "whatsapp"
+    | "rightArrow"
+    | "congelados"
+    | "libreria"
+    | "vinoteca"
+    | "limpieza"
+    | "bebidasSinAlcohol"
+    | "bebidasConAlcohol"
+    | "variados"
   style?: string
 }

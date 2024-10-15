@@ -1,12 +1,12 @@
-'use client'
+"use client"
 
-import Icon from '../Icon/Icon.component'
-import Cart from '../Cart/Cart.component'
-import { useState } from 'react'
-import CartButton from './CartButton.component'
-import CategoriesPanel from '../CategoriesPanel/CategoriesPanel.component'
-import Logo from './Logo.component'
-import CategoriesButton from './CategoriesButton.component'
+import Icon from "../Icon/Icon.component"
+import Cart from "../Cart/Cart.component"
+import { useState } from "react"
+import CartButton from "./CartButton.component"
+import CategoriesPanel from "../CategoriesPanel/CategoriesPanel.component"
+import Logo from "./Logo.component"
+import CategoriesButton from "./CategoriesButton.component"
 
 const Navbar = () => {
   const [isCartVisible, setIsCartVisible] = useState(false)
@@ -14,16 +14,18 @@ const Navbar = () => {
 
   const changeCartVisibility = () => {
     if (isCategoriesVisible) setIsCategoriesVisible(false)
-    setIsCartVisible(prevIsCartVisible => !prevIsCartVisible)
+    setIsCartVisible((prevIsCartVisible) => !prevIsCartVisible)
   }
 
   const changeCategoriesVisibility = () => {
     if (isCartVisible) setIsCartVisible(false)
-    setIsCategoriesVisible(prevIsCategoriesVisible => !prevIsCategoriesVisible)
+    setIsCategoriesVisible(
+      (prevIsCategoriesVisible) => !prevIsCategoriesVisible,
+    )
   }
 
   return (
-    <header className="fixed top-0 z-50 w-full bg-gray100">
+    <header className="fixed top-0 z-50 w-full border-b-2 border-solid border-gray300 bg-gray100">
       <div className="mx-auto flex min-h-24 max-w-[1000px] items-center justify-between">
         <Logo />
         <div className="flex items-center">
