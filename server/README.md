@@ -1,11 +1,15 @@
 # Documentacion del backend - E-commerce local de venta de frutas y verduras.
+</br>
 
 ## 1. Descripcion General del Proyecto
+
+
+
 
 El backend de este proyecto es una API REST que permite a los usuarios registrarse, iniciar sesión, y comprar y vender productos de almacen, principalmente enfocado en frutas y verduras. El usuario podra ver una lista de productos y agregarlos al carrito para su eventual compra.
 Tambien podra ver las promociones disponibles, y filtrar las busquedas por categoria, precio, marca, entre otros.
 
---- 
+</br>
 
 ## 2. Stack tecnologico
 
@@ -15,7 +19,11 @@ Tambien podra ver las promociones disponibles, y filtrar las busquedas por categ
 - **Autenticacion:** JWT
 - **Servicios externos:** Mercado Pago (pagos)
 
---- 
+
+</br>
+
+
+
 
 ## 3. Configuracion del Entorno
 
