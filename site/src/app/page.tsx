@@ -10,29 +10,29 @@ export default async function Home() {
       <section className="-mt-48 w-full">
         <div className="mx-auto flex max-w-[1000px] gap-6">
           <CategoryCard
-            name={"Frutas"}
-            alt="Frutas"
+            name={"Almacén"}
+            alt="Almacén"
             src=""
             width={480}
             height={480}
           />
           <CategoryCard
-            name={"Verduras"}
-            alt="Frutas"
+            name={"Vinoteca"}
+            alt="Vinoteca"
             src=""
             width={480}
             height={480}
           />
           <CategoryCard
-            name={"Lácteos"}
-            alt="Frutas"
+            name={"Bebidas con alcohol"}
+            alt="Bebidas con alcohol"
             src=""
             width={480}
             height={480}
           />
           <CategoryCard
-            name={"Carnes"}
-            alt="Frutas"
+            name={"Bebidas sin alcohol"}
+            alt="Bebidas sin alcohol"
             src=""
             width={480}
             height={480}
@@ -45,7 +45,7 @@ export default async function Home() {
           <DiscountContainer />
         </div>
       </section>
-      <section className="w-full mb-20">
+      <section className="mb-20 w-full">
         <div className="mx-auto max-w-[1000px]">
           <h2 className="text-center text-4xl font-bold">Como trabajamos</h2>
           <div className="mt-20 grid grid-cols-3 grid-rows-1 gap-x-14">
