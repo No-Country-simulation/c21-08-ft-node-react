@@ -10,10 +10,9 @@ const useProductsByCategory = (category: string) => {
   useEffect(() => {
     async function getData() {
       const res = await fetch("http://localhost:3170/product")
-      const data: Product[] = await res.json()
+      const promotions: Product[] = await res.json()
       setData(data)
     }
-    getData()
   }, [category])
 
   useEffect(() => {

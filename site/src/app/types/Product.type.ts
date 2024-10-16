@@ -11,12 +11,14 @@ export type Product = {
   imgUrl: string
   category: Category
   stock: number
-  promotion?: Promotion
   brand: null
+  promotion?: number
 }
 
 export type Promotion = {
   promotionId: string
   percentage: number
-  product: Product
+  product: Product[]
 }
+
+export type ProductWithPromotion = Product & Omit<Promotion, "product">

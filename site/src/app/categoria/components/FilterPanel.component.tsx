@@ -1,6 +1,12 @@
 "use client"
 
-import { useState, useRef, ChangeEvent, HTMLInputTypeAttribute } from "react"
+import {
+  useState,
+  useEffect,
+  useRef,
+  ChangeEvent,
+  HTMLInputTypeAttribute,
+} from "react"
 import { useToggleDimensions } from "@/app/hooks/useToggleDimensions.hook"
 import Icon from "@/app/components/Icon/Icon.component"
 import { strParseOut } from "../../utils/functions.utils"
@@ -9,16 +15,24 @@ import { FilterSwitchers } from "../types/page.types"
 import { FilterPanelProps } from "../types/page.types"
 
 const brandsMock = ["beltran", "mustela", "eco-origen", "nua"]
+const priceOptions = [1000, 1500, 3000]
+const MAX_PRICE = 99999
 
 const FilterPanel = ({
   setFormValues,
-  setCurrentProducts,
+  formValues,
+  currentCategory,
 }: FilterPanelProps) => {
+  const [checkedPrice, setCheckedPrice] = useState(formValues.price)
   const [filterSwitchers, setFilterSwitchers] = useState<FilterSwitchers>({
     marca: true,
     ofertas: true,
     precio: true,
   })
+
+  useEffect(() => {
+    setCheckedPrice(MAX_PRICE)
+  }, [currentCategory])
 
   const handleChange = (
     e: ChangeEvent<HTMLInputElement>,
@@ -38,14 +52,8 @@ const FilterPanel = ({
   }
 
   const handlePriceChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setCurrentProducts((prev) => {
-      const filtered = prev.filter((p) => {
-        return Number(p.price) < Number(e.target.value)
-      })
-      return filtered
-    })
-    // console.log("updating current products...")
-    // setCurrentProducts((prev) => ({ ...prev,  }))
+    setFormValues((prev) => ({ ...prev, price: Number(e.target.value) }))
+    setCheckedPrice(Number(e.target.value))
   }
 
   const handleBrandToggle = (e: ChangeEvent<HTMLInputElement>) => {
@@ -147,35 +155,29 @@ const FilterPanel = ({
               "overflow-hidden transition-all duration-200 ease-in-out"
             }
           >
-            <div className="flex gap-2">
-              <input
-                id="price-1"
-                type="radio"
-                name="price"
-                value={2}
-                onChange={handlePriceChange}
-              />
-              <label htmlFor="price-1">Hasta $2500</label>
-            </div>
-            <div className="flex gap-2">
-              <input
-                id="price-2"
-                type="radio"
-                name="price"
-                value={3}
-                onChange={handlePriceChange}
-              />
-              <label htmlFor="price-2">Hasta $5000</label>
-            </div>
+            {priceOptions.map((op, idx) => (
+              <div key={`price-option-${idx}`} className="flex gap-2">
+                <input
+                  id="price-3"
+                  type="radio"
+                  name="price"
+                  checked={checkedPrice === op}
+                  value={op}
+                  onChange={handlePriceChange}
+                />
+                <label htmlFor="price-3">Hasta ${op}</label>
+              </div>
+            ))}
             <div className="flex gap-2">
               <input
                 id="price-3"
                 type="radio"
                 name="price"
-                value={20}
+                checked={checkedPrice === MAX_PRICE}
+                value={MAX_PRICE}
                 onChange={handlePriceChange}
               />
-              <label htmlFor="price-3">Hasta $7500</label>
+              <label htmlFor="price-3">Todo</label>
             </div>
           </div>
         </div>
