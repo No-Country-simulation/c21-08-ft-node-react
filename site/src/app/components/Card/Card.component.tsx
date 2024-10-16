@@ -25,49 +25,43 @@ const Card = ({ styleSlider, product, width }: CardProps) => {
 
   return (
     <div
-      className={`${styleSlider} flex ${widthStyle} flex-col items-center justify-between border border-black bg-gray200 sm:max-w-[480px] sm:flex-row sm:items-center`}
+      className={`${styleSlider} rounded-lg flex ${widthStyle} flex-col bg-gray200 sm:max-w-[480px] sm:flex-row sm:items-center`}
     >
-      <div className="flex items-center justify-center sm:w-1/2">
+      <div className="sm:w-1/2">
         <Image
-          className="sm:min-w-[120px]"
+          className="sm:min-w-[120px] rounded-t-lg"
           src={"/images/product-placeholder.webp"}
           alt={`imagen de ${name}`}
           width={480}
           height={480}
         />
       </div>
-      <div className="flex h-[180px] flex-col items-center justify-between px-2 sm:h-full sm:justify-between sm:py-5">
-        <div className="my-2 flex h-[54px] w-[200px] items-center justify-between sm:my-0">
-          <h3 className="line-clamp-2 text-lg font-bold">{name}</h3>
-          {!favorite ? (
-            <button onClick={handleFavorite}>
-              <Icon iconType={"heart"}></Icon>
-            </button>
-          ) : (
-            <button onClick={handleFavorite}>
-              <Icon iconType={"heartFilled"}></Icon>
-            </button>
-          )}
+      <div className="flex h-[180px] flex-col justify-between p-4 sm:h-full sm:justify-between sm:py-5">
+        <div className="flex">
+          <h3 className="line-clamp-2 text-lg leading-5 font-bold">{name}</h3>
+          <button className="flex ml-auto" onClick={handleFavorite}>
+            <Icon iconType={`${favorite? "heartFilled" :"heart"}`}></Icon>
+          </button>
         </div>
-        <h4 className="me-auto">{category.categoryName}</h4>
+        <h4>{category.categoryName}</h4>
         {!discountedPrice ? (
-          <div className="mx-1 mb-2 mt-auto flex h-[32px] w-full justify-start text-base font-bold">
+          <div className="flex h-[32px] w-full justify-start text-base font-bold">
             <Price price={price} size={"S"}></Price>
           </div>
         ) : (
-          <div className="mb-3 mt-auto flex h-[32px] w-full justify-between">
+          <div className="flex h-[32px] w-full justify-between">
             <div className="flex-col items-center">
               <div className="text-xs line-through">${price}</div>
               <div className="text-base font-bold">
                 <Price price={discountedPrice} size={"S"}></Price>
               </div>
             </div>
-            <div className="me-2 flex items-center">{`%${discount}`}</div>
+            <div className="flex items-center">{`%${discount}`}</div>
           </div>
         )}
         <button
           onClick={handleAddToCart}
-          className="mx-auto w-full rounded-full bg-gray1000 px-2 py-1 font-bold text-white"
+          className="mx-auto w-full h-10 rounded-lg bg-gray1000 font-bold text-white"
         >
           Agregar al carrito
         </button>
