@@ -15,7 +15,7 @@ const Card = ({ styleSlider, product, width }: CardProps) => {
     discountedPrice,
   } = useLogicCard(product)
 
-  const { name, price, categoryID } = product
+  const { name, price, category } = product
   let widthStyle = ""
   if (width === "fluid") {
     widthStyle = "w-full"
@@ -49,7 +49,7 @@ const Card = ({ styleSlider, product, width }: CardProps) => {
             </button>
           )}
         </div>
-        <h4 className="me-auto">{categoryID}</h4>
+        <h4 className="me-auto">{category.categoryName}</h4>
         {!discountedPrice ? (
           <div className="mx-1 mb-2 mt-auto flex h-[32px] w-full justify-start text-base font-bold">
             <Price price={price} size={"S"}></Price>
