@@ -1,11 +1,13 @@
-import Icon from '../Icon/Icon.component'
-import { CategoriesButtonProps } from './types/CategoriesButtonProps.type'
+import Icon from "../Icon/Icon.component"
+import { CategoriesButtonProps } from "./types/CategoriesButtonProps.type"
 
-const CategoriesButton = ({ changeCategoriesVisibility }: CategoriesButtonProps) => {
+const CategoriesButton = ({
+  changeCategoriesVisibility,
+}: CategoriesButtonProps) => {
   return (
-    <button onClick={changeCategoriesVisibility} className='flex gap-2'>
-      <Icon iconType='category' />
-      <span>Categorías</span>
+    <button onClick={changeCategoriesVisibility} className="mx-2 flex gap-2">
+      <Icon iconType="category" />
+      <span className="xs:block sm:hidden">Categorías</span>
     </button>
   )
 }

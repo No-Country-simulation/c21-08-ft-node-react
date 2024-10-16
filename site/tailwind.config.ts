@@ -1,6 +1,6 @@
-import type { Config } from "tailwindcss";
-import defaultTheme from "tailwindcss/defaultTheme";
-import lineClamp from "@tailwindcss/line-clamp";
+import type { Config } from "tailwindcss"
+import defaultTheme from "tailwindcss/defaultTheme"
+import lineClamp from "@tailwindcss/line-clamp"
 
 const config: Config = {
   content: [
@@ -10,6 +10,8 @@ const config: Config = {
   ],
   theme: {
     screens: {
+      custom1000px: { max: "1000px" },
+
       "2xl": { max: "1535px" },
       // => @media (max-width: 1535px) { ... }
 
@@ -24,6 +26,7 @@ const config: Config = {
 
       sm: { max: "639px" },
       // => @media (max-width: 639px) { ... }
+      xs: { max: "450px" },
     },
     extend: {
       fontFamily: {
@@ -41,5 +44,5 @@ const config: Config = {
     },
   },
   plugins: [lineClamp],
-};
-export default config;
+}
+export default config

@@ -9,6 +9,7 @@ export const IsClientProvider = ({ children }: ChildrenProviderProps) => {
   useEffect(() => {
     setIsClientCtx(true)
   }, [])
+  console.log("contexto del cliente", isClientCtx)
 
   return <IsClient.Provider value={isClientCtx}>{children}</IsClient.Provider>
 }

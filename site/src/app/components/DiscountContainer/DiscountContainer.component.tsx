@@ -1,7 +1,7 @@
 "use client"
 import "keen-slider/keen-slider.min.css"
 import { useKeenSlider } from "keen-slider/react"
-import { useContext } from "react"
+import { useContext, useEffect } from "react"
 import Card from "../Card/Card.component"
 import { IsClient } from "@/app/contexts/isClient.context"
 import { Promotion } from "@/app/types/Product.type"
@@ -10,11 +10,12 @@ import { sortPromotions } from "@/app/utils/functions.utils"
 
 const DiscountContainer = () => {
   const isClientCtx = useContext(IsClient)
+
   const promotions =
     useFetch<Promotion[]>("http://localhost:3170/promotion") || []
   const discountedProducts = sortPromotions(promotions)
 
-  const [ref] = useKeenSlider<HTMLDivElement>({
+  const [ref, instanceRef] = useKeenSlider<HTMLDivElement>({
     slides: {
       perView: 4.2,
       spacing: 24,
@@ -52,6 +53,11 @@ const DiscountContainer = () => {
       },
     },
   })
+  useEffect(() => {
+    if (discountedProducts.length > 0) {
+      instanceRef.current?.update()
+    }
+  }, [discountedProducts, instanceRef])
 
   return isClientCtx ? (
     <div ref={ref} className="keen-slider mx-auto max-w-[1000px] sm:w-[600px]">
@@ -65,7 +71,7 @@ const DiscountContainer = () => {
       ))}
     </div>
   ) : (
-    <h3>loading</h3>
+    ""
   )
 }
 

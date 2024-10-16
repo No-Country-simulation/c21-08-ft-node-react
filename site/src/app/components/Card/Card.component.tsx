@@ -25,11 +25,11 @@ const Card = ({ styleSlider, product, width }: CardProps) => {
 
   return (
     <div
-      className={`${styleSlider} rounded-lg flex ${widthStyle} flex-col bg-gray200 sm:max-w-[480px] sm:flex-row sm:items-center`}
+      className={`${styleSlider} flex rounded-lg ${widthStyle} flex-col bg-gray300 sm:max-w-[480px] sm:flex-row sm:items-center`}
     >
       <div className="sm:w-1/2">
         <Image
-          className="sm:min-w-[120px] rounded-t-lg"
+          className="rounded-t-lg sm:min-w-[120px]"
           src={"/images/product-placeholder.webp"}
           alt={`imagen de ${name}`}
           width={480}
@@ -38,9 +38,9 @@ const Card = ({ styleSlider, product, width }: CardProps) => {
       </div>
       <div className="flex h-[180px] flex-col justify-between p-4 sm:h-full sm:justify-between sm:py-5">
         <div className="flex">
-          <h3 className="line-clamp-2 text-lg leading-5 font-bold">{name}</h3>
-          <button className="flex ml-auto" onClick={handleFavorite}>
-            <Icon iconType={`${favorite? "heartFilled" :"heart"}`}></Icon>
+          <h3 className="line-clamp-2 text-lg font-bold leading-5">{name}</h3>
+          <button className="ml-auto flex" onClick={handleFavorite}>
+            <Icon iconType={`${favorite ? "heartFilled" : "heart"}`}></Icon>
           </button>
         </div>
         <h4>{category.categoryName}</h4>
@@ -61,7 +61,7 @@ const Card = ({ styleSlider, product, width }: CardProps) => {
         )}
         <button
           onClick={handleAddToCart}
-          className="mx-auto w-full h-10 rounded-lg bg-gray1000 font-bold text-white"
+          className="mx-auto h-10 w-full rounded-lg bg-gray1000 font-bold text-white"
         >
           Agregar al carrito
         </button>

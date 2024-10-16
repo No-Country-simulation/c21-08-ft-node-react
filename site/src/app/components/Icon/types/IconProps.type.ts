@@ -24,5 +24,6 @@ export type IconProps = {
     | "bebidasSinAlcohol"
     | "bebidasConAlcohol"
     | "variados"
+    | "hamburger"
   style?: string
 }
