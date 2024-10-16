@@ -6,7 +6,7 @@ import Card from "../Card/Card.component"
 import { IsClient } from "@/app/contexts/isClient.context"
 import { Promotion } from "@/app/types/Product.type"
 import useFetch from "@/app/hooks/useFetch.hook"
-import { sortPromotions } from "./utils/sorting.utils"
+import { sortPromotions } from "@/app/utils/functions.utils"
 
 const DiscountContainer = () => {
   const isClientCtx = useContext(IsClient)
