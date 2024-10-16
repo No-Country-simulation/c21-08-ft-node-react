@@ -9,6 +9,6 @@ export class Promotion {
   @Column()
   percentage!: number;
 
-  @OneToMany(() => Product, (product) => product.category)
+  @OneToMany(() => Product, (product) => product.promotion)
   product!: Product[];
 }
