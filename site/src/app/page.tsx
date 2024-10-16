@@ -48,11 +48,11 @@ export default async function Home() {
           </IsClientProvider>
         </div>
       </section>
-      <section className="mb-20 w-full">
+      <section className="w-full">
         <div className="mx-auto max-w-[1000px]">
           <h2 className="text-center text-4xl font-bold">Como trabajamos</h2>
-          <div className="mt-20 grid grid-cols-3 grid-rows-1 gap-x-14">
-            <div className="flex flex-col gap-10">
+          <div className="mt-20 grid grid-cols-3 grid-rows-1 gap-x-14 md:grid-cols-1 md:grid-rows-3 md:gap-x-0 md:gap-y-2">
+            <div className="flex flex-col gap-10 md:flex-row md:gap-2">
               <CustomerStep
                 icon={<Icon iconType="cartLarge" />}
                 title={"Elijes lo que necesitas"}
@@ -68,7 +68,7 @@ export default async function Home() {
                 }
               />
             </div>
-            <div className="flex items-center">
+            <div className="flex items-center md:justify-center">
               <CustomerStep
                 icon={<Icon iconType="boxTickLarge" />}
                 title={"Preparamos tu pedido"}
@@ -77,7 +77,7 @@ export default async function Home() {
                 }
               />
             </div>
-            <div className="flex flex-col gap-10">
+            <div className="flex flex-col gap-10 md:flex-row md:gap-2">
               <CustomerStep
                 icon={<Icon iconType="delivery" />}
                 title={"Te lo llevamos a casa"}
