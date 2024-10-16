@@ -1,15 +1,22 @@
-type Promotion = {
-    promotionID: string,
-    discount: number
+export type Category = {
+  categoryId: string
+  categoryName: string
 }
 
 export type Product = {
-    productID: string,
-    name: string,
-    description: string,
-    price: number,
-    imgUrl: string,
-    categoryID: string,
-    stock: number,
-    promotion?: Promotion 
+  productId: string
+  name: string
+  description: string
+  price: number
+  imgUrl: string
+  category: Category
+  stock: number
+  promotion?: Promotion
+  brand: null
+}
+
+export type Promotion = {
+  promotionId: string
+  percentage: number
+  product: Product
 }

@@ -1,30 +1,19 @@
 "use client"
 import "keen-slider/keen-slider.min.css"
 import { useKeenSlider } from "keen-slider/react"
-import { useEffect, useState, useContext } from "react"
+import { useContext } from "react"
 import Card from "../Card/Card.component"
-import { products } from "../../../mocks/products.mock"
-import { Product } from "@/app/types/Product.type"
 import { IsClient } from "@/app/contexts/isClient.context"
+import { Promotion } from "@/app/types/Product.type"
+import useFetch from "@/app/hooks/useFetch.hook"
+import { sortPromotions } from "@/app/utils/functions.utils"
 
 const DiscountContainer = () => {
-  const [discountProducts, setDiscountProducts] = useState<Product[]>([])
-  const [loading, setLoading] = useState<boolean>(false)
   const isClientCtx = useContext(IsClient)
-  useEffect(() => {
-    setLoading(true)
-    const getDiscountedProducts = async () => {
-      try {
-        const mokdata = products
-        setDiscountProducts(mokdata)
-      } catch (error) {
-        console.log("error fetching data", error)
-      } finally {
-        setLoading(false)
-      }
-    }
-    getDiscountedProducts()
-  }, [])
+  const promotions =
+    useFetch<Promotion[]>("http://localhost:3170/promotion") || []
+  const discountedProducts = sortPromotions(promotions)
+
   const [ref] = useKeenSlider<HTMLDivElement>({
     slides: {
       perView: 4.2,
@@ -64,10 +53,9 @@ const DiscountContainer = () => {
     },
   })
 
-  if (loading) return <h3>loading</h3>
   return isClientCtx ? (
     <div ref={ref} className="keen-slider mx-auto max-w-[1000px] sm:w-[600px]">
-      {discountProducts.map((product, index) => (
+      {discountedProducts.map((product, index) => (
         <div
           className="keen-slider__slide m-0 flex w-[240px] justify-center p-0"
           key={index}
@@ -77,7 +65,7 @@ const DiscountContainer = () => {
       ))}
     </div>
   ) : (
-    ""
+    <h3>loading</h3>
   )
 }
 

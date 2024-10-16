@@ -2,18 +2,15 @@
 
 import Card from "@/app/components/Card/Card.component"
 import { useSearchParams } from "next/navigation"
-import { strParseOut } from "@/app/utils/functions.utils"
 import { useRouter } from "next/navigation"
 import Icon from "@/app/components/Icon/Icon.component"
-import { products } from "@/mocks/products.mock"
+import { ProductsPanelProps } from "../types/page.types"
 
-const ProductsPanel = () => {
+const ProductsPanel = ({ products }: ProductsPanelProps) => {
+  console.log("products: ", products)
   const searchParams = useSearchParams()
-  const currentCategory = strParseOut(
-    searchParams.get("name") || "unknown category",
-  )
+  const currentCategory = searchParams.get("name")
   const router = useRouter()
-
   return (
     <div className="flex w-full flex-col gap-10">
       <div className="flex flex-col gap-2">

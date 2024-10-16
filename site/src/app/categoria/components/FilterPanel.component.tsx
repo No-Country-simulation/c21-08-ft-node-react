@@ -1,37 +1,23 @@
 "use client"
 
-import {
-  useState,
-  useEffect,
-  useRef,
-  ChangeEvent,
-  HTMLInputTypeAttribute,
-} from "react"
+import { useState, useRef, ChangeEvent, HTMLInputTypeAttribute } from "react"
 import { useToggleDimensions } from "@/app/hooks/useToggleDimensions.hook"
 import Icon from "@/app/components/Icon/Icon.component"
 import { strParseOut } from "../../utils/functions.utils"
 import FilterHeader from "./FilterHeader.component"
 import { FilterSwitchers } from "../types/page.types"
+import { FilterPanelProps } from "../types/page.types"
 
 const brandsMock = ["beltran", "mustela", "eco-origen", "nua"]
 
-type Fields = {
-  brand: string[]
-  discount: boolean
-  price: number
-}
-
-const FilterPanel = () => {
+const FilterPanel = ({
+  setFormValues,
+  setCurrentProducts,
+}: FilterPanelProps) => {
   const [filterSwitchers, setFilterSwitchers] = useState<FilterSwitchers>({
     marca: true,
     ofertas: true,
     precio: true,
-  })
-
-  const [formValues, setFormValues] = useState<Fields>({
-    price: 9999,
-    brand: [],
-    discount: false,
   })
 
   const handleChange = (
@@ -51,6 +37,17 @@ const FilterPanel = () => {
     }
   }
 
+  const handlePriceChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setCurrentProducts((prev) => {
+      const filtered = prev.filter((p) => {
+        return Number(p.price) < Number(e.target.value)
+      })
+      return filtered
+    })
+    // console.log("updating current products...")
+    // setCurrentProducts((prev) => ({ ...prev,  }))
+  }
+
   const handleBrandToggle = (e: ChangeEvent<HTMLInputElement>) => {
     if (e.target.checked) {
       setFormValues((prev) => ({
@@ -64,10 +61,6 @@ const FilterPanel = () => {
       })
     }
   }
-
-  useEffect(() => {
-    console.log("updated form values: ", formValues)
-  }, [formValues])
 
   const marcaRef = useRef<HTMLDivElement>(null)
   useToggleDimensions(marcaRef, filterSwitchers["marca"])
@@ -159,8 +152,8 @@ const FilterPanel = () => {
                 id="price-1"
                 type="radio"
                 name="price"
-                value={2500}
-                onChange={handleChange}
+                value={2}
+                onChange={handlePriceChange}
               />
               <label htmlFor="price-1">Hasta $2500</label>
             </div>
@@ -169,8 +162,8 @@ const FilterPanel = () => {
                 id="price-2"
                 type="radio"
                 name="price"
-                value={5000}
-                onChange={handleChange}
+                value={3}
+                onChange={handlePriceChange}
               />
               <label htmlFor="price-2">Hasta $5000</label>
             </div>
@@ -179,8 +172,8 @@ const FilterPanel = () => {
                 id="price-3"
                 type="radio"
                 name="price"
-                value={7500}
-                onChange={handleChange}
+                value={20}
+                onChange={handlePriceChange}
               />
               <label htmlFor="price-3">Hasta $7500</label>
             </div>
