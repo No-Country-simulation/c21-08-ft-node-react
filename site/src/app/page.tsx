@@ -6,28 +6,28 @@ import { IsClientProvider } from "./contexts/isClient.context"
 
 export default async function Home() {
   return (
-    <main className="mt-24 flex flex-col gap-20">
-      <section className="hero h-[560px]" />
-      <section className="-mt-48 w-full">
-        <div className="mx-auto flex max-w-[1000px] gap-6">
+    <main className="mt-24 flex flex-col gap-20 md:gap-5">
+      <section className="hero h-[560px] bg-gray-400" />
+      <section className="-mt-48 w-full md:mt-0">
+        <div className="mx-auto flex items-start max-w-[1000px] gap-6 md:gap-2 md:px-2">
           <CategoryCard
             name={"Almacén"}
             alt="Almacén"
-            src=""
+            src="/images/product-placeholder.webp"
             width={480}
             height={480}
           />
           <CategoryCard
             name={"Vinoteca"}
             alt="Vinoteca"
-            src=""
+            src="/images/product-placeholder.webp"
             width={480}
             height={480}
           />
           <CategoryCard
             name={"Bebidas con alcohol"}
             alt="Bebidas con alcohol"
-            src=""
+            src="/images/product-placeholder.webp"
             width={480}
             height={480}
           />
