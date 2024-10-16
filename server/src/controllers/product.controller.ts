@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import { ProductService } from "../services/product.service";
 import { Product } from "../entities/Product.entity";
+import { ProductException } from "../exceptions/ProductException";
 
 export class ProductController {
   private readonly productService: ProductService;
@@ -28,9 +29,10 @@ export class ProductController {
 
       return res.status(200).json(products);
     } catch (error) {
-      return res
-        .status(500)
-        .json({ message: "Error getting products by category" });
+      if (error instanceof ProductException) {
+        throw error;
+      }
+      throw new ProductException("Error getting all products", 500);
     }
   }
 }

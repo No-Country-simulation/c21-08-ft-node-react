@@ -17,8 +17,6 @@ export class CategoryService {
         where: { categoryId },
       });
 
-      console.log(category);
-
       if (!category) {
         throw new CategoryException("Category not found", 404);
       }

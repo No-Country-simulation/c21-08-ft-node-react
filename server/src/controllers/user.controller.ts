@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import { UserService } from "../services/user.service";
 import { User } from "../entities/User.entity";
+import { UserException } from "../exceptions/UserException";
 
 export class UserController {
   private readonly userService: UserService;
@@ -14,9 +15,11 @@ export class UserController {
 
       return res.status(200).json(users);
     } catch (error) {
-      return res
-        .status(500)
-        .json({ message: "Error getting all users", error });
+      if (error instanceof UserException) {
+        throw error;
+      }
+
+      throw new UserException("Error getting all users", 500);
     }
   }
 }

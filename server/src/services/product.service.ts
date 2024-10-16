@@ -1,4 +1,7 @@
+import { Category } from "../entities/Category.entity";
 import { Product } from "../entities/Product.entity";
+import { CategoryException } from "../exceptions/CategoryException";
+import { ProductException } from "../exceptions/ProductException";
 import { productRepository } from "../repositories/product.repository";
 import { CategoryService } from "./category.service";
 
@@ -12,14 +15,21 @@ export class ProductService {
     try {
       return await productRepository.find();
     } catch (error) {
-      throw new Error("Error getting all products");
+      throw new ProductException("Error getting all products", 500);
     }
   }
 
-  async getProductsByCategory(categoryId: string) {
+  async getProductsByCategory(categoryId: string): Promise<Product[]> {
     try {
-      const category = await this.categoryService.getCategoryById(categoryId);
+      const category: Category | undefined =
+        await this.categoryService.getCategoryById(categoryId);
+
       return productRepository.find({ where: { category } });
-    } catch (error) {}
+    } catch (error) {
+      if (error instanceof CategoryException) {
+        throw error;
+      }
+      throw new ProductException("Error getting products by category", 500);
+    }
   }
 }

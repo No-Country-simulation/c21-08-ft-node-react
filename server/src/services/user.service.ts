@@ -1,4 +1,5 @@
 import { User } from "../entities/User.entity";
+import { UserException } from "../exceptions/UserException";
 import { userRepository } from "../repositories/user.repository";
 
 export class UserService {
@@ -6,8 +7,7 @@ export class UserService {
     try {
       return await userRepository.find();
     } catch (error) {
-      console.error("Error fetching users:", error);
-      throw new Error("Failed to fetch users");
+      throw new UserException("Error getting all users", 500);
     }
   }
 }
