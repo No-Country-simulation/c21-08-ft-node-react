@@ -24,7 +24,10 @@ export class ProductService {
       const category: Category | undefined =
         await this.categoryService.getCategoryById(categoryId);
 
-      return productRepository.find({ where: { category } });
+      return productRepository.find({
+        where: { category },
+        relations: ["category"],
+      });
     } catch (error) {
       if (error instanceof CategoryException) {
         throw error;

@@ -56,8 +56,8 @@ export class Product {
 
   @ManyToOne(() => Category, (category) => category.product, {
     onDelete: "CASCADE",
+    eager: true,
   })
-
   @JoinColumn({ name: "category" })
   category!: Category;
 
