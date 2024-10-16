@@ -13,14 +13,14 @@ services:
       - mysql
 
   mysql:
-    image: mysql:5.7
+    image: mysql
     ports:
       - "3307:3306"
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: kramer
     volumes:
-      - mysql_data:/var/lib/mysql
+      - new-db:/var/lib/mysql
       - ./src/db/init.sql:/docker-entrypoint-initdb.d/init.sql
 
   phpmyadmin:
@@ -30,6 +30,8 @@ services:
     environment:
       PMA_HOST: mysql
       MYSQL_ROOT_PASSWORD: root
+    depends_on:
+      - mysql
 
 volumes:
-  mysql_data:
+  new-db:
