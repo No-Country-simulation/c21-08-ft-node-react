@@ -253,9 +253,92 @@ src/
    
 ```json
 [
-  { "promotionId": "prom01", "percentage": 0.1 },
-  { "promotionId": "prom02", "percentage": 0.15 }
+  {
+    "promotionId": "prom01",
+    "percentage": 0.1,
+    "product": [
+      {
+        "productId": "prod01",
+        "name": "aceite natura x 900ml.",
+        "brand": "Natura",
+        "price": 0,
+        "unitOfMeasurement": "unitary",
+        "description": "Aceite de girasol de primera calidad",
+        "stock": 19,
+        "imgUrl": "www.google.com/aceite-natura",
+        "category": {
+          "categoryId": "category04",
+          "categoryName": "Almacen"
+        },
+        "promotion": {
+          "promotionId": "promotion01",
+          "percentage": 0.1
+        }
+      },
+      {
+        "productId": "prod02",
+        "name": "Fideos Marolio x 500gr.",
+        "brand": null,
+        "price": 3400,
+        "unitOfMeasurement": "unitary",
+        "description": "Los mejores fideos de la ciudad",
+        "stock": 40,
+        "imgUrl": "www.google.com/fideos-marolio",
+        "category": {
+          "categoryId": "category04",
+          "categoryName": "Almacen"
+        },
+        "promotion": {
+          "promotionId": "promotion01",
+          "percentage": 0.1
+        }
+      }
+    ]
+  },
+  {
+    "promotionId": "prom01",
+    "percentage": 0.1,
+    "product": [
+      {
+        "productId": "prod01",
+        "name": "aceite natura x 900ml.",
+        "brand": "Natura",
+        "price": 0,
+        "unitOfMeasurement": "unitary",
+        "description": "Aceite de girasol de primera calidad",
+        "stock": 19,
+        "imgUrl": "www.google.com/aceite-natura",
+        "category": {
+          "categoryId": "category04",
+          "categoryName": "Almacen"
+        },
+        "promotion": {
+          "promotionId": "promotion01",
+          "percentage": 0.1
+        }
+      },
+      {
+        "productId": "prod02",
+        "name": "Fideos Marolio x 500gr.",
+        "brand": null,
+        "price": 3400,
+        "unitOfMeasurement": "unitary",
+        "description": "Los mejores fideos de la ciudad",
+        "stock": 40,
+        "imgUrl": "www.google.com/fideos-marolio",
+        "category": {
+          "categoryId": "category04",
+          "categoryName": "Almacen"
+        },
+        "promotion": {
+          "promotionId": "promotion01",
+          "percentage": 0.1
+        }
+      }
+    ]
+  }
 ]
+
 ```
 
 #### **Posibles errores:**
