@@ -194,7 +194,7 @@ src/
 ### **GET:** `/product/category/:categoryId`
 
 - **Descripcion:** Metodo que devuelve un arreglo con todos los productos de una categoria especifica
-- **Parametros:** No se requieren parametros
+- **Parametros:**
   - `categoryId` (string): El id de la categoria
 #### **Respuesta exitosa:**
  - **Status:** `200 OK`
@@ -236,6 +236,62 @@ src/
 #### **Posibles errores:**
 - **500 Internal Server Error:** Error al intentar conectarse a la base de datos
 - **404 Not Found:** Categoria no encontrada
+
+</br>
+
+### **GET:** `/product/promotion`
+
+- **Descripcion:** Metodo que devuelve un arreglo con todos los productos que tienen descuento
+- **Parametros:** No se requieren parametros
+#### **Respuesta exitosa:**
+ - **Status:** `200 OK`
+ - **Contenido:** Un arreglo de objetos de tipo Product, si no hay productos devuelve un arreglo vacio `[]`
+ - **Body:**
+   
+```json
+[
+  {
+    "productId": "prod02",
+    "name": "Leche La Serenisima x 1L",
+    "price": 2500,
+    "unitOfMeasurement": "lt",
+    "description": "La leche mas fresca",
+    "stock": 150,
+    "imgUrl": "www.google.com",
+    "brand": null,
+    "category": {
+      "categoryId": "cate02",
+      "categoryName": "Bebidas"
+    },
+    "promotion": {
+      "promotionId": "promo01",
+      "percentage": 10
+    }
+  },
+  {
+    "productId": "prod03",
+    "name": "Aceite Natura x 900ml",
+    "price": 4200,
+    "unitOfMeasurement": "lt",
+    "description": "El mejor aceite",
+    "stock": 150,
+    "imgUrl": "www.google.com",
+    "brand": null,
+    "category": {
+      "categoryId": "cate02",
+      "categoryName": "Bebidas"
+    },
+    "promotion": {
+      "promotionId": "promo01",
+      "percentage": 10
+    }
+  }
+]
+
+```
+
+#### **Posibles errores:**
+- **500 Internal Server Error:** Error al intentar conectarse a la base de datos
 
 </br>
 
