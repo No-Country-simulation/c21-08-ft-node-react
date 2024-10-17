@@ -24,7 +24,7 @@ export default function CategoriaPage() {
   const currentCategory = strParseOut(
     searchParams.get("name") || "unknown category",
   )
-  const source = useGetProducts(currentCategory, setCurrentProducts)
+  const source = useGetProducts(currentCategory)
   // console.log("source: ", source)
 
   const filterByPrice = (price: number) => {
@@ -56,17 +56,14 @@ export default function CategoriaPage() {
     const byBrand = formValues.brand.length
       ? source.filter((p) => formValues.brand.includes(p.brand))
       : source
-    console.log("byBrand: ", byBrand)
 
     const byPrice = byBrand.filter(
       (p) => Number(p.price) <= Number(formValues.price),
     )
-    console.log("byPrice: ", byPrice)
 
     const byDiscount = formValues.discount
       ? byPrice.filter((p) => p.promotion)
       : byPrice
-    console.log("byDiscount: ", byDiscount)
 
     setCurrentProducts(byDiscount)
   }, [formValues, source])

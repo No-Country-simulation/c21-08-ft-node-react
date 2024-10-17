@@ -1,6 +1,7 @@
 "use client"
 
 import Icon from "../Icon/Icon.component"
+import { useEffect } from "react"
 import Cart from "../Cart/Cart.component"
 import { useState } from "react"
 import CartButton from "./CartButton.component"
@@ -8,8 +9,13 @@ import CategoriesPanel from "../CategoriesPanel/CategoriesPanel.component"
 import Logo from "./Logo.component"
 import CategoriesButton from "./CategoriesButton.component"
 import { HamburgerButton } from "./hamburger.component"
+import { usePathname, useSearchParams } from "next/navigation"
 
 const Navbar = () => {
+  const pathname = usePathname()
+  const searchParams = useSearchParams()
+  const currentCategory = searchParams.get("name")
+
   const [isCartVisible, setIsCartVisible] = useState(false)
   const [isCategoriesVisible, setIsCategoriesVisible] = useState(false)
   const [isMenuVisible, setIsMenuVisible] = useState(false)
@@ -31,10 +37,14 @@ const Navbar = () => {
     setIsCategoriesVisible((prev) => !prev)
   }
 
+  useEffect(() => {
+    setIsCategoriesVisible(false)
+  }, [pathname, currentCategory])
+
   return (
     <header className="fixed top-0 z-50 w-full border-b-2 border-solid border-gray300 bg-gray100">
       <div className="mx-auto flex min-h-24 w-full max-w-[1000px] items-center justify-between">
-        <nav className="xs:p-1 mx-auto flex w-full items-center justify-between md:px-[8%]">
+        <nav className="mx-auto flex w-full items-center justify-between md:px-[8%] xs:p-1">
           <HamburgerButton
             changeCategoriesVisibility={changeCategoriesVisibility}
             isMenuVisible={isMenuVisible}
@@ -48,7 +58,7 @@ const Navbar = () => {
             </button>
           </div>
           <div className="flex">
-            <div className="xs:hidden mx-2">
+            <div className="mx-2 xs:hidden">
               <ul className="flex gap-2 md:gap-4">
                 <li className="flex gap-2">
                   <CategoriesButton

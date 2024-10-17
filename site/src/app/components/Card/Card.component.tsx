@@ -45,7 +45,7 @@ const Card = ({ styleSlider, product, width }: CardProps) => {
           </button>
         </div>
         <i>{strParseOut(product.brand || "")}</i>
-        <h4>{category.categoryName}</h4>
+        {/* <h4>{category.categoryName}</h4> */}
         {!discountedPrice ? (
           <div className="flex h-[32px] w-full justify-start text-base font-bold">
             <Price price={price} size={"S"}></Price>

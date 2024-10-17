@@ -34,7 +34,7 @@ const CartCard = ({
         <div className="flex justify-between">
           <Price size="S" price={product.price} />
           <ProductQtyInput
-            productID={product.productId}
+            productId={product.productId}
             productQty={product.productQty}
             incrementProductQty={incrementProductQty}
             decrementProductQty={decrementProductQty}
@@ -46,4 +46,3 @@ const CartCard = ({
 }
 
 export default CartCard
-

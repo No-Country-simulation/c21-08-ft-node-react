@@ -14,8 +14,8 @@ const useLogicCard = (product: Product) => {
   const handleAddToCart = () => {
     addToCart(product)
   }
-  const discountedPrice = promotion ? price - price * promotion.discount : null
-  const discount = promotion ? promotion.discount * 100 : null
+  const discountedPrice = promotion ? price - price * promotion : null
+  const discount = promotion ? promotion * 100 : null
   return {
     favorite,
     handleFavorite,
