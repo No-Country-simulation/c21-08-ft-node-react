@@ -14,25 +14,37 @@ const CartCard = ({
   removeProduct,
 }: CartCardProps) => {
   return (
-    <div className="flex h-[112px] w-[400px] rounded-lg bg-gray100 outline outline-1 outline-gray-200 md:h-auto md:w-full sm:h-auto sm:w-full">
-      <div className="w-[112px] overflow-hidden">
-        <Image
-          className="rounded-l-lg"
-          src={"/images/product-placeholder.webp"}
-          alt={getProductImageAlt(product.name)}
-          width={112}
-          height={112}
-        />
-      </div>
-      <div className="flex w-[288px] flex-col justify-between p-4 md:w-full md:p-2 sm:w-full sm:p-2">
-        <div className="flex justify-between">
-          <h3>{product.name}</h3>
-          <button onClick={() => removeProduct(product.productId)}>
-            <Icon style="md:scale-75" iconType="trash" />
+    <div className="flex h-auto w-full rounded-[20px] bg-gray100 outline outline-1 outline-gray-200 xs:h-28 xs:rounded-l-[12px]">
+      <Image
+        className="rounded-l-[20px] xs:rounded-l-[12px]"
+        src={"/images/product-placeholder.webp"}
+        alt={getProductImageAlt(product.name)}
+        width={128}
+        height={128}
+      />
+      <div className="flex w-full flex-col justify-between p-3 xs:p-2">
+        <div className="flex w-full justify-between">
+          <h3 className="h-16 max-w-48 text-[20px] leading-[20px] xs:line-clamp-3 xs:h-12 xs:text-[16px] xs:leading-[16px]">
+            {product.name}
+          </h3>
+          <button
+            className="mb-auto"
+            onClick={() => removeProduct(product.productId)}
+          >
+            <Icon style="xs:scale-75" iconType="trash" />
           </button>
         </div>
-        <div className="flex justify-between">
-          <Price size="S" price={product.price} />
+        <div className="flex w-full items-end justify-between">
+          <div>
+            {true && (
+              <Price
+                price={product.price}
+                size="S"
+                additionalStyles="line-through text-gray-500"
+              />
+            )}
+            <Price size="M" price={product.price} />
+          </div>
           <ProductQtyInput
             productId={product.productId}
             productQty={product.productQty}
