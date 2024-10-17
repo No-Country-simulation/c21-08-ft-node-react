@@ -38,10 +38,6 @@ const FilterPanel = ({
   }, [source])
 
   useEffect(() => {
-    console.log("brands: ", brands)
-  }, [brands])
-
-  useEffect(() => {
     setCheckedPrice(MAX_PRICE)
   }, [currentCategory])
 

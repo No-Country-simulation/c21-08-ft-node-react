@@ -1,13 +1,15 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import FilterPanel from "./components/FilterPanel.component"
 import ProductsPanel from "./components/ProductsPanel.component"
 import { Product } from "../types/Product.type"
-import { useSearchParams, useParams } from "next/navigation"
+import { useSearchParams } from "next/navigation"
 import { strParseOut } from "../utils/functions.utils"
 import { Fields } from "./types/page.types"
 import useGetProducts from "./hooks/useGetProducts.hook"
+import useFilterProducts from "./hooks/useFilterProducts.hook"
+import useResetFilters from "./hooks/useResetFilters.hook"
 
 const formInitialState = {
   price: 99999,
@@ -17,69 +19,17 @@ const formInitialState = {
 
 export default function CategoriaPage() {
   const [currentProducts, setCurrentProducts] = useState<Product[]>([])
-
   const [formValues, setFormValues] = useState<Fields>(formInitialState)
 
   const searchParams = useSearchParams()
   const currentCategory = strParseOut(
     searchParams.get("name") || "unknown category",
   )
+
   const source = useGetProducts(currentCategory)
-  // console.log("source: ", source)
 
-  const filterByPrice = (price: number) => {
-    const filtered = source.filter((p) => {
-      return Number(p.price) <= Number(price)
-    })
-    return filtered
-  }
-
-  const filterByDiscount = (products: Product[]) => {
-    return products.filter((p) => p.promotion)
-  }
-
-  // useEffect(() => {
-  //   if (formValues.discount) {
-  //     setCurrentProducts(filterByDiscount(source))
-  //   } else {
-  //     setCurrentProducts(source)
-  //   }
-  // }, [formValues.discount, source])
-
-  // useEffect(() => {
-  //   console.log("price has changed!", formValues.price)
-  //   const filtered = filterByPrice(formValues.price)
-  //   setCurrentProducts(filtered)
-  // }, [formValues.price])
-
-  useEffect(() => {
-    const byBrand = formValues.brand.length
-      ? source.filter((p) => formValues.brand.includes(p.brand))
-      : source
-
-    const byPrice = byBrand.filter(
-      (p) => Number(p.price) <= Number(formValues.price),
-    )
-
-    const byDiscount = formValues.discount
-      ? byPrice.filter((p) => p.promotion)
-      : byPrice
-
-    setCurrentProducts(byDiscount)
-  }, [formValues, source])
-
-  useEffect(() => {
-    setFormValues(formInitialState)
-    setCurrentProducts(source)
-  }, [currentCategory])
-
-  // useEffect(() => {
-  //   console.log("currentProducts: ", currentProducts)
-  // }, [currentProducts])
-  //
-  useEffect(() => {
-    console.log("formValues: ", formValues)
-  }, [formValues])
+  useFilterProducts(source, formValues, setCurrentProducts)
+  useResetFilters(formInitialState, currentCategory, setFormValues)
 
   return (
     <div className="w-full pt-24">
