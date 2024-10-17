@@ -3,12 +3,22 @@ import CustomerStep from "./components/CustomerStep/CustomerStep.component"
 import Icon from "./components/Icon/Icon.component"
 import DiscountContainer from "./components/DiscountContainer/DiscountContainer.component"
 import { IsClientProvider } from "./contexts/isClient.context"
+import Image from "next/image"
 
 export default async function Home() {
   return (
     <main className="mt-24 flex flex-col gap-20 md:gap-16 sm:gap-10">
-      <section className="hero h-[560px] bg-gray-400" />
-      <section className="-mt-48 w-full md:mt-0">
+      <section className="hero h-[560px] overflow-hidden md:h-96">
+        <Image
+          src="/images/hero-1.jpg"
+          alt="promocion-1"
+          width={1080}
+          height={1350}
+          objectFit="contain"
+          className="m-auto"
+        />
+      </section>
+      <section className="-mt-48 w-full lg:px-5 md:mt-0">
         <div className="mx-auto flex max-w-[1000px] items-start gap-6 md:gap-2 md:px-2">
           <CategoryCard
             name={"Almacén"}
@@ -55,9 +65,9 @@ export default async function Home() {
         </div>
       </section>
       <section className="w-full">
-        <div className="mx-auto max-w-[1000px] md:px-10 sm:px-5">
+        <div className="mx-auto max-w-[1000px] lg:px-10 md:px-10 sm:px-5">
           <h2 className="text-center text-4xl font-bold xs:text-3xl">
-            Como trabajamos
+            Cómo trabajamos
           </h2>
           <div className="mt-20 grid grid-cols-3 grid-rows-1 gap-x-14 lg:gap-x-5 md:mt-16 md:grid-cols-1 md:grid-rows-3 md:gap-x-0 md:gap-y-10 sm:mt-10 sm:gap-y-5">
             <div className="flex flex-col items-center gap-10 md:flex-row md:gap-16 sm:gap-8">
