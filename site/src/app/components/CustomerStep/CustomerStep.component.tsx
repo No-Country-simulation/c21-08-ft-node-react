@@ -6,14 +6,16 @@ type CustomerStepProps = {
 
 const CustomerStep = ({ icon, title, desc }: CustomerStepProps) => {
   return (
-    <div className="flex gap-5">
-      <div>{ icon }</div>
+    <div className="flex gap-5 sm:gap-1">
+      <div>{icon}</div>
       <div className="flex flex-col gap-2">
-        <h3 className="text-2xl font-bold leading-none">{ title }</h3>
-        <p>{ desc }</p>
+        <h3 className="text-2xl font-bold leading-none xs:text-lg xs:leading-5">
+          {title}
+        </h3>
+        <p className="xs:text-sm">{desc}</p>
       </div>
     </div>
   )
-};
+}
 
-export default CustomerStep;
+export default CustomerStep

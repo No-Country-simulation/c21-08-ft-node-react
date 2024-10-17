@@ -26,7 +26,8 @@ const ProductsPanel = ({ products }: ProductsPanelProps) => {
         </h3>
       </div>
       <span>Mostrando {products.length} productos</span>
-      <div className="grid w-full grid-cols-[repeat(auto-fit,_minmax(200px,220px))] gap-6 sm:grid-cols-1">
+      {/* <div className="grid w-full grid-cols-[repeat(auto-fit,_minmax(200px,220px))] gap-6 sm:grid-cols-1"> */}
+      <div className="grid w-full grid-cols-3 gap-6 md:grid-cols-2 sm:grid-cols-1">
         {products.map((p, idx) => (
           <Card key={`card-${idx}`} product={p} width="fluid" />
         ))}

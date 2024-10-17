@@ -3,7 +3,7 @@ import Image from "next/image"
 const Footer = () => {
   return (
     <footer className="w-full bg-gray200">
-      <div className="mx-auto mt-20 flex max-w-[1000px] gap-10 justify-between px-8 py-20 md:flex-col md:py-16 md:items-center md:gap-4 sm:px-[10%] md:px-[25%]">
+      <div className="mx-auto mt-20 flex max-w-[1000px] justify-between gap-10 px-8 py-20 md:mt-16 md:flex-col md:items-center md:gap-4 md:px-[25%] md:py-16 sm:px-[10%] xs:mt-10 xs:py-10">
         <div className="w-[40%] md:w-full">
           <Image
             alt={"logo"}
@@ -12,7 +12,7 @@ const Footer = () => {
             height={41.741}
             className="mb-10"
           />
-          <address className="flex flex-col gap-4 not-italic font-light">
+          <address className="flex flex-col gap-4 font-light not-italic">
             <p>
               Calle Los Robles 123, Piso 2, Dpto. 4, Colonia El Bosque, Ciudad
               Sol, CP 56789, País del Este.
