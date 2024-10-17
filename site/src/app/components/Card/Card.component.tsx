@@ -5,6 +5,7 @@ import Price from "../Price/Price.component"
 import Icon from "../Icon/Icon.component"
 import Image from "next/image"
 import useLogicCard from "@/app/hooks/useLogicCard.hook"
+import { strParseOut } from "@/app/utils/functions.utils"
 
 const Card = ({ styleSlider, product, width }: CardProps) => {
   const {
@@ -43,6 +44,7 @@ const Card = ({ styleSlider, product, width }: CardProps) => {
             <Icon iconType={`${favorite ? "heartFilled" : "heart"}`}></Icon>
           </button>
         </div>
+        <i>{strParseOut(product.brand || "")}</i>
         <h4>{category.categoryName}</h4>
         {!discountedPrice ? (
           <div className="flex h-[32px] w-full justify-start text-base font-bold">

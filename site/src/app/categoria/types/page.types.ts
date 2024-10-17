@@ -23,4 +23,5 @@ export type FilterPanelProps = {
   formValues: Fields
   setCurrentProducts: Dispatch<SetStateAction<Product[]>>
   currentCategory: string
+  source: Product[]
 }

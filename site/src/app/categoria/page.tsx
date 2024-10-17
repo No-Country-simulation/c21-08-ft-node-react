@@ -24,7 +24,9 @@ export default function CategoriaPage() {
   const currentCategory = strParseOut(
     searchParams.get("name") || "unknown category",
   )
-  const source = useGetProducts(currentCategory)
+  const source = useGetProducts(currentCategory, setCurrentProducts)
+  // console.log("source: ", source)
+
   const filterByPrice = (price: number) => {
     const filtered = source.filter((p) => {
       return Number(p.price) <= Number(price)
@@ -36,19 +38,38 @@ export default function CategoriaPage() {
     return products.filter((p) => p.promotion)
   }
 
-  useEffect(() => {
-    if (formValues.discount) {
-      setCurrentProducts(filterByDiscount(source))
-    } else {
-      setCurrentProducts(source)
-    }
-  }, [formValues.discount, source])
+  // useEffect(() => {
+  //   if (formValues.discount) {
+  //     setCurrentProducts(filterByDiscount(source))
+  //   } else {
+  //     setCurrentProducts(source)
+  //   }
+  // }, [formValues.discount, source])
+
+  // useEffect(() => {
+  //   console.log("price has changed!", formValues.price)
+  //   const filtered = filterByPrice(formValues.price)
+  //   setCurrentProducts(filtered)
+  // }, [formValues.price])
 
   useEffect(() => {
-    console.log("price has changed!", formValues.price)
-    const filtered = filterByPrice(formValues.price)
-    setCurrentProducts(filtered)
-  }, [formValues.price])
+    const byBrand = formValues.brand.length
+      ? source.filter((p) => formValues.brand.includes(p.brand))
+      : source
+    console.log("byBrand: ", byBrand)
+
+    const byPrice = byBrand.filter(
+      (p) => Number(p.price) <= Number(formValues.price),
+    )
+    console.log("byPrice: ", byPrice)
+
+    const byDiscount = formValues.discount
+      ? byPrice.filter((p) => p.promotion)
+      : byPrice
+    console.log("byDiscount: ", byDiscount)
+
+    setCurrentProducts(byDiscount)
+  }, [formValues, source])
 
   useEffect(() => {
     setFormValues(formInitialState)
@@ -71,6 +92,7 @@ export default function CategoriaPage() {
           formValues={formValues}
           setCurrentProducts={setCurrentProducts}
           currentCategory={currentCategory}
+          source={source}
         />
         <ProductsPanel
           products={currentProducts}

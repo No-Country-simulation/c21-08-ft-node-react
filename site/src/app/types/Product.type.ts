@@ -11,7 +11,7 @@ export type Product = {
   imgUrl: string
   category: Category
   stock: number
-  brand: null
+  brand: string
   promotion?: number
 }
 

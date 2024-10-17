@@ -9,10 +9,11 @@ export default async function Home() {
     <main className="mt-24 flex flex-col gap-20 md:gap-5">
       <section className="hero h-[560px] bg-gray-400" />
       <section className="-mt-48 w-full md:mt-0">
-        <div className="mx-auto flex items-start max-w-[1000px] gap-6 md:gap-2 md:px-2">
+        <div className="mx-auto flex max-w-[1000px] items-start gap-6 md:gap-2 md:px-2">
           <CategoryCard
             name={"Almacén"}
             alt="Almacén"
+            link="/categoria?name=almacén"
             src="/images/product-placeholder.webp"
             width={480}
             height={480}
@@ -20,6 +21,7 @@ export default async function Home() {
           <CategoryCard
             name={"Vinoteca"}
             alt="Vinoteca"
+            link="/categoria?name=vinoteca"
             src="/images/product-placeholder.webp"
             width={480}
             height={480}
@@ -27,6 +29,7 @@ export default async function Home() {
           <CategoryCard
             name={"Bebidas con alcohol"}
             alt="Bebidas con alcohol"
+            link="/categoria?name=bebidas-con-alcohol"
             src="/images/product-placeholder.webp"
             width={480}
             height={480}
@@ -34,6 +37,7 @@ export default async function Home() {
           <CategoryCard
             name={"Bebidas sin alcohol"}
             alt="Bebidas sin alcohol"
+            link="/categoria?name=bebidas-sin-alcohol"
             src=""
             width={480}
             height={480}

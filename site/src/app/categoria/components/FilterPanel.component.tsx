@@ -14,7 +14,6 @@ import FilterHeader from "./FilterHeader.component"
 import { FilterSwitchers } from "../types/page.types"
 import { FilterPanelProps } from "../types/page.types"
 
-const brandsMock = ["beltran", "mustela", "eco-origen", "nua"]
 const priceOptions = [1000, 1500, 3000]
 const MAX_PRICE = 99999
 
@@ -22,13 +21,25 @@ const FilterPanel = ({
   setFormValues,
   formValues,
   currentCategory,
+  source,
 }: FilterPanelProps) => {
+  const [brands, setBrands] = useState<string[]>([])
   const [checkedPrice, setCheckedPrice] = useState(formValues.price)
   const [filterSwitchers, setFilterSwitchers] = useState<FilterSwitchers>({
     marca: true,
     ofertas: true,
     precio: true,
   })
+
+  useEffect(() => {
+    const sourceBrands = source.map((p) => p.brand)
+    const uniqueBrands = [...new Set(sourceBrands)]
+    setBrands([...uniqueBrands])
+  }, [source])
+
+  useEffect(() => {
+    console.log("brands: ", brands)
+  }, [brands])
 
   useEffect(() => {
     setCheckedPrice(MAX_PRICE)
@@ -89,35 +100,43 @@ const FilterPanel = ({
             filterSwitchers={filterSwitchers}
             setFilterSwitchers={setFilterSwitchers}
           />
-          <div
-            ref={marcaRef}
-            className={
-              "flex flex-col gap-4 overflow-hidden transition-all duration-200 ease-in-out"
-            }
-          >
-            <div className="relative flex items-center">
-              <input
-                type="text"
-                className="h-10 w-full rounded border border-gray-300"
-              />
-              <div className="absolute end-0">
-                <Icon iconType="search" />
-              </div>
-            </div>
-            {brandsMock.map((brand, idx) => (
-              <div
-                key={`brand-filter-${idx}`}
-                className="flex items-center gap-2"
-              >
+          {/* this needs conditional rendering because we need to know when 'brand' array is populated */}
+          {/* otherwise if the 'brands' array is empty the JSX corresponding to the brands will not be rendered*/}
+          {/* the first time, therefore the useToggleDimensions hook will get the height of this part as if there*/}
+          {/* were not brand rendered effectively have a lesser height than it should have */}
+          {brands.length ? (
+            <div
+              ref={marcaRef}
+              className={
+                "flex flex-col gap-4 overflow-hidden transition-all duration-200 ease-in-out"
+              }
+            >
+              <div className="relative flex items-center">
                 <input
-                  type="checkbox"
-                  name={brand}
-                  onChange={handleBrandToggle}
+                  type="text"
+                  className="h-10 w-full rounded border border-gray-300"
                 />
-                <label htmlFor={brand}>{strParseOut(brand)}</label>
+                <div className="absolute end-0">
+                  <Icon iconType="search" />
+                </div>
               </div>
-            ))}
-          </div>
+              {brands.map((brand, idx) => (
+                <div
+                  key={`brand-filter-${idx}`}
+                  className="flex items-center gap-2"
+                >
+                  <input
+                    type="checkbox"
+                    name={brand}
+                    onChange={handleBrandToggle}
+                  />
+                  <label htmlFor={brand}>{strParseOut(brand)}</label>
+                </div>
+              ))}
+            </div>
+          ) : (
+            ""
+          )}
         </div>
 
         <div className="flex flex-col gap-7 border-t-2 border-solid pt-7">

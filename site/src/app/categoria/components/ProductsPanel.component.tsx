@@ -8,7 +8,6 @@ import { ProductsPanelProps } from "../types/page.types"
 import { strParseOut } from "@/app/utils/functions.utils"
 
 const ProductsPanel = ({ products }: ProductsPanelProps) => {
-  console.log("products: ", products)
   const searchParams = useSearchParams()
   const currentCategory = searchParams.get("name")
   const router = useRouter()
