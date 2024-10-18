@@ -5,7 +5,7 @@ import FilterPanel from "./components/FilterPanel.component"
 import ProductsPanel from "./components/ProductsPanel.component"
 import { Product } from "../types/Product.type"
 import { useSearchParams } from "next/navigation"
-import { strParseOut } from "../utils/functions.utils"
+import { strForDisplay } from "../utils/functions.utils"
 import { Fields } from "./types/page.types"
 import useGetProducts from "./hooks/useGetProducts.hook"
 import useFilterProducts from "./hooks/useFilterProducts.hook"
@@ -22,7 +22,7 @@ export default function CategoriaPage() {
   const [formValues, setFormValues] = useState<Fields>(formInitialState)
 
   const searchParams = useSearchParams()
-  const currentCategory = strParseOut(
+  const currentCategory = strForDisplay(
     searchParams.get("name") || "unknown category",
   )
 

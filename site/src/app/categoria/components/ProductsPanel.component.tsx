@@ -5,7 +5,7 @@ import { useSearchParams } from "next/navigation"
 import { useRouter } from "next/navigation"
 import Icon from "@/app/components/Icon/Icon.component"
 import { ProductsPanelProps } from "../types/page.types"
-import { strParseOut } from "@/app/utils/functions.utils"
+import { strForDisplay } from "@/app/utils/functions.utils"
 
 const ProductsPanel = ({ products }: ProductsPanelProps) => {
   const searchParams = useSearchParams()
@@ -22,7 +22,7 @@ const ProductsPanel = ({ products }: ProductsPanelProps) => {
           <button>Página de inicio</button>
         </span>
         <h3 className="text-4xl font-bold">
-          {strParseOut(currentCategory || "")}
+          {strForDisplay(currentCategory || "")}
         </h3>
       </div>
       <span>Mostrando {products.length} productos</span>

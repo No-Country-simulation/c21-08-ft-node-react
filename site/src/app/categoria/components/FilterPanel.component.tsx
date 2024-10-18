@@ -9,7 +9,7 @@ import {
 } from "react"
 import { useToggleDimensions } from "@/app/hooks/useToggleDimensions.hook"
 import Icon from "@/app/components/Icon/Icon.component"
-import { strParseOut } from "../../utils/functions.utils"
+import { strForDisplay } from "../../utils/functions.utils"
 import FilterHeader from "./FilterHeader.component"
 import { FilterSwitchers } from "../types/page.types"
 import { FilterPanelProps } from "../types/page.types"
@@ -126,7 +126,7 @@ const FilterPanel = ({
                     name={brand}
                     onChange={handleBrandToggle}
                   />
-                  <label htmlFor={brand}>{strParseOut(brand)}</label>
+                  <label htmlFor={brand}>{strForDisplay(brand)}</label>
                 </div>
               ))}
             </div>

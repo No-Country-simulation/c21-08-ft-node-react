@@ -1,6 +1,6 @@
 import { Dispatch, SetStateAction } from 'react'
 import Icon from '@/app/components/Icon/Icon.component'
-import { strParseOut } from '@/app/utils/functions.utils'
+import { strForDisplay } from '@/app/utils/functions.utils'
 import { Filters, FilterSwitchers } from '../types/page.types'
 
 type FilterHeaderProps = {
@@ -15,7 +15,7 @@ const FilterHeader = ({ filterId, filterSwitchers, setFilterSwitchers }: FilterH
       className='flex w-full cursor-pointer justify-between border-none p-0'
       onClick={() => setFilterSwitchers(prev => ({ ...prev, [filterId]: !prev[filterId] }))}
     >
-      <h3 className='text-xl font-semibold'>{strParseOut(filterId)}</h3>
+      <h3 className='text-xl font-semibold'>{strForDisplay(filterId)}</h3>
       <Icon
         iconType='chev'
         style={

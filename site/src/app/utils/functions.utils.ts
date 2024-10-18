@@ -1,10 +1,14 @@
 import { Promotion } from "../types/Product.type"
 
-export const strParseOut = (str: string) => {
+export const strForDisplay = (str: string) => {
   return str
     .split("-")
     .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
     .join(" ")
+}
+
+export const strForData = (str: string) => {
+  return str.replaceAll(" ", "-").toLowerCase()
 }
 
 export const sortPromotions = (promotions: Promotion[]) => {
