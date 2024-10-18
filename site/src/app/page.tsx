@@ -6,10 +6,10 @@ import { IsClientProvider } from "./contexts/isClient.context"
 
 export default async function Home() {
   return (
-    <main className="mt-24 flex flex-col gap-20 md:gap-16 sm:gap-10">
-      <section className="hero h-[560px] bg-gray-400" />
+    <main className="mt-24 flex flex-col gap-16 md:gap-8 xs:gap-4">
+      <section className="hero h-[560px] bg-gray-400 md:h-[320px] xs:h-[192px]" />
       <section className="-mt-48 w-full md:mt-0">
-        <div className="mx-auto flex max-w-[1000px] items-start gap-6 md:gap-2 md:px-2">
+        <div className="mx-auto flex max-w-[1000px] items-start gap-6 md:gap-2 md:px-2 xs:gap-1 xs:px-1">
           <CategoryCard
             name={"Almacén"}
             alt="Almacén"
@@ -45,10 +45,8 @@ export default async function Home() {
         </div>
       </section>
       <section className="w-full">
-        <div className="mx-auto flex max-w-[1000px] flex-col gap-y-16 lg:gap-y-10 lg:px-10">
-          <h2 className="text-4xl font-bold sm:text-center xs:text-3xl">
-            Descuentos
-          </h2>
+        <div className="mx-auto flex max-w-[1000px] flex-col gap-16 md:gap-8 xs:gap-4">
+          <h2 className="text-[32px] leading-[32px] font-bold xs:text-[24px] xs:leading-[24px]">Descuentos</h2>
           <IsClientProvider>
             <DiscountContainer />
           </IsClientProvider>
