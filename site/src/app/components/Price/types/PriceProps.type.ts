@@ -1,4 +1,5 @@
 export type PriceProps = {
-    price: number
-    size: "L" | "S"
+  price: number
+  size: "L" | "M" | "S"
+  additionalStyles?: string
 }
