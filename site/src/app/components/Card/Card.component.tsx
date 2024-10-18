@@ -4,7 +4,7 @@ import { CardProps } from "./types/CardProps.type"
 import Price from "../Price/Price.component"
 import Icon from "../Icon/Icon.component"
 import Image from "next/image"
-import useLogicCard from "@/app/hooks/useLogicCard.hook"
+import useLogicCard from "@/app/hooks/useCardLogic.hook"
 import { getProductImageAlt } from "@/app/utils/getProductImageAlt.util"
 
 const Card = ({ additionalStyles, product }: CardProps) => {
