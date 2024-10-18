@@ -5,11 +5,14 @@ import { useSearchParams } from "next/navigation"
 import { useRouter } from "next/navigation"
 import Icon from "@/app/components/Icon/Icon.component"
 import { ProductsPanelProps } from "../types/page.types"
-import { strParseOut } from "@/app/utils/functions.utils"
+import { strForDisplay } from "@/app/utils/functions.utils"
+import { useParams } from "next/navigation"
 
 const ProductsPanel = ({ products }: ProductsPanelProps) => {
   const searchParams = useSearchParams()
-  const currentCategory = searchParams.get("name")
+  const params = useParams()
+  const categoryId = searchParams.get("categoryId")
+  const categoryName = params.categoryName as string
   const router = useRouter()
   return (
     <div className="flex w-full flex-col gap-10">
@@ -22,7 +25,7 @@ const ProductsPanel = ({ products }: ProductsPanelProps) => {
           <button>Página de inicio</button>
         </span>
         <h3 className="text-4xl font-bold">
-          {strParseOut(currentCategory || "")}
+          {strForDisplay(categoryName || "")}
         </h3>
       </div>
       <span>Mostrando {products.length} productos</span>
