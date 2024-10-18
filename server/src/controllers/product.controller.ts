@@ -20,6 +20,22 @@ export class ProductController {
     }
   }
 
+  // Obtener producto por id
+  async getProductById(req: Request ,res:Response ) : Promise<any> {
+    try {
+      const productId: string = req.params.productId;
+      const product:Product[] | undefined =
+        await this.productService.getProductById(productId);
+
+      return res.status(200).json(product);
+    } catch (error) {
+      if (error instanceof Error) {
+        throw error;
+      }
+      throw new ProductException("Error getting a product by Id", 500);
+    }
+  }
+
   // Obtener todos los productos por categoria
   async getProductsByCategory(req: Request, res: Response): Promise<any> {
     try {

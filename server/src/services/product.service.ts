@@ -20,6 +20,20 @@ export class ProductService {
     }
   }
 
+  async getProductById(productId:string): Promise<Product[]> {
+    try {
+      const product = productRepository.find({where: {productId}})
+      if (!product) {
+        throw new ProductException("Product not found", 404);
+      }
+
+      return product;
+
+    } catch (error) {
+      throw new ProductException("Error getting a prodcut by id", 500);
+    }
+  }
+
   async getProductsByCategory(categoryId: string): Promise<Product[]> {
     try {
       const category: Category | undefined =
