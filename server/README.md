@@ -194,7 +194,7 @@ src/
 ### **GET:** `/product/category/:categoryId`
 
 - **Descripcion:** Metodo que devuelve un arreglo con todos los productos de una categoria especifica
-- **Parametros:** No se requieren parametros
+- **Parametros:**
   - `categoryId` (string): El id de la categoria
 #### **Respuesta exitosa:**
  - **Status:** `200 OK`
@@ -239,6 +239,62 @@ src/
 
 </br>
 
+### **GET:** `/product/promotion`
+
+- **Descripcion:** Metodo que devuelve un arreglo con todos los productos que tienen descuento
+- **Parametros:** No se requieren parametros
+#### **Respuesta exitosa:**
+ - **Status:** `200 OK`
+ - **Contenido:** Un arreglo de objetos de tipo Product, si no hay productos devuelve un arreglo vacio `[]`
+ - **Body:**
+   
+```json
+[
+  {
+    "productId": "prod02",
+    "name": "Leche La Serenisima x 1L",
+    "price": 2500,
+    "unitOfMeasurement": "lt",
+    "description": "La leche mas fresca",
+    "stock": 150,
+    "imgUrl": "www.google.com",
+    "brand": null,
+    "category": {
+      "categoryId": "cate02",
+      "categoryName": "Bebidas"
+    },
+    "promotion": {
+      "promotionId": "promo01",
+      "percentage": 10
+    }
+  },
+  {
+    "productId": "prod03",
+    "name": "Aceite Natura x 900ml",
+    "price": 4200,
+    "unitOfMeasurement": "lt",
+    "description": "El mejor aceite",
+    "stock": 150,
+    "imgUrl": "www.google.com",
+    "brand": null,
+    "category": {
+      "categoryId": "cate02",
+      "categoryName": "Bebidas"
+    },
+    "promotion": {
+      "promotionId": "promo01",
+      "percentage": 10
+    }
+  }
+]
+
+```
+
+#### **Posibles errores:**
+- **500 Internal Server Error:** Error al intentar conectarse a la base de datos
+
+</br>
+
 
 ## Promociones
 
@@ -253,9 +309,92 @@ src/
    
 ```json
 [
-  { "promotionId": "prom01", "percentage": 0.1 },
-  { "promotionId": "prom02", "percentage": 0.15 }
+  {
+    "promotionId": "prom01",
+    "percentage": 0.1,
+    "product": [
+      {
+        "productId": "prod01",
+        "name": "aceite natura x 900ml.",
+        "brand": "Natura",
+        "price": 0,
+        "unitOfMeasurement": "unitary",
+        "description": "Aceite de girasol de primera calidad",
+        "stock": 19,
+        "imgUrl": "www.google.com/aceite-natura",
+        "category": {
+          "categoryId": "category04",
+          "categoryName": "Almacen"
+        },
+        "promotion": {
+          "promotionId": "promotion01",
+          "percentage": 0.1
+        }
+      },
+      {
+        "productId": "prod02",
+        "name": "Fideos Marolio x 500gr.",
+        "brand": null,
+        "price": 3400,
+        "unitOfMeasurement": "unitary",
+        "description": "Los mejores fideos de la ciudad",
+        "stock": 40,
+        "imgUrl": "www.google.com/fideos-marolio",
+        "category": {
+          "categoryId": "category04",
+          "categoryName": "Almacen"
+        },
+        "promotion": {
+          "promotionId": "promotion01",
+          "percentage": 0.1
+        }
+      }
+    ]
+  },
+  {
+    "promotionId": "prom01",
+    "percentage": 0.1,
+    "product": [
+      {
+        "productId": "prod01",
+        "name": "aceite natura x 900ml.",
+        "brand": "Natura",
+        "price": 0,
+        "unitOfMeasurement": "unitary",
+        "description": "Aceite de girasol de primera calidad",
+        "stock": 19,
+        "imgUrl": "www.google.com/aceite-natura",
+        "category": {
+          "categoryId": "category04",
+          "categoryName": "Almacen"
+        },
+        "promotion": {
+          "promotionId": "promotion01",
+          "percentage": 0.1
+        }
+      },
+      {
+        "productId": "prod02",
+        "name": "Fideos Marolio x 500gr.",
+        "brand": null,
+        "price": 3400,
+        "unitOfMeasurement": "unitary",
+        "description": "Los mejores fideos de la ciudad",
+        "stock": 40,
+        "imgUrl": "www.google.com/fideos-marolio",
+        "category": {
+          "categoryId": "category04",
+          "categoryName": "Almacen"
+        },
+        "promotion": {
+          "promotionId": "promotion01",
+          "percentage": 0.1
+        }
+      }
+    ]
+  }
 ]
+
 ```
 
 #### **Posibles errores:**
