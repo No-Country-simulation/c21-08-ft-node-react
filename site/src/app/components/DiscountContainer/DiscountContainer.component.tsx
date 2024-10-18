@@ -1,77 +1,100 @@
 "use client"
+
 import "keen-slider/keen-slider.min.css"
 import { useKeenSlider } from "keen-slider/react"
-import { useContext, useEffect } from "react"
+import { useEffect, useState } from "react"
 import Card from "../Card/Card.component"
-import { IsClient } from "@/app/contexts/isClient.context"
 import { Promotion } from "@/app/types/Product.type"
 import useFetch from "@/app/hooks/useFetch.hook"
 import { sortPromotions } from "@/app/utils/functions.utils"
+import SliderNavigationArrow from "./SliderNavigationArrow.component"
 
 const DiscountContainer = () => {
-  const isClientCtx = useContext(IsClient)
+  const [currentSlide, setCurrentSlide] = useState(0)
+  const [isLoaded, setIsLoaded] = useState(false)
 
   const promotions =
     useFetch<Promotion[]>("http://localhost:3170/promotion") || []
   const discountedProducts = sortPromotions(promotions)
 
-  const [ref, instanceRef] = useKeenSlider<HTMLDivElement>({
+  const [silderRef, instanceRef] = useKeenSlider<HTMLDivElement>({
+    initial: 0,
+    slideChanged: (slider) => setCurrentSlide(slider.track.details.rel),
     slides: {
-      perView: 4.2,
-      spacing: 24,
+      perView: 4,
+      spacing: 16,
     },
     breakpoints: {
-      "(max-width: 920px)": {
+      "(max-width: 864px)": {
         slides: {
-          perView: 3.2,
-          spacing: 5,
+          perView: 3,
+          spacing: 8,
         },
       },
-      "(max-width: 760px)": {
+      "(max-width: 584px)": {
         slides: {
-          perView: 2.3,
-          spacing: 5,
+          perView: 2,
+          spacing: 8,
         },
       },
-      "(max-width: 640px)": {
+      "(max-width: 336px)": {
         slides: {
-          perView: 1.4,
-          spacing: 10,
-        },
-      },
-      "(max-width: 500px)": {
-        slides: {
-          perView: 1.1,
-          spacing: 10,
-        },
-      },
-      "(max-width: 420px)": {
-        slides: {
-          perView: 1,
-          spacing: 10,
+          perView: 2,
+          spacing: 4,
         },
       },
     },
   })
+
   useEffect(() => {
-    if (discountedProducts.length > 0) {
-      instanceRef.current?.update()
-    }
+    if (instanceRef.current === null) return
+
+    if (discountedProducts.length === 0) return
+
+    setIsLoaded(true)
+
+    instanceRef.current.update()
   }, [discountedProducts, instanceRef])
 
-  return isClientCtx ? (
-    <div ref={ref} className="keen-slider mx-auto max-w-[1000px] sm:w-[600px]">
-      {discountedProducts.map((product, index) => (
-        <div
-          className="keen-slider__slide m-0 flex w-[240px] justify-center p-0"
-          key={index}
-        >
-          <Card product={product} width={"fixed"}></Card>
-        </div>
-      ))}
+  const discointedProductsElements = discountedProducts.map((product, i) => (
+    <Card
+      key={i}
+      additionalStyles="keen-slider__slide"
+      product={product}
+    />
+  ))
+
+  return (
+    <div className="relative flex items-center gap-2">
+      {isLoaded && instanceRef.current && discointedProductsElements.length > 0 && (
+        <SliderNavigationArrow
+          type="left"
+          onClick={(e: any) =>
+            e.stopPropagation() || instanceRef.current?.prev()
+          }
+          isDisabled={currentSlide === 0}
+        />
+      )}
+      <div ref={silderRef} className="keen-slider">
+        {discointedProductsElements.length > 0 ? (
+          discointedProductsElements
+        ) : (
+          <h1>No hay descuentos</h1>
+        )}
+      </div>
+      {isLoaded && instanceRef.current && discointedProductsElements.length > 0 && (
+        <SliderNavigationArrow
+          type="right"
+          onClick={(e: any) =>
+            e.stopPropagation() || instanceRef.current?.next()
+          }
+          isDisabled={
+            currentSlide + instanceRef.current.track.details.maxIdx ===
+            discountedProducts.length
+          }
+        />
+      )}
     </div>
-  ) : (
-    ""
   )
 }
 

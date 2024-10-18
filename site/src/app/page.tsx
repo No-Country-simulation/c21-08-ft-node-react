@@ -2,7 +2,6 @@ import CategoryCard from "./components/CategoryCard/CategoryCard.component"
 import CustomerStep from "./components/CustomerStep/CustomerStep.component"
 import Icon from "./components/Icon/Icon.component"
 import DiscountContainer from "./components/DiscountContainer/DiscountContainer.component"
-import { IsClientProvider } from "./contexts/isClient.context"
 
 export default async function Home() {
   return (
@@ -46,10 +45,10 @@ export default async function Home() {
       </section>
       <section className="w-full">
         <div className="mx-auto flex max-w-[1000px] flex-col gap-16 md:gap-8 xs:gap-4">
-          <h2 className="text-[32px] leading-[32px] font-bold xs:text-[24px] xs:leading-[24px]">Descuentos</h2>
-          <IsClientProvider>
-            <DiscountContainer />
-          </IsClientProvider>
+          <h2 className="text-[32px] font-bold leading-[32px] xs:text-[24px] xs:leading-[24px]">
+            Descuentos
+          </h2>
+          <DiscountContainer />
         </div>
       </section>
       <section className="w-full">
