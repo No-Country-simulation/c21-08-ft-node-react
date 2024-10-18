@@ -5,6 +5,7 @@ export type IconProps = {
     | "boxTickLarge"
     | "cartLarge"
     | "cartSmall"
+    | "almacen"
     | "category"
     | "delivery"
     | "heart"
@@ -21,8 +22,8 @@ export type IconProps = {
     | "libreria"
     | "vinoteca"
     | "limpieza"
-    | "bebidasSinAlcohol"
-    | "bebidasConAlcohol"
+    | "bebidas-sin-alcohol"
+    | "bebidas-con-alcohol"
     | "variados"
     | "hamburger"
   style?: string

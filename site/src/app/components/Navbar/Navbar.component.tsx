@@ -10,8 +10,12 @@ import Logo from "./Logo.component"
 import CategoriesButton from "./CategoriesButton.component"
 import { HamburgerButton } from "./hamburger.component"
 import { usePathname, useSearchParams } from "next/navigation"
+import useFetch from "@/app/hooks/useFetch.hook"
+import { API_BASE_URL } from "@/app/consts/api.consts"
+import { Category as CategoryType } from "@/app/types/Product.type"
 
 const Navbar = () => {
+  const categories = useFetch<CategoryType[]>(`${API_BASE_URL}/category`) || []
   const pathname = usePathname()
   const searchParams = useSearchParams()
   const currentCategory = searchParams.get("name")
@@ -67,6 +71,7 @@ const Navbar = () => {
                   <CategoriesPanel
                     changeCategoriesVisibility={changeCategoriesVisibility}
                     isCategoriesVisible={isCategoriesVisible}
+                    categories={categories}
                   />
                 </li>
                 <li className="flex gap-2">
