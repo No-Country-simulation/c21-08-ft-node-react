@@ -1,3 +1,4 @@
+import { IsNull, Not } from "typeorm";
 import { promotionRepository } from "../repositories/promotion.repository";
 
 export class PromotionService {
@@ -17,6 +18,3 @@ export class PromotionService {
     }
   }
 }
-
-
-

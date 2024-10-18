@@ -1,3 +1,4 @@
+import { IsNull, Not } from "typeorm";
 import { Category } from "../entities/Category.entity";
 import { Product } from "../entities/Product.entity";
 import { CategoryException } from "../exceptions/CategoryException";
@@ -33,6 +34,18 @@ export class ProductService {
         throw error;
       }
       throw new ProductException("Error getting products by category", 500);
+    }
+  }
+
+  async getProductsWithPromotion(): Promise<Product[]> {
+    try {
+      const products = await productRepository.find({
+        where: { promotion: Not(IsNull()) },
+      });
+
+      return products;
+    } catch (error) {
+      throw new ProductException("Error getting products in promotion", 500);
     }
   }
 }

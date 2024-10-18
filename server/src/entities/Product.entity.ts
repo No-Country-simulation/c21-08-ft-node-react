@@ -64,7 +64,9 @@ export class Product {
   @OneToMany(() => OrderProduct, (orderProduct) => orderProduct.product)
   orderProduct!: OrderProduct[];
 
-  @ManyToOne(() => Promotion, (promotion) => promotion.product)
+  @ManyToOne(() => Promotion, (promotion) => promotion.product, {
+    eager: true,
+  })
   @JoinColumn({ name: "promotion" })
   promotion!: Promotion;
 }

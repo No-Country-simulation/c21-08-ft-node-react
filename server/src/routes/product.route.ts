@@ -8,5 +8,8 @@ router.get("/", (req, res) => productController.getAllProducts(req, res));
 router.get("/category/:categoryId", (req, res) =>
   productController.getProductsByCategory(req, res)
 );
+router.get("/promotion", (req, res) =>
+  productController.getProductsWithPromotion(req, res)
+);
 
 export default router;

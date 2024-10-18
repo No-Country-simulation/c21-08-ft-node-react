@@ -35,4 +35,19 @@ export class ProductController {
       throw new ProductException("Error getting all products", 500);
     }
   }
+
+  async getProductsWithPromotion(req: Request, res: Response) {
+    try {
+      const products: Product[] =
+        await this.productService.getProductsWithPromotion();
+
+      res.status(200).json(products);
+    } catch (error) {
+      if (error instanceof ProductException) {
+        throw error;
+      }
+
+      throw new ProductException("Error getting products in promotion", 500);
+    }
+  }
 }
