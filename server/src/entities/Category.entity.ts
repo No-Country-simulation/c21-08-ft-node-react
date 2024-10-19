@@ -9,6 +9,9 @@ export class Category {
   @Column()
   categoryName!: string;
 
+  @Column({ type: "boolean", default: false})
+  featured!: boolean;
+
   @OneToMany(() => Product, (product) => product.category)
   product!: Product[];
 }

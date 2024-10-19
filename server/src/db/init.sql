@@ -31,22 +31,23 @@ CREATE DATABASE IF NOT EXISTS kramer;
 
 CREATE TABLE `category` (
   `categoryId` varchar(255) NOT NULL,
-  `categoryName` varchar(255) NOT NULL
+  `categoryName` varchar(255) NOT NULL,
+  `featured` BOOLEAN DEFAULT false
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `category`
 --
 
-INSERT INTO `category` (`categoryId`, `categoryName`) VALUES
-('1', 'Almacén'),
-('2', 'Congelados'),
-('3', 'Librería'),
-('4', 'Vinoteca'),
-('5', 'Limpieza'),
-('6', 'Bebidas sin alcohol'),
-('7', 'Bebidas con alcohol'),
-('8', 'Variados');
+INSERT INTO `category` (`categoryId`, `categoryName`, `featured`) VALUES
+('1', 'Almacén', true),
+('2', 'Congelados', false),
+('3', 'Librería', false),
+('4', 'Vinoteca', true),
+('5', 'Limpieza', false),
+('6', 'Bebidas sin alcohol', true),
+('7', 'Bebidas con alcohol', true),
+('8', 'Variados', false);
 
 -- --------------------------------------------------------
 
@@ -176,9 +177,9 @@ CREATE TABLE `promotion` (
 --
 
 INSERT INTO `promotion` (`promotionId`, `percentage`) VALUES
-('1', 5),
-('2', 10),
-('3', 15);
+('1', 0.05),
+('2', 0.1),
+('3', 0.15);
 
 -- --------------------------------------------------------
 
