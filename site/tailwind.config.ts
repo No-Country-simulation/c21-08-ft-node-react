@@ -1,6 +1,7 @@
 import type { Config } from "tailwindcss"
 import defaultTheme from "tailwindcss/defaultTheme"
 import lineClamp from "@tailwindcss/line-clamp"
+import { PluginAPI } from "tailwindcss/types/config"
 
 const config: Config = {
   content: [
@@ -41,8 +42,21 @@ const config: Config = {
         gray400: "#C1C1C1",
         gray1000: "#292D32",
       },
+      fontSize: {
+        h1: "2.25rem",
+      },
     },
   },
-  plugins: [lineClamp],
+  plugins: [
+    lineClamp,
+    function (api: PluginAPI) {
+      const { addBase } = api
+      addBase({
+        h1: { fontSize: "2.5rem" },
+        h2: { fontSize: "2.5rem" },
+        h3: { fontSize: "1.5rem" },
+      })
+    },
+  ],
 }
 export default config

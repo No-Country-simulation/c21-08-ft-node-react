@@ -1,6 +1,7 @@
 export type IconProps = {
   iconType:
     | "chev"
+    | "check"
     | "boxTick"
     | "boxTickLarge"
     | "cartLarge"

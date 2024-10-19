@@ -6,8 +6,9 @@ import Icon from "../Icon/Icon.component"
 import Image from "next/image"
 import useLogicCard from "@/app/hooks/useCardLogic.hook"
 import { getProductImageAlt } from "@/app/utils/getProductImageAlt.util"
+import Link from "next/link"
 
-const Card = ({ additionalStyles, product }: CardProps) => {
+const Card = ({ additionalStyles, product, link }: CardProps) => {
   const { finalPrice, discount, isFavorite, handleFavorite, handleAddToCart } =
     useLogicCard(product)
 
@@ -17,18 +18,22 @@ const Card = ({ additionalStyles, product }: CardProps) => {
     <article
       className={`flex flex-col rounded-lg bg-gray300 ${additionalStyles} max-h-[472px] min-w-0 max-w-64`}
     >
-      <Image
-        className="rounded-t-lg"
-        src={"/images/product-placeholder.webp"}
-        alt={getProductImageAlt(name)}
-        width={256}
-        height={256}
-      />
+      <Link href={link}>
+        <Image
+          className="rounded-t-lg"
+          src={"/images/product-placeholder.webp"}
+          alt={getProductImageAlt(name)}
+          width={256}
+          height={256}
+        />
+      </Link>
       <div className="flex flex-col p-4 xs:p-2">
         <div className="flex justify-between">
-          <h3 className="line-clamp-3 min-h-16 max-w-48 text-[20px] font-medium leading-[20px] md:text-[16px] md:leading-[16px]">
-            {name}
-          </h3>
+          <Link href={link}>
+            <h3 className="line-clamp-3 min-h-16 max-w-48 text-[20px] font-medium leading-[20px] md:text-[16px] md:leading-[16px]">
+              {name}
+            </h3>
+          </Link>
           <button className="mb-auto" onClick={handleFavorite}>
             <Icon iconType={`${isFavorite ? "heartFilled" : "heart"}`} />
           </button>
