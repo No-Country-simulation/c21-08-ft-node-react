@@ -65,4 +65,3 @@ export const cartReducer = (state: ProductInCart[], action: CartAction) => {
 
   return state
 }
-
