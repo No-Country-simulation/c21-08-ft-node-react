@@ -1,4 +1,11 @@
-import { Column, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryColumn } from "typeorm";
+import {
+  Column,
+  Entity,
+  JoinColumn,
+  ManyToOne,
+  OneToMany,
+  PrimaryColumn,
+} from "typeorm";
 import { OrderStatus } from "../common/orderStatus.enum";
 import { OrderProduct } from "./OrderProduct.entity";
 import { User } from "./User.entity";
@@ -16,7 +23,7 @@ export class ClientOrder {
   createdAt!: Date;
 
   @ManyToOne(() => User, (user) => user.order)
-  @JoinColumn({name: "user"})
+  @JoinColumn({ name: "user" })
   user!: User;
 
   @OneToMany(() => OrderProduct, (orderProduct) => orderProduct.clientOrder)

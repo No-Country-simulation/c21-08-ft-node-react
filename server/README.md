@@ -31,6 +31,7 @@ Para instalar las dependencias del proyecto, ejecuta el siguiente comando en la 
 ```bash
 npm install
 ```
+
 ### b) Variables de entorno
 
 ```bash
@@ -83,62 +84,68 @@ src/
 
 ## **Usuarios**
 
-  ### **GET:** `/user`
+### **GET:** `/user`
 
 - **Descripcion:** Metodo que devuelve un arreglo con todos los usuarios disponibles en la base de datos
 - **Parametros:** No se requieren parametros
+
 #### **Respuesta exitosa:**
- - **Status:** `200 OK`
- - **Contenido:** Un arreglo de objetos de tipo User, si no hay usuarios devuelve un arreglo vacio `[]`
- - **Body:**
-   
+
+- **Status:** `200 OK`
+- **Contenido:** Un arreglo de objetos de tipo User, si no hay usuarios devuelve un arreglo vacio `[]`
+- **Body:**
+
 ```json
 [
- {
-  "userId": "user01",
-  "name": "John Doe",
-  "email": "john@gmail.com",
-  "role": "client"
- },
- {
-  "userId": "user02",
-  "name": "Lianne Keitha",
-  "email": "lianne@gmail.com",
-  "role": "client"
- }
+  {
+    "userId": "user01",
+    "name": "John Doe",
+    "email": "john@gmail.com",
+    "role": "client"
+  },
+  {
+    "userId": "user02",
+    "name": "Lianne Keitha",
+    "email": "lianne@gmail.com",
+    "role": "client"
+  }
 ]
 ```
 
 #### **Posibles errores:**
+
 - **500 Internal Server Error:** Error al intentar conectarse a la base de datos
 
 </br>
 
 ## **Categorias**
 
-  ### **GET:** `/category`
+### **GET:** `/category`
 
 - **Descripcion:** Metodo que devuelve un arreglo con todas las categorias disponibles en la base de datos
 - **Parametros:** No se requieren parametros
+
 #### **Respuesta exitosa:**
- - **Status:** `200 OK`
- - **Contenido:** Un arreglo de objetos de tipo Category, si no hay categorias devuelve un arreglo vacio `[]`
- - **Body:**
-   
+
+- **Status:** `200 OK`
+- **Contenido:** Un arreglo de objetos de tipo Category, si no hay categorias devuelve un arreglo vacio `[]`
+- **Body:**
+
 ```json
 [
- {
-  "categoryId": "cat01",
-  "categoryName": "Categoria 1"
- },
- {
-  "categoryId": "cat02",
-  "categoryName": "Categoria 2"
- }
+  {
+    "categoryId": "cat01",
+    "categoryName": "Categoria 1"
+  },
+  {
+    "categoryId": "cat02",
+    "categoryName": "Categoria 2"
+  }
 ]
 ```
 
 #### **Posibles errores:**
+
 - **500 Internal Server Error:** Error al intentar conectarse a la base de datos
 
 </br>
@@ -149,44 +156,47 @@ src/
 
 - **Descripcion:** Metodo que devuelve un arreglo con todos los productos disponibles en la base de datos
 - **Parametros:** No se requieren parametros
+
 #### **Respuesta exitosa:**
- - **Status:** `200 OK`
- - **Contenido:** Un arreglo de objetos de tipo Product, si no hay productos devuelve un arreglo vacio `[]`
- - **Body:**
-   
+
+- **Status:** `200 OK`
+- **Contenido:** Un arreglo de objetos de tipo Product, si no hay productos devuelve un arreglo vacio `[]`
+- **Body:**
+
 ```json
 [
-    {
-      "productId": "prod01",
-      "name": "aceite natura x 900ml.",
-      "brand": "Natura",
-      "price": 0,
-      "unitOfMeasurement": "unitary",
-      "description": "Aceite de girasol de primera calidad",
-      "stock": 19,
-      "imgUrl": "www.google.com/aceite-natura",
-      "category": { "categoryId": "category04", "categoryName": "Almacen" },
-      "promotion": {
-        "promotionId": "promotion01",
-        "percentage": 0.1
-      }
-    },
-    {
-      "productId": "prod02",
-      "name": "banana ecuador",
-      "brand": null,
-      "price": 3400,
-      "unitOfMeasurement": "kg",
-      "description": "Tremendas bananas",
-      "stock": 50,
-      "imgUrl": "www.google.com/banana-ecuador",
-      "category": { "categoryId": "category01", "categoryName": "Frutas" },
-      "promotion": null
+  {
+    "productId": "prod01",
+    "name": "aceite natura x 900ml.",
+    "brand": "Natura",
+    "price": 0,
+    "unitOfMeasurement": "unitary",
+    "description": "Aceite de girasol de primera calidad",
+    "stock": 19,
+    "imgUrl": "www.google.com/aceite-natura",
+    "category": { "categoryId": "category04", "categoryName": "Almacen" },
+    "promotion": {
+      "promotionId": "promotion01",
+      "percentage": 0.1
     }
+  },
+  {
+    "productId": "prod02",
+    "name": "banana ecuador",
+    "brand": null,
+    "price": 3400,
+    "unitOfMeasurement": "kg",
+    "description": "Tremendas bananas",
+    "stock": 50,
+    "imgUrl": "www.google.com/banana-ecuador",
+    "category": { "categoryId": "category01", "categoryName": "Frutas" },
+    "promotion": null
+  }
 ]
 ```
 
 #### **Posibles errores:**
+
 - **500 Internal Server Error:** Error al intentar conectarse a la base de datos
 
 </br>
@@ -196,44 +206,47 @@ src/
 - **Descripcion:** Metodo que devuelve un arreglo con todos los productos de una categoria especifica
 - **Parametros:**
   - `categoryId` (string): El id de la categoria
+
 #### **Respuesta exitosa:**
- - **Status:** `200 OK`
- - **Contenido:** Un arreglo de objetos de tipo Product de una categoria en especifico, si no hay productos devuelve un arreglo vacio `[]`
- - **Body:**
-   
+
+- **Status:** `200 OK`
+- **Contenido:** Un arreglo de objetos de tipo Product de una categoria en especifico, si no hay productos devuelve un arreglo vacio `[]`
+- **Body:**
+
 ```json
 [
-    {
-      "productId": "prod01",
-      "name": "aceite natura x 900ml.",
-      "brand": "Natura",
-      "price": 0,
-      "unitOfMeasurement": "unitary",
-      "description": "Aceite de girasol de primera calidad",
-      "stock": 19,
-      "imgUrl": "www.google.com/aceite-natura",
-      "category": { "categoryId": "category04", "categoryName": "Almacen" },
-      "promotion": {
-        "promotionId": "promotion01",
-        "percentage": 0.1
-      }
-    },
-    {
-      "productId": "prod02",
-      "name": "Fideos Marolio x 500gr.",
-      "brand": null,
-      "price": 3400,
-      "unitOfMeasurement": "unitary",
-      "description": "Los mejores fideos de la ciudad",
-      "stock": 40,
-      "imgUrl": "www.google.com/fideos-marolio",
-      "category": { "categoryId": "category04", "categoryName": "Almacen" },
-      "promotion": null
+  {
+    "productId": "prod01",
+    "name": "aceite natura x 900ml.",
+    "brand": "Natura",
+    "price": 0,
+    "unitOfMeasurement": "unitary",
+    "description": "Aceite de girasol de primera calidad",
+    "stock": 19,
+    "imgUrl": "www.google.com/aceite-natura",
+    "category": { "categoryId": "category04", "categoryName": "Almacen" },
+    "promotion": {
+      "promotionId": "promotion01",
+      "percentage": 0.1
     }
+  },
+  {
+    "productId": "prod02",
+    "name": "Fideos Marolio x 500gr.",
+    "brand": null,
+    "price": 3400,
+    "unitOfMeasurement": "unitary",
+    "description": "Los mejores fideos de la ciudad",
+    "stock": 40,
+    "imgUrl": "www.google.com/fideos-marolio",
+    "category": { "categoryId": "category04", "categoryName": "Almacen" },
+    "promotion": null
+  }
 ]
 ```
 
 #### **Posibles errores:**
+
 - **500 Internal Server Error:** Error al intentar conectarse a la base de datos
 - **404 Not Found:** Categoria no encontrada
 
@@ -243,11 +256,13 @@ src/
 
 - **Descripcion:** Metodo que devuelve un arreglo con todos los productos que tienen descuento
 - **Parametros:** No se requieren parametros
+
 #### **Respuesta exitosa:**
- - **Status:** `200 OK`
- - **Contenido:** Un arreglo de objetos de tipo Product, si no hay productos devuelve un arreglo vacio `[]`
- - **Body:**
-   
+
+- **Status:** `200 OK`
+- **Contenido:** Un arreglo de objetos de tipo Product, si no hay productos devuelve un arreglo vacio `[]`
+- **Body:**
+
 ```json
 [
   {
@@ -287,26 +302,27 @@ src/
     }
   }
 ]
-
 ```
 
 #### **Posibles errores:**
+
 - **500 Internal Server Error:** Error al intentar conectarse a la base de datos
 
 </br>
 
-
 ## Promociones
 
-  ### **GET:** `/promotion`
+### **GET:** `/promotion`
 
 - **Descripcion:** Metodo que devuelve un arreglo con todas las promociones disponibles en la base de datos
 - **Parametros:** No se requieren parametros
+
 #### **Respuesta exitosa:**
- - **Status:** `200 OK`
- - **Contenido:** Un arreglo de objetos de tipo Promotion, si no hay promociones devuelve un arreglo vacio `[]`
- - **Body:**
-   
+
+- **Status:** `200 OK`
+- **Contenido:** Un arreglo de objetos de tipo Promotion, si no hay promociones devuelve un arreglo vacio `[]`
+- **Body:**
+
 ```json
 [
   {
@@ -394,8 +410,8 @@ src/
     ]
   }
 ]
-
 ```
 
 #### **Posibles errores:**
+
 - **500 Internal Server Error:** Error al intentar conectarse a la base de datos

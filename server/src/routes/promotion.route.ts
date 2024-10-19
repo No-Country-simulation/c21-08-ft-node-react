@@ -7,16 +7,12 @@ const router = Router();
 const promotionService = new PromotionService();
 const promotionController = new PromotionController(promotionService);
 
-
 router.get("/", async (req, res, next) => {
   try {
     await promotionController.getAllPromotions(req, res);
   } catch (error) {
-    next(error); 
+    next(error);
   }
 });
 
 export default router;
-
-
-

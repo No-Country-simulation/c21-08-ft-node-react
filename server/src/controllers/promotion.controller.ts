@@ -12,10 +12,9 @@ export class PromotionController {
       if (error instanceof Error) {
         return res.status(500).json({ message: error.message });
       }
-      return res.status(500).json({ message: "Error desconocido al obtener promociones." });
+      return res
+        .status(500)
+        .json({ message: "Error desconocido al obtener promociones." });
     }
   }
 }
-
-
-

@@ -11,10 +11,10 @@ export class OrderProduct {
   quantity!: number;
 
   @ManyToOne(() => ClientOrder, (clientOrder) => clientOrder)
-  @JoinColumn({name: "clientOrder"})
+  @JoinColumn({ name: "clientOrder" })
   clientOrder!: ClientOrder;
 
   @ManyToOne(() => Product, (product) => product.orderProduct)
-  @JoinColumn({name: "product"})
+  @JoinColumn({ name: "product" })
   product!: Product;
 }
