@@ -981,6 +981,39 @@ const Icon = ({ iconType, style = "" }: IconProps) => {
           />
         </svg>
       )
+    case "check":
+      return (
+        <svg
+          width="25"
+          height="25"
+          viewBox="0 0 25 25"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M11.5992 15.8445L17.2219 10.2218"
+            stroke="#292D32"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <path
+            d="M11.5986 15.8445L9.09424 13.34"
+            stroke="#292D32"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <ellipse
+            cx="12.6803"
+            cy="12.4947"
+            rx="8.64441"
+            ry="8.4712"
+            stroke="#292D32"
+            stroke-width="1.5"
+          />
+        </svg>
+      )
   }
 }
 

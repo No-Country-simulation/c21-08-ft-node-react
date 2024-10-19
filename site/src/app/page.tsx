@@ -1,10 +1,23 @@
 import CategoryCard from "./components/CategoryCard/CategoryCard.component"
 import CustomerStep from "./components/CustomerStep/CustomerStep.component"
 import Icon from "./components/Icon/Icon.component"
-import DiscountContainer from "./components/DiscountContainer/DiscountContainer.component"
+import DiscountContainer from "./components/CarouselContainer/CarouselContainer.component"
 import Image from "next/image"
+import { sortPromotions } from "./utils/functions.utils"
+import { IsClientProvider } from "./contexts/isClient.context"
+import Card from "./components/Card/Card.component"
+import { strForData } from "./utils/functions.utils"
+
+const getDiscountedProducts = async () => {
+  const res = await fetch("http://localhost:3170/promotion")
+  const rawArr = await res.json()
+  const discountedProducts = sortPromotions(rawArr)
+  return discountedProducts
+}
 
 export default async function Home() {
+  const discountedProducts = await getDiscountedProducts()
+  console.log("discountedProducts: ", discountedProducts)
   return (
     <main className="mt-24 flex flex-col gap-16 md:gap-8 xs:gap-4">
       <section className="hero h-[560px] overflow-hidden md:h-[320px] xs:h-[192px]">
@@ -58,7 +71,18 @@ export default async function Home() {
           <h2 className="text-[32px] font-bold leading-[32px] xs:text-[24px] xs:leading-[24px]">
             Descuentos
           </h2>
-          <DiscountContainer />
+          <IsClientProvider>
+            <DiscountContainer>
+              {discountedProducts.map((p, idx) => (
+                <Card
+                  key={`products-${idx}`}
+                  additionalStyles="keen-slider__slide"
+                  product={p}
+                  link={`/categoria/${strForData(p.category.categoryName)}/${p.productId}`}
+                />
+              ))}
+            </DiscountContainer>
+          </IsClientProvider>
         </div>
       </section>
       <section className="w-full">

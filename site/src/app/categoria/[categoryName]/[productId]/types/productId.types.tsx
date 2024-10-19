@@ -1,4 +1,6 @@
+type ProductPageParams = "categoryName" | "productId"
 export type ProductPageProps = {
-  searchParams?: string
-  params?: string
+  params?: {
+    [key in ProductPageParams]: string
+  }
 }

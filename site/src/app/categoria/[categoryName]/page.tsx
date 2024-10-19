@@ -24,6 +24,8 @@ export default function CategoriaPage() {
   const [formValues, setFormValues] = useState<Fields>(formInitialState)
 
   const params = useParams()
+  console.log("params: ", params)
+
   const categoryName = strForDisplay(
     (params.categoryName as string) || "unknown category",
   )
