@@ -26,6 +26,7 @@ const Checkout = () => {
   const [address, setAddress] = useState<CardAddressProp["address"] | null>(
     null,
   )
+  console.log("address: ", address)
   const [selectedAddress, setSelectedAddress] = useState(0)
 
   useEffect(() => {

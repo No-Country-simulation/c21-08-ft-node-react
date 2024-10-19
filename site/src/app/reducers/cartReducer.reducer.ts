@@ -1,6 +1,6 @@
 import { ProductInCart } from "../components/Cart/types/ProductInCart.type"
 import { CartAction } from "../components/Cart/types/CartAction.type"
-import { updateCartLS } from "../utils/updateCartLS.util"
+import { updateCartLS, getCartItems } from "../utils/ls.util"
 
 export const cartReducer = (state: ProductInCart[], action: CartAction) => {
   const { type } = action
@@ -61,6 +61,11 @@ export const cartReducer = (state: ProductInCart[], action: CartAction) => {
     )
     updateCartLS(newState)
     return newState
+  }
+
+  if (type === "INIT_CART") {
+    const productsFromCart = getCartItems()
+    return productsFromCart
   }
 
   return state

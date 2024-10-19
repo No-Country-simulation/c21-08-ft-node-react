@@ -2,6 +2,11 @@ import { useReducer, useEffect } from "react"
 import { cartReducer } from "../reducers/cartReducer.reducer"
 import { Product } from "../types/Product.type"
 
+export const getCartItems = () => {
+  const localStorageLecture = window.localStorage.getItem("cart")
+  const parsedCart = localStorageLecture ? JSON.parse(localStorageLecture) : []
+  return parsedCart
+}
 export const cartInitialState = []
 
 export const useCartReducer = () => {
@@ -24,13 +29,7 @@ export const useCartReducer = () => {
   }
 
   useEffect(() => {
-    const localStorageLecture = window.localStorage.getItem("cart")
-    const parsedCart = localStorageLecture
-      ? JSON.parse(localStorageLecture)
-      : []
-    for (const product of parsedCart) {
-      addToCart(product)
-    }
+    dispatch({ type: "INIT_CART" })
   }, [])
   return {
     productsInCart,

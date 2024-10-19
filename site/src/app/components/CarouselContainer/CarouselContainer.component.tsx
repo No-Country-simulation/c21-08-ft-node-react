@@ -51,12 +51,12 @@ const CarouselContainer = ({ children }: DiscountContainerProps) => {
       <div className="hover:bg-dark1000 pointer-events-none absolute z-40 flex h-full w-full items-center justify-between">
         <SliderNavigationArrow
           type="left"
-          onClick={(e) => e.stopPropagation() || instanceRef.current?.prev()}
+          onClick={() => instanceRef.current?.prev()}
           isDisabled={currentSlide === 0}
         />
         <SliderNavigationArrow
           type="right"
-          onClick={(e) => e.stopPropagation() || instanceRef.current?.next()}
+          onClick={() => instanceRef.current?.next()}
           isDisabled={
             instanceRef.current
               ? currentSlide ===
