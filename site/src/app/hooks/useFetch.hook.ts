@@ -1,14 +1,18 @@
 import { useState, useEffect } from "react"
 
 const useFetch = <T>(endpoint: string) => {
-  const [data, setData] = useState<T>()
+  const [data, setData] = useState<T | null>(null)
 
   useEffect(() => {
     async function getData() {
-      const res = await fetch(endpoint)
-      const data: T = await res.json()
+      try {
+        const res = await fetch(endpoint)
+        const data: T = await res.json()
 
-      setData(data)
+        setData(data)
+      } catch (e) {
+        console.log(e)
+      }
     }
     getData()
   }, [endpoint])
