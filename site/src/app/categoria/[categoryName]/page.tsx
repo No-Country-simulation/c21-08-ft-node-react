@@ -5,6 +5,10 @@ import FilterPanel from "./components/FilterPanel.component"
 import ProductsPanel from "./components/ProductsPanel.component"
 import { Product } from "../../types/Product.type"
 import { usePathname } from "next/navigation"
+import {
+  getActualPathPart,
+  strForDisplay,
+} from "@/app/utils/strFormatting.util"
 import { Fields } from "./types/page.types"
 import useFilterProducts from "./hooks/useFilterProducts.hook"
 import useResetFilters from "./hooks/useResetFilters.hook"
