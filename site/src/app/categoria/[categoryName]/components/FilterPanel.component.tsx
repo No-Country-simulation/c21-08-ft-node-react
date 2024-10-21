@@ -117,6 +117,9 @@ const FilterPanel = ({
                 </div>
               </div>
               {brands.map((brand, idx) => (
+                // SIGUE EL ERROR DE BRAND = null
+                // se uso brand como string para
+                // seguir sin errores
                 <div
                   key={`brand-filter-${idx}`}
                   className="flex items-center gap-2"
