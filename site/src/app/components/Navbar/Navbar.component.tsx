@@ -1,23 +1,17 @@
 "use client"
 
 import Icon from "../Icon/Icon.component"
-import { useEffect } from "react"
 import Cart from "../Cart/Cart.component"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import CartButton from "./CartButton.component"
 import CategoriesPanel from "../CategoriesPanel/CategoriesPanel.component"
 import Logo from "./Logo.component"
 import CategoriesButton from "./CategoriesButton.component"
-import useFetch from "@/app/hooks/useFetch.hook"
-import { API_BASE_URL } from "@/app/consts/api.consts"
-import { Category as CategoryType } from "@/app/types/Product.type"
 import Menu from "./Menu.components"
 import SearchBar from "./SearchBar.components"
 import MenuButton from "./MenuButton.component"
 
 const Navbar = () => {
-  const categories = useFetch<CategoryType[]>(`${API_BASE_URL}/category`) || []
-
   const [isCartVisible, setIsCartVisible] = useState(false)
   const [isCategoriesVisible, setIsCategoriesVisible] = useState(false)
   const [isMenuVisible, setIsMenuVisible] = useState(false)
@@ -41,6 +35,8 @@ const Navbar = () => {
   }
 
   useEffect(() => {
+    setIsMenuVisible(false)
+    setIsCartVisible(false)
     setIsCategoriesVisible(false)
   }, [])
 
@@ -72,7 +68,6 @@ const Navbar = () => {
       <CategoriesPanel
         changeCategoriesVisibility={changeCategoriesVisibility}
         isCategoriesVisible={isCategoriesVisible}
-        categories={categories}
       />
       <Cart
         changeCartVisibility={changeCartVisibility}
