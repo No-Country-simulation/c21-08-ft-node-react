@@ -1,6 +1,6 @@
 import { Dispatch, SetStateAction } from "react"
 import Icon from "@/app/components/Icon/Icon.component"
-import { strForDisplay } from "@/app/utils/functions.utils"
+import { strForDisplay } from "@/app/utils/strFormatting.util"
 import { Filters, FilterSwitchers } from "../types/page.types"
 
 type FilterHeaderProps = {

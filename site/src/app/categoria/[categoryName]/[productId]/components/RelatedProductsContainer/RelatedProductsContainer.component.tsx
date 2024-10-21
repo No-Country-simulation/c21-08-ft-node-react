@@ -3,7 +3,7 @@ import CarouselContainer from "@/app/components/CarouselContainer/CarouselContai
 import { getRelatedProducts } from "./services/getRelatedProducts.service"
 import { Product } from "@/app/types/Product.type"
 import Card from "@/app/components/Card/Card.component"
-import { strForData } from "@/app/utils/functions.utils"
+import { strForData } from "@/app/utils/strFormatting.util"
 
 type RelatedProductsContainerProps = {
   product: Product

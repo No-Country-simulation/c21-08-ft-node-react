@@ -1,7 +1,7 @@
 import { IsClientProvider } from "@/app/contexts/isClient.context"
 import CarouselContainer from "../CarouselContainer/CarouselContainer.component"
 import Card from "../Card/Card.component"
-import { strForData } from "@/app/utils/functions.utils"
+import { strForData } from "@/app/utils/strFormatting.util"
 import { getDiscountedProducts } from "./services/getDiscountedProducts.service"
 
 const DiscountsContainer = async () => {

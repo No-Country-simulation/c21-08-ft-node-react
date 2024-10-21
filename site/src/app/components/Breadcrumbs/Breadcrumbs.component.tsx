@@ -2,7 +2,7 @@
 
 import Icon from "../Icon/Icon.component"
 import { useRouter, usePathname } from "next/navigation"
-import { strForDisplay } from "@/app/utils/functions.utils"
+import { strForDisplay } from "@/app/utils/strFormatting.util"
 
 const Breadcrumbs = () => {
   const router = useRouter()

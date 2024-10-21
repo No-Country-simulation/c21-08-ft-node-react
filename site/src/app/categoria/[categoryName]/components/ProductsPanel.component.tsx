@@ -4,8 +4,7 @@ import Card from "@/app/components/Card/Card.component"
 import { useRouter } from "next/navigation"
 import Icon from "@/app/components/Icon/Icon.component"
 import { ProductsPanelProps } from "../types/page.types"
-import { strForDisplay } from "@/app/utils/functions.utils"
-import { useParams } from "next/navigation"
+import { strForDisplay } from "@/app/utils/strFormatting.util"
 import { usePathname } from "next/navigation"
 
 const ProductsPanel = ({ products }: ProductsPanelProps) => {

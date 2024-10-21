@@ -6,7 +6,7 @@ import {
   cleanStr,
   strForData,
   strForDisplay,
-} from "@/app/utils/functions.utils"
+} from "@/app/utils/strFormatting.util"
 import { IconProps } from "../Icon/types/IconProps.type"
 /*mx-auto grid h-full w-full max-w-[1000px] grid-cols-2 gap-2 py-5 md:grid-cols-4 md:gap-5*/
 const CategoriesPanel = ({
