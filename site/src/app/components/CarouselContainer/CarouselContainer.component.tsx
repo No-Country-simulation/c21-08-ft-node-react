@@ -43,7 +43,7 @@ const CarouselContainer = ({ children }: CarouselContainerProps) => {
   })
 
   return (
-    <div className="relative flex items-center gap-2">
+    <div className="relative flex items-center gap-2 h-[416px] xs:h-[208px]">
       {isLoaded && instanceRef.current && (
         <SliderNavigationArrow
           type="left"
@@ -56,11 +56,11 @@ const CarouselContainer = ({ children }: CarouselContainerProps) => {
         />
       )}
 
-      {isClient && (
+      {isClient ? (
         <div ref={silderRef} className="keen-slider">
           {children}
         </div>
-      )}
+      ) : <h3 className="w-full h-full text-center flex justify-center items-center xs:text-[14px] xs:leading-[14px]">Cargando...</h3>}
 
       {isLoaded && instanceRef.current && (
         <SliderNavigationArrow
