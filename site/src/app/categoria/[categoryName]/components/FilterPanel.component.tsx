@@ -126,7 +126,7 @@ const FilterPanel = ({
                     name={brand}
                     onChange={handleBrandToggle}
                   />
-                  <label htmlFor={brand}>{strForDisplay(brand)}</label>
+                  <label htmlFor={brand}>{strForDisplay('brand')}</label>
                 </div>
               ))}
             </div>
