@@ -16,6 +16,8 @@ const Cart = ({ changeCartVisibility, isCartVisible, style }: CartProps) => {
     removeProduct,
   } = useContext(CartContext)
 
+  const positionStyles = style === "fixed" ? "fixed right-0 top-[96px] h-[calc(100%-96px)]" : "relative h-full"
+
   return (
     <>
       <Overlay
