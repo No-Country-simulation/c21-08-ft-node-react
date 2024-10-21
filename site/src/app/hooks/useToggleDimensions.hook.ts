@@ -1,5 +1,4 @@
 import { RefObject, useEffect } from 'react'
-// import { getComponentSizes } from '../utils/functions.utils'
 import { useDimensions } from './useDimensions.hook'
 
 export const useToggleDimensions = <T extends HTMLElement = HTMLElement>(
