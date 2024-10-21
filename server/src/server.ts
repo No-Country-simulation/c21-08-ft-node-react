@@ -3,9 +3,10 @@ import express from "express";
 import app from "./app";
 import { AppDataSource } from "./data-source";
 import categoryRoutes from "./routes/category.route";
+import orderRoutes from "./routes/clientOrder.route";
 import productRoutes from "./routes/product.route";
-import userRoutes from "./routes/user.route";
 import promotionRoutes from "./routes/promotion.route";
+import userRoutes from "./routes/user.route";
 
 const PORT = process.env.PORT || 3170;
 
@@ -19,6 +20,7 @@ AppDataSource.initialize()
     app.use("/product", productRoutes);
     app.use("/category", categoryRoutes);
     app.use("/promotion", promotionRoutes);
+    app.use("/order", orderRoutes);
 
     app.listen(PORT, () => {
       console.log(`Port running in port ${PORT}`);

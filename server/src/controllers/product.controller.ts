@@ -52,6 +52,7 @@ export class ProductController {
     }
   }
 
+  //Obtener todos los productos que tienen una promocion activa
   async getProductsWithPromotion(req: Request, res: Response) {
     try {
       const products: Product[] =

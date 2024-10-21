@@ -22,6 +22,9 @@ export class ClientOrder {
   @Column({ type: "timestamp", default: () => "CURRENT_TIMESTAMP" })
   createdAt!: Date;
 
+  @Column({ default: false })
+  isConfirmed!: boolean;
+
   @ManyToOne(() => User, (user) => user.order)
   @JoinColumn({ name: "user" })
   user!: User;
