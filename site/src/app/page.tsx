@@ -14,8 +14,7 @@ export default async function Home() {
           alt="promocion-1"
           width={1080}
           height={1350}
-          objectFit="contain"
-          className="m-auto"
+          className="m-auto object-contain"
         />
       </section>
       <section className="-mt-48 w-full md:mt-0">
