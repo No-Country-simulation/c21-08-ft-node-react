@@ -43,6 +43,7 @@ const config: Config = {
         krOrange: "#FC7C48",
         krRed: "#E65046",
         krBlue: "#2557B2",
+        krGreen: "#49946A",
       },
       fontSize: {
         h1: "2.25rem",

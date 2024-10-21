@@ -4,6 +4,7 @@ import { IMG_WIDTH, IMG_HEIGHT } from "@/app/consts/sizes.consts"
 import Icon from "@/app/components/Icon/Icon.component"
 import { Product } from "@/app/types/Product.type"
 import RelatedProductsContainer from "./components/RelatedProductsContainer/RelatedProductsContainer.component"
+import Price from "@/app/components/Price/Price.component"
 
 const getProduct = async (productId: string | undefined) => {
   const res = await fetch(`http://localhost:3170/product/${productId}`)
@@ -28,13 +29,20 @@ const ProductPage = async ({ params }: { params: { productId: string } }) => {
               className="z-50 border border-solid border-gray1000"
             />
           </div>
-          <div className="w-40 flex-1">
+          <div className="flex w-40 flex-1 flex-col gap-6">
             <h1 className="font-bold">{product.name}</h1>
             <div className="flex gap-2 bg-gray-400 p-2">
               <span>En stock</span>
               <Icon iconType="check" />
             </div>
             <p>{product.description}</p>
+            <div className="flex items-center justify-between">
+              <Price price={product.price} size="L" />
+              <button className="flex">
+                <span>Añadir al carrito</span>
+                <Icon iconType="plus" />
+              </button>
+            </div>
           </div>
         </section>
         <section className="flex flex-col gap-10 border-t-2 border-solid border-gray300 pt-10">
