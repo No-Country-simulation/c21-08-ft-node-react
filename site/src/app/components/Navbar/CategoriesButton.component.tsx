@@ -5,7 +5,7 @@ const CategoriesButton = ({
   changeCategoriesVisibility,
 }: CategoriesButtonProps) => {
   return (
-    <button onClick={changeCategoriesVisibility} className="mx-2 flex gap-2">
+    <button onClick={changeCategoriesVisibility} className="flex gap-2">
       <Icon iconType="category" />
       <span className="sm:hidden xs:inline">Categorías</span>
     </button>
