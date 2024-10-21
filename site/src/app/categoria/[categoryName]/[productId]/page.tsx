@@ -1,13 +1,15 @@
 import Breadcrumbs from "@/app/components/Breadcrumbs/Breadcrumbs.component"
 import Image from "next/image"
 import { IMG_WIDTH, IMG_HEIGHT } from "@/app/consts/sizes.consts"
+import { API_BASE_URL } from "@/app/consts/api.consts"
 import Icon from "@/app/components/Icon/Icon.component"
 import { Product } from "@/app/types/Product.type"
 import RelatedProductsContainer from "./components/RelatedProductsContainer/RelatedProductsContainer.component"
 import Price from "@/app/components/Price/Price.component"
+import AddButton from "@/app/components/AddButton/AddButton.component"
 
 const getProduct = async (productId: string | undefined) => {
-  const res = await fetch(`http://localhost:3170/product/${productId}`)
+  const res = await fetch(`${API_BASE_URL}/product/${productId}`)
   const [product]: Product[] = await res.json()
   return product
 }
@@ -52,10 +54,7 @@ const ProductPage = async ({ params }: { params: { productId: string } }) => {
             </p>
             <div className="flex items-center justify-between">
               <Price price={product.price} size="L" />
-              <button className="flex h-10 items-center gap-2 rounded-md bg-krOrange px-3 py-1 font-bold text-white">
-                <span>Añadir al carrito</span>
-                <Icon iconType="plus" />
-              </button>
+              <AddButton product={product} withIcon />
             </div>
           </div>
         </section>

@@ -9,7 +9,6 @@ const Breadcrumbs = () => {
   const params = usePathname()
   const pages = params.split("/")
   const crumbs = pages.slice(2, pages.length - 1).reverse()
-  console.log("crumbs: ", crumbs)
 
   return (
     <div className="flex">
@@ -27,7 +26,7 @@ const Breadcrumbs = () => {
           onClick={() => window.history.go((idx + 1) * -1)}
         >
           <Icon iconType="chev" style="-rotate-90 h-5" />
-          <button>{strForDisplay(c)}</button>
+          <button>{strForDisplay(decodeURIComponent(c))}</button>
         </span>
       ))}
     </div>

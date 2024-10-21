@@ -22,7 +22,7 @@ const ProductsPanel = ({ products, categoryName }: ProductsPanelProps) => {
           <button>Página de inicio</button>
         </span>
         <h1 className="text-4xl font-bold">
-          {strForDisplay(categoryName || "")}
+          {strForDisplay(decodeURIComponent(categoryName) || "")}
         </h1>
       </div>
       <span>Mostrando {products.length} productos</span>
