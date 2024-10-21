@@ -19,7 +19,7 @@ const ProductPage = async ({ params }: ProductPageProps) => {
   const product = await getProduct(params?.productId)
 
   return (
-    <div className="w-full pt-24">
+    <main className="w-full pt-24">
       <div className="mx-auto flex max-w-[1000px] flex-col justify-between gap-20 pt-20 lg:gap-10 lg:px-10">
         <Breadcrumbs />
         <section className="flex gap-20">
@@ -47,7 +47,7 @@ const ProductPage = async ({ params }: ProductPageProps) => {
           <RelatedProductsContainer product={product} />
         </section>
       </div>
-    </div>
+    </main>
   )
 }
 

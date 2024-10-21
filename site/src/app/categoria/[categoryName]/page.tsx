@@ -40,7 +40,7 @@ export default function CategoriaPage() {
   useResetFilters(formInitialState, categoryName, setFormValues)
 
   return (
-    <div className="w-full pt-24">
+    <main className="w-full pt-24">
       <div className="mx-auto flex max-w-[1000px] justify-between gap-20 pt-20 lg:gap-10 lg:px-10">
         <FilterPanel
           setFormValues={setFormValues}
@@ -54,6 +54,6 @@ export default function CategoriaPage() {
           currentCategory={"currentCategory"}
         />
       </div>
-    </div>
+    </main>
   )
 }
