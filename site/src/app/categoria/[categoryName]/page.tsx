@@ -14,7 +14,6 @@ import useFilterProducts from "./hooks/useFilterProducts.hook"
 import useResetFilters from "./hooks/useResetFilters.hook"
 import useFetch from "@/app/hooks/useFetch.hook"
 import { API_BASE_URL } from "@/app/consts/api.consts"
-import { useParams } from "next/navigation"
 
 const formInitialState = {
   price: 99999,
@@ -22,7 +21,11 @@ const formInitialState = {
   discount: false,
 }
 
-export default function CategoriaPage() {
+export default function CategoriaPage({
+  params,
+}: {
+  params: { categoryId: string }
+}) {
   const [currentProducts, setCurrentProducts] = useState<Product[]>([])
   const [formValues, setFormValues] = useState<Fields>(formInitialState)
   const pathname = usePathname()
@@ -30,7 +33,9 @@ export default function CategoriaPage() {
   const categoryName = strForDisplay(getActualPathPart(pathname))
 
   const products =
-    useFetch<Product[]>(`${API_BASE_URL}/product/category/${categoryId}`) || []
+    useFetch<Product[]>(
+      `${API_BASE_URL}/product/category/${params.categoryId}`,
+    ) || [] as Product[]
 
   useFilterProducts(products, formValues, setCurrentProducts)
   useResetFilters(formInitialState, categoryName, setFormValues)
