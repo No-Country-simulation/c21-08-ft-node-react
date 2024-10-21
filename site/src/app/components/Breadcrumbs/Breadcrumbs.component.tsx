@@ -8,7 +8,8 @@ const Breadcrumbs = () => {
   const router = useRouter()
   const params = usePathname()
   const pages = params.split("/")
-  const crumbs = pages.slice(1, pages.length - 1).reverse()
+  const crumbs = pages.slice(2, pages.length - 1).reverse()
+  console.log("crumbs: ", crumbs)
 
   return (
     <div className="flex">
