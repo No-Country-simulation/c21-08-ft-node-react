@@ -23,11 +23,7 @@ const Cart = ({ changeCartVisibility, isCartVisible, style }: CartProps) => {
         changeVisibility={changeCartVisibility}
       />
       <div
-        className={`${isCartVisible ? "flex" : "hidden"} ${
-          style === "fixed"
-            ? "fixed right-0 top-[96px] h-[calc(100%-96px)] w-[496px] flex-col gap-4 bg-white px-4 py-4 shadow-xl md:w-2/3 sm:w-full xs:gap-2 xs:px-1 xs:py-1"
-            : "relative h-full w-[496px] flex-col gap-4 bg-white px-4 py-4 shadow-xl md:w-2/3 sm:w-full xs:gap-2 xs:px-1 xs:py-1"
-        }`}
+        className={`${isCartVisible ? "flex" : "hidden"} ${positionStyles} z-30 w-[496px] flex-col gap-4 bg-white px-4 py-4 shadow-xl md:w-2/3 sm:w-full xs:gap-2 xs:px-1 xs:py-1`}
       >
         <CartHeader changeCartVisibility={changeCartVisibility} />
         <CartProductList
