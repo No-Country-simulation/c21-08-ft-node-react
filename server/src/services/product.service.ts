@@ -20,17 +20,17 @@ export class ProductService {
     }
   }
 
-  async getProductById(productId:string): Promise<Product[]> {
+  async getProductById(productId: string): Promise<Product> {
     try {
-      const product = productRepository.find({where: {productId}})
+      const product = await productRepository.findOne({ where: { productId } });
+      
       if (!product) {
         throw new ProductException("Product not found", 404);
       }
-
+  
       return product;
-
     } catch (error) {
-      throw new ProductException("Error getting a prodcut by id", 500);
+      throw new ProductException("Error getting a product by id", 500);
     }
   }
 

@@ -24,7 +24,7 @@ export class ProductController {
   async getProductById(req: Request ,res:Response ) : Promise<any> {
     try {
       const productId: string = req.params.productId;
-      const product:Product[] | undefined =
+      const product:Product | undefined =
         await this.productService.getProductById(productId);
 
       return res.status(200).json(product);
