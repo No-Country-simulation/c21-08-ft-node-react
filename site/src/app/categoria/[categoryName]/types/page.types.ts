@@ -9,7 +9,7 @@ export type FilterSwitchers = {
 
 export type ProductsPanelProps = {
   products: Product[]
-  currentCategory: string
+  categoryName: string
 }
 
 export type Fields = {
@@ -22,6 +22,6 @@ export type FilterPanelProps = {
   setFormValues: Dispatch<SetStateAction<Fields>>
   formValues: Fields
   setCurrentProducts: Dispatch<SetStateAction<Product[]>>
-  currentCategory: string
+  categoryName: string
   source: Product[]
 }
