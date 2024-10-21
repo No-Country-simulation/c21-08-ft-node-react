@@ -415,3 +415,69 @@ src/
 #### **Posibles errores:**
 
 - **500 Internal Server Error:** Error al intentar conectarse a la base de datos
+
+<br />
+
+## Ordenes
+
+### **POST:** `/order/create`
+
+- **Descripcion:** Metodo que crea una orden de compra y envia un mail de confirmacion al usuario.
+- **Parametros:**
+```json
+  {
+    "userId": "user01",
+    "delivery": true,
+    "methodOfPayment": "electronic" 
+  }
+
+  // o
+
+    {
+    "userId": "user02",
+    "delivery": false,
+    "methodOfPayment": "cash" 
+  }
+  ```
+  
+ - **Enums:**
+  ```javascript
+   export enum MethodOfPayment {
+    CASH = "cash",
+    ELECTRONIC = "electronic"
+   }
+   ```
+
+#### **Respuesta exitosa:**
+
+- **Status:** `200 OK`
+- **Contenido:** Un objeto con las propiedades message y orderId
+- **Body:**
+
+```json
+{
+    "message": "Order succesfully created",
+    "orderId": "fd781742-c1a2-444a-9558-702d80d13860"
+}
+```
+
+#### **Posibles errores:**
+
+- **500 Internal Server Error:** Error al intentar conectarse a la base de datos
+- **400 Bad Request:** Falta uno o mas parametros
+```json
+  {
+    "message": [
+      "userId must be a string",
+      "delivery must be a boolean",
+      "methodOfPayment must be a value of MethodOfPayment"
+  ]
+  }
+  ```
+- **400 Bad Request:** Propiedad no requerida por parametro
+```json
+  {
+    "message": [
+      "propiedadDeEjemplo must not exist",
+  ]
+  }
