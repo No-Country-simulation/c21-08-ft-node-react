@@ -481,3 +481,35 @@ src/
       "propiedadDeEjemplo must not exist",
   ]
   }
+
+<br />
+
+### **GET:** `/order/confirm`
+
+- **Descripcion:** Metodo que confirma el pedido al ingresar desde el link proporcionado por el correo electronico
+- **Queries:**
+```json
+  {
+    //Al pasar la query la URL quedaria algo como `http://localhost:3170/order/confirm?orderId=fd781742-c1a2-444a-9558-702d80d13860`
+    "orderId": "fd781742-c1a2-444a-9558-702d80d13860"
+  }
+  ```
+
+#### **Respuesta exitosa:**
+
+- **Status:** `200 OK`
+- **Contenido:** Un objeto con las propiedades message y orderId
+- **Body:**
+
+```json
+{
+    "message": "Order succesfully confirmed",
+    "orderId": "fd781742-c1a2-444a-9558-702d80d13860"
+}
+```
+
+#### **Posibles errores:**
+
+- **500 Internal Server Error:** Error al intentar conectarse a la base de datos
+- **404 Not Found:** Orden no existente
+
