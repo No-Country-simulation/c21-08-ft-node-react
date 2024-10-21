@@ -1,6 +1,5 @@
 import Breadcrumbs from "@/app/components/Breadcrumbs/Breadcrumbs.component"
 import Image from "next/image"
-import { ProductPageProps } from "./types/productId.types"
 import { IMG_WIDTH, IMG_HEIGHT } from "@/app/consts/sizes.consts"
 import Icon from "@/app/components/Icon/Icon.component"
 import { Product } from "@/app/types/Product.type"
@@ -12,11 +11,8 @@ const getProduct = async (productId: string | undefined) => {
   return product
 }
 
-const ProductPage = async ({ params }: ProductPageProps) => {
-  // according to typescript 'params' can be undefined, what should we do
-  // if that is the case? until now I didn't find a situation in which
-  // params in undefined
-  const product = await getProduct(params?.productId)
+const ProductPage = async ({ params }: { params: { productId: string } }) => {
+  const product = await getProduct(params.productId)
 
   return (
     <main className="w-full pt-24">
@@ -39,7 +35,6 @@ const ProductPage = async ({ params }: ProductPageProps) => {
               <Icon iconType="check" />
             </div>
             <p>{product.description}</p>
-            <div></div>
           </div>
         </section>
         <section className="flex flex-col gap-10 border-t-2 border-solid border-gray300 pt-10">
