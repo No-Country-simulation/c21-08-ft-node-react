@@ -4,10 +4,7 @@ import { ProductPageProps } from "./types/productId.types"
 import { IMG_WIDTH, IMG_HEIGHT } from "@/app/consts/sizes.consts"
 import Icon from "@/app/components/Icon/Icon.component"
 import { Product } from "@/app/types/Product.type"
-import CarouselContainer from "@/app/components/CarouselContainer/CarouselContainer.component"
-import Card from "@/app/components/Card/Card.component"
-import { IsClientProvider } from "@/app/contexts/isClient.context"
-import { strForData } from "@/app/utils/functions.utils"
+import RelatedProductsContainer from "./components/RelatedProductsContainer/RelatedProductsContainer.component"
 
 const getProduct = async (productId: string | undefined) => {
   const res = await fetch(`http://localhost:3170/product/${productId}`)
@@ -15,26 +12,11 @@ const getProduct = async (productId: string | undefined) => {
   return product
 }
 
-const getRelatedPrducts = async (productId: string, categoryId: string) => {
-  const res = await fetch(
-    `http://localhost:3170/product/category/${categoryId}`,
-  )
-  const productsByCategory: Product[] = await res.json()
-  const remainingProducts = productsByCategory.filter(
-    (p) => p.productId !== productId,
-  )
-  return [...remainingProducts, ...remainingProducts, ...remainingProducts]
-}
-
 const ProductPage = async ({ params }: ProductPageProps) => {
   // according to typescript 'params' can be undefined, what should we do
   // if that is the case? until now I didn't find a situation in which
   // params in undefined
   const product = await getProduct(params?.productId)
-  const relatedProducts = await getRelatedPrducts(
-    params?.productId as string,
-    product.category.categoryId,
-  )
 
   return (
     <div className="w-full pt-24">
@@ -62,18 +44,7 @@ const ProductPage = async ({ params }: ProductPageProps) => {
         </section>
         <section className="flex flex-col gap-10 border-t-2 border-solid border-gray300 pt-10">
           <h2 className="text-2xl font-bold">También te podría gustar</h2>
-          <IsClientProvider>
-            <CarouselContainer>
-              {relatedProducts.map((p, idx) => (
-                <Card
-                  key={`products-${idx}`}
-                  additionalStyles="keen-slider__slide"
-                  product={p}
-                  link={`/categoria/${strForData(p.category.categoryName)}/${p.productId}`}
-                />
-              ))}
-            </CarouselContainer>
-          </IsClientProvider>
+          <RelatedProductsContainer product={product} />
         </section>
       </div>
     </div>
