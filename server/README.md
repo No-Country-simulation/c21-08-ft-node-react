@@ -73,10 +73,11 @@ src/
 </br>
 
 ### b) Diagrama de arquitectura
+![Captura de pantalla 2024-10-21 175310](https://github.com/user-attachments/assets/c8d95f3f-a395-4f71-9568-bf661bc1e485)
 
 </br>
 
-![Captura de pantalla 2024-10-15 162751](https://github.com/user-attachments/assets/e577a35c-1e2a-4502-8f7b-0890a2fce7e6)
+
 
 </br>
 
