@@ -16,26 +16,27 @@ const Card = ({ additionalStyles, product, link }: CardProps) => {
 
   return (
     <article
-      className={`flex flex-col rounded-lg bg-gray300 ${additionalStyles} max-h-[472px] min-w-0 max-w-64`}
+      className={`flex flex-col rounded-lg bg-gray300 ${additionalStyles} min-h-[424px] md:min-h-[376px] xs:min-h-[192px]`}
     >
       <Link href={link}>
-        <Image
-          className="rounded-t-lg"
-          src={"/images/product-placeholder.webp"}
-          alt={getProductImageAlt(name)}
-          width={256}
-          height={256}
-        />
+        <div className="relative h-[240px] w-full md:h-[192px] xs:h-[96px]">
+          <Image
+            className="w-full rounded-t-lg object-cover"
+            src={"/images/product-placeholder.webp"}
+            alt={getProductImageAlt(name)}
+            fill
+          />
+        </div>
       </Link>
-      <div className="flex flex-col p-4 xs:p-2">
+      <div className="flex grow flex-col justify-between p-4 xs:p-2">
         <div className="flex justify-between">
           <Link href={link}>
-            <h3 className="line-clamp-3 min-h-16 max-w-48 text-[20px] font-medium leading-[20px] md:text-[16px] md:leading-[16px]">
+            <h3 className="line-clamp-3 min-h-16 max-w-48 text-[20px] font-medium leading-[20px] xs:text-[14px] xs:leading-[14px] xs:min-h-[42px]">
               {name}
             </h3>
           </Link>
           <button className="mb-auto" onClick={handleFavorite}>
-            <Icon iconType={`${isFavorite ? "heartFilled" : "heart"}`} />
+            <Icon style="scale-75" iconType={`${isFavorite ? "heartFilled" : "heart"}`} />
           </button>
         </div>
         <div className="flex flex-col gap-2">
@@ -52,7 +53,7 @@ const Card = ({ additionalStyles, product, link }: CardProps) => {
             </div>
             {discount && (
               <div className="flex h-8 w-16 items-center justify-center rounded-full bg-gray1000 xs:h-6 xs:w-10">
-                <span className="text-center text-[16px] font-semibold leading-[16px] text-white md:text-[14px] md:leading-[14px] xs:text-[12px] xs:font-medium xs:leading-[12px]">{`%${50}`}</span>
+                <span className="text-center text-[16px] font-semibold leading-[16px] text-white xs:text-[12px] xs:font-medium xs:leading-[12px]">{`%${50}`}</span>
               </div>
             )}
           </div>
