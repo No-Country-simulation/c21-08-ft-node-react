@@ -1,4 +1,4 @@
-import "use client"
+"use client"
 
 import { MenuProps } from "./types/MenuProps.type"
 import CategoriesButton from "./CategoriesButton.component"
