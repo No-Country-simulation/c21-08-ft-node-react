@@ -12,3 +12,10 @@ export const strForData = (str: string) => {
 export const cleanStr = (str: string) => {
   return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "")
 }
+
+export const getActualPathPart = (pathname: string) => {
+  const pathSplittedBySlash = pathname.split("/")
+  const [actualPathPart] =
+    pathSplittedBySlash[pathSplittedBySlash.length - 1].split("?")
+  return actualPathPart
+}
