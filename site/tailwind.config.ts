@@ -40,6 +40,9 @@ const config: Config = {
         gray300: "#D9D9D9",
         gray400: "#C1C1C1",
         gray1000: "#292D32",
+        krOrange: "#FC7C48",
+        krRed: "#E65046",
+        krBlue: "#2557B2",
       },
       fontSize: {
         h1: "2.25rem",
