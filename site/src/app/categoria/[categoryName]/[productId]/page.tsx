@@ -31,14 +31,28 @@ const ProductPage = async ({ params }: { params: { productId: string } }) => {
           </div>
           <div className="flex w-40 flex-1 flex-col gap-6">
             <h1 className="font-bold">{product.name}</h1>
-            <div className="flex gap-2 bg-gray-400 p-2">
-              <span>En stock</span>
-              <Icon iconType="check" />
+            <div className="flex gap-2 self-start rounded-md bg-gray-400 bg-krBlue px-3 py-2 font-bold text-white">
+              {product.stock > 0 ? (
+                <>
+                  <span>En stock</span>
+                  <Icon iconType="check" />
+                </>
+              ) : (
+                <>
+                  <span>Sin stock</span>
+                  <Icon iconType="plus" style="rotate-90" />
+                </>
+              )}
             </div>
-            <p>{product.description}</p>
+            <p>
+              {product.description} Lorizzle rizzle dolizzle cool amizzle,
+              consectetuer adipiscing elit. Nullam sapien velizzle, mammasay
+              mammasa mamma oo sa volutpat, suscipizzle quizzle, gravida vizzle,
+              shizzlin dizzle
+            </p>
             <div className="flex items-center justify-between">
               <Price price={product.price} size="L" />
-              <button className="flex">
+              <button className="flex h-10 items-center gap-2 rounded-md bg-krOrange px-3 py-1 font-bold text-white">
                 <span>Añadir al carrito</span>
                 <Icon iconType="plus" />
               </button>
