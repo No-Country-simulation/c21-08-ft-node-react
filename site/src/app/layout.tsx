@@ -1,5 +1,6 @@
 import type { Metadata } from "next"
 // import localFont from "next/font/local";
+import { Suspense } from "react"
 import "./globals.css"
 import Navbar from "./components/Navbar/Navbar.component"
 import { CartContextProvider } from "./contexts/cart.context"
@@ -30,7 +31,9 @@ export default function RootLayout({
     <html lang="en">
       <body className="bg-gray100">
         <CartContextProvider>
-          <Navbar />
+          <Suspense>
+            <Navbar />
+          </Suspense>
           {children}
         </CartContextProvider>
         <Footer />

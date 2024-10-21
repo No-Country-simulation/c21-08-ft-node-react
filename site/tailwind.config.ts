@@ -1,6 +1,5 @@
 import type { Config } from "tailwindcss"
 import defaultTheme from "tailwindcss/defaultTheme"
-import lineClamp from "@tailwindcss/line-clamp"
 import { PluginAPI } from "tailwindcss/types/config"
 
 const config: Config = {
@@ -48,7 +47,6 @@ const config: Config = {
     },
   },
   plugins: [
-    lineClamp,
     function (api: PluginAPI) {
       const { addBase } = api
       addBase({
