@@ -4,8 +4,7 @@ import { useState } from "react"
 import FilterPanel from "./components/FilterPanel.component"
 import ProductsPanel from "./components/ProductsPanel.component"
 import { Product } from "../../types/Product.type"
-import { useSearchParams } from "next/navigation"
-import { strForDisplay } from "@/app/utils/strFormatting.util"
+import { usePathname } from "next/navigation"
 import { Fields } from "./types/page.types"
 import useFilterProducts from "./hooks/useFilterProducts.hook"
 import useResetFilters from "./hooks/useResetFilters.hook"
@@ -22,16 +21,9 @@ const formInitialState = {
 export default function CategoriaPage() {
   const [currentProducts, setCurrentProducts] = useState<Product[]>([])
   const [formValues, setFormValues] = useState<Fields>(formInitialState)
+  const pathname = usePathname()
 
-  const params = useParams()
-  console.log("params: ", params)
-
-  const categoryName = strForDisplay(
-    (params.categoryName as string) || "unknown category",
-  )
-
-  const searchParams = useSearchParams()
-  const categoryId = searchParams.get("categoryId")
+  const categoryName = strForDisplay(getActualPathPart(pathname))
 
   const products =
     useFetch<Product[]>(`${API_BASE_URL}/product/category/${categoryId}`) || []
@@ -46,13 +38,10 @@ export default function CategoriaPage() {
           setFormValues={setFormValues}
           formValues={formValues}
           setCurrentProducts={setCurrentProducts}
-          currentCategory={"currentCategory"}
+          categoryName={categoryName}
           source={products}
         />
-        <ProductsPanel
-          products={currentProducts}
-          currentCategory={"currentCategory"}
-        />
+        <ProductsPanel products={currentProducts} categoryName={categoryName} />
       </div>
     </main>
   )

@@ -7,9 +7,7 @@ import { ProductsPanelProps } from "../types/page.types"
 import { strForDisplay } from "@/app/utils/strFormatting.util"
 import { usePathname } from "next/navigation"
 
-const ProductsPanel = ({ products }: ProductsPanelProps) => {
-  const params = useParams()
-  const categoryName = params.categoryName as string
+const ProductsPanel = ({ products, categoryName }: ProductsPanelProps) => {
   const pathname = usePathname()
 
   const router = useRouter()

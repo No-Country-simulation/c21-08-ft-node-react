@@ -20,7 +20,7 @@ const MAX_PRICE = 99999
 const FilterPanel = ({
   setFormValues,
   formValues,
-  currentCategory,
+  categoryName,
   source,
 }: FilterPanelProps) => {
   const [brands, setBrands] = useState<string[]>([])
@@ -39,7 +39,7 @@ const FilterPanel = ({
 
   useEffect(() => {
     setCheckedPrice(MAX_PRICE)
-  }, [currentCategory])
+  }, [categoryName])
 
   const handleChange = (
     e: ChangeEvent<HTMLInputElement>,
