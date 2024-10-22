@@ -94,7 +94,7 @@ const Navbar = () => {
       <Cart
         changeCartVisibility={changeCartVisibility}
         isCartVisible={isCartVisible}
-        style="fixed"
+        display="cart"
       />
       <Menu
         isMenuVisible={isMenuVisible}

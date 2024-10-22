@@ -8,7 +8,7 @@ import { CartContext } from "@/app/contexts/cart.context"
 import { CartProps } from "./types/CartProps.type"
 import Overlay from "../Overlay/Overlay.component"
 
-const Cart = ({ changeCartVisibility, isCartVisible, style }: CartProps) => {
+const Cart = ({ changeCartVisibility, isCartVisible, display }: CartProps) => {
   const {
     productsInCart,
     incrementProductQty,
@@ -16,25 +16,35 @@ const Cart = ({ changeCartVisibility, isCartVisible, style }: CartProps) => {
     removeProduct,
   } = useContext(CartContext)
 
-  const positionStyles = style === "fixed" ? "fixed right-0 top-[96px] h-[calc(100%-96px)]" : "relative h-full"
+  const positionStyles =
+    display === "cart"
+      ? "fixed right-0 top-[96px] h-[calc(100%-96px)] w-[496px]"
+      : "relative mx-auto min-h-[300px] w-full min-w-[460px]"
 
   return (
     <>
-      <Overlay
-        isVisible={isCartVisible}
-        changeVisibility={changeCartVisibility}
-      />
+      {display !== "checkout" && (
+        <Overlay
+          isVisible={isCartVisible}
+          changeVisibility={changeCartVisibility}
+          display={display}
+        />
+      )}
       <div
-        className={`${isCartVisible ? "flex" : "hidden"} ${positionStyles} z-30 w-[496px] flex-col gap-4 bg-white px-4 py-4 shadow-xl md:w-2/3 sm:w-full xs:gap-2 xs:px-1 xs:py-1`}
+        className={`${isCartVisible ? "flex" : "hidden"} ${positionStyles} flex-col gap-4 bg-white px-4 py-4 shadow-xl md:w-2/3 sm:w-full xs:gap-2 xs:px-1 xs:py-1`}
       >
-        <CartHeader changeCartVisibility={changeCartVisibility} />
+        {display === "cart" ? (
+          <CartHeader changeCartVisibility={changeCartVisibility} />
+        ) : (
+          <h3>Tus productos</h3>
+        )}
         <CartProductList
           productsInCart={productsInCart}
           incrementProductQty={incrementProductQty}
           decrementProductQty={decrementProductQty}
           removeProduct={removeProduct}
         />
-        <CartFooter productsInCart={productsInCart} />
+        <CartFooter productsInCart={productsInCart} display={display} />
       </div>
     </>
   )

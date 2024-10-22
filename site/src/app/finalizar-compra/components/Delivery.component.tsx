@@ -1,35 +1,49 @@
 import { DeliveryProps } from "../types/DeliveryProps.types"
-import { useState } from "react"
-const Delivery = ({ onSelect }: DeliveryProps) => {
-  const [selectedOption, setSelectedOption] = useState<boolean | null>(null)
 
+const Delivery = ({
+  isDeliverySelected,
+  setIsDeliverySelected,
+  setForm,
+}: DeliveryProps) => {
   const handleSelect = (value: boolean) => {
-    setSelectedOption(value)
-    onSelect(value)
+    setIsDeliverySelected(value)
   }
   return (
-    <div id="Delivery">
-      {/* preguntar a backend que valores requieren */}
-      <h2>¿Lo retira o se lo llevamos?</h2>
-      <label htmlFor="PickItUp" className="block">
+    <div className="flex flex-col justify-center gap-1">
+      <h3>¿Lo retira o se lo llevamos?</h3>
+      <label
+        htmlFor="PickItUp"
+        className="my-auto flex w-fit cursor-pointer items-center justify-center"
+      >
         <input
           type="radio"
           name="PickItUp"
           value="PickItUp"
-          checked={selectedOption === false}
+          checked={isDeliverySelected === false}
+          className="me-1"
           id="PickItUp"
-          onClick={() => handleSelect(false)}
+          onChange={() => {
+            setForm((prev) => ({ ...prev, isDeliverySelected: false }))
+            handleSelect(false)
+          }}
         />
         Lo retiro
       </label>
-      <label htmlFor="Deliveri" className="block">
+      <label
+        htmlFor="Delivery"
+        className="my-auto flex w-fit cursor-pointer items-center justify-center"
+      >
         <input
           type="radio"
           name="Deliveri"
           value="Deliveri"
-          checked={selectedOption === true}
-          id="Deliveri"
-          onClick={() => handleSelect(true)}
+          checked={isDeliverySelected === true}
+          className="me-1"
+          id="Delivery"
+          onChange={() => {
+            setForm((prev) => ({ ...prev, isDeliverySelected: true }))
+            handleSelect(true)
+          }}
         />
         Delivery
       </label>

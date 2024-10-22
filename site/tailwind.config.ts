@@ -45,9 +45,6 @@ const config: Config = {
         krBlue: "#2557B2",
         krGreen: "#49946A",
       },
-      fontSize: {
-        h1: "2.25rem",
-      },
     },
   },
   plugins: [

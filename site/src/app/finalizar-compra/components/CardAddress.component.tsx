@@ -1,17 +1,15 @@
 import { CardAddressProp } from "../types/cardAddressProp.types"
 const CardAddress = ({
   address,
-  setAddress,
   checked,
   setSelectedAddress,
   index,
 }: CardAddressProp) => {
   const handleSelect = () => {
     setSelectedAddress(index)
-    setAddress(address)
   }
   return (
-    <div className="border-2 border-solid">
+    <div className="my-2 w-fit min-w-56 rounded-md border-2 border-solid border-gray400">
       <label htmlFor={address.address}>
         <input
           id={address.address}
@@ -20,10 +18,11 @@ const CardAddress = ({
           value={address?.address}
           checked={checked}
           onChange={() => handleSelect()}
+          className="mx-1"
         />
-        Direccion registrada
+        {address.address}
       </label>
-      <p>{address.address}</p>
+      <p className="ms-5">{address.city}</p>
     </div>
   )
 }
