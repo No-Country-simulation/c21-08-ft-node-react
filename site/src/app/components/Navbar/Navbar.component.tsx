@@ -10,11 +10,13 @@ import CategoriesButton from "./CategoriesButton.component"
 import Menu from "./Menu.components"
 import SearchBar from "./SearchBar.components"
 import MenuButton from "./MenuButton.component"
+import { usePathname } from "next/navigation"
 
 const Navbar = () => {
   const [isCartVisible, setIsCartVisible] = useState(false)
   const [isCategoriesVisible, setIsCategoriesVisible] = useState(false)
   const [isMenuVisible, setIsMenuVisible] = useState(false)
+  const pathname = usePathname()
 
   useEffect(() => {
     const handleResize = () => {
@@ -36,6 +38,12 @@ const Navbar = () => {
     }
   }, [isMenuVisible])
 
+  useEffect(() => {
+    setIsMenuVisible(false)
+    setIsCartVisible(false)
+    setIsCategoriesVisible(false)
+  }, [pathname])
+
   const changeMenuVisibility = () => {
     if (isCartVisible) setIsCartVisible((prev) => !prev)
     if (isCategoriesVisible) setIsCategoriesVisible((prev) => !prev)
@@ -53,12 +61,6 @@ const Navbar = () => {
     if (isMenuVisible) setIsMenuVisible(false)
     setIsCategoriesVisible((prev) => !prev)
   }
-
-  useEffect(() => {
-    setIsMenuVisible(false)
-    setIsCartVisible(false)
-    setIsCategoriesVisible(false)
-  }, [])
 
   return (
     <>
