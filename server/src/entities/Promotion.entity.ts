@@ -1,9 +1,9 @@
-import { Column, Entity, OneToMany, PrimaryColumn } from "typeorm";
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 import { Product } from "./Product.entity";
 
 @Entity()
 export class Promotion {
-  @PrimaryColumn("uuid")
+  @PrimaryGeneratedColumn("uuid")
   promotionId!: string;
 
   @Column("decimal", { precision: 5, scale: 2 })

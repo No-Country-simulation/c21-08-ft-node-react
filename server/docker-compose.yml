@@ -21,7 +21,7 @@ services:
       MYSQL_DATABASE: kramer
     volumes:
       - new-db:/var/lib/mysql
-      - ./src/db/init.sql:/docker-entrypoint-initdb.d/init.sql
+      #- ./src/db/init.sql:/docker-entrypoint-initdb.d/init.sql
 
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
