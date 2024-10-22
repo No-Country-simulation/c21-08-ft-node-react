@@ -13,3 +13,5 @@ export const AppDataSource = new DataSource({
   logging: true,
   entities: [join(__dirname, "/**/*.entity{.ts,.js}")],
 });
+
+console.log("PORT", process.env.MYSQLPORT);
