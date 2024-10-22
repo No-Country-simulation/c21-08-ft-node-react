@@ -22,4 +22,18 @@ export class UserController {
       throw new UserException("Error getting all users", 500);
     }
   }
+
+  async getUserById(req: Request, res: Response): Promise<any> {
+    try {
+      const userId: string = req.params.userId;
+      const user: User | undefined = await this.userService.getUserById(userId);
+
+      return res.status(200).json(user);
+    } catch (error) {
+      if (error instanceof UserException) {
+        return res.status(error.statusCode).json({ message: error.message });
+      }
+      return res.status(500).json({ message: "Error getting a user by Id" });
+    }
+  }
 }

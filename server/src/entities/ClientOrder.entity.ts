@@ -4,7 +4,7 @@ import {
   JoinColumn,
   ManyToOne,
   OneToMany,
-  PrimaryColumn,
+  PrimaryGeneratedColumn,
 } from "typeorm";
 import { OrderStatus } from "../common/orderStatus.enum";
 import { OrderProduct } from "./OrderProduct.entity";
@@ -13,7 +13,7 @@ import { Payment } from "./Payment.entity";
 
 @Entity()
 export class ClientOrder {
-  @PrimaryColumn("uuid")
+  @PrimaryGeneratedColumn("uuid")
   clientOrderId!: string;
 
   @Column({ type: "enum", enum: OrderStatus, default: OrderStatus.PROCESS })

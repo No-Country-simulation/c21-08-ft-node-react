@@ -6,7 +6,7 @@ import {
   ManyToMany,
   ManyToOne,
   OneToMany,
-  PrimaryColumn,
+  PrimaryGeneratedColumn,
 } from "typeorm";
 import { Measurement } from "../common/measurement.enum";
 import { Category } from "./Category.entity";
@@ -16,7 +16,7 @@ import { User } from "./User.entity";
 
 @Entity()
 export class Product {
-  @PrimaryColumn("uuid")
+  @PrimaryGeneratedColumn("uuid")
   productId!: string;
 
   @Column()

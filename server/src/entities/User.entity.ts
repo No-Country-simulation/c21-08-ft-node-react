@@ -4,7 +4,7 @@ import {
   ManyToMany,
   OneToMany,
   OneToOne,
-  PrimaryColumn,
+  PrimaryGeneratedColumn,
 } from "typeorm";
 import { Role } from "../common/role.enum";
 import { Facturation } from "./Facturation.entity";
@@ -13,7 +13,7 @@ import { Product } from "./Product.entity";
 
 @Entity()
 export class User {
-  @PrimaryColumn("uuid")
+  @PrimaryGeneratedColumn("uuid")
   userId!: string;
 
   @Column()

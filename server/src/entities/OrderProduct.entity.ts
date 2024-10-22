@@ -1,10 +1,16 @@
-import { Column, Entity, JoinColumn, ManyToOne, PrimaryColumn } from "typeorm";
+import {
+  Column,
+  Entity,
+  JoinColumn,
+  ManyToOne,
+  PrimaryGeneratedColumn,
+} from "typeorm";
 import { ClientOrder } from "./ClientOrder.entity";
 import { Product } from "./Product.entity";
 
 @Entity("order_product")
 export class OrderProduct {
-  @PrimaryColumn("uuid")
+  @PrimaryGeneratedColumn("uuid")
   orderProductId!: string;
 
   @Column()
