@@ -1,5 +1,3 @@
-"use client"
-
 import { MenuProps } from "./types/MenuProps.type"
 import CategoriesButton from "./CategoriesButton.component"
 import Icon from "../Icon/Icon.component"

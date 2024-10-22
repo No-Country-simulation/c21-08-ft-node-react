@@ -16,6 +16,26 @@ const Navbar = () => {
   const [isCategoriesVisible, setIsCategoriesVisible] = useState(false)
   const [isMenuVisible, setIsMenuVisible] = useState(false)
 
+  useEffect(() => {
+    const handleResize = () => {
+      if (!isMenuVisible) return
+
+      const width = window.innerWidth
+
+      if (width < 450) return
+
+      setIsMenuVisible(false)
+    }
+
+    window.addEventListener("resize", handleResize)
+
+    handleResize()
+
+    return () => {
+      window.removeEventListener("resize", handleResize)
+    }
+  }, [isMenuVisible])
+
   const changeMenuVisibility = () => {
     if (isCartVisible) setIsCartVisible((prev) => !prev)
     if (isCategoriesVisible) setIsCategoriesVisible((prev) => !prev)
