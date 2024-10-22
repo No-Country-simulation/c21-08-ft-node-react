@@ -433,18 +433,19 @@ const Icon = ({ iconType, style = "" }: IconProps) => {
           height="24"
           viewBox="0 0 25 24"
           fill="none"
+          stroke="currentColor"
           xmlns="http://www.w3.org/2000/svg"
         >
           <path
             d="M6.33301 12H18.333"
-            stroke="#292D32"
+            // stroke="#292D32"
             strokeWidth="1.5"
             strokeLinecap="round"
             strokeLinejoin="round"
           />
           <path
             d="M12.333 18V6"
-            stroke="#292D32"
+            // stroke="#292D32"
             strokeWidth="1.5"
             strokeLinecap="round"
             strokeLinejoin="round"
@@ -984,33 +985,35 @@ const Icon = ({ iconType, style = "" }: IconProps) => {
     case "check":
       return (
         <svg
+          className={style}
           width="25"
           height="25"
           viewBox="0 0 25 25"
           fill="none"
+          stroke="currentColor"
           xmlns="http://www.w3.org/2000/svg"
         >
           <path
             d="M11.5992 15.8445L17.2219 10.2218"
-            stroke="#292D32"
-            stroke-width="1.5"
-            stroke-linecap="round"
-            stroke-linejoin="round"
+            // stroke="#292D32"
+            strokeWidth="1.5"
+            strokeLinecap="round"
+            strokeLinejoin="round"
           />
           <path
             d="M11.5986 15.8445L9.09424 13.34"
-            stroke="#292D32"
-            stroke-width="1.5"
-            stroke-linecap="round"
-            stroke-linejoin="round"
+            // stroke="#292D32"
+            strokeWidth="1.5"
+            strokeLinecap="round"
+            strokeLinejoin="round"
           />
           <ellipse
             cx="12.6803"
             cy="12.4947"
             rx="8.64441"
             ry="8.4712"
-            stroke="#292D32"
-            stroke-width="1.5"
+            // stroke="#292D32"
+            strokeWidth="1.5"
           />
         </svg>
       )

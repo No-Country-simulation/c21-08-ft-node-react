@@ -1,14 +1,22 @@
 import Breadcrumbs from "@/app/components/Breadcrumbs/Breadcrumbs.component"
 import Image from "next/image"
 import { IMG_WIDTH, IMG_HEIGHT } from "@/app/consts/sizes.consts"
+import { API_BASE_URL } from "@/app/consts/api.consts"
 import Icon from "@/app/components/Icon/Icon.component"
 import { Product } from "@/app/types/Product.type"
 import RelatedProductsContainer from "./components/RelatedProductsContainer/RelatedProductsContainer.component"
 import Price from "@/app/components/Price/Price.component"
+import AddButton from "@/app/components/AddButton/AddButton.component"
 
 const getProduct = async (productId: string | undefined) => {
-  const res = await fetch(`http://localhost:3170/product/${productId}`)
-  const [product]: Product[] = await res.json()
+  const res = await fetch(`${API_BASE_URL}/product/${productId}`, {
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+    },
+  })
+
+  const product: Product = await res.json()
   return product
 }
 
@@ -31,17 +39,28 @@ const ProductPage = async ({ params }: { params: { productId: string } }) => {
           </div>
           <div className="flex w-40 flex-1 flex-col gap-6">
             <h1 className="font-bold">{product.name}</h1>
-            <div className="flex gap-2 bg-gray-400 p-2">
-              <span>En stock</span>
-              <Icon iconType="check" />
+            <div className="flex gap-2 self-start rounded-md bg-gray-400 bg-krBlue px-3 py-2 font-bold text-white">
+              {product.stock > 0 ? (
+                <>
+                  <span>En stock</span>
+                  <Icon iconType="check" />
+                </>
+              ) : (
+                <>
+                  <span>Sin stock</span>
+                  <Icon iconType="plus" style="rotate-90" />
+                </>
+              )}
             </div>
-            <p>{product.description}</p>
+            <p>
+              {product.description} Lorizzle rizzle dolizzle cool amizzle,
+              consectetuer adipiscing elit. Nullam sapien velizzle, mammasay
+              mammasa mamma oo sa volutpat, suscipizzle quizzle, gravida vizzle,
+              shizzlin dizzle
+            </p>
             <div className="flex items-center justify-between">
               <Price price={product.price} size="L" />
-              <button className="flex">
-                <span>Añadir al carrito</span>
-                <Icon iconType="plus" />
-              </button>
+              <AddButton product={product} withIcon />
             </div>
           </div>
         </section>

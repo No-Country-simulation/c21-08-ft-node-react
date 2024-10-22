@@ -9,7 +9,7 @@ export const strForData = (str: string) => {
   return str.replaceAll(" ", "-").toLowerCase()
 }
 
-export const cleanStr = (str: string) => {
+export const removeAccents = (str: string) => {
   return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "")
 }
 
