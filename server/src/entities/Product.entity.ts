@@ -22,7 +22,7 @@ export class Product {
   @Column()
   name!: string;
 
-  @Column()
+  @Column("float")
   price!: number;
 
   @Column({ type: "enum", enum: Measurement, default: Measurement.UNITARY })
