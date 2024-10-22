@@ -1,19 +1,26 @@
+"use client"
+
 import Icon from "../Icon/Icon.component"
 import Category from "./Category.component"
 import { CategoriesPanelProps } from "./types/CategoriesPanelProps.type"
 import Overlay from "../Overlay/Overlay.component"
 import {
-  cleanStr,
+  removeAccents,
   strForData,
   strForDisplay,
-} from "@/app/utils/functions.utils"
+} from "@/app/utils/strFormatting.util"
 import { IconProps } from "../Icon/types/IconProps.type"
-/*mx-auto grid h-full w-full max-w-[1000px] grid-cols-2 gap-2 py-5 md:grid-cols-4 md:gap-5*/
+import useFetch from "@/app/hooks/useFetch.hook"
+import { Category as CategoryT } from "@/app/types/Category.type"
+import { API_BASE_URL } from "@/app/consts/api.consts"
+
 const CategoriesPanel = ({
   changeCategoriesVisibility,
   isCategoriesVisible,
-  categories,
 }: CategoriesPanelProps) => {
+  const categories =
+    useFetch<CategoryT[]>(`${API_BASE_URL}/category`) || ([] as CategoryT[])
+
   return (
     <>
       <Overlay
@@ -21,11 +28,11 @@ const CategoriesPanel = ({
         changeVisibility={changeCategoriesVisibility}
       />
       <div
-        className={`${isCategoriesVisible ? "block" : "hidden"} fixed left-0 top-[96px] h-[332px] w-full bg-white`}
+        className={`${isCategoriesVisible ? "block" : "hidden"} fixed left-0 top-[96px] z-30 h-[332px] w-full bg-white`}
       >
         <nav className="mx-auto grid h-full max-w-[1000px] grid-cols-4 grid-rows-2 gap-5 py-5 md:w-full md:grid-cols-2 md:grid-rows-4 md:gap-2 md:gap-x-10 md:px-10 sm:gap-x-1 xs:gap-y-6 xs:px-1">
           {categories.map((c, idx) => {
-            const cleanedName = cleanStr(c.categoryName)
+            const cleanedName = removeAccents(c.categoryName)
             const displayName = strForDisplay(cleanedName)
             const dataName = strForData(cleanedName) as IconProps["iconType"]
             return (

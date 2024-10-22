@@ -1,7 +1,4 @@
-export type Category = {
-  categoryId: string
-  categoryName: string
-}
+import { Category } from "./Category.type"
 
 export type Product = {
   productId: string

@@ -1,3 +1,3 @@
-export type DiscountContainerProps = {
+export type CarouselContainerProps = {
   children: React.ReactNode
 }

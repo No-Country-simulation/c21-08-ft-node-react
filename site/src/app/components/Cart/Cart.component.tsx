@@ -16,6 +16,11 @@ const Cart = ({ changeCartVisibility, isCartVisible, display }: CartProps) => {
     removeProduct,
   } = useContext(CartContext)
 
+  const positionStyles =
+    display === "cart"
+      ? "fixed right-0 top-[96px] h-[calc(100%-96px)] w-[496px]"
+      : "relative mx-auto min-h-[300px] w-full min-w-[460px]"
+
   return (
     <>
       <Overlay
@@ -24,11 +29,7 @@ const Cart = ({ changeCartVisibility, isCartVisible, display }: CartProps) => {
         display={display}
       />
       <div
-        className={`${isCartVisible ? "flex" : "hidden"} ${
-          display === "cart"
-            ? "fixed right-0 top-[96px] h-[calc(100%-96px)] w-[496px] flex-col gap-4 bg-white px-4 py-4 shadow-xl md:w-2/3 sm:w-full xs:gap-2 xs:px-1 xs:py-1"
-            : "relative mx-auto min-h-[300px] w-full min-w-[460px] flex-col gap-4 bg-white px-3 py-3 shadow-xl md:w-2/3 sm:w-full xs:gap-2 xs:px-1 xs:py-1"
-        }`}
+        className={`${isCartVisible ? "flex" : "hidden"} ${positionStyles} flex-col gap-4 bg-white px-4 py-4 shadow-xl md:w-2/3 sm:w-full xs:gap-2 xs:px-1 xs:py-1`}
       >
         {display === "cart" ? (
           <CartHeader changeCartVisibility={changeCartVisibility} />

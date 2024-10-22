@@ -4,13 +4,10 @@ import Card from "@/app/components/Card/Card.component"
 import { useRouter } from "next/navigation"
 import Icon from "@/app/components/Icon/Icon.component"
 import { ProductsPanelProps } from "../types/page.types"
-import { strForDisplay } from "@/app/utils/functions.utils"
-import { useParams } from "next/navigation"
+import { strForDisplay } from "@/app/utils/strFormatting.util"
 import { usePathname } from "next/navigation"
 
-const ProductsPanel = ({ products }: ProductsPanelProps) => {
-  const params = useParams()
-  const categoryName = params.categoryName as string
+const ProductsPanel = ({ products, categoryName }: ProductsPanelProps) => {
   const pathname = usePathname()
 
   const router = useRouter()
@@ -25,7 +22,7 @@ const ProductsPanel = ({ products }: ProductsPanelProps) => {
           <button>Página de inicio</button>
         </span>
         <h1 className="text-4xl font-bold">
-          {strForDisplay(categoryName || "")}
+          {strForDisplay(decodeURIComponent(categoryName) || "")}
         </h1>
       </div>
       <span>Mostrando {products.length} productos</span>

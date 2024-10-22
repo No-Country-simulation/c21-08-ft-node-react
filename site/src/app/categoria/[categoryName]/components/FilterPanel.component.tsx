@@ -9,7 +9,7 @@ import {
 } from "react"
 import { useToggleDimensions } from "@/app/hooks/useToggleDimensions.hook"
 import Icon from "@/app/components/Icon/Icon.component"
-import { strForDisplay } from "../../../utils/functions.utils"
+import { strForDisplay } from "@/app/utils/strFormatting.util"
 import FilterHeader from "./FilterHeader.component"
 import { FilterSwitchers } from "../types/page.types"
 import { FilterPanelProps } from "../types/page.types"
@@ -20,7 +20,7 @@ const MAX_PRICE = 99999
 const FilterPanel = ({
   setFormValues,
   formValues,
-  currentCategory,
+  categoryName,
   source,
 }: FilterPanelProps) => {
   const [brands, setBrands] = useState<string[]>([])
@@ -39,7 +39,7 @@ const FilterPanel = ({
 
   useEffect(() => {
     setCheckedPrice(MAX_PRICE)
-  }, [currentCategory])
+  }, [categoryName])
 
   const handleChange = (
     e: ChangeEvent<HTMLInputElement>,

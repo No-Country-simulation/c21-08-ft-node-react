@@ -11,6 +11,7 @@ export const products: Product[] = [
     category: {
       categoryId: "C009",
       categoryName: "categoria",
+      featured: false,
     },
     stock: 100,
   },

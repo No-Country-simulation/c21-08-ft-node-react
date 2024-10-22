@@ -5,14 +5,11 @@
   "unitOfMeasurement": "kg",
   "description": "Arroz integral de calidad premium",
   "stock": 100,
-  "image": {
-    "url": "/images/product-placeholder.webp",
-    "width": 1000,
-    "height": 1000
-  },
+  "imgUrl": "/images/product-placeholder.webp",
   "brand": "unilever",
   "category": {
     "categoryId": "1",
-    "categoryName": "Almacén"
+    "categoryName": "Almacén",
+    "featured": false
   }
 }
