@@ -1,6 +1,6 @@
 "use client"
 
-import useCardLogic from "@/app/hooks/useCardLogic.hook"
+import useCardLogic from "@/app/components/Card/hooks/useCardLogic.hook"
 import { Product } from "@/app/types/Product.type"
 import Icon from "../Icon/Icon.component"
 
