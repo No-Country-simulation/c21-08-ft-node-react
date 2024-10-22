@@ -73,10 +73,12 @@ src/
 </br>
 
 ### b) Diagrama de arquitectura
+![Captura de pantalla 2024-10-21 182813](https://github.com/user-attachments/assets/66016b47-1889-4e98-8402-a1083a4ae275)
+
 
 </br>
 
-![Captura de pantalla 2024-10-15 162751](https://github.com/user-attachments/assets/e577a35c-1e2a-4502-8f7b-0890a2fce7e6)
+
 
 </br>
 
@@ -415,3 +417,102 @@ src/
 #### **Posibles errores:**
 
 - **500 Internal Server Error:** Error al intentar conectarse a la base de datos
+
+<br />
+
+## Ordenes
+
+### **POST:** `/order/create`
+
+- **Descripcion:** Metodo que crea una orden de compra y envia un mail de confirmacion al usuario.
+- **Parametros:**
+```json
+  {
+    "userId": "user01",
+    "delivery": true,
+    "methodOfPayment": "electronic" 
+  }
+
+  // o
+
+    {
+    "userId": "user02",
+    "delivery": false,
+    "methodOfPayment": "cash" 
+  }
+  ```
+  
+ - **Enums:**
+  ```javascript
+   export enum MethodOfPayment {
+    CASH = "cash",
+    ELECTRONIC = "electronic"
+   }
+   ```
+
+#### **Respuesta exitosa:**
+
+- **Status:** `200 OK`
+- **Contenido:** Un objeto con las propiedades message y orderId
+- **Body:**
+
+```json
+{
+    "message": "Order succesfully created",
+    "orderId": "fd781742-c1a2-444a-9558-702d80d13860"
+}
+```
+
+#### **Posibles errores:**
+
+- **500 Internal Server Error:** Error al intentar conectarse a la base de datos
+- **400 Bad Request:** Falta uno o mas parametros
+```json
+  {
+    "message": [
+      "userId must be a string",
+      "delivery must be a boolean",
+      "methodOfPayment must be a value of MethodOfPayment"
+  ]
+  }
+  ```
+- **400 Bad Request:** Propiedad no requerida por parametro
+```json
+  {
+    "message": [
+      "propiedadDeEjemplo must not exist",
+  ]
+  }
+```
+
+<br />
+
+### **GET:** `/order/confirm`
+
+- **Descripcion:** Metodo que confirma el pedido al ingresar desde el link proporcionado por el correo electronico
+- **Queries:**
+```json
+  {
+    //Al pasar la query la URL quedaria algo como `http://localhost:3170/order/confirm?orderId=fd781742-c1a2-444a-9558-702d80d13860`
+    "orderId": "fd781742-c1a2-444a-9558-702d80d13860"
+  }
+  ```
+
+#### **Respuesta exitosa:**
+
+- **Status:** `200 OK`
+- **Contenido:** Un objeto con las propiedades message y orderId
+- **Body:**
+
+```json
+{
+    "message": "Order succesfully confirmed",
+    "orderId": "fd781742-c1a2-444a-9558-702d80d13860"
+}
+```
+
+#### **Posibles errores:**
+
+- **500 Internal Server Error:** Error al intentar conectarse a la base de datos
+- **404 Not Found:** Orden no existente
+

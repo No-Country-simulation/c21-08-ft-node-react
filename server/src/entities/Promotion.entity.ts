@@ -6,7 +6,7 @@ export class Promotion {
   @PrimaryColumn("uuid")
   promotionId!: string;
 
-  @Column()
+  @Column("decimal", { precision: 5, scale: 2 })
   percentage!: number;
 
   @OneToMany(() => Product, (product) => product.promotion)
