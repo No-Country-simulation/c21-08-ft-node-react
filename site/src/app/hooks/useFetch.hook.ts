@@ -6,7 +6,12 @@ const useFetch = <T>(endpoint: string) => {
   useEffect(() => {
     async function getData() {
       try {
-        const res = await fetch(endpoint)
+        const res = await fetch(endpoint, {
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+        })
         const data: T = await res.json()
 
         setData(data)

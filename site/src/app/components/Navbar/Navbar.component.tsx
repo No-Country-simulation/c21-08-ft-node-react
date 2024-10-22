@@ -45,21 +45,21 @@ const Navbar = () => {
   }, [pathname])
 
   const changeMenuVisibility = () => {
-    if (isCartVisible) setIsCartVisible((prev) => !prev)
-    if (isCategoriesVisible) setIsCategoriesVisible((prev) => !prev)
-    setIsMenuVisible((prevState) => !prevState)
+    if (isCartVisible) setIsCartVisible((prevIsCartVisible) => !prevIsCartVisible)
+    if (isCategoriesVisible) setIsCategoriesVisible((prevIsCategoriesVisible) => !prevIsCategoriesVisible)
+    setIsMenuVisible((prevIsMenuVisible) => !prevIsMenuVisible)
   }
 
   const changeCartVisibility = () => {
-    if (isCategoriesVisible) setIsCategoriesVisible(false)
-    if (isMenuVisible) setIsMenuVisible(false)
+    if (isCategoriesVisible) setIsCategoriesVisible((prevIsCategoriesVisible) => !prevIsCategoriesVisible)
+    if (isMenuVisible) setIsMenuVisible((prevIsMenuVisible) => !prevIsMenuVisible)
     setIsCartVisible((prevIsCartVisible) => !prevIsCartVisible)
   }
 
   const changeCategoriesVisibility = () => {
-    if (isCartVisible) setIsCartVisible(false)
-    if (isMenuVisible) setIsMenuVisible(false)
-    setIsCategoriesVisible((prev) => !prev)
+    if (isCartVisible) setIsCartVisible((prevIsCartVisible) => !prevIsCartVisible)
+    if (isMenuVisible) setIsMenuVisible((prevIsMenuVisible) => !prevIsMenuVisible)
+    setIsCategoriesVisible((prevIsCategoriesVisible) => !prevIsCategoriesVisible)
   }
 
   return (
@@ -99,6 +99,7 @@ const Navbar = () => {
       <Menu
         isMenuVisible={isMenuVisible}
         changeCategoriesVisibility={changeCategoriesVisibility}
+        changeMenuVisibility={changeMenuVisibility}
       />
     </>
   )

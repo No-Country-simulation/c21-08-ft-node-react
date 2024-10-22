@@ -1,4 +1,5 @@
 import { Category } from "./Category.type"
+import { Promotion } from "./Promotion.type"
 
 export type Product = {
   productId: string
@@ -9,13 +10,5 @@ export type Product = {
   category: Category
   stock: number
   brand: string
-  promotion?: number
+  promotion: Promotion | null
 }
-
-export type Promotion = {
-  promotionId: string
-  percentage: number
-  product: Product[]
-}
-
-export type ProductWithPromotion = Product & Omit<Promotion, "product">
