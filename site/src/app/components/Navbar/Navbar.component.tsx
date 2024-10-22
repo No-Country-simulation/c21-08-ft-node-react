@@ -99,6 +99,7 @@ const Navbar = () => {
       <Menu
         isMenuVisible={isMenuVisible}
         changeCategoriesVisibility={changeCategoriesVisibility}
+        changeMenuVisibility={changeMenuVisibility}
       />
     </>
   )
