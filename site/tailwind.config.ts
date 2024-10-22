@@ -41,9 +41,6 @@ const config: Config = {
         gray400: "#C1C1C1",
         gray1000: "#292D32",
       },
-      fontSize: {
-        h1: "2.25rem",
-      },
     },
   },
   plugins: [

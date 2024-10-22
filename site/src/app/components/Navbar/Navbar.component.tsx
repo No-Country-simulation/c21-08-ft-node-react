@@ -84,7 +84,7 @@ const Navbar = () => {
               <li className="flex gap-2">
                 <CartButton changeCartVisibility={changeCartVisibility} />
                 <Cart
-                  style="fixed"
+                  display="cart"
                   changeCartVisibility={changeCartVisibility}
                   isCartVisible={isCartVisible}
                 />
