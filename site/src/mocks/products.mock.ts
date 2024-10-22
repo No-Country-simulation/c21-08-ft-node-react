@@ -14,6 +14,7 @@ export const products: Product[] = [
       featured: false,
     },
     stock: 100,
+    promotion: null,
   },
   // {
   //   productId: "P002",

@@ -14,6 +14,7 @@ const initialState = {
 const FormCheckout = () => {
   const [selectedAddress, setSelectedAddress] = useState(0)
   const [form, setForm] = useState(initialState)
+  console.log("logging for just because the linter: ", form)
   const {
     isDeliverySelected,
     setIsDeliverySelected,

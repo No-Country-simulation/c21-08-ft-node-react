@@ -11,6 +11,7 @@ export const productsInCart: ProductInCart[] = [
     category: { categoryId: "C001", categoryName: "category", featured: false },
     stock: 50,
     productQty: 1,
+    promotion: null,
   },
   {
     productId: "P002",
@@ -22,6 +23,7 @@ export const productsInCart: ProductInCart[] = [
     category: { categoryId: "C002", categoryName: "category", featured: false },
     stock: 30,
     productQty: 1,
+    promotion: null,
   },
   {
     productId: "P003",
@@ -33,6 +35,7 @@ export const productsInCart: ProductInCart[] = [
     category: { categoryId: "C003", categoryName: "category", featured: false },
     stock: 100,
     productQty: 1,
+    promotion: null,
   },
   {
     productId: "P004",
@@ -44,6 +47,7 @@ export const productsInCart: ProductInCart[] = [
     category: { categoryId: "C004", categoryName: "category", featured: false },
     stock: 40,
     productQty: 1,
+    promotion: null,
   },
   {
     productId: "P005",
@@ -55,6 +59,7 @@ export const productsInCart: ProductInCart[] = [
     category: { categoryId: "C005", categoryName: "category", featured: false },
     stock: 60,
     productQty: 1,
+    promotion: null,
   },
   {
     productId: "P006",
@@ -66,6 +71,7 @@ export const productsInCart: ProductInCart[] = [
     category: { categoryId: "C006", categoryName: "category", featured: false },
     stock: 80,
     productQty: 1,
+    promotion: null,
   },
   {
     productId: "P007",
@@ -77,6 +83,7 @@ export const productsInCart: ProductInCart[] = [
     category: { categoryId: "C007", categoryName: "category", featured: false },
     stock: 90,
     productQty: 1,
+    promotion: null,
   },
   {
     productId: "P008",
@@ -88,6 +95,7 @@ export const productsInCart: ProductInCart[] = [
     category: { categoryId: "C008", categoryName: "category", featured: false },
     stock: 70,
     productQty: 1,
+    promotion: null,
   },
   {
     productId: "P009",
@@ -99,5 +107,6 @@ export const productsInCart: ProductInCart[] = [
     category: { categoryId: "C009", categoryName: "category", featured: false },
     stock: 50,
     productQty: 1,
+    promotion: null,
   },
 ]
