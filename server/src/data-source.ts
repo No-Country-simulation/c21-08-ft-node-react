@@ -4,7 +4,7 @@ import { DataSource } from "typeorm";
 
 export const AppDataSource = new DataSource({
   type: "mysql",
-  host: process.env.MYSQLHOST || "localhost",
+  host: process.env.MYSQLHOST || "mysql",
   port: 3306,
   username: process.env.MYSQLUSER || "root",
   password: process.env.MYSQLPASSWORD || "root",
@@ -13,5 +13,3 @@ export const AppDataSource = new DataSource({
   logging: true,
   entities: [join(__dirname, "/**/*.entity{.ts,.js}")],
 });
-
-console.log("PORT", process.env.MYSQLPORT);
