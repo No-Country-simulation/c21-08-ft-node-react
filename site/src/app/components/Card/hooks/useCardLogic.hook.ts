@@ -8,8 +8,6 @@ const useCardLogic = (product: Product) => {
 
   const { promotion, price } = product
 
-  console.log(promotion)
-
   const handleFavorite = () => {
     setIsFavorite((prevIsFavourite) => !prevIsFavourite)
   }
