@@ -46,7 +46,7 @@ const Card = ({ additionalStyles, product, link }: CardProps) => {
         <div className="flex flex-col gap-2">
           <div className="flex justify-between">
             <div>
-              {discount && (
+              {discount !== null && (
                 <Price
                   price={price}
                   size="S"
@@ -55,7 +55,7 @@ const Card = ({ additionalStyles, product, link }: CardProps) => {
               )}
               <Price price={finalPrice} size={"M"} />
             </div>
-            {discount && (
+            {discount !== null && (
               <div className="flex h-8 w-16 items-center justify-center rounded-full bg-gray1000 xs:h-6 xs:w-10">
                 <span className="text-center text-[16px] font-semibold leading-[16px] text-white xs:text-[12px] xs:font-medium xs:leading-[12px]">{`%${50}`}</span>
               </div>
