@@ -10,7 +10,7 @@ import Link from "next/link"
 import AddButton from "../AddButton/AddButton.component"
 
 const Card = ({ additionalStyles, product, link }: CardProps) => {
-  const { finalPrice, discount, isFavorite, handleFavorite, handleAddToCart } =
+  const { finalPrice, discount, isFavorite, handleFavorite } =
     useLogicCard(product)
 
   const { name, price } = product
