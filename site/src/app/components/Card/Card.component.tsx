@@ -4,14 +4,14 @@ import { CardProps } from "./types/CardProps.type"
 import Price from "../Price/Price.component"
 import Icon from "../Icon/Icon.component"
 import Image from "next/image"
-import useLogicCard from "@/app/hooks/useCardLogic.hook"
+import useCardLogic from "@/app/components/Card/hooks/useCardLogic.hook"
 import { getProductImageAlt } from "@/app/utils/getProductImageAlt.util"
 import Link from "next/link"
 import AddButton from "../AddButton/AddButton.component"
 
 const Card = ({ additionalStyles, product, link }: CardProps) => {
   const { finalPrice, discount, isFavorite, handleFavorite } =
-    useLogicCard(product)
+    useCardLogic(product)
 
   const { name, price } = product
 
