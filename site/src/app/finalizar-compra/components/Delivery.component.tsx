@@ -10,10 +10,10 @@ const Delivery = ({
   }
   return (
     <div className="flex flex-col justify-center gap-1">
-      <h3>¿Lo retira o se lo llevamos?</h3>
+      <h3 className="mb-2">¿Lo retira o se lo llevamos?</h3>
       <label
         htmlFor="PickItUp"
-        className="my-auto flex w-fit cursor-pointer items-center justify-center"
+        className="my-1 flex w-fit cursor-pointer items-center justify-center"
       >
         <input
           type="radio"
@@ -31,7 +31,7 @@ const Delivery = ({
       </label>
       <label
         htmlFor="Delivery"
-        className="my-auto flex w-fit cursor-pointer items-center justify-center"
+        className="my-1 flex w-fit cursor-pointer items-center justify-center"
       >
         <input
           type="radio"

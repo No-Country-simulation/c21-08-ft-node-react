@@ -9,20 +9,24 @@ const CardAddress = ({
     setSelectedAddress(index)
   }
   return (
-    <div className="my-2 w-fit min-w-56 rounded-md border-2 border-solid border-gray400">
-      <label htmlFor={address.address}>
-        <input
-          id={address.address}
-          type="radio"
-          name="address"
-          value={address?.address}
-          checked={checked}
-          onChange={() => handleSelect()}
-          className="mx-1"
-        />
-        {address.address}
-      </label>
-      <p className="ms-5">{address.city}</p>
+    <div
+      className={`${checked ? "border-krOrange bg-[#e8d9d2]" : ""} my-4 flex w-fit min-w-56 items-start gap-2 rounded-md border-[1px] border-solid border-gray300 p-4`}
+    >
+      <input
+        id={address.address}
+        type="radio"
+        name="address"
+        value={address?.address}
+        checked={checked}
+        onChange={() => handleSelect()}
+        className="mt-1"
+      />
+      <span>
+        <label htmlFor={address.address} className="font-semibold">
+          {address.address}
+        </label>
+        <p className="">{address.city}</p>
+      </span>
     </div>
   )
 }
