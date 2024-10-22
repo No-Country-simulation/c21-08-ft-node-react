@@ -39,7 +39,7 @@ const ProductPage = async ({ params }: { params: { productId: string } }) => {
           </div>
           <div className="flex w-40 flex-1 flex-col gap-6">
             <h1 className="font-bold">{product.name}</h1>
-            <div className="flex gap-2 self-start rounded-md bg-gray-400 bg-krBlue px-3 py-2 font-bold text-white">
+            <div className="flex gap-2 self-start rounded-md bg-krBlue px-3 py-2 font-bold text-white">
               {product.stock > 0 ? (
                 <>
                   <span>En stock</span>
