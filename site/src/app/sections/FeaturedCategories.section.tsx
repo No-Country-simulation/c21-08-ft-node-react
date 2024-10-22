@@ -22,7 +22,7 @@ const FeaturedCategories = async () => {
             key={`featured-category-${idx}`}
             name={strForDisplay(c.categoryName)}
             alt={c.categoryName}
-            link={`/categoria/${strForData(c.categoryName)}?categoryId=${c.categoryId}`}
+            link={`/categoria/${strForData(c.categoryName)}?categoryid=${c.categoryId}`}
             src="/images/product-placeholder.webp"
             width={480}
             height={480}

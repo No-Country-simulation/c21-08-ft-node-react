@@ -24,9 +24,10 @@ export default function CategoriaPage() {
   const params = useParams<{ categoryName: string }>()
   const searchParams = useSearchParams()
   const categoryName = strForDisplay(params.categoryName)
+
   const products =
     useFetch<Product[]>(
-      `${API_BASE_URL}/product/category/${searchParams.get("categoryId")}`,
+      `${API_BASE_URL}/product/category/${searchParams.get("categoryid")}`,
     ) || ([] as Product[])
 
   useFilterProducts(products, formValues, setCurrentProducts)

@@ -39,7 +39,7 @@ const CategoriesPanel = ({
               <Category
                 key={`category-${idx}`}
                 name={displayName}
-                route={`/categoria/${dataName}?categoryId=${c.categoryId}`}
+                route={`/categoria/${dataName}?categoryid=${c.categoryId}`}
               >
                 <Icon iconType={dataName} />
               </Category>
