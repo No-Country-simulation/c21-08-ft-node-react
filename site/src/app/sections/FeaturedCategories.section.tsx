@@ -4,7 +4,9 @@ import { API_BASE_URL } from "@/app/consts/api.consts"
 import { strForData, strForDisplay } from "../../app/utils/strFormatting.util"
 
 const getFeaturedCategories = async () => {
-  const res = await fetch(`${API_BASE_URL}/category`)
+  const res = await fetch(`${API_BASE_URL}/category`, {
+    headers: { Accept: "application/json", "Content-Type": "application/json" },
+  })
   const categories: Category[] = await res.json()
   const featured = categories.filter((c) => c.featured)
   return featured
