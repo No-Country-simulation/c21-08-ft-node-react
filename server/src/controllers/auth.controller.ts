@@ -11,7 +11,16 @@ export class AuthController {
     try {
       const { email, password } = req.body;
       const user = await this.userService.login(email, password);
-      const token = jwt.sign({ id: user.userId }, "secreto", {
+
+      const jwtSecretKey: string = process.env.JWT_SECRET_KEY as string;
+
+      if (!jwtSecretKey) {
+        throw new Error(
+          "JWT_SECRET_KEY is not defined in the environment variables"
+        );
+      }
+
+      const token = jwt.sign({ id: user.userId }, jwtSecretKey, {
         expiresIn: "1h",
       });
       return res.status(200).json({ token, user });
