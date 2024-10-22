@@ -9,8 +9,14 @@ import Price from "@/app/components/Price/Price.component"
 import AddButton from "@/app/components/AddButton/AddButton.component"
 
 const getProduct = async (productId: string | undefined) => {
-  const res = await fetch(`${API_BASE_URL}/product/${productId}`)
-  const [product]: Product[] = await res.json()
+  const res = await fetch(`${API_BASE_URL}/product/${productId}`, {
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+    },
+  })
+
+  const product: Product = await res.json()
   return product
 }
 
