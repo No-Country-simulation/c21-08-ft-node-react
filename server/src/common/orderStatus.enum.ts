@@ -1,4 +1,5 @@
 export enum OrderStatus {
+  UNPREPARED = "unprepared",
   PROCESS = "process",
-  DONE = "done",
+  READY = "ready",
 }
