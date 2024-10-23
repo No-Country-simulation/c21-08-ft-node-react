@@ -11,7 +11,7 @@ const Menu = ({ isMenuVisible, changeCategoriesVisibility, changeMenuVisibility 
         changeVisibility={changeMenuVisibility}
       />
       <div
-        className={`${isMenuVisible ? "flex" : "hidden"} fixed left-0 top-[96px] z-30 w-full flex-col bg-gray100 py-2`}
+        className={`${isMenuVisible ? "flex" : "hidden"} fixed left-0 top-[96px] z-50 w-full flex-col bg-gray100 py-2`}
       >
         <nav>
           <ul className="flex flex-col items-center gap-2">
