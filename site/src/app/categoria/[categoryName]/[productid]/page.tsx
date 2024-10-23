@@ -18,6 +18,7 @@ const getProduct = async (productid: string | undefined) => {
   })
 
   const product: Product = await res.json()
+
   return product
 }
 
@@ -27,8 +28,8 @@ const ProductPage = async ({ params }: { params: { productid: string } }) => {
 
   return (
     <main className="w-full pt-24">
-      <div className="mx-auto flex max-w-[1000px] flex-col justify-between gap-20 pt-20 lg:gap-10 lg:px-10">
-        <Breadcrumbs
+      <div className="mx-auto flex max-w-[1000px] flex-col justify-between gap-16 sm:gap-8">
+        {/* <Breadcrumbs
           crumbs={[
             {
               label: decodeURIComponent(categoryName),
@@ -39,19 +40,18 @@ const ProductPage = async ({ params }: { params: { productid: string } }) => {
               ),
             },
           ]}
-        />
-        <section className="flex gap-20">
-          <div className="w-60 flex-1">
+        /> */}
+        <section className="flex gap-16 md:gap-8 sm:flex-col sm:items-center mt-8 px-8 xs:px-4">
+          <div className="w-60 flex-1 sm:w-[90%] xs:w-full">
             <Image
               alt={product.description}
-              src={product.imgUrl}
+              src={`/images/product-placeholder.webp`}
               width={IMG_WIDTH}
               height={IMG_HEIGHT}
-              className="z-50"
             />
           </div>
-          <div className="flex w-40 flex-1 flex-col gap-6">
-            <h1 className="font-bold">{product.name}</h1>
+          <div className="flex w-40 flex-1 flex-col gap-8 md:gap-4 sm:w-[90%] xs:w-full">
+            <h1 className="font-bold md:text-[32px] md:leading-[32px] xs:text-[24px] xs:leading-[24px]">{product.name}</h1>
             <div className="flex gap-2 self-start rounded-md bg-krBlue px-3 py-2 font-bold text-white">
               {product.stock > 0 ? (
                 <>
@@ -65,11 +65,8 @@ const ProductPage = async ({ params }: { params: { productid: string } }) => {
                 </>
               )}
             </div>
-            <p>
-              {product.description} Lorizzle rizzle dolizzle cool amizzle,
-              consectetuer adipiscing elit. Nullam sapien velizzle, mammasay
-              mammasa mamma oo sa volutpat, suscipizzle quizzle, gravida vizzle,
-              shizzlin dizzle
+            <p className="md:text-sm md:leading-[22px]">
+              {product.description}
             </p>
             <div className="flex items-center justify-between">
               <Price price={product.price} size="L" />
@@ -77,7 +74,7 @@ const ProductPage = async ({ params }: { params: { productid: string } }) => {
             </div>
           </div>
         </section>
-        <section className="flex flex-col gap-10 border-t-2 border-solid border-gray300 pt-10">
+        <section className="flex flex-col gap-8 border-t-2 border-solid border-gray300 pt-10 px-8 md:px-4">
           <h2 className="text-2xl font-bold">También te podría gustar</h2>
           <RelatedProductsContainer product={product} />
         </section>
