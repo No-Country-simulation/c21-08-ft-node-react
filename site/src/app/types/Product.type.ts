@@ -12,3 +12,5 @@ export type Product = {
   brand: string
   promotion: Promotion | null
 }
+
+export type ProductResult = Pick<Product, "productId" | "name" | "category">
