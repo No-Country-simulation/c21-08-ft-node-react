@@ -10,6 +10,7 @@ import { CreateProductDto } from "../dto/ProductDto";
 
 export class ProductService {
   private readonly categoryService: CategoryService;
+
   constructor() {
     this.categoryService = new CategoryService();
   }
@@ -18,8 +19,7 @@ export class ProductService {
     try {
       const { categoryId, promotionId, ...productData } = createProductDto;
 
-      const category: Category | undefined =
-        await this.categoryService.getCategoryById(categoryId);
+      const category: Category | undefined = await this.categoryService.getCategoryById(categoryId);
       if (!category) {
         throw new CategoryException("Category not found", 404);
       }
@@ -49,24 +49,19 @@ export class ProductService {
     }
   }
 
-  async getProductById(productId: string): Promise<Product> {
+  async getProductById(productId: string): Promise<Product | null> {
     try {
       const product = await productRepository.findOne({ where: { productId } });
-
-      if (!product) {
-        throw new ProductException("Product not found", 404);
-      }
-
-      return product;
+  
+      return product || null;
     } catch (error) {
       throw new ProductException("Error getting a product by id", 500);
     }
-  }
+  }  
 
   async getProductsByCategory(categoryId: string): Promise<Product[]> {
     try {
-      const category: Category | undefined =
-        await this.categoryService.getCategoryById(categoryId);
+      const category: Category | undefined = await this.categoryService.getCategoryById(categoryId);
 
       return productRepository.find({
         where: { category },
@@ -91,4 +86,33 @@ export class ProductService {
       throw new ProductException("Error getting products in promotion", 500);
     }
   }
+
+  async updateProduct(productId: string, productData: Partial<CreateProductDto>): Promise<Product> {
+    try {
+      const product = await productRepository.findOne({ where: { productId } }); 
+
+      if (!product) {
+        throw new ProductException("Product not found", 404);
+      }
+
+      Object.assign(product, productData);
+
+      return await productRepository.save(product);
+    } catch (error) {
+      throw new ProductException("Error updating product", 500);
+    }
+  }
+
+  async deleteProduct(productId: string): Promise<void> {
+    try {
+        const result = await productRepository.delete({ productId });
+
+        if (result.affected === 0) {
+            throw new ProductException("Product not found", 404);
+        }
+    } catch (error) {
+        throw new ProductException("Error deleting product", 500);
+    }
+  }
+
 }

@@ -36,21 +36,20 @@ export class ProductController {
     }
   }
 
-  // Obtener producto por id
   async getProductById(req: Request, res: Response): Promise<any> {
     try {
       const productId: string = req.params.productId;
-      const product: Product | undefined =
-        await this.productService.getProductById(productId);
-
+      const product: Product | null = await this.productService.getProductById(productId);
+  
+      if (!product) {
+        return res.status(404).json({ message: "Product ID not found" }); 
+      }
+  
       return res.status(200).json(product);
     } catch (error) {
-      if (error instanceof Error) {
-        throw error;
-      }
-      throw new ProductException("Error getting a product by Id", 500);
+      return res.status(500).json({ message: "Error getting a product by Id" });
     }
-  }
+  }  
 
   // Obtener todos los productos por categoria
   async getProductsByCategory(req: Request, res: Response): Promise<any> {
@@ -81,6 +80,35 @@ export class ProductController {
       }
 
       throw new ProductException("Error getting products in promotion", 500);
+    }
+  }
+
+  async updateProduct(req: Request, res: Response): Promise<void> {
+    const { productId } = req.params; 
+    const productData = req.body; 
+
+    try {
+        const updatedProduct = await this.productService.updateProduct(productId, productData);
+        res.status(200).json(updatedProduct);
+    } catch (error: any) {
+        res.status(404).json({ message: error.message });
+    }
+  }
+
+  async deleteProduct(req: Request, res: Response): Promise<Response> {
+    const productId = req.params.productId; 
+
+    try {
+        await this.productService.deleteProduct(productId); 
+
+        return res.status(200).json({
+            message: 'Producto eliminado exitosamente', 
+        });
+    } catch (error: any) { 
+        return res.status(500).json({
+            message: 'Error al eliminar el producto', 
+            error: error.message,
+        });
     }
   }
 }
