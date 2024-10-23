@@ -42,16 +42,31 @@ VALUES
   );
 
 INSERT INTO
-  `category` (`categoryId`, `categoryName`, `featured`)
+  `category` (
+    `categoryId`,
+    `categoryName`,
+    `categorylabel`,
+    `featured`
+  )
 VALUES
-  ('1', 'Almacén', true),
-  ('2', 'Congelados', false),
-  ('3', 'Librería', false),
-  ('4', 'Vinoteca', true),
-  ('5', 'Limpieza', false),
-  ('6', 'Bebidas sin alcohol', true),
-  ('7', 'Bebidas con alcohol', true),
-  ('8', 'Variados', false);
+  ('1', 'almacen', 'Almacén', TRUE),
+  ('2', 'congelados', 'Congelados', FALSE),
+  ('3', 'libreria', 'Librería', FALSE),
+  ('4', 'vinoteca', 'Vinoteca', TRUE),
+  ('5', 'limpieza', 'Limpieza', FALSE),
+  (
+    '6',
+    'bebidas-sin-alcohol ',
+    'Bebidas sin alcohol',
+    TRUE
+  ),
+  (
+    '7',
+    'bebidas-con-alcohol ',
+    'Bebidas con alcohol',
+    TRUE
+  ),
+  ('8', 'variados', 'Variados', FALSE);
 
 INSERT INTO
   `product` (
@@ -74,7 +89,7 @@ VALUES
     'unitary',
     'Vino tinto reserva, con 12 meses de crianza',
     14,
-    'https://example.com/vino-tinto-reserva.jpg',
+    'https://i.postimg.cc/FR11y2cj/10VinoID.webp',
     '4',
     '1',
     'arcor'
@@ -86,7 +101,7 @@ VALUES
     'unitary',
     'Champagne brut, ideal para ocasiones especiales',
     30,
-    'https://example.com/champagne-brut.jpg',
+    'https://i.postimg.cc/fy9LFm8y/11-Champagne-ID.webp',
     '4',
     NULL,
     'arcor'
@@ -98,7 +113,7 @@ VALUES
     'lt',
     'Delicioso licor de café con notas a vainilla',
     50,
-    'https://example.com/licor-cafe.jpg',
+    'https://i.postimg.cc/qRYqjjXW/12-Licor-ID.webp',
     '4',
     '3',
     'arcor'
@@ -110,7 +125,7 @@ VALUES
     'kg',
     'Detergente en polvo de alta eficacia',
     100,
-    'https://example.com/detergente-polvo.jpg',
+    'https://i.postimg.cc/z3YB1vQj/13-Detergente-ID.webp',
     '5',
     NULL,
     'arcor'
@@ -122,7 +137,7 @@ VALUES
     'lt',
     'Suavizante de ropa concentrado, aroma a flores',
     80,
-    'https://example.com/suavizante-ropa.jpg',
+    'https://i.postimg.cc/V6D70bw7/14-Suavizante-ID.webp',
     '5',
     '2',
     'arcor'
@@ -134,7 +149,7 @@ VALUES
     'lt',
     'Lavavajillas líquido de enjuague rápido',
     90,
-    'https://example.com/lavavajillas-liquido.jpg',
+    'https://i.postimg.cc/xC0xd3wJ/15-Lavavajillas-ID.webp',
     '5',
     NULL,
     'quilmes'
@@ -146,7 +161,7 @@ VALUES
     'lt',
     'Agua mineral natural, sin gas',
     120,
-    'https://example.com/agua-mineral.jpg',
+    'https://i.postimg.cc/k5NY9ppP/16AguaID.webp',
     '6',
     '1',
     'quilmes'
@@ -158,7 +173,7 @@ VALUES
     'lt',
     'Jugo de naranja exprimido, sin azúcar',
     100,
-    'https://example.com/jugo-naranja.jpg',
+    'https://i.postimg.cc/LsFQcpvV/17JugoID.webp',
     '6',
     NULL,
     'quilmes'
@@ -170,7 +185,7 @@ VALUES
     'lt',
     'Refresco de cola con edulcorantes naturales',
     80,
-    'https://example.com/refresco-cola.jpg',
+    'https://i.postimg.cc/qv3ZDRcR/18-Refresco-ID.webp',
     '6',
     '3',
     'quilmes'
@@ -182,7 +197,7 @@ VALUES
     'lt',
     'Cerveza artesanal de trigo, con tonos cítricos',
     60,
-    'https://example.com/cerveza-artesanal.jpg',
+    'https://i.postimg.cc/SN5vG8M3/19-Cerveza-ID.webp',
     '7',
     NULL,
     'quilmes'
@@ -194,7 +209,7 @@ VALUES
     'kg',
     'Arroz integral de calidad premium',
     100,
-    'https://example.com/arroz-integral.jpg',
+    'https://i.postimg.cc/vHDK9Xc5/1ArrozID.webp',
     '1',
     NULL,
     'unilever'
@@ -206,7 +221,7 @@ VALUES
     'lt',
     'Vino blanco seco, con notas de cítricos',
     50,
-    'https://example.com/vino-blanco-seco.jpg',
+    'https://i.postimg.cc/2j0JVg8z/20-Vino-Blanco-ID.webp',
     '7',
     '2',
     'unilever'
@@ -218,7 +233,7 @@ VALUES
     'lt',
     'Whisky single malt envejecido en barrica',
     30,
-    'https://example.com/whisky-single-malt.jpg',
+    'https://i.postimg.cc/WzYfCqfD/21-Whisky-ID.webp',
     '7',
     NULL,
     'unilever'
@@ -230,34 +245,10 @@ VALUES
     'unitary',
     'Mochila de viaje impermeable y con múltiples bolsillos',
     70,
-    'https://example.com/mochila-viaje.jpg',
+    'https://i.postimg.cc/vTZN0tXF/22-Mochila-ID.webp',
     '8',
     '1',
     'unilever'
-  ),
-  (
-    '23BicicletaID',
-    'Bicicleta plegable',
-    29900,
-    'unitary',
-    'Bicicleta plegable de aluminio, ideal para viajes',
-    70,
-    'https://example.com/bicicleta-viajes.jpg',
-    '8',
-    NULL,
-    'unilever'
-  ),
-  (
-    '24CestaID',
-    'Cesta de picnic',
-    10500,
-    'unitary',
-    'Cesta de picnic con servicio para 4 personas',
-    40,
-    'https://example.com/cesta-picnic.jpg',
-    '8',
-    NULL,
-    'molinos-cañuelas'
   ),
   (
     '2HarinaID',
@@ -266,7 +257,7 @@ VALUES
     'kg',
     'Harina de trigo de alta pureza',
     80,
-    'https://example.com/harina-trigo.jpg',
+    'https://i.postimg.cc/fb8J0w3z/2-Harina-ID.webp',
     '1',
     '2',
     'molinos-cañuelas'
@@ -278,7 +269,7 @@ VALUES
     'kg',
     'Azúcar moreno orgánico sin refinar',
     90,
-    'https://example.com/azucar-moreno.jpg',
+    'https://i.postimg.cc/ydPGhbmy/3-Azucar-ID.webp',
     '1',
     NULL,
     'molinos-cañuelas'
@@ -290,7 +281,7 @@ VALUES
     'kg',
     'Filete de salmón fresco y de primera calidad',
     50,
-    'https://example.com/filete-salmon.jpg',
+    'https://i.postimg.cc/9MVS7h7f/4-Salmon-ID.webp',
     '2',
     '1',
     'molinos-cañuelas'
@@ -302,7 +293,7 @@ VALUES
     'kg',
     'Pollo entero congelado, sin aditivos',
     80,
-    'https://example.com/pollo-congelado.jpg',
+    'https://i.postimg.cc/Nj9WhbtQ/5PolloID.webp',
     '2',
     NULL,
     'molinos-cañuelas'
@@ -314,7 +305,7 @@ VALUES
     'lt',
     'Delicioso helado de vainilla artesanal',
     60,
-    'https://example.com/helado-vainilla.jpg',
+    'https://i.postimg.cc/13kby6Rw/6-Helado-ID.webp',
     '2',
     '3',
     'mondelez'
@@ -326,7 +317,7 @@ VALUES
     'unitary',
     'Cuaderno universitario de 100 hojas rayadas',
     120,
-    'https://example.com/cuaderno-universitario.jpg',
+    'https://i.postimg.cc/R0wyhFq8/7-Cuaderno-ID.webp',
     '3',
     NULL,
     'mondelez'
@@ -338,7 +329,7 @@ VALUES
     'unitary',
     'Bolígrafo retráctil de tinta azul',
     150,
-    'https://example.com/boligrafo-retractil.jpg',
+    'https://i.postimg.cc/4NFrFqr8/8-Boligrafo-ID.webp',
     '3',
     '2',
     'mondelez'
@@ -350,7 +341,7 @@ VALUES
     'unitary',
     'Libro de novela contemporánea, best seller',
     80,
-    'https://example.com/libro-novela.jpg',
+    'https://i.postimg.cc/c4Jph05g/9LibroID.webp',
     '3',
     NULL,
     'mondelez'

@@ -9,6 +9,9 @@ export class Category {
   @Column()
   categoryName!: string;
 
+  @Column()
+  categoryLabel!: string;
+
   @Column({ type: "boolean", default: false })
   featured!: boolean;
 
