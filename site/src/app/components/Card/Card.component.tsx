@@ -17,7 +17,7 @@ const Card = ({ additionalStyles, product, link, imgUrl }: CardProps) => {
 
   return (
     <article
-      className={`flex min-h-[424px] flex-col rounded-lg bg-gray300 md:min-h-[376px] xs:min-h-[192px] ${additionalStyles !== undefined ? additionalStyles : ""}`}
+      className={`flex min-h-[424px] flex-col rounded-lg bg-white md:min-h-[376px] xs:min-h-[192px] ${additionalStyles !== undefined ? additionalStyles : ""}`}
     >
       <Link href={link}>
         <div className="relative h-[240px] w-full md:h-[192px] xs:h-[96px]">
