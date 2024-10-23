@@ -10,7 +10,7 @@ const CardAddress = ({
   }
   return (
     <div
-      className={`${checked ? "border-krOrange bg-[#e8d9d2]" : ""} my-4 flex w-fit min-w-56 items-start gap-2 rounded-md border-[1px] border-solid border-gray300 p-4`}
+      className={`${checked ? "border-krOrange bg-[#e8d9d2]" : ""} my-4 flex w-fit min-w-56 items-start gap-2 rounded-md border-[1px] border-solid border-gray300 p-4 sm:w-full`}
     >
       <input
         id={address.address}

@@ -34,9 +34,9 @@ const FormCheckout = () => {
   }
   return (
     <div className="md:px-auto mx-auto w-full max-w-[465px] flex-col p-1">
-      <h1 className="h1 block">Confirma tus datos</h1>
+      <h1 className="h1 xs:text-[24px] xs:leading-[24px]">Confirma tus datos</h1>
       <form id="checkoutForm" onSubmit={handleSubmit} className="block w-full">
-        <h2 className="text-2xl">Datos de entrega</h2>
+        {/* <h2 className="text-2xl my-2 xs:text-[18px] xs:leading-[18px]">Datos de entrega</h2> */}
         <Delivery
           setForm={setForm}
           isDeliverySelected={isDeliverySelected}
@@ -44,7 +44,7 @@ const FormCheckout = () => {
         ></Delivery>
         {isDeliverySelected ? (
           <div id="Datos-de-entrega">
-            <h3 className="">Direcciones</h3>
+            <h3 className="my-2 xs:text-[18px] xs:leading-[18px]">Direcciones</h3>
             {addresses
               ? addresses.map((address, index) => (
                   <CardAddress
@@ -58,7 +58,7 @@ const FormCheckout = () => {
               : null}
             <button
               type="button"
-              className="mb-2 h-10 min-w-56 rounded-lg bg-gray1000 px-1 text-xl text-white"
+              className="mb-2 h-10 min-w-56 rounded-lg bg-gray1000 px-1 text-xl text-white sm:w-full"
               onClick={() => {
                 setSelectedAddress(-1)
               }}
