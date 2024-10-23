@@ -25,7 +25,7 @@ export class ClientOrderService {
       );
 
       if (!user) {
-        return null;
+        throw new Error("User not found");
       }
 
       const clientOrderId = crypto.randomUUID();
@@ -42,7 +42,10 @@ export class ClientOrderService {
 
       return order;
     } catch (error) {
-      throw new ClientOrderException("Error creating order", 500);
+      if (error) {
+        throw error;
+      }
+      throw new Error("Error creating order");
     }
   }
 

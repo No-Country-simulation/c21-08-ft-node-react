@@ -1,4 +1,4 @@
-import { Request, Response } from "express";
+import { NextFunction, Request, Response } from "express";
 import { ClientOrderService } from "../services/clientOrder.service";
 
 export class ClientOrderController {
@@ -8,10 +8,15 @@ export class ClientOrderController {
     this.clientOrderService = new ClientOrderService();
   }
 
-  async createOrder(req: Request, res: Response): Promise<any> {
+  async createOrder(
+    req: Request,
+    res: Response,
+    next: NextFunction
+  ): Promise<any> {
     const userId = req.body.userId;
     const delivery = req.body.delivery;
     const methodOfPayment = req.body.methodOfPayment;
+
     try {
       const order = await this.clientOrderService.createOrder(
         userId,
@@ -19,18 +24,17 @@ export class ClientOrderController {
         methodOfPayment
       );
 
-      if(!order) {
+      if (!order) {
         //Manejo de error pendiente
       }
 
-      return res
-        .status(201)
-        .json({
-          message: "Order succesfully created",
-          orderId: order?.clientOrderId,
-        });
+      return res.status(201).json({
+        message: "Order succesfully created",
+        orderId: order?.clientOrderId,
+      });
     } catch (error) {
       //Manejo de error pendiente
+      next(error);
     }
   }
 
