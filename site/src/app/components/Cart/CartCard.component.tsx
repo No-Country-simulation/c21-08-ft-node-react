@@ -6,6 +6,7 @@ import Icon from "../Icon/Icon.component"
 import ProductQtyInput from "./ProductQtyInput.component"
 import Price from "../Price/Price.component"
 import { getProductImageAlt } from "../../utils/getProductImageAlt.util"
+import { computeDiscount } from "@/app/utils/price.util"
 
 const CartCard = ({
   product,
@@ -13,6 +14,9 @@ const CartCard = ({
   decrementProductQty,
   removeProduct,
 }: CartCardProps) => {
+  const finalPrice = product.promotion
+    ? computeDiscount(product.price, product.promotion.percentage)
+    : product.price
   return (
     <div className="flex h-auto w-full rounded-[20px] bg-white outline outline-1 outline-gray-200 xs:h-28 xs:rounded-l-[12px]">
       <Image
@@ -36,14 +40,14 @@ const CartCard = ({
         </div>
         <div className="flex w-full items-end justify-between">
           <div>
-            {true && (
+            {product.promotion && (
               <Price
                 price={product.price}
                 size="S"
                 additionalStyles="line-through text-gray-500"
               />
             )}
-            <Price size="M" price={product.price} />
+            <Price size="M" price={finalPrice} />
           </div>
           <ProductQtyInput
             productId={product.productId}

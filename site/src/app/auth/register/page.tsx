@@ -1,12 +1,15 @@
 "use client"
 
-import React, { useState } from "react"
+import { useRouter } from "next/navigation"
+import React, { useState, useContext } from "react"
+import { CartContext } from "@/app/contexts/cart.context"
 
 const RegisterPage = () => {
   const [name, setName] = useState("")
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
-
+  const router = useRouter()
+  const { productsInCart } = useContext(CartContext)
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     const data = { name, email, password }
@@ -23,6 +26,10 @@ const RegisterPage = () => {
       console.log("DATA", responseData)
       if (response.ok) {
         console.log("Registro correcto!!!")
+        if (!productsInCart) {
+          router.push("/profile")
+        }
+        router.push("/finalizar-compra")
       } else {
         console.error(responseData.message)
       }

@@ -31,7 +31,7 @@ interface AuthContextType {
 }
 
 // Crea el contexto y establece un valor inicial
-const AuthContext = createContext<AuthContextType | undefined>(undefined)
+export const AuthContext = createContext<AuthContextType | undefined>(undefined)
 
 // Define el tipo de las props del proveedor
 interface AuthProviderProps {
@@ -41,9 +41,10 @@ interface AuthProviderProps {
 // Proveedor de autenticación
 export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   const [user, setUser] = useState<User | null>(null)
-
+  console.log("contexto usuario", user)
   useEffect(() => {
-    const token = localStorage.getItem("token")
+    const token = window.localStorage.getItem("token")
+    console.log(token)
     if (token) {
       try {
         const decodedToken = jwtDecode<DecodedToken>(token)

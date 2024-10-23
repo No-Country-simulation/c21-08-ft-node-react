@@ -44,7 +44,7 @@ const ProductPage = async ({ params }: { params: { productid: string } }) => {
           ]}
         />
         <section className="mt-8 flex gap-16 px-8 md:gap-8 sm:flex-col sm:items-center xs:px-4">
-          <div className="w-60 flex-1 sm:w-[90%] xs:w-full">
+          <div className="w-60 flex-1 overflow-hidden rounded-xl sm:w-[90%] xs:w-full">
             <Image
               alt={product.description}
               src={product.imgUrl}

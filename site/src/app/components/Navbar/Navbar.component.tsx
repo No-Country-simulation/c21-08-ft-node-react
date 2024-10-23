@@ -10,6 +10,7 @@ import CategoriesButton from "./CategoriesButton.component"
 import Menu from "./Menu.components"
 import SearchBar from "./SearchBar.components"
 import MenuButton from "./MenuButton.component"
+import { IsClientProvider } from "@/app/contexts/isClient.context"
 import { usePathname } from "next/navigation"
 
 const Navbar = () => {
@@ -103,11 +104,13 @@ const Navbar = () => {
         changeCategoriesVisibility={changeCategoriesVisibility}
         isCategoriesVisible={isCategoriesVisible}
       />
-      <Cart
-        changeCartVisibility={changeCartVisibility}
-        isCartVisible={isCartVisible}
-        display="cart"
-      />
+      <IsClientProvider>
+        <Cart
+          changeCartVisibility={changeCartVisibility}
+          isCartVisible={isCartVisible}
+          display="cart"
+        />
+      </IsClientProvider>
       <Menu
         isMenuVisible={isMenuVisible}
         changeCategoriesVisibility={changeCategoriesVisibility}

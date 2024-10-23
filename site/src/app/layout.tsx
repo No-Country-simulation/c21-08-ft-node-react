@@ -30,13 +30,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="bg-gray100">
+      <body className="mt-[96px] bg-gray100">
         <CartContextProvider>
           <AuthProvider>
             <Suspense>
               <Navbar />
             </Suspense>
-            {/* <div className="mt-[96px] flex min-h-screen flex-1 items-center justify-center bg-red-400"> */}
+            {/* <div className="mt-[96px]> */}
             {children}
             {/* </div> */}
           </AuthProvider>

@@ -5,7 +5,7 @@ import { ChildrenProviderProps } from "../types/ChildrenProviderProps.type"
 export const IsClient = createContext(false)
 
 export const IsClientProvider = ({ children }: ChildrenProviderProps) => {
-  const [isClientCtx, setIsClientCtx] = useState<boolean>(false)
+  const [isClientCtx, setIsClientCtx] = useState(false)
   useEffect(() => {
     setIsClientCtx(true)
   }, [])

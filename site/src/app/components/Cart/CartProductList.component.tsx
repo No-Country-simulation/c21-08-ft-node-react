@@ -1,3 +1,4 @@
+"use client"
 import { CartProductListProps } from "./types/CartProductListProps.type"
 import CartCard from "./CartCard.component"
 import style from "./styles/CartProductList.style.module.css"

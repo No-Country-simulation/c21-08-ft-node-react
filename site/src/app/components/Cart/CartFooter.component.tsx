@@ -1,8 +1,13 @@
 import Price from "../Price/Price.component"
 import { getCartTotal } from "./utils/getCartTotal.util"
 import { CartFooterProps } from "./types/CartFooterProps.type"
+// import { useAuth } from "../../contexts/auth.context"
+
+import Link from "next/link"
 
 const CartFooter = ({ productsInCart, display }: CartFooterProps) => {
+  // const { user } = useAuth()
+
   return (
     <div className="flex flex-col gap-4 xs:gap-2">
       <div className="flex justify-between">
@@ -18,12 +23,36 @@ const CartFooter = ({ productsInCart, display }: CartFooterProps) => {
           Realizar pago
         </button>
       ) : (
-        <button className="mb-0 h-12 w-full rounded-lg bg-gray1000 text-2xl text-white">
-          Ir a la caja
-        </button>
+        <Link href={"/finalizar-compra"}>
+          <button className="mb-0 h-12 w-full rounded-lg bg-gray1000 text-2xl text-white">
+            Ir a la caja
+          </button>
+        </Link>
       )}
     </div>
   )
 }
 
 export default CartFooter
+
+/*      {display === "checkout" ? (
+        <button
+          form="checkoutForm"
+          type="submit"
+          className="mb-0 h-12 w-full rounded-lg bg-gray1000 text-2xl text-white"
+        >
+          Realizar pago
+        </button>
+      ) : display === "cart" && !user ? (
+        <Link href={"/auth/login"}>
+          <button className="mb-0 h-12 w-full rounded-lg bg-gray1000 text-2xl text-white">
+            Ir al login
+          </button>
+        </Link>
+      ) : (
+        <Link href={"/finalizar-compra"}>
+          <button className="mb-0 h-12 w-full rounded-lg bg-gray1000 text-2xl text-white">
+            Ir a la caja
+          </button>
+        </Link>
+      )}*/
