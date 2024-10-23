@@ -44,10 +44,10 @@ const ProductPage = async ({ params }: { params: { productid: string } }) => {
           <div className="w-60 flex-1">
             <Image
               alt={product.description}
-              src={"/images/product-placeholder.webp"}
+              src={product.imgUrl}
               width={IMG_WIDTH}
               height={IMG_HEIGHT}
-              className="z-50 border border-solid border-gray1000"
+              className="z-50"
             />
           </div>
           <div className="flex w-40 flex-1 flex-col gap-6">
