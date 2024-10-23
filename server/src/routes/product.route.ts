@@ -1,5 +1,6 @@
 import { Router } from "express";
 import { ProductController } from "../controllers/product.controller";
+import { validateCreateProduct } from "../middleware/validateCreateProduct";
 
 const router = Router();
 const productController = new ProductController();
@@ -14,7 +15,7 @@ router.get("/:productId", (req, res) =>
 router.get("/promotion", (req, res) =>
   productController.getProductsWithPromotion(req, res)
 );
-router.post("/createProduct", (req, res) =>
+router.post("/createProduct", validateCreateProduct, (req, res) =>
   productController.createProduct(req, res)
 );
 
