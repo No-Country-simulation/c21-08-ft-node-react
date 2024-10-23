@@ -6,8 +6,8 @@ const Price = ({ price, size, additionalStyles }: PriceProps) => {
 
   const sizeClasses = {
     L: {
-      int: "text-[32px] leading-[32px] font-semibold",
-      dec: "text-[16px] leading-[16px] font-semibold",
+      int: "text-[32px] leading-[32px] font-semibold xs:text-[24px] xs:leading-[24px]",
+      dec: "text-[16px] leading-[16px] font-semibold xs:text-[12px] xs:leading-[12px]",
     },
     M: {
       int: "text-[24px] leading-[24px] font-semibold xs:text-[16px] xs:leading-[16px]",
