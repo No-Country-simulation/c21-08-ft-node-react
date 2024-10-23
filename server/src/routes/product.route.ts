@@ -14,5 +14,8 @@ router.get("/:productId", (req, res) =>
 router.get("/promotion", (req, res) =>
   productController.getProductsWithPromotion(req, res)
 );
+router.post("/createProduct", (req, res) =>
+  productController.createProduct(req, res)
+);
 
 export default router;

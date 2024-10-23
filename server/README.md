@@ -154,6 +154,66 @@ src/
 
 ## **Productos**
 
+### **GET:** `/createProduct`
+
+- **Descripcion:** Metedo que crea un nuevo producto. 
+- **Parametros:** No se requiere parametros
+
+### **Respuesta exitosa:**
+
+- **Status:** `201 Created`
+- **Contenido:** Si la creación es exitosa, se devuelve el nuevo producto en formato JSON
+- **Body:**
+  
+```json
+{
+  "productId": "uuid",     
+  "name": "string",
+  "price": number,
+  "unitOfMeasurement": "string",
+  "description": "string",
+  "stock": number,
+  "imgUrl": "string | null",
+  "brand": "string | null",
+  "category": { "categoryId": "string", "name": "string" }, 
+  "promotion": { "promotionId": "string", "name": "string" } 
+}
+```
+
+#### **Posibles errores:**
+
+- **400 Bad Request:** Este error ocurre cuando faltan parámetros requeridos o se proporcionan valores inválidos.
+
+```json
+{
+  "statusCode": 400,
+  "message": "Invalid or missing parameters",
+  "errors": [
+    "Name is required",
+    "Price must be a positive number",
+    "Invalid unit of measurement"
+  ]
+}
+```
+
+- **404 Not Found:** Ocurre cuando no se encuentra la categoría o promoción.
+
+```json
+{
+  "statusCode": 404,
+  "message": "Category not found"
+}
+```
+
+- **500 Internal Server Error:** Si ocurre un error interno del servidor al intentar crear el producto, se devuelve un mensaje genérico.
+
+```json
+{
+  "statusCode": 500,
+  "message": "Error creating product"
+}
+```
+
 ### **GET:** `/product`
 
 - **Descripcion:** Metodo que devuelve un arreglo con todos los productos disponibles en la base de datos

@@ -2,11 +2,27 @@ import { Request, Response } from "express";
 import { ProductService } from "../services/product.service";
 import { Product } from "../entities/Product.entity";
 import { ProductException } from "../exceptions/ProductException";
+import { CreateProductDto } from "../dto/ProductDto";
 
 export class ProductController {
   private readonly productService: ProductService;
   constructor() {
     this.productService = new ProductService();
+  }
+
+  async createProduct(req: Request, res: Response): Promise<any> {
+    try {
+      const createProductDto: CreateProductDto = req.body;
+
+      const newProduct = await this.productService.createProduct(createProductDto);
+
+      return res.status(201).json(newProduct);
+    } catch (error) {
+      if (error instanceof ProductException) {
+        return res.status(error.statusCode).json({ message: error.message });
+      }
+      return res.status(500).json({ message: "Error creating product" });
+    }
   }
 
   // Obtener todos los productos
