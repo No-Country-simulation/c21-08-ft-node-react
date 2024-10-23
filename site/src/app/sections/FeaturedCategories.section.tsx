@@ -1,7 +1,11 @@
 import CategoryCard from "../components/CategoryCard/CategoryCard.component"
 import { Category } from "@/app/types/Category.type"
 import { API_BASE_URL } from "@/app/consts/api.consts"
-import { strForData, strForDisplay } from "../../app/utils/strFormatting.util"
+import {
+  removeAccents,
+  strForData,
+  strForDisplay,
+} from "../../app/utils/strFormatting.util"
 
 const getFeaturedCategories = async () => {
   const res = await fetch(`${API_BASE_URL}/category`, {
@@ -9,7 +13,35 @@ const getFeaturedCategories = async () => {
   })
   const categories: Category[] = await res.json()
   const featured = categories.filter((c) => c.featured)
-  return featured
+  const withImages = featured.map((c) => {
+    if (
+      removeAccents(strForData(decodeURIComponent(c.categoryName))) ===
+      "almacen"
+    ) {
+      return {
+        ...c,
+        imgUrl: "/images/almacen-featured-img.png",
+      }
+    }
+
+    if (strForData(decodeURIComponent(c.categoryName)) === "vinoteca") {
+      return {
+        ...c,
+        imgUrl: "/images/vinoteca-featured-img.png",
+      }
+    }
+
+    if (
+      strForData(decodeURIComponent(c.categoryName)) === "bebidas-sin-alcohol"
+    ) {
+      return {
+        ...c,
+        imgUrl: "/images/bebidas-sin-alcohol-featured-img.png",
+      }
+    }
+    return c
+  })
+  return withImages
 }
 
 const FeaturedCategories = async () => {
@@ -23,7 +55,7 @@ const FeaturedCategories = async () => {
             name={strForDisplay(c.categoryName)}
             alt={c.categoryName}
             link={`/categoria/${strForData(c.categoryName)}?categoryid=${c.categoryId}`}
-            src="/images/product-placeholder.webp"
+            src={c.imgUrl}
             width={480}
             height={480}
           />
