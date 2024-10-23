@@ -57,7 +57,7 @@ const Card = ({ additionalStyles, product, link, imgUrl }: CardProps) => {
             </div>
             {discount !== null && (
               <div className="flex h-8 w-16 items-center justify-center rounded-full bg-gray1000 xs:h-6 xs:w-10">
-                <span className="text-center text-[16px] font-semibold leading-[16px] text-white xs:text-[12px] xs:font-medium xs:leading-[12px]">{`%${50}`}</span>
+                <span className="text-center text-[16px] font-semibold leading-[16px] text-white xs:text-[12px] xs:font-medium xs:leading-[12px]">{`%${discount}`}</span>
               </div>
             )}
           </div>
