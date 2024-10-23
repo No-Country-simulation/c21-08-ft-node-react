@@ -1,16 +1,22 @@
 "use client"
+//import { useRouter } from "next/router"
+import { useRouter } from "next/navigation"
+import { useAuth } from "@/app/contexts/auth.context"
 import React, { useState } from "react"
 
 const LoginPage = () => {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
+  const router = useRouter()
+
+  const { login } = useAuth()
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     const data = { email, password }
     console.log(data)
     try {
-      const response = await fetch(`http://localhost:3000/auth/login`, {
+      const response = await fetch(`http://localhost:3170/auth/login`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -18,9 +24,11 @@ const LoginPage = () => {
         body: JSON.stringify(data),
       })
       const responseData = await response.json()
-      console.log("DATA", responseData)
       if (response.ok) {
-        console.log("first login")
+        login(responseData.token)
+        console.log(responseData)
+        console.log("Login successful")
+        router.push("/profile")
       } else {
         console.error(responseData.message)
       }
@@ -72,6 +80,7 @@ const LoginPage = () => {
               }}
             />
           </div>
+
           <button
             type="submit"
             className="mt-4 w-full rounded-md bg-blue-600 py-2 text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"

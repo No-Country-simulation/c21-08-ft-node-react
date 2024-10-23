@@ -13,6 +13,7 @@
   "dependencies": {
     "dotenv": "^16.4.5",
     "fuse.js": "^7.0.0",
+    "jwt-decode": "^4.0.0",
     "keen-slider": "6.8.6",
     "next": "14.2.14",
     "react": "18",

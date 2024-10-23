@@ -1,11 +1,41 @@
-import React from "react"
+"use client"
+
+import React, { useState } from "react"
 
 const RegisterPage = () => {
+  const [name, setName] = useState("")
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    const data = { name, email, password }
+    console.log(data)
+    try {
+      const response = await fetch(`http://localhost:3170/auth/register`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      })
+      const responseData = await response.json()
+      console.log("DATA", responseData)
+      if (response.ok) {
+        console.log("Registro correcto!!!")
+      } else {
+        console.error(responseData.message)
+      }
+    } catch (error) {
+      console.error("Error:", error)
+    }
+  }
+
   return (
     <div className="flex min-h-screen items-center justify-center bg-gray-100">
       <div className="w-full max-w-md space-y-6 rounded-lg bg-white p-8 shadow-md">
         <h2 className="text-center text-2xl font-bold">Crear Cuenta</h2>
-        <form className="space-y-4">
+        <form className="space-y-4" onSubmit={handleSubmit}>
           <div>
             <label
               htmlFor="name"
@@ -18,6 +48,11 @@ const RegisterPage = () => {
               id="name"
               required
               className="mt-1 block w-full rounded-md border border-gray-300 p-2 focus:border-blue-500 focus:ring focus:ring-blue-200"
+              value={name}
+              onChange={(e) => {
+                setName(e.target.value)
+                console.log(name)
+              }}
             />
           </div>
           <div>
@@ -32,6 +67,11 @@ const RegisterPage = () => {
               id="email"
               required
               className="mt-1 block w-full rounded-md border border-gray-300 p-2 focus:border-blue-500 focus:ring focus:ring-blue-200"
+              value={email}
+              onChange={(e) => {
+                setEmail(e.target.value)
+                console.log(email)
+              }}
             />
           </div>
           <div>
@@ -46,6 +86,11 @@ const RegisterPage = () => {
               id="password"
               required
               className="mt-1 block w-full rounded-md border border-gray-300 p-2 focus:border-blue-500 focus:ring focus:ring-blue-200"
+              value={password}
+              onChange={(e) => {
+                setPassword(e.target.value)
+                console.log(password)
+              }}
             />
           </div>
           <button
