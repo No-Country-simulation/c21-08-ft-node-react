@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "clean": "rimraf .next",
-    "build": "npm run clean && next build",
+    "build": "next build",
     "start": "next start",
     "lint": "next lint",
     "server": "json-server --watch ./assets/db.json --port 4000"

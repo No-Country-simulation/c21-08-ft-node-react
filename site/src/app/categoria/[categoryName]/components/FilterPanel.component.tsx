@@ -82,18 +82,31 @@ const FilterPanel = ({
     setCheckedPrice(Number(e.target.value))
   }
 
-  const handleBrandToggle = (e: ChangeEvent<HTMLInputElement>) => {
-    if (e.target.checked) {
-      setFormValues((prev) => ({
-        ...prev,
-        brand: [...prev.brand, e.target.name],
-      }))
-    } else {
+  const handleBrandToggle = (brand: string) => {
+    console.log("brand: ", brand)
+
+    if (formValues.brand.includes(brand)) {
       setFormValues((prev) => {
-        const remainingBrands = prev.brand.filter((b) => b !== e.target.name)
+        const remainingBrands = prev.brand.filter((b) => b !== brand)
         return { ...prev, brand: remainingBrands }
       })
+    } else {
+      setFormValues((prev) => ({
+        ...prev,
+        brand: [...prev.brand, brand],
+      }))
     }
+    // if (brand) {
+    //   setFormValues((prev) => ({
+    //     ...prev,
+    //     brand: [...prev.brand, brand],
+    //   }))
+    // } else {
+    //   setFormValues((prev) => {
+    //     const remainingBrands = prev.brand.filter((b) => b !== brand)
+    //     return { ...prev, brand: remainingBrands }
+    //   })
+    // }
   }
 
   return (
@@ -123,7 +136,8 @@ const FilterPanel = ({
                 <BrandCheckbox
                   key={`brand-filter-${idx}`}
                   brand={brand}
-                  handleBrandToggle={handleBrandToggle}
+                  handleBrandToggle={() => handleBrandToggle(brand)}
+                  activeBrands={formValues.brand}
                 />
               ))}
             </ul>
@@ -198,14 +212,30 @@ const FilterPanel = ({
 
 type BrandCheckboxProps = {
   brand: string
-  handleBrandToggle: (e: ChangeEvent<HTMLInputElement>) => void
+  handleBrandToggle: (brand: string) => void
+  activeBrands: string[]
 }
 
-const BrandCheckbox = ({ brand, handleBrandToggle }: BrandCheckboxProps) => {
+const BrandCheckbox = ({
+  brand,
+  handleBrandToggle,
+  activeBrands,
+}: BrandCheckboxProps) => {
   return (
-    <li className="flex items-center gap-2">
-      <input type="checkbox" name={brand} onChange={handleBrandToggle} />
-      <label htmlFor={brand}>{strForDisplay(brand)}</label>
+    <li
+      className="flex cursor-pointer items-center gap-2"
+      onClick={() => handleBrandToggle(brand)}
+    >
+      <input
+        type="checkbox"
+        name={brand}
+        checked={activeBrands.includes(brand)}
+        onChange={() => handleBrandToggle(brand)}
+        className="cursor-pointer"
+      />
+      <label htmlFor={brand} className="cursor-pointer">
+        {strForDisplay(brand)}
+      </label>
     </li>
   )
 }

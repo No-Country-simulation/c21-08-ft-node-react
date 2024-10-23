@@ -24,12 +24,13 @@ const getProduct = async (productid: string | undefined) => {
 
 const ProductPage = async ({ params }: { params: { productid: string } }) => {
   const product = await getProduct(params.productid)
+  console.log("product: ", product)
   const { categoryId, categoryName } = product.category
 
   return (
     <main className="w-full pt-24">
       <div className="mx-auto flex max-w-[1000px] flex-col justify-between gap-16 sm:gap-8">
-        {/* <Breadcrumbs
+        <Breadcrumbs
           crumbs={[
             {
               label: decodeURIComponent(categoryName),
@@ -40,18 +41,20 @@ const ProductPage = async ({ params }: { params: { productid: string } }) => {
               ),
             },
           ]}
-        /> */}
-        <section className="flex gap-16 md:gap-8 sm:flex-col sm:items-center mt-8 px-8 xs:px-4">
+        />
+        <section className="mt-8 flex gap-16 px-8 md:gap-8 sm:flex-col sm:items-center xs:px-4">
           <div className="w-60 flex-1 sm:w-[90%] xs:w-full">
             <Image
               alt={product.description}
-              src={`/images/product-placeholder.webp`}
+              src={product.imgUrl}
               width={IMG_WIDTH}
               height={IMG_HEIGHT}
             />
           </div>
           <div className="flex w-40 flex-1 flex-col gap-8 md:gap-4 sm:w-[90%] xs:w-full">
-            <h1 className="font-bold md:text-[32px] md:leading-[32px] xs:text-[24px] xs:leading-[24px]">{product.name}</h1>
+            <h1 className="font-bold md:text-[32px] md:leading-[32px] xs:text-[24px] xs:leading-[24px]">
+              {product.name}
+            </h1>
             <div className="flex gap-2 self-start rounded-md bg-krBlue px-3 py-2 font-bold text-white">
               {product.stock > 0 ? (
                 <>
@@ -74,7 +77,7 @@ const ProductPage = async ({ params }: { params: { productid: string } }) => {
             </div>
           </div>
         </section>
-        <section className="flex flex-col gap-8 border-t-2 border-solid border-gray300 pt-10 px-8 md:px-4">
+        <section className="flex flex-col gap-8 border-t-2 border-solid border-gray300 px-8 pt-10 md:px-4">
           <h2 className="text-2xl font-bold">También te podría gustar</h2>
           <RelatedProductsContainer product={product} />
         </section>

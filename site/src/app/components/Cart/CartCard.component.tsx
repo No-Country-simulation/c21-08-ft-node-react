@@ -17,7 +17,7 @@ const CartCard = ({
     <div className="flex h-auto w-full rounded-[20px] bg-white outline outline-1 outline-gray-200 xs:h-28 xs:rounded-l-[12px]">
       <Image
         className="rounded-l-[20px] xs:rounded-l-[12px]"
-        src={"/images/product-placeholder.webp"}
+        src={product.imgUrl}
         alt={getProductImageAlt(product.name)}
         width={128}
         height={128}
