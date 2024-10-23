@@ -1,5 +1,6 @@
-import { Router } from "express";
+import { Router, Request, Response } from "express";
 import { ProductController } from "../controllers/product.controller";
+import { validateCreateProduct } from "../middleware/validateCreateProduct";
 
 const router = Router();
 const productController = new ProductController();
@@ -14,5 +15,15 @@ router.get("/:productId", (req, res) =>
 router.get("/promotion", (req, res) =>
   productController.getProductsWithPromotion(req, res)
 );
+router.post("/createProduct", validateCreateProduct, (req, res) =>
+  productController.createProduct(req, res)
+);
+router.put("/editProduct/:productId", validateCreateProduct, (req, res) =>
+  productController.updateProduct(req, res)
+);
+router.delete("/deleteProduct/:productId", async (req: Request, res: Response) => {
+  await productController.deleteProduct(req, res);
+});
+
 
 export default router;
