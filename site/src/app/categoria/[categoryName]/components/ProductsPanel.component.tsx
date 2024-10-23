@@ -12,7 +12,7 @@ const ProductsPanel = ({ products, categoryName }: ProductsPanelProps) => {
 
   const router = useRouter()
   return (
-    <div className="flex w-full flex-col gap-10">
+    <div className="flex w-full flex-col gap-4 px-4 xs:gap-2 xs:px-2">
       <div className="flex flex-col gap-2">
         <span
           className="flex cursor-pointer items-center gap-1"
@@ -21,13 +21,12 @@ const ProductsPanel = ({ products, categoryName }: ProductsPanelProps) => {
           <Icon iconType="chev" style="-rotate-90 h-5" />
           <button>Página de inicio</button>
         </span>
-        <h1 className="text-4xl font-bold">
+        <h1 className="text-4xl font-bold sm:text-3xl xs:text-2xl">
           {strForDisplay(decodeURIComponent(categoryName) || "")}
         </h1>
       </div>
-      <span>Mostrando {products.length} productos</span>
-      {/* <div className="grid w-full grid-cols-[repeat(auto-fit,_minmax(200px,220px))] gap-6 sm:grid-cols-1"> */}
-      <div className="grid w-full grid-cols-3 gap-6 md:grid-cols-2 sm:grid-cols-1">
+      <span className="sm:text-sm xs:text-xs">Mostrando {products.length} productos</span>
+      <div className="grid w-full grid-cols-3 gap-4 md:grid-cols-2 xs:gap-2">
         {products.map((p, idx) => (
           <Card
             key={`card-${idx}`}

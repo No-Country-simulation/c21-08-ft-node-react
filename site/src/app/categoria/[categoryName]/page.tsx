@@ -6,13 +6,14 @@ import ProductsPanel from "./components/ProductsPanel.component"
 import { Product } from "../../types/Product.type"
 import { useParams, useSearchParams } from "next/navigation"
 import { strForDisplay } from "@/app/utils/strFormatting.util"
-import { Fields } from "./types/page.types"
+import { FilterFields } from "./types/page.types"
 import useFilterProducts from "./hooks/useFilterProducts.hook"
 import useResetFilters from "./hooks/useResetFilters.hook"
 import useFetch from "@/app/hooks/useFetch.hook"
 import { API_BASE_URL } from "@/app/consts/api.consts"
+import FiltersMobileDisplayer from "./components/FiltersMobileDisplayer.component"
 
-const formInitialState = {
+const formInitialState: FilterFields = {
   price: 99999,
   brand: [],
   discount: false,
@@ -20,7 +21,8 @@ const formInitialState = {
 
 export default function CategoriaPage() {
   const [currentProducts, setCurrentProducts] = useState<Product[]>([])
-  const [formValues, setFormValues] = useState<Fields>(formInitialState)
+  const [formValues, setFormValues] = useState<FilterFields>(formInitialState)
+  const [isFiltersVisible, setIsFiltersVisible] = useState(false)
   const params = useParams<{ categoryName: string }>()
   const searchParams = useSearchParams()
   const categoryName = strForDisplay(params.categoryName)
@@ -32,17 +34,31 @@ export default function CategoriaPage() {
   useFilterProducts(products, formValues, setCurrentProducts)
   useResetFilters(formInitialState, categoryName, setFormValues)
 
+  const changeFiltersVisibility = () => {
+    setIsFiltersVisible((prevIsFiltersVisible) => !prevIsFiltersVisible)
+  }
+
   return (
-    <main className="w-full pt-24">
-      <div className="mx-auto flex max-w-[1000px] justify-between gap-20 pt-20 lg:gap-10 lg:px-10">
-        <FilterPanel
-          setFormValues={setFormValues}
-          formValues={formValues}
-          setCurrentProducts={setCurrentProducts}
-          categoryName={categoryName}
-          source={products}
+    <main className={`mt-24 w-full overflow-y-hidden`}>
+      <div className="mx-auto max-w-[1000px] sm:flex-col">
+        <FiltersMobileDisplayer
+          isFiltersVisible={isFiltersVisible}
+          changeFiltersVisibility={changeFiltersVisibility}
         />
-        <ProductsPanel products={currentProducts} categoryName={categoryName} />
+        <div className="flex">
+          <FilterPanel
+            setFormValues={setFormValues}
+            formValues={formValues}
+            setCurrentProducts={setCurrentProducts}
+            categoryName={categoryName}
+            source={products}
+            isFiltersVisible={isFiltersVisible}
+          />
+          <ProductsPanel
+            products={currentProducts}
+            categoryName={categoryName}
+          />
+        </div>
       </div>
     </main>
   )

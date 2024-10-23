@@ -8,11 +8,11 @@ import {
   HTMLInputTypeAttribute,
 } from "react"
 import { useToggleDimensions } from "@/app/hooks/useToggleDimensions.hook"
-import Icon from "@/app/components/Icon/Icon.component"
 import { strForDisplay } from "@/app/utils/strFormatting.util"
 import FilterHeader from "./FilterHeader.component"
-import { FilterSwitchers } from "../types/page.types"
+import { FiltersVisibility } from "../types/page.types"
 import { FilterPanelProps } from "../types/page.types"
+import { Filters } from "../types/page.types"
 
 const priceOptions = [1000, 1500, 3000]
 const MAX_PRICE = 99999
@@ -22,14 +22,17 @@ const FilterPanel = ({
   formValues,
   categoryName,
   source,
+  isFiltersVisible,
 }: FilterPanelProps) => {
   const [brands, setBrands] = useState<string[]>([])
   const [checkedPrice, setCheckedPrice] = useState(formValues.price)
-  const [filterSwitchers, setFilterSwitchers] = useState<FilterSwitchers>({
-    marca: true,
-    ofertas: true,
-    precio: true,
-  })
+  const [filtersVisibility, setFiltersVisibility] = useState<FiltersVisibility>(
+    {
+      marca: true,
+      ofertas: true,
+      precio: true,
+    },
+  )
 
   useEffect(() => {
     const sourceBrands = source.map((p) => p.brand)
@@ -40,6 +43,22 @@ const FilterPanel = ({
   useEffect(() => {
     setCheckedPrice(MAX_PRICE)
   }, [categoryName])
+
+  const marcaRef = useRef<HTMLUListElement>(null)
+  useToggleDimensions(marcaRef, filtersVisibility["marca"])
+
+  const ofertasRef = useRef<HTMLDivElement>(null)
+  useToggleDimensions(ofertasRef, filtersVisibility["ofertas"])
+
+  const precioRef = useRef<HTMLDivElement>(null)
+  useToggleDimensions(precioRef, filtersVisibility["precio"])
+
+  const handleFiltersVisibility = (filterId: Filters) => {
+    setFiltersVisibility((prevFiltersVisibility) => ({
+      ...prevFiltersVisibility,
+      [filterId]: !prevFiltersVisibility[filterId],
+    }))
+  }
 
   const handleChange = (
     e: ChangeEvent<HTMLInputElement>,
@@ -77,69 +96,45 @@ const FilterPanel = ({
     }
   }
 
-  const marcaRef = useRef<HTMLDivElement>(null)
-  useToggleDimensions(marcaRef, filterSwitchers["marca"])
-
-  const ofertasRef = useRef<HTMLDivElement>(null)
-  useToggleDimensions(ofertasRef, filterSwitchers["ofertas"])
-
-  const precioRef = useRef<HTMLDivElement>(null)
-  useToggleDimensions(precioRef, filterSwitchers["precio"])
-
   return (
-    <aside className="flex w-1/4 flex-col gap-9">
+    <aside
+      className={`flex w-1/4 flex-col gap-9 bg-gray100 sm:fixed sm:z-20 sm:h-full sm:w-full ${isFiltersVisible ? "" : "sm:hidden"}`}
+    >
       <h2 className="text-2xl font-bold">Filtros</h2>
       <div className="flex flex-col gap-7">
         <div className="flex flex-col gap-4">
           <FilterHeader
             filterId="marca"
-            filterSwitchers={filterSwitchers}
-            setFilterSwitchers={setFilterSwitchers}
+            filtersVisibility={filtersVisibility}
+            handleFiltersVisibility={handleFiltersVisibility}
           />
           {/* this needs conditional rendering because we need to know when 'brand' array is populated */}
           {/* otherwise if the 'brands' array is empty the JSX corresponding to the brands will not be rendered*/}
           {/* the first time, therefore the useToggleDimensions hook will get the height of this part as if there*/}
           {/* were not brand rendered effectively have a lesser height than it should have */}
-          {brands.length ? (
-            <div
+          {brands.length > 0 && (
+            <ul
               ref={marcaRef}
               className={
                 "flex flex-col gap-4 overflow-hidden transition-all duration-200 ease-in-out"
               }
             >
-              <div className="relative flex items-center">
-                <input
-                  type="text"
-                  className="h-10 w-full rounded border border-gray-300"
-                />
-                <div className="absolute end-0">
-                  <Icon iconType="search" />
-                </div>
-              </div>
               {brands.map((brand, idx) => (
-                <div
+                <BrandCheckbox
                   key={`brand-filter-${idx}`}
-                  className="flex items-center gap-2"
-                >
-                  <input
-                    type="checkbox"
-                    name={brand}
-                    onChange={handleBrandToggle}
-                  />
-                  <label htmlFor={brand}>{strForDisplay(brand)}</label>
-                </div>
+                  brand={brand}
+                  handleBrandToggle={handleBrandToggle}
+                />
               ))}
-            </div>
-          ) : (
-            ""
+            </ul>
           )}
         </div>
 
         <div className="flex flex-col gap-7 border-t-2 border-solid pt-7">
           <FilterHeader
             filterId="ofertas"
-            filterSwitchers={filterSwitchers}
-            setFilterSwitchers={setFilterSwitchers}
+            filtersVisibility={filtersVisibility}
+            handleFiltersVisibility={handleFiltersVisibility}
           />
           <div
             ref={ofertasRef}
@@ -161,8 +156,8 @@ const FilterPanel = ({
         <div className="border-t-2 border-solid pt-7">
           <FilterHeader
             filterId="precio"
-            filterSwitchers={filterSwitchers}
-            setFilterSwitchers={setFilterSwitchers}
+            filtersVisibility={filtersVisibility}
+            handleFiltersVisibility={handleFiltersVisibility}
           />
           <div
             ref={precioRef}
@@ -198,6 +193,20 @@ const FilterPanel = ({
         </div>
       </div>
     </aside>
+  )
+}
+
+type BrandCheckboxProps = {
+  brand: string
+  handleBrandToggle: (e: ChangeEvent<HTMLInputElement>) => void
+}
+
+const BrandCheckbox = ({ brand, handleBrandToggle }: BrandCheckboxProps) => {
+  return (
+    <li className="flex items-center gap-2">
+      <input type="checkbox" name={brand} onChange={handleBrandToggle} />
+      <label htmlFor={brand}>{strForDisplay(brand)}</label>
+    </li>
   )
 }
 
