@@ -1,6 +1,6 @@
 import { OverlayProps } from "./types/OverlayProps.type"
 
-const Overlay = ({ changeVisibility, isVisible, display }: OverlayProps) => {
+const Overlay = ({ changeVisibility, isVisible /*display*/ }: OverlayProps) => {
   return (
     <div
       onClick={changeVisibility}

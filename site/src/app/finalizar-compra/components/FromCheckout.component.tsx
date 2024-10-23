@@ -6,6 +6,7 @@ import { addresses } from "../../../mocks/addresses.mock"
 import { useContext, useState } from "react"
 import { CheckoutContext } from "../../contexts/checkout.context"
 import { CartContext } from "@/app/contexts/cart.context"
+import { sendOrder } from "../utils/sendOrder"
 const initialState = {
   isDeliverySelected: false,
   isPaymentSelected: "mercado-pago",
@@ -13,6 +14,7 @@ const initialState = {
 const FormCheckout = () => {
   const [selectedAddress, setSelectedAddress] = useState(0)
   const [form, setForm] = useState(initialState)
+  console.log("logging for just because the linter: ", form)
   const {
     isDeliverySelected,
     setIsDeliverySelected,
@@ -20,10 +22,15 @@ const FormCheckout = () => {
     setIsPaymentSelected,
   } = useContext(CheckoutContext)
   const { productsInCart } = useContext(CartContext)
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    console.log(productsInCart)
-    console.log(form)
+    const order = await sendOrder({
+      userId: "user.test",
+      delivery: isDeliverySelected,
+      methodOfPayment: isPaymentSelected,
+      cart: productsInCart,
+    })
+    console.log("orden:", order)
   }
   return (
     <div className="md:px-auto mx-auto w-full max-w-[465px] flex-col p-1">
@@ -37,7 +44,7 @@ const FormCheckout = () => {
         ></Delivery>
         {isDeliverySelected ? (
           <div id="Datos-de-entrega">
-            <h3>Direcciones</h3>
+            <h3 className="">Direcciones</h3>
             {addresses
               ? addresses.map((address, index) => (
                   <CardAddress
@@ -51,7 +58,7 @@ const FormCheckout = () => {
               : null}
             <button
               type="button"
-              className="h-10 min-w-56 rounded-lg bg-gray1000 px-1 text-xl text-white"
+              className="mb-2 h-10 min-w-56 rounded-lg bg-gray1000 px-1 text-xl text-white"
               onClick={() => {
                 setSelectedAddress(-1)
               }}

@@ -1,15 +1,16 @@
 import Breadcrumbs from "@/app/components/Breadcrumbs/Breadcrumbs.component"
 import Image from "next/image"
 import { IMG_WIDTH, IMG_HEIGHT } from "@/app/consts/sizes.consts"
-import { API_BASE_URL } from "@/app/consts/api.consts"
+import { API_BASE_URL, APP_BASE_URL } from "@/app/consts/api.consts"
 import Icon from "@/app/components/Icon/Icon.component"
 import { Product } from "@/app/types/Product.type"
 import RelatedProductsContainer from "./components/RelatedProductsContainer/RelatedProductsContainer.component"
 import Price from "@/app/components/Price/Price.component"
 import AddButton from "@/app/components/AddButton/AddButton.component"
+import { strForData } from "@/app/utils/strFormatting.util"
 
-const getProduct = async (productId: string | undefined) => {
-  const res = await fetch(`${API_BASE_URL}/product/${productId}`, {
+const getProduct = async (productid: string | undefined) => {
+  const res = await fetch(`${API_BASE_URL}/product/${productid}`, {
     headers: {
       Accept: "application/json",
       "Content-Type": "application/json",
@@ -20,21 +21,33 @@ const getProduct = async (productId: string | undefined) => {
   return product
 }
 
-const ProductPage = async ({ params }: { params: { productId: string } }) => {
-  const product = await getProduct(params.productId)
+const ProductPage = async ({ params }: { params: { productid: string } }) => {
+  const product = await getProduct(params.productid)
+  const { categoryId, categoryName } = product.category
 
   return (
     <main className="w-full pt-24">
       <div className="mx-auto flex max-w-[1000px] flex-col justify-between gap-20 pt-20 lg:gap-10 lg:px-10">
-        <Breadcrumbs />
+        <Breadcrumbs
+          crumbs={[
+            {
+              label: decodeURIComponent(categoryName),
+              path: strForData(
+                decodeURIComponent(
+                  `${APP_BASE_URL}/categoria/${categoryName}?categoryid=${categoryId}`,
+                ),
+              ),
+            },
+          ]}
+        />
         <section className="flex gap-20">
           <div className="w-60 flex-1">
             <Image
               alt={product.description}
-              src={"/images/product-placeholder.webp"}
+              src={product.imgUrl}
               width={IMG_WIDTH}
               height={IMG_HEIGHT}
-              className="z-50 border border-solid border-gray1000"
+              className="z-50"
             />
           </div>
           <div className="flex w-40 flex-1 flex-col gap-6">

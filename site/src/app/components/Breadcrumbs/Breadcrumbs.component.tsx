@@ -1,34 +1,34 @@
 "use client"
 
 import Icon from "../Icon/Icon.component"
-import { useRouter, usePathname } from "next/navigation"
+import { useRouter } from "next/navigation"
 import { strForDisplay } from "@/app/utils/strFormatting.util"
+import { BreadcrumbsProps } from "./Breadcrumbs.types"
+import { APP_BASE_URL } from "@/app/consts/api.consts"
 
-const Breadcrumbs = () => {
+const Breadcrumbs = ({ crumbs }: BreadcrumbsProps) => {
   const router = useRouter()
-  const params = usePathname()
-  const pages = params.split("/")
-  const crumbs = pages.slice(2, pages.length - 1).reverse()
-
   return (
     <div className="flex">
       <span
         className="flex cursor-pointer items-center gap-1"
-        onClick={() => router.back()}
+        onClick={() => router.push(APP_BASE_URL)}
       >
         <Icon iconType="chev" style="-rotate-90 h-5" />
         <button>Página de inicio</button>
       </span>
-      {crumbs.map((c, idx) => (
-        <span
-          key={`crumb-${idx}`}
-          className="flex cursor-pointer items-center gap-1"
-          onClick={() => window.history.go((idx + 1) * -1)}
-        >
-          <Icon iconType="chev" style="-rotate-90 h-5" />
-          <button>{strForDisplay(decodeURIComponent(c))}</button>
-        </span>
-      ))}
+      {crumbs
+        ? crumbs.map((c, idx) => (
+            <span
+              key={`crumb-${idx}`}
+              className="flex cursor-pointer items-center gap-1"
+              onClick={() => router.push(c.path)}
+            >
+              <Icon iconType="chev" style="-rotate-90 h-5" />
+              <button>{strForDisplay(decodeURIComponent(c.label))}</button>
+            </span>
+          ))
+        : ""}
     </div>
   )
 }

@@ -12,8 +12,10 @@ export const products: Product[] = [
       categoryId: "C009",
       categoryName: "categoria",
       featured: false,
+      imgUrl: "/images/product-placeholder.webp",
     },
     stock: 100,
+    promotion: null,
   },
   // {
   //   productId: "P002",

@@ -9,7 +9,7 @@ import { getProductImageAlt } from "@/app/utils/getProductImageAlt.util"
 import Link from "next/link"
 import AddButton from "../AddButton/AddButton.component"
 
-const Card = ({ additionalStyles, product, link }: CardProps) => {
+const Card = ({ additionalStyles, product, link, imgUrl }: CardProps) => {
   const { finalPrice, discount, isFavorite, handleFavorite } =
     useCardLogic(product)
 
@@ -23,7 +23,7 @@ const Card = ({ additionalStyles, product, link }: CardProps) => {
         <div className="relative h-[240px] w-full md:h-[192px] xs:h-[96px]">
           <Image
             className="w-full rounded-t-lg object-cover"
-            src={"/images/product-placeholder.webp"}
+            src={imgUrl}
             alt={getProductImageAlt(name)}
             fill
           />
