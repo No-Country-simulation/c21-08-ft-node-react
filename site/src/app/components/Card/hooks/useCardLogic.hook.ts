@@ -1,6 +1,7 @@
 import { Product } from "../../../types/Product.type"
 import { useState, useContext } from "react"
 import { CartContext } from "../../../contexts/cart.context"
+import { computeDiscount } from "@/app/utils/price.util"
 
 const useCardLogic = (product: Product) => {
   const [isFavorite, setIsFavorite] = useState<boolean>(false)
@@ -17,7 +18,7 @@ const useCardLogic = (product: Product) => {
   }
 
   const finalPrice =
-    promotion !== null ? price - price * promotion.percentage : price
+    promotion !== null ? computeDiscount(price, promotion.percentage) : price
   const discount = promotion !== null ? promotion.percentage * 100 : null
 
   return {

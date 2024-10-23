@@ -8,6 +8,7 @@ import RelatedProductsContainer from "./components/RelatedProductsContainer/Rela
 import Price from "@/app/components/Price/Price.component"
 import AddButton from "@/app/components/AddButton/AddButton.component"
 import { strForData } from "@/app/utils/strFormatting.util"
+import { computeDiscount } from "@/app/utils/price.util"
 
 const getProduct = async (productid: string | undefined) => {
   const res = await fetch(`${API_BASE_URL}/product/${productid}`, {
@@ -71,8 +72,23 @@ const ProductPage = async ({ params }: { params: { productid: string } }) => {
             <p className="md:text-sm md:leading-[22px]">
               {product.description}
             </p>
-            <div className="flex items-center justify-between">
-              <Price price={product.price} size="L" />
+            <div className="flex items-end justify-between">
+              <div>
+                <Price
+                  price={product.price}
+                  size="S"
+                  additionalStyles="line-through text-gray-500"
+                />
+                {product.promotion && (
+                  <Price
+                    price={computeDiscount(
+                      product.price,
+                      product.promotion?.percentage,
+                    )}
+                    size={"L"}
+                  />
+                )}
+              </div>
               <AddButton product={product} withIcon />
             </div>
           </div>
