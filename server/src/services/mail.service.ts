@@ -19,7 +19,7 @@ export class MailService {
 
   async sendConfirmationEmail(email: string, orderId: string) {
     const mailOptions = {
-      from: "Kramer - <kramer@tienda.com>",
+      from: "Kramer - <tomicardenas96@gmail.com>",
       to: email,
       subject: "Confirma tu pedido",
       text: `Por favor confirma tu pedido utilizando el siguiente enlace: http://localhost:3170/order/confirm?orderId=${orderId}`,

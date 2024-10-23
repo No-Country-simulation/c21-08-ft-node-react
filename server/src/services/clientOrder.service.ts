@@ -1,3 +1,4 @@
+import { MethodOfPayment } from "../common/methodOfPayment.enum";
 import { User } from "../entities/User.entity";
 import { ClientOrderException } from "../exceptions/ClientOrderException";
 import { clientOrderRepository } from "../repositories/clientOrder.repository";
@@ -13,14 +14,18 @@ export class ClientOrderService {
     this.mailService = new MailService();
   }
 
-  async createOrder(userId: string) {
+  async createOrder(
+    userId: string,
+    delivery: boolean,
+    methodOfPayment: MethodOfPayment
+  ) {
     try {
       const user: User | null | undefined = await this.userService.getUserById(
         userId
       );
 
       if (!user) {
-        return null;
+        throw new Error("User not found");
       }
 
       const clientOrderId = crypto.randomUUID();
@@ -28,6 +33,8 @@ export class ClientOrderService {
       const order = clientOrderRepository.create({
         clientOrderId,
         user,
+        delivery,
+        methodOfPayment,
       });
 
       await clientOrderRepository.save(order);
@@ -35,7 +42,10 @@ export class ClientOrderService {
 
       return order;
     } catch (error) {
-      throw new ClientOrderException("Error creating order", 500);
+      if (error) {
+        throw error;
+      }
+      throw new Error("Error creating order");
     }
   }
 

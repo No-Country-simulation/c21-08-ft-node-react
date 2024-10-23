@@ -23,7 +23,7 @@ export class UserService {
       }
       return user;
     } catch (error) {
-      throw new UserException("Error getting user by Id", 500);
+      throw new Error("Error getting user by id");
     }
   }
 

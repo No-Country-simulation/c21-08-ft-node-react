@@ -24,6 +24,24 @@ AppDataSource.initialize()
     app.use("/promotion", promotionRoutes);
     app.use("/order", orderRoutes);
 
+    //Middleware de manejo de errores.
+    app.use(
+      (
+        err: any,
+        req: express.Request,
+        res: express.Response,
+        next: express.NextFunction
+      ) => {
+        console.error(err.stack);
+        res
+          .status(500)
+          .json({
+            message: "Ocurrió un error en el servidor",
+            error: err.message,
+          });
+      }
+    );
+
     app.listen(PORT, () => {
       console.log(`Port running in port ${PORT}`);
     });
