@@ -6,18 +6,18 @@ const SliderNavigationArrow = ({
   type,
   onClick,
 }: SliderNavigationArrowProps) => {
-  const iconTypeStyle = type === "right" ? "" : "rotate-180"
+  const iconTypeStyle = type === "right" ? "rotate-90" : "-rotate-90"
   const positionTypeStyle = type === "right" ? "right-0" : "left-0"
 
   return (
     <div
-      className={`${isDisabled ? "hidden" : "flex"} h-8 absolute z-10 w-8 cursor-pointer items-center justify-center rounded-full bg-gray400 ${positionTypeStyle} xs:scale-75 xs:top-8`}
+      className={`${isDisabled ? "hidden" : "flex"} z-10 h-full w-8 cursor-pointer items-center justify-center${positionTypeStyle} xs:top-8 xs:scale-75`}
       onClick={() => {
         if (isDisabled) return
         onClick()
       }}
     >
-      <Icon iconType="rightArrow" style={`${iconTypeStyle}`} />
+      <Icon iconType="chev" style={`${iconTypeStyle} scale-150 sm:scale-100`} />
     </div>
   )
 }

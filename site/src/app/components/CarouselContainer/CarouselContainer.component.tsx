@@ -12,7 +12,7 @@ const CarouselContainer = ({ children }: CarouselContainerProps) => {
   const { silderRef, isLoaded, next, prev } = useCarousel()
 
   return (
-    <div className="relative flex h-[416px] items-center gap-2 xs:h-[208px]">
+    <div className="relative flex h-[416px] items-center xs:h-[208px]">
       {isLoaded && (
         <SliderNavigationArrow type="left" onClick={prev} isDisabled={false} />
       )}

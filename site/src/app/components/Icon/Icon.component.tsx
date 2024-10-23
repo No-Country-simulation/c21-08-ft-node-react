@@ -651,10 +651,11 @@ const Icon = ({ iconType, style = "" }: IconProps) => {
           viewBox="0 0 24 24"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
+          stroke="currentColor"
         >
           <path
             d="M19.92 15.09L13.4 8.56996C12.63 7.79997 11.37 7.79997 10.6 8.56997L4.07996 15.09"
-            stroke="#292D32"
+            // stroke="#292D32"
             strokeWidth="1.5"
             strokeMiterlimit="10"
             strokeLinecap="round"
