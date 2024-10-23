@@ -4,6 +4,7 @@ const useFetch = <T>(endpoint: string) => {
   const [data, setData] = useState<T | null>(null)
 
   useEffect(() => {
+    console.log("endpoint: ", endpoint)
     async function getData() {
       try {
         const res = await fetch(endpoint, {
