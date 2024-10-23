@@ -10,7 +10,7 @@ import {
 import { useToggleDimensions } from "@/app/hooks/useToggleDimensions.hook"
 import { strForDisplay } from "@/app/utils/strFormatting.util"
 import FilterHeader from "./FilterHeader.component"
-import { FiltersVisibility } from "../types/page.types"
+import { FilterFields, FiltersVisibility } from "../types/page.types"
 import { FilterPanelProps } from "../types/page.types"
 import { Filters } from "../types/page.types"
 
@@ -65,10 +65,7 @@ const FilterPanel = ({
     fieldType?: HTMLInputTypeAttribute,
   ) => {
     if (fieldType === "checkbox") {
-      const newVal = {
-        [e.target.name]: e.target.checked,
-      }
-      setFormValues((prev) => ({ ...prev, ...newVal }))
+      setFormValues((prev) => ({ ...prev, [e.target.name]: !prev.discount }))
     } else {
       const newVal = {
         [e.target.name]: e.target.value,
@@ -77,14 +74,19 @@ const FilterPanel = ({
     }
   }
 
+  // this function is not generic at all but for now its ok since the only
+  // checkbox we handle other than the brand one is discount, brand checkbox
+  // requrie special treatment
+  const handleCheckbox = () => {
+    setFormValues((prev) => ({ ...prev, discount: !prev.discount }))
+  }
+
   const handlePriceChange = (e: ChangeEvent<HTMLInputElement>) => {
     setFormValues((prev) => ({ ...prev, price: Number(e.target.value) }))
     setCheckedPrice(Number(e.target.value))
   }
 
   const handleBrandToggle = (brand: string) => {
-    console.log("brand: ", brand)
-
     if (formValues.brand.includes(brand)) {
       setFormValues((prev) => {
         const remainingBrands = prev.brand.filter((b) => b !== brand)
@@ -96,17 +98,6 @@ const FilterPanel = ({
         brand: [...prev.brand, brand],
       }))
     }
-    // if (brand) {
-    //   setFormValues((prev) => ({
-    //     ...prev,
-    //     brand: [...prev.brand, brand],
-    //   }))
-    // } else {
-    //   setFormValues((prev) => {
-    //     const remainingBrands = prev.brand.filter((b) => b !== brand)
-    //     return { ...prev, brand: remainingBrands }
-    //   })
-    // }
   }
 
   return (
@@ -153,17 +144,20 @@ const FilterPanel = ({
           <div
             ref={ofertasRef}
             className={
-              "flex items-center gap-2 overflow-hidden transition-all duration-200 ease-in-out"
+              "flex cursor-pointer items-center gap-2 overflow-hidden transition-all duration-200 ease-in-out"
             }
+            onClick={handleCheckbox}
           >
             <input
               type="checkbox"
               name="discount"
-              onChange={(e) => {
-                handleChange(e, "checkbox")
-              }}
+              checked={formValues.discount}
+              onChange={handleCheckbox}
+              className="cursor-pointer"
             />
-            <label htmlFor="discount">Descuento</label>
+            <label htmlFor="discount" className="cursor-pointer">
+              Descuento
+            </label>
           </div>
         </div>
 
