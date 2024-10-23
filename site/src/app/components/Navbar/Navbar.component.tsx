@@ -45,26 +45,38 @@ const Navbar = () => {
   }, [pathname])
 
   const changeMenuVisibility = () => {
-    if (isCartVisible) setIsCartVisible((prevIsCartVisible) => !prevIsCartVisible)
-    if (isCategoriesVisible) setIsCategoriesVisible((prevIsCategoriesVisible) => !prevIsCategoriesVisible)
+    if (isCartVisible)
+      setIsCartVisible((prevIsCartVisible) => !prevIsCartVisible)
+    if (isCategoriesVisible)
+      setIsCategoriesVisible(
+        (prevIsCategoriesVisible) => !prevIsCategoriesVisible,
+      )
     setIsMenuVisible((prevIsMenuVisible) => !prevIsMenuVisible)
   }
 
   const changeCartVisibility = () => {
-    if (isCategoriesVisible) setIsCategoriesVisible((prevIsCategoriesVisible) => !prevIsCategoriesVisible)
-    if (isMenuVisible) setIsMenuVisible((prevIsMenuVisible) => !prevIsMenuVisible)
+    if (isCategoriesVisible)
+      setIsCategoriesVisible(
+        (prevIsCategoriesVisible) => !prevIsCategoriesVisible,
+      )
+    if (isMenuVisible)
+      setIsMenuVisible((prevIsMenuVisible) => !prevIsMenuVisible)
     setIsCartVisible((prevIsCartVisible) => !prevIsCartVisible)
   }
 
   const changeCategoriesVisibility = () => {
-    if (isCartVisible) setIsCartVisible((prevIsCartVisible) => !prevIsCartVisible)
-    if (isMenuVisible) setIsMenuVisible((prevIsMenuVisible) => !prevIsMenuVisible)
-    setIsCategoriesVisible((prevIsCategoriesVisible) => !prevIsCategoriesVisible)
+    if (isCartVisible)
+      setIsCartVisible((prevIsCartVisible) => !prevIsCartVisible)
+    if (isMenuVisible)
+      setIsMenuVisible((prevIsMenuVisible) => !prevIsMenuVisible)
+    setIsCategoriesVisible(
+      (prevIsCategoriesVisible) => !prevIsCategoriesVisible,
+    )
   }
 
   return (
     <>
-      <header className="fixed top-0 z-50 w-full bg-gray100">
+      <header className="fixed top-0 z-50 w-full border-b-[1px] border-solid border-gray300 bg-gray100">
         <div className="mx-auto flex min-h-24 max-w-[1000px] items-center justify-between">
           <MenuButton changeMenuVisibility={changeMenuVisibility} />
           <Logo />
