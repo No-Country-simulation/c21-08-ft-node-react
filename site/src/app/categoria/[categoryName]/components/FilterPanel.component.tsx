@@ -100,7 +100,7 @@ const FilterPanel = ({
     <aside
       className={`flex w-1/4 flex-col gap-9 bg-gray100 sm:fixed sm:z-20 sm:h-full sm:w-full ${isFiltersVisible ? "" : "sm:hidden"}`}
     >
-      <h2 className="text-2xl font-bold">Filtros</h2>
+      <h2 className="text-2xl font-bold sm:px-2">Filtros</h2>
       <div className="flex flex-col gap-7">
         <div className="flex flex-col gap-4">
           <FilterHeader

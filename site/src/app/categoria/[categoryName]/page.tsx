@@ -46,7 +46,7 @@ export default function CategoriaPage() {
           isFiltersVisible={isFiltersVisible}
           changeFiltersVisibility={changeFiltersVisibility}
         />
-        <div className="flex">
+        <div className="flex py-10 px-8 md:px-4 sm:px-0">
           <FilterPanel
             setFormValues={setFormValues}
             formValues={formValues}
