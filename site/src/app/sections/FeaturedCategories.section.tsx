@@ -47,8 +47,8 @@ const getFeaturedCategories = async () => {
 const FeaturedCategories = async () => {
   const featuredCategories = await getFeaturedCategories()
   return (
-    <section className="-mt-48 w-full md:mt-0">
-      <div className="mx-auto flex max-w-[1000px] items-start gap-6 md:gap-2 md:px-2 xs:gap-1 xs:px-1">
+    <section className="-mt-36 w-full md:mt-0">
+      <div className="mx-auto flex max-w-[1072px] items-start items-center gap-10 rounded-[28px] bg-gray100 p-9 md:gap-0 md:gap-2 md:px-0 xs:gap-1 xs:px-1">
         {featuredCategories.map((c, idx) => (
           <CategoryCard
             key={`featured-category-${idx}`}
