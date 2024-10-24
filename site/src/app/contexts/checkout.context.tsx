@@ -12,7 +12,7 @@ export const CheckoutContext = createContext<CheckoutContextType>(
 export const CheckoutProvider = ({ children }: CheckoutProviderType) => {
   const [isDeliverySelected, setIsDeliverySelected] = useState<boolean>(false)
 
-  const [isPaymentSelected, setIsPaymentSelected] = useState("")
+  const [isPaymentSelected, setIsPaymentSelected] = useState("electronic")
 
   const disabledButton = !(
     isPaymentSelected !== null && isDeliverySelected !== null

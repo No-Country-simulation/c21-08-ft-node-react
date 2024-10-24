@@ -35,7 +35,7 @@ const FeaturedCategories = async () => {
                 />
               }
               name={strForDisplay(c.categoryName)}
-              link={`/categoria/${strForData(c.categoryName)}?categoryid=${c.categoryId}`}
+              link={`/categoria/${strForData(c.categoryName)}?categoryid=${c.categoryId}&categorylabel=${c.categoryLabel}`}
             />
           )
         })}

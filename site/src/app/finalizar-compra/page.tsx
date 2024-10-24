@@ -6,7 +6,7 @@ import { CheckoutProvider } from "../contexts/checkout.context"
 const Checkout = () => {
   return (
     <div className="mt-32 w-full">
-      <div className="px-auto mx-auto flex max-w-[1000px] justify-center gap-1 md:flex-col">
+      <div className="px-auto mx-auto flex min-h-[500px] max-w-[1000px] justify-center gap-1 md:flex-col">
         <CheckoutProvider>
           <FormCheckout></FormCheckout>
           <Cart

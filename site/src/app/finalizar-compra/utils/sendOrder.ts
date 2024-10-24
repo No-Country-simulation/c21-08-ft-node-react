@@ -6,14 +6,20 @@ export const sendOrder = async ({
   methodOfPayment,
   cart,
 }: useSendOrderTypes) => {
-  console.log(cart)
+  console.log(
+    "orden desde front a backend",
+    userId,
+    delivery,
+    methodOfPayment,
+    cart,
+  )
   try {
     const res = await fetch("http://localhost:3170/order/create", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ userId, delivery, methodOfPayment }),
+      body: JSON.stringify({ userId, delivery, methodOfPayment, cart }),
     })
     console.log(res)
     const resOrder = await res.json()

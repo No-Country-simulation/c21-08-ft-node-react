@@ -22,13 +22,16 @@ const FormCheckout = () => {
     setIsPaymentSelected,
   } = useContext(CheckoutContext)
   const { productsInCart } = useContext(CartContext)
+  const cartFromBackend = productsInCart.map((p) => {
+    return { productId: p.productId, productQty: p.productQty }
+  })
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     const order = await sendOrder({
-      userId: "user.test",
+      userId: "3f71ed82-28ec-4a86-818b-4636bb53d42f",
       delivery: isDeliverySelected,
       methodOfPayment: isPaymentSelected,
-      cart: productsInCart,
+      cart: cartFromBackend,
     })
     console.log("orden:", order)
     //to do: redireccion a mercado pago, obtener el id del usuario,
