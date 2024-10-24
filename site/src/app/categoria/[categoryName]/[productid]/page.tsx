@@ -43,8 +43,8 @@ const ProductPage = async ({ params }: { params: { productid: string } }) => {
             },
           ]}
         />
-        <section className="mt-8 flex gap-16 px-8 md:gap-8 sm:flex-col sm:items-center xs:px-4">
-          <div className="w-60 flex-1 overflow-hidden rounded-xl sm:w-[90%] xs:w-full">
+        <section className="flex gap-16 lg:px-8 md:gap-8 sm:flex-col sm:items-center xs:px-4">
+          <div className="w-60 flex-1 sm:w-[90%] xs:w-full">
             <Image
               alt={product.description}
               src={product.imgUrl}
@@ -93,7 +93,7 @@ const ProductPage = async ({ params }: { params: { productid: string } }) => {
             </div>
           </div>
         </section>
-        <section className="flex flex-col gap-8 border-t-2 border-solid border-gray300 px-8 pt-10 md:px-4">
+        <section className="flex flex-col gap-8 border-t-2 border-solid border-gray300 pt-10 lg:px-8 md:px-4">
           <h2 className="text-2xl font-bold">También te podría gustar</h2>
           <RelatedProductsContainer product={product} />
         </section>

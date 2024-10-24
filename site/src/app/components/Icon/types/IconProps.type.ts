@@ -27,5 +27,8 @@ export type IconProps = {
     | "bebidas-con-alcohol"
     | "variados"
     | "hamburger"
+    | "step-1"
+    | "step-2"
+    | "step-3"
   style?: string
 }

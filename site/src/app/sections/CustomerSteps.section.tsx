@@ -9,36 +9,31 @@ const CustomerSteps = () => {
         <h2 className="text-center text-4xl font-bold xs:text-3xl">
           Cómo trabajamos
         </h2>
-        <div className="mt-20 grid grid-cols-3 grid-rows-1 gap-x-14 lg:gap-x-5 md:mt-16 md:grid-cols-1 md:grid-rows-3 md:gap-x-0 md:gap-y-10 sm:mt-10 sm:gap-y-5">
-          <div className="flex flex-col items-center gap-10 md:flex-row md:gap-16 sm:gap-8">
+        <div className="mt-20 flex flex-col gap-10 sm:mt-10">
+          <div className="m-auto flex justify-center gap-10 lg:gap-8 md:flex-row md:flex-col md:gap-14">
             <CustomerStep
-              icon={<Icon iconType="cartLarge" style="sm:hidden" />}
+              icon={<Icon iconType="step-1" />}
               title={"Elijes lo que necesitas"}
-              desc={"Lorem ipsum dolor sit amet, consectetur adipiscing elit."}
             />
             <CustomerStep
-              icon={<Icon iconType="whatsapp" style="sm:hidden" />}
+              icon={<Icon iconType="step-2" />}
               title={"Nos confirmas por whatsapp"}
-              desc={"Lorem ipsum dolor sit amet, consectetur adipiscing elit."}
             />
-          </div>
-          <div className="flex items-center md:justify-center">
             <CustomerStep
-              icon={<Icon iconType="boxTickLarge" style="sm:hidden" />}
+              icon={<Icon iconType="step-3" />}
               title={"Preparamos tu pedido"}
-              desc={"Lorem ipsum dolor sit amet, consectetur adipiscing elit."}
             />
           </div>
-          <div className="flex flex-col gap-10 md:flex-row md:gap-16 sm:gap-8">
+          <div className="m-auto flex justify-center gap-10 lg:gap-8 md:flex-row md:gap-2">
             <CustomerStep
-              icon={<Icon iconType="delivery" style="sm:hidden" />}
-              title={"Te lo llevamos a casa"}
-              desc={"Lorem ipsum dolor sit amet, consectetur adipiscing elit."}
+              icon={<Icon iconType="delivery" />}
+              labelStyle="sm:text-xl sm:w-full"
+              title={"Te lo llevamos a tu casa"}
             />
             <CustomerStep
-              icon={<Icon iconType="shop" style="sm:hidden" />}
+              icon={<Icon iconType="shop" />}
+              labelStyle="sm:text-xl sm:w-full"
               title={"Lo recojes en tienda"}
-              desc={"Lorem ipsum dolor sit amet, consectetur adipiscing elit."}
             />
           </div>
         </div>

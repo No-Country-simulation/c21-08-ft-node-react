@@ -1,21 +1,18 @@
 type CustomerStepProps = {
   icon: React.ReactNode
   title: string
-  desc: string
-  arrow?: JSX.Element
+  labelStyle?: string
 }
 
-const CustomerStep = ({ icon, title, desc, arrow }: CustomerStepProps) => {
+const CustomerStep = ({ icon, title, labelStyle }: CustomerStepProps) => {
   return (
-    <div className="relative flex gap-5 sm:gap-1">
-      {arrow}
+    <div className="relative flex flex-1 flex-col items-center gap-2 sm:gap-1">
       <div>{icon}</div>
-      <div className="flex flex-col gap-2">
-        <h3 className="text-2xl font-bold leading-none xs:text-lg xs:leading-5">
-          {title}
-        </h3>
-        <p className="xs:text-sm">{desc}</p>
-      </div>
+      <h3
+        className={`w-44 text-2xl font-semibold leading-none sm:text-center xs:leading-5 ${labelStyle || ""}`}
+      >
+        {title}
+      </h3>
     </div>
   )
 }

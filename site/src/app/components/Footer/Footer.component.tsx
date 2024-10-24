@@ -13,11 +13,10 @@ const Footer = () => {
             className="mb-10"
           />
           <address className="flex flex-col gap-4 font-light not-italic">
-            <p>
+            <p className="w-[80%]">
               Calle Los Robles 123, Piso 2, Dpto. 4, Colonia El Bosque, Ciudad
               Sol, CP 56789, País del Este.
             </p>
-            <p>945 9867 9697</p>
           </address>
         </div>
         <div className="w-[40%] md:w-full">
@@ -54,10 +53,12 @@ const Footer = () => {
           </nav>
         </div>
         <div className="w-[20%] md:w-full">
-          <h2 className="mb-5 text-2xl font-bold">Conversemos</h2>
+          <h2 className="mb-5 text-2xl font-bold">Conversémos</h2>
           <ul className="flex flex-col gap-3 font-light">
             <li>Facebook</li>
             <li>Instagram</li>
+            <li>945 9867 9697</li>
+            <li>consultas@kramer.com</li>
           </ul>
         </div>
       </div>

@@ -22,7 +22,7 @@ const Card = ({ additionalStyles, product, link, imgUrl }: CardProps) => {
       <Link href={link}>
         <div className="relative h-[240px] w-full md:h-[192px] xs:h-[96px]">
           <Image
-            className="w-full rounded-t-lg object-cover"
+            className="w-full rounded-t-lg object-scale-down"
             src={imgUrl}
             alt={getProductImageAlt(name)}
             fill
