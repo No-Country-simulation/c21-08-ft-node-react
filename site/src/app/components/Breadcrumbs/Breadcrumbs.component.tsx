@@ -9,7 +9,7 @@ import { APP_BASE_URL } from "@/app/consts/api.consts"
 const Breadcrumbs = ({ crumbs }: BreadcrumbsProps) => {
   const router = useRouter()
   return (
-    <div className="mt-20 flex lg:px-14 md:mt-10 sm:px-10 xs:px-1">
+    <div className="mt-12 flex lg:px-14 md:mt-10 sm:mt-8 sm:px-10 xs:px-1">
       <span
         className="flex cursor-pointer items-center gap-1"
         onClick={() => router.push(APP_BASE_URL)}
