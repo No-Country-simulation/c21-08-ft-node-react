@@ -1,6 +1,8 @@
 import CategoryCard from "../components/CategoryCard/CategoryCard.component"
+import { IconProps } from "../components/Icon/types/IconProps.type"
 import { Category } from "@/app/types/Category.type"
 import { API_BASE_URL } from "@/app/consts/api.consts"
+import Icon from "../components/Icon/Icon.component"
 import {
   removeAccents,
   strForData,
@@ -24,7 +26,9 @@ const getFeaturedCategories = async () => {
       }
     }
 
-    if (strForData(decodeURIComponent(c.categoryName)) === "vinoteca") {
+    if (
+      strForData(decodeURIComponent(c.categoryName)) === "bebidas-con-alcohol"
+    ) {
       return {
         ...c,
         imgUrl: "/images/vinoteca-featured-img.png",
@@ -47,17 +51,19 @@ const getFeaturedCategories = async () => {
 const FeaturedCategories = async () => {
   const featuredCategories = await getFeaturedCategories()
   return (
-    <section className="-mt-36 w-full md:mt-0">
-      <div className="mx-auto flex max-w-[1072px] items-start items-center gap-10 rounded-[28px] bg-gray100 p-9 md:gap-0 md:gap-2 md:px-0 xs:gap-1 xs:px-1">
+    <section className="md:-mt- relative z-40 -mt-36 w-full lg:-mt-48 md:mt-0 xs:hidden">
+      <div className="mx-auto flex max-w-[1000px] justify-between gap-10 lg:gap-6 lg:px-10 md:px-5 sm:gap-3">
         {featuredCategories.map((c, idx) => (
           <CategoryCard
             key={`featured-category-${idx}`}
+            icon={
+              <Icon
+                iconType={`${c.categoryName}-md-color` as IconProps["iconType"]}
+                style="md:w-7"
+              />
+            }
             name={strForDisplay(c.categoryName)}
-            alt={c.categoryName}
             link={`/categoria/${strForData(c.categoryName)}?categoryid=${c.categoryId}`}
-            src={c.imgUrl}
-            width={480}
-            height={480}
           />
         ))}
       </div>

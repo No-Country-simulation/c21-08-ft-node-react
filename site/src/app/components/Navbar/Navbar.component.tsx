@@ -78,12 +78,12 @@ const Navbar = () => {
   return (
     <>
       <header className="fixed top-0 z-50 w-full border-b-[1px] border-solid border-gray300 bg-gray100">
-        <div className="mx-auto flex min-h-24 max-w-[1000px] items-center justify-between">
+        <div className="mx-auto flex min-h-24 max-w-[1000px] items-center justify-between lg:gap-6 lg:px-10">
           <MenuButton changeMenuVisibility={changeMenuVisibility} />
           <Logo />
           <SearchBar />
           <nav>
-            <ul className="flex gap-4">
+            <ul className="flex items-center gap-6">
               <li className="flex gap-2 xs:hidden">
                 <CategoriesButton
                   changeCategoriesVisibility={changeCategoriesVisibility}

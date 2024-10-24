@@ -3,6 +3,11 @@ import { SetStateAction, Dispatch } from "react"
 
 export type Filters = "marca" | "ofertas" | "precio"
 
+export type Fields = {
+  brand: string[]
+  discount: boolean
+  price: number
+}
 export type FiltersVisibility = {
   [key in Filters]: boolean
 }

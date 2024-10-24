@@ -30,5 +30,8 @@ export type IconProps = {
     | "step-1"
     | "step-2"
     | "step-3"
+    | "almacen-md-color"
+    | "bebidas-sin-alcohol-md-color"
+    | "bebidas-con-alcohol-md-color"
   style?: string
 }

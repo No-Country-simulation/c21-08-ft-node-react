@@ -1,16 +1,10 @@
 "use client"
 
-import {
-  useState,
-  useEffect,
-  useRef,
-  ChangeEvent,
-  HTMLInputTypeAttribute,
-} from "react"
+import { useState, useEffect, useRef, ChangeEvent } from "react"
 import { useToggleDimensions } from "@/app/hooks/useToggleDimensions.hook"
 import { strForDisplay } from "@/app/utils/strFormatting.util"
 import FilterHeader from "./FilterHeader.component"
-import { FilterFields, FiltersVisibility } from "../types/page.types"
+import { FiltersVisibility } from "../types/page.types"
 import { FilterPanelProps } from "../types/page.types"
 import { Filters } from "../types/page.types"
 
@@ -60,19 +54,19 @@ const FilterPanel = ({
     }))
   }
 
-  const handleChange = (
-    e: ChangeEvent<HTMLInputElement>,
-    fieldType?: HTMLInputTypeAttribute,
-  ) => {
-    if (fieldType === "checkbox") {
-      setFormValues((prev) => ({ ...prev, [e.target.name]: !prev.discount }))
-    } else {
-      const newVal = {
-        [e.target.name]: e.target.value,
-      }
-      setFormValues((prev) => ({ ...prev, ...newVal }))
-    }
-  }
+  // const handleChange = (
+  //   e: ChangeEvent<HTMLInputElement>,
+  //   fieldType?: HTMLInputTypeAttribute,
+  // ) => {
+  //   if (fieldType === "checkbox") {
+  //     setFormValues((prev) => ({ ...prev, [e.target.name]: !prev.discount }))
+  //   } else {
+  //     const newVal = {
+  //       [e.target.name]: e.target.value,
+  //     }
+  //     setFormValues((prev) => ({ ...prev, ...newVal }))
+  //   }
+  // }
 
   // this function is not generic at all but for now its ok since the only
   // checkbox we handle other than the brand one is discount, brand checkbox
@@ -153,6 +147,7 @@ const FilterPanel = ({
               name="discount"
               checked={formValues.discount}
               onChange={handleCheckbox}
+              onClick={handleCheckbox}
               className="cursor-pointer"
             />
             <label htmlFor="discount" className="cursor-pointer">
