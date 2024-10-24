@@ -2,6 +2,7 @@
 import { useRouter } from "next/navigation"
 import { useAuth } from "@/app/contexts/auth.context"
 import React, { useEffect, useState } from "react"
+import { API_BASE_URL } from "@/app/consts/api.consts"
 
 const LoginPage = () => {
   const [email, setEmail] = useState("")
@@ -22,7 +23,7 @@ const LoginPage = () => {
     const data = { email, password }
     console.log(data)
     try {
-      const response = await fetch(`http://localhost:3170/auth/login`, {
+      const response = await fetch(`${API_BASE_URL}/auth/login`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

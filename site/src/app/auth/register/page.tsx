@@ -4,6 +4,7 @@ import React, { useState, useContext, useEffect } from "react"
 import { CartContext } from "@/app/contexts/cart.context"
 import { useRouter } from "next/navigation"
 import { useAuth } from "@/app/contexts/auth.context"
+import { API_BASE_URL } from "@/app/consts/api.consts"
 
 const RegisterPage = () => {
   const [name, setName] = useState("")
@@ -25,7 +26,7 @@ const RegisterPage = () => {
     const data = { name, email, password }
     console.log(data)
     try {
-      const response = await fetch(`http://localhost:3170/auth/register`, {
+      const response = await fetch(`${API_BASE_URL}/auth/register`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
