@@ -29,8 +29,8 @@ const ProductPage = async ({ params }: { params: { productid: string } }) => {
   const { categoryId, categoryName } = product.category
 
   return (
-    <main className="w-full pt-24">
-      <div className="mx-auto flex max-w-[1000px] flex-col justify-between gap-16 sm:gap-8">
+    <main className="w-full">
+      <div className="mx-auto flex max-w-[1000px] flex-col justify-between gap-16 md:gap-10 sm:gap-8">
         <Breadcrumbs
           crumbs={[
             {

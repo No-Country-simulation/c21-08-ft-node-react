@@ -78,7 +78,7 @@ const Navbar = () => {
   return (
     <>
       <header className="fixed top-0 z-50 w-full border-b-[1px] border-solid border-gray300 bg-gray100">
-        <div className="mx-auto flex min-h-24 max-w-[1000px] items-center justify-between lg:gap-6 lg:px-10">
+        <div className="mx-auto flex min-h-24 max-w-[1000px] items-center justify-between lg:gap-6 lg:px-10 md:gap-3 md:px-5 xs:px-1">
           <MenuButton changeMenuVisibility={changeMenuVisibility} />
           <Logo />
           <SearchBar />

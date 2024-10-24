@@ -45,6 +45,9 @@ const config: Config = {
         krBlue: "#2557B2",
         krGreen: "#49946A",
       },
+      backgroundImage: {
+        hero: "url('/images/hero-final1.jpg')",
+      },
     },
   },
   plugins: [

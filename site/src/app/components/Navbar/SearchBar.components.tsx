@@ -58,7 +58,7 @@ const SearchBar = () => {
     <div ref={resultsRef} className="relative">
       <div className="flex items-center">
         <input
-          className="relative rounded-md px-4 py-3"
+          className="relative w-full rounded-md px-4 py-3"
           type="text"
           name=""
           id=""
