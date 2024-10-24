@@ -8,6 +8,7 @@ import React, {
 } from "react"
 
 import { jwtDecode } from "jwt-decode"
+import { useRouter } from "next/navigation"
 
 // Define el tipo del usuario
 interface User {
@@ -40,7 +41,9 @@ interface AuthProviderProps {
 
 // Proveedor de autenticación
 export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
+  const router = useRouter()
   const [user, setUser] = useState<User | null>(null)
+
   console.log("contexto usuario", user)
   useEffect(() => {
     const token = window.localStorage.getItem("token")
@@ -60,11 +63,12 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     localStorage.setItem("token", token)
     const decodedToken = jwtDecode<DecodedToken>(token)
     setUser(decodedToken.user) // Actualiza el estado del usuario con el token decodificado
+    router.back()
   }
 
   const logout = () => {
     localStorage.removeItem("token")
-    console.log("Logout")
+    router.push("/")
     setUser(null)
   }
 
