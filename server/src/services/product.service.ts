@@ -22,7 +22,9 @@ export class ProductService {
 
   async getProductById(productId: string): Promise<Product> {
     try {
-      const product = await productRepository.findOne({ where: { productId } });
+      const product: Product | null = await productRepository.findOne({
+        where: { productId },
+      });
 
       if (!product) {
         throw new ProductException("Product not found", 404);

@@ -1,4 +1,4 @@
-import bcrypt from "bcrypt";
+import bcrypt from "bcryptjs";
 import { User } from "../entities/User.entity";
 import { UserException } from "../exceptions/UserException";
 import { userRepository } from "../repositories/user.repository";
@@ -14,16 +14,22 @@ export class UserService {
 
   async getUserById(userId: string): Promise<User> {
     try {
-      const user = await userRepository.findOne({
+      const user: User | null = await userRepository.findOne({
         where: { userId },
       });
 
       if (!user) {
-        throw new UserException("User not found", 404);
+        throw new UserException(
+          "Error getting user by id: user not found",
+          400
+        );
       }
       return user;
     } catch (error) {
-      throw new Error("Error getting user by id");
+      if (error instanceof UserException) {
+        throw error;
+      }
+      throw new UserException("Error getting user by id", 500);
     }
   }
 
