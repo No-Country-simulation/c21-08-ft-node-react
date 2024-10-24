@@ -44,12 +44,12 @@ export class OrderProductService {
         const product = await this.productService.getProductById(
           item.productId
         );
+
         return {
           orderProductId,
           quantity: item.productQty,
           clientOrder: order,
           product,
-          item,
         };
       });
 

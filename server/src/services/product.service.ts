@@ -19,20 +19,21 @@ export class ProductService {
     try {
       const { categoryId, promotionId, ...productData } = createProductDto;
 
-      const category: Category | undefined = await this.categoryService.getCategoryById(categoryId);
+      const category: Category | undefined =
+        await this.categoryService.getCategoryById(categoryId);
       if (!category) {
         throw new CategoryException("Category not found", 404);
       }
 
       let promotion: Promotion | undefined = undefined;
       if (promotionId) {
-        promotion = { promotionId } as Promotion; 
+        promotion = { promotionId } as Promotion;
       }
 
       const newProduct = productRepository.create({
         ...productData,
-        category, 
-        promotion, 
+        category,
+        promotion,
       });
 
       return await productRepository.save(newProduct);
@@ -49,7 +50,7 @@ export class ProductService {
     }
   }
 
-  async getProductById(productId: string): Promise<Product | null> {
+  async getProductById(productId: string): Promise<Product> {
     try {
       const product: Product | null = await productRepository.findOne({
         where: { productId },
@@ -63,11 +64,12 @@ export class ProductService {
     } catch (error) {
       throw new ProductException("Error getting a product by id", 500);
     }
-  }  
+  }
 
   async getProductsByCategory(categoryId: string): Promise<Product[]> {
     try {
-      const category: Category | undefined = await this.categoryService.getCategoryById(categoryId);
+      const category: Category | undefined =
+        await this.categoryService.getCategoryById(categoryId);
 
       return productRepository.find({
         where: { category },
@@ -93,9 +95,12 @@ export class ProductService {
     }
   }
 
-  async updateProduct(productId: string, productData: Partial<CreateProductDto>): Promise<Product> {
+  async updateProduct(
+    productId: string,
+    productData: Partial<CreateProductDto>
+  ): Promise<Product> {
     try {
-      const product = await productRepository.findOne({ where: { productId } }); 
+      const product = await productRepository.findOne({ where: { productId } });
 
       if (!product) {
         throw new ProductException("Product not found", 404);
@@ -111,14 +116,13 @@ export class ProductService {
 
   async deleteProduct(productId: string): Promise<void> {
     try {
-        const result = await productRepository.delete({ productId });
+      const result = await productRepository.delete({ productId });
 
-        if (result.affected === 0) {
-            throw new ProductException("Product not found", 404);
-        }
+      if (result.affected === 0) {
+        throw new ProductException("Product not found", 404);
+      }
     } catch (error) {
-        throw new ProductException("Error deleting product", 500);
+      throw new ProductException("Error deleting product", 500);
     }
   }
-
 }
