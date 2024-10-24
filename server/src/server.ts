@@ -2,12 +2,18 @@ const cors = require("cors");
 import express from "express";
 import app from "./app";
 import { AppDataSource } from "./data-source";
+import { CategoryException } from "./exceptions/CategoryException";
+import { ClientOrderException } from "./exceptions/ClientOrderException";
+import { ProductException } from "./exceptions/ProductException";
+import { PromotionException } from "./exceptions/PromotionException";
+import { UserException } from "./exceptions/UserException";
+import userAuth from "./routes/auth.route";
 import categoryRoutes from "./routes/category.route";
 import orderRoutes from "./routes/clientOrder.route";
+import OrderProductRoutes from "./routes/orderProduct.route";
 import productRoutes from "./routes/product.route";
 import promotionRoutes from "./routes/promotion.route";
 import userRoutes from "./routes/user.route";
-import userAuth from "./routes/auth.route";
 
 const PORT = process.env.PORT || 3170;
 
@@ -23,6 +29,7 @@ AppDataSource.initialize()
     app.use("/category", categoryRoutes);
     app.use("/promotion", promotionRoutes);
     app.use("/order", orderRoutes);
+    app.use("/cart", OrderProductRoutes);
 
     //Middleware de manejo de errores.
     app.use(
@@ -31,14 +38,21 @@ AppDataSource.initialize()
         req: express.Request,
         res: express.Response,
         next: express.NextFunction
-      ) => {
-        console.error(err.stack);
-        res
-          .status(500)
-          .json({
-            message: "Ocurrió un error en el servidor",
-            error: err.message,
-          });
+      ): any => {
+        if (
+          err instanceof UserException ||
+          err instanceof ClientOrderException ||
+          err instanceof ProductException ||
+          err instanceof CategoryException ||
+          err instanceof PromotionException
+        ) {
+          return res.status(err.statusCode).json({ message: err.message });
+        }
+
+        return res.status(500).json({
+          message: "Server error",
+          error: err.message,
+        });
       }
     );
 

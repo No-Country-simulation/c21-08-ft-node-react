@@ -1,5 +1,6 @@
 import { NextFunction, Request, Response } from "express";
 import { ClientOrderService } from "../services/clientOrder.service";
+import { CreateOrderDto } from "../dto/CreateOrder.dto";
 
 export class ClientOrderController {
   private readonly clientOrderService: ClientOrderService;
@@ -13,9 +14,7 @@ export class ClientOrderController {
     res: Response,
     next: NextFunction
   ): Promise<any> {
-    const userId = req.body.userId;
-    const delivery = req.body.delivery;
-    const methodOfPayment = req.body.methodOfPayment;
+    const { userId, delivery, methodOfPayment } = req.body;
 
     try {
       const order = await this.clientOrderService.createOrder(
@@ -24,16 +23,11 @@ export class ClientOrderController {
         methodOfPayment
       );
 
-      if (!order) {
-        //Manejo de error pendiente
-      }
-
       return res.status(201).json({
         message: "Order succesfully created",
         orderId: order?.clientOrderId,
       });
     } catch (error) {
-      //Manejo de error pendiente
       next(error);
     }
   }

@@ -642,3 +642,52 @@ src/
 - **500 Internal Server Error:** Error al intentar conectarse a la base de datos
 - **404 Not Found:** Orden no existente
 
+<br/>
+
+## **Carrito (entidad "OrderProduct")**
+
+### **POST:** `/cart/:orderId`
+
+- **Descripcion:** Metodo para asignar productos a una orden existente
+- **Parametros:**
+  ```json
+  {
+    //Ejemplo: `http://localhost:3170/cart/4ec23eb3-4943-47f1-a6be-db14fc491150`
+    "orderId": "4ec23eb3-4943-47f1-a6be-db14fc491150"
+  }
+  ```
+- **Body:**
+  ```json
+  {
+    "products": [
+        {
+            "productId": "10VinoID",
+            "productQty": 2
+        },
+        {
+            "productId": "11ChampagneID",
+            "productQty": 3
+        }
+    ]
+}
+  ```
+
+#### **Respuesta exitosa:**
+
+- **Status:** `200 OK`
+- **Contenido:** Un mensaje que indica que los products fueron añadidos al carrito satisfactoriamente
+- **Body:**
+
+```json
+{
+    "message": "Products added to cart succesfully"
+}
+```
+
+#### **Posibles errores:**
+
+- **500 Internal Server Error:** Error al intentar conectarse a la base de datos
+- **404 Not Found:** Orden no encontrada
+- **404 Not Found:** Producto no encontrado
+
+</br>
