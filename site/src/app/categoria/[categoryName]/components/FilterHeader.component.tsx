@@ -15,7 +15,7 @@ const FilterHeader = ({
 }: FilterHeaderProps) => {
   return (
     <button
-      className="flex w-full cursor-pointer justify-between border-none p-0 sm:px-2"
+      className="flex w-full cursor-pointer justify-between border-none p-0"
       onClick={() => handleFiltersVisibility(filterId)}
     >
       <h3 className="text-xl font-semibold">{strForDisplay(filterId)}</h3>
