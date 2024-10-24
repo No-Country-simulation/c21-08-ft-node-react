@@ -114,5 +114,4 @@ export class ProductService {
         throw new ProductException("Error deleting product", 500);
     }
   }
-
 }
