@@ -13,9 +13,11 @@ const Checkout = () => {
   const { productsInCart } = useContext(CartContext)
 
   useEffect(() => {
-    if (!user) {
-      // Si no hay usuario, redirige a la página de inicio de sesión
+    if (!user && productsInCart.length != 0) {
       router.push("/auth/login")
+    }
+    if (user && productsInCart.length === 0) {
+      router.push("/")
     }
   }, [user, productsInCart, router])
 

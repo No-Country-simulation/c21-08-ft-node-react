@@ -1,5 +1,4 @@
 "use client"
-//import { useRouter } from "next/router"
 import { useRouter } from "next/navigation"
 import { useAuth } from "@/app/contexts/auth.context"
 import React, { useEffect, useState } from "react"
@@ -14,7 +13,6 @@ const LoginPage = () => {
 
   useEffect(() => {
     if (user) {
-      // Si hay un usuario autenticado, redirige al perfil
       router.push("/profile")
     }
   }, [user, router])
@@ -34,7 +32,6 @@ const LoginPage = () => {
       const responseData = await response.json()
       if (response.ok) {
         login(responseData.token)
-        console.log(responseData)
         console.log("Login successful")
       } else {
         console.error(responseData.message)
@@ -64,7 +61,6 @@ const LoginPage = () => {
               value={email}
               onChange={(e) => {
                 setEmail(e.target.value)
-                console.log(email)
               }}
             />
           </div>
@@ -83,7 +79,6 @@ const LoginPage = () => {
               value={password}
               onChange={(e) => {
                 setPassword(e.target.value)
-                console.log(password)
               }}
             />
           </div>
