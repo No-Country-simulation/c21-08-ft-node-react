@@ -1,6 +1,15 @@
+import { API_BASE_URL } from "@/app/consts/api.consts"
 import Image from "next/image"
+import { Category } from "@/app/types/Category.type"
 
-const Footer = () => {
+const getCategories = async () => {
+  const res = await fetch(`${API_BASE_URL}/category`)
+  const categories: Category[] = await res.json()
+  return categories
+}
+
+const Footer = async () => {
+  const categories = await getCategories()
   return (
     <footer className="w-full bg-gray200">
       <div className="mx-auto mt-20 flex max-w-[1000px] justify-between gap-10 px-8 py-20 md:mt-16 md:flex-col md:items-center md:gap-4 md:px-[25%] md:py-16 sm:px-[10%] xs:mt-10 xs:py-10">
@@ -23,32 +32,26 @@ const Footer = () => {
           <h2 className="mb-5 text-2xl font-bold">¿Qué necesitas hoy?</h2>
           <nav className="flex gap-6 font-light">
             <ul className="flex flex-col gap-3">
-              <li>
-                <a href="">Almacen</a>
-              </li>
-              <li>
-                <a href="">Congelados</a>
-              </li>
-              <li>
-                <a href="">Libreria</a>
-              </li>
-              <li>
-                <a href="">Vinoteca</a>
-              </li>
+              {categories.slice(0, 4).map((c, idx) => (
+                <li key={`footer-category-${idx}`}>
+                  <a
+                    href={`/categoria/${c.categoryName}?categoryid=${c.categoryId}&categorylabel=${c.categoryLabel}`}
+                  >
+                    {c.categoryLabel}
+                  </a>
+                </li>
+              ))}
             </ul>
             <ul className="flex flex-col gap-3">
-              <li>
-                <a href="">Limpieza</a>
-              </li>
-              <li>
-                <a href="">Bebidas sin alcohol</a>
-              </li>
-              <li>
-                <a href="">Bebidas con alcohol</a>
-              </li>
-              <li>
-                <a href="">Variados</a>
-              </li>
+              {categories.slice(4).map((c, idx) => (
+                <li key={`footer-category-${idx}`}>
+                  <a
+                    href={`/categoria/${c.categoryName}?categoryid=${c.categoryId}&categorylabel=${c.categoryLabel}`}
+                  >
+                    {c.categoryLabel}
+                  </a>
+                </li>
+              ))}
             </ul>
           </nav>
         </div>
