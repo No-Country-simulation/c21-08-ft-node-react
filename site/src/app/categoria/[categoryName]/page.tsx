@@ -40,13 +40,15 @@ export default function CategoriaPage() {
   }
 
   return (
-    <main className={`mt-24 w-full overflow-y-hidden`}>
+    <main
+      className={`md:mt-27 mt-44 w-full overflow-y-hidden lg:mt-32 sm:mt-24`}
+    >
       <div className="mx-auto max-w-[1000px] sm:flex-col">
         <FiltersMobileDisplayer
           isFiltersVisible={isFiltersVisible}
           changeFiltersVisibility={changeFiltersVisibility}
         />
-        <div className="flex py-10 px-8 md:px-4 sm:px-0">
+        <div className="flex gap-10 lg:px-10 md:gap-5 md:px-4 sm:px-0">
           <FilterPanel
             setFormValues={setFormValues}
             formValues={formValues}
@@ -55,10 +57,7 @@ export default function CategoriaPage() {
             source={products}
             isFiltersVisible={isFiltersVisible}
           />
-          <ProductsPanel
-            products={currentProducts}
-            categoryName={categoryName}
-          />
+          <ProductsPanel products={currentProducts} />
         </div>
       </div>
     </main>

@@ -14,7 +14,6 @@ export type FiltersVisibility = {
 
 export type ProductsPanelProps = {
   products: Product[]
-  categoryName: string
 }
 
 export type FilterFields = {

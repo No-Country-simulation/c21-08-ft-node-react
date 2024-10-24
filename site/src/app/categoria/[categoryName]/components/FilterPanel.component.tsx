@@ -54,20 +54,6 @@ const FilterPanel = ({
     }))
   }
 
-  // const handleChange = (
-  //   e: ChangeEvent<HTMLInputElement>,
-  //   fieldType?: HTMLInputTypeAttribute,
-  // ) => {
-  //   if (fieldType === "checkbox") {
-  //     setFormValues((prev) => ({ ...prev, [e.target.name]: !prev.discount }))
-  //   } else {
-  //     const newVal = {
-  //       [e.target.name]: e.target.value,
-  //     }
-  //     setFormValues((prev) => ({ ...prev, ...newVal }))
-  //   }
-  // }
-
   // this function is not generic at all but for now its ok since the only
   // checkbox we handle other than the brand one is discount, brand checkbox
   // requrie special treatment
@@ -96,7 +82,7 @@ const FilterPanel = ({
 
   return (
     <aside
-      className={`flex w-1/4 flex-col gap-9 bg-gray100 sm:fixed sm:z-20 sm:h-full sm:w-full ${isFiltersVisible ? "" : "sm:hidden"}`}
+      className={`flex w-1/4 flex-col gap-9 bg-gray100 sm:fixed sm:z-20 sm:h-full sm:w-full sm:px-5 ${isFiltersVisible ? "" : "sm:hidden"}`}
     >
       <h2 className="text-2xl font-bold sm:px-2">Filtros</h2>
       <div className="flex flex-col gap-7">

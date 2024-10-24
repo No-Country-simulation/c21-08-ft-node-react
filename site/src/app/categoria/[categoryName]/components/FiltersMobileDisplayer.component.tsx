@@ -10,7 +10,7 @@ const FiltersMobileDisplayer = ({
   changeFiltersVisibility,
 }: FiltersMobileDisplayerProps) => {
   return (
-    <section className="fixed z-30 hidden w-full bg-gray100 sm:block">
+    <section className="fixed z-30 hidden w-full bg-gray100 py-2 sm:block">
       <div>
         <button
           onClick={changeFiltersVisibility}
