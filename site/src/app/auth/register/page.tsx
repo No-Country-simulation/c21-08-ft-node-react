@@ -1,8 +1,9 @@
 "use client"
 
-import { useRouter } from "next/navigation"
-import React, { useState, useContext } from "react"
+import React, { useState, useContext, useEffect } from "react"
 import { CartContext } from "@/app/contexts/cart.context"
+import { useRouter } from "next/navigation"
+import { useAuth } from "@/app/contexts/auth.context"
 
 const RegisterPage = () => {
   const [name, setName] = useState("")
@@ -10,6 +11,15 @@ const RegisterPage = () => {
   const [password, setPassword] = useState("")
   const router = useRouter()
   const { productsInCart } = useContext(CartContext)
+  const { user } = useAuth()
+
+  useEffect(() => {
+    if (user) {
+      // Si hay un usuario autenticado, redirige al perfil
+      router.push("/auth/login")
+    }
+  }, [user, router])
+
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     const data = { name, email, password }

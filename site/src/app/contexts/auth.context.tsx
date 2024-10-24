@@ -8,6 +8,7 @@ import React, {
 } from "react"
 
 import { jwtDecode } from "jwt-decode"
+import { useRouter } from "next/navigation"
 
 // Define el tipo del usuario
 interface User {
@@ -40,6 +41,7 @@ interface AuthProviderProps {
 
 // Proveedor de autenticación
 export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
+  const router = useRouter()
   const [user, setUser] = useState<User | null>(null)
   console.log("contexto usuario", user)
   useEffect(() => {
@@ -64,7 +66,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
 
   const logout = () => {
     localStorage.removeItem("token")
-    console.log("Logout")
+    router.push("/")
     setUser(null)
   }
 

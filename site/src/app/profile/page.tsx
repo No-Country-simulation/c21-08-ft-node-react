@@ -1,10 +1,19 @@
 "use client"
-import React from "react"
+import React, { useEffect } from "react"
 import ProfileRoute from "./components/ProfileRoute"
 import { useAuth } from "../contexts/auth.context"
+import { useRouter } from "next/navigation"
 
 const AdminPage = () => {
   const { user, logout } = useAuth()
+  const router = useRouter()
+
+  useEffect(() => {
+    if (!user) {
+      // Si hay un usuario autenticado, redirige al perfil
+      router.push("/")
+    }
+  }, [user, router])
 
   return (
     <ProfileRoute>
