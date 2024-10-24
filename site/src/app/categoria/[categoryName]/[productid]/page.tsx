@@ -2,13 +2,13 @@ import Breadcrumbs from "@/app/components/Breadcrumbs/Breadcrumbs.component"
 import Image from "next/image"
 import { IMG_WIDTH, IMG_HEIGHT } from "@/app/consts/sizes.consts"
 import { API_BASE_URL, APP_BASE_URL } from "@/app/consts/api.consts"
-import Icon from "@/app/components/Icon/Icon.component"
 import { Product } from "@/app/types/Product.type"
 import RelatedProductsContainer from "./components/RelatedProductsContainer/RelatedProductsContainer.component"
 import Price from "@/app/components/Price/Price.component"
 import AddButton from "@/app/components/AddButton/AddButton.component"
 import { strForData } from "@/app/utils/strFormatting.util"
 import { computeDiscount } from "@/app/utils/price.util"
+import StockBadge from "./components/StockBadge/StockBadge.component"
 
 const getProduct = async (productid: string | undefined) => {
   const res = await fetch(`${API_BASE_URL}/product/${productid}`, {
@@ -28,9 +28,16 @@ const ProductPage = async ({ params }: { params: { productid: string } }) => {
   console.log("product: ", product)
   const { categoryId, categoryName } = product.category
 
+  const finalPrice =
+    product.promotion !== null
+      ? computeDiscount(product.price, product.promotion.percentage)
+      : product.price
+  const discount =
+    product.promotion !== null ? product.promotion.percentage * 100 : null
+
   return (
     <main className="w-full">
-      <div className="mx-auto flex max-w-[1000px] flex-col justify-between gap-16 md:gap-10 sm:gap-8">
+      <div className="mx-auto flex max-w-[1000px] flex-col justify-between gap-12 md:gap-10 sm:gap-8">
         <Breadcrumbs
           crumbs={[
             {
@@ -56,38 +63,20 @@ const ProductPage = async ({ params }: { params: { productid: string } }) => {
             <h1 className="font-bold md:text-[32px] md:leading-[32px] xs:text-[24px] xs:leading-[24px]">
               {product.name}
             </h1>
-            <div className="flex gap-2 self-start rounded-md bg-krBlue px-3 py-2 font-bold text-white">
-              {product.stock > 0 ? (
-                <>
-                  <span>En stock</span>
-                  <Icon iconType="check" />
-                </>
-              ) : (
-                <>
-                  <span>Sin stock</span>
-                  <Icon iconType="plus" style="rotate-90" />
-                </>
-              )}
-            </div>
+            <StockBadge stock={product.stock} />
             <p className="md:text-sm md:leading-[22px]">
               {product.description}
             </p>
             <div className="flex items-end justify-between">
               <div>
-                <Price
-                  price={product.price}
-                  size="S"
-                  additionalStyles="line-through text-gray-500"
-                />
-                {product.promotion && (
+                {discount !== null && (
                   <Price
-                    price={computeDiscount(
-                      product.price,
-                      product.promotion?.percentage,
-                    )}
-                    size={"L"}
+                    price={product.price}
+                    size="M"
+                    additionalStyles="line-through text-gray-500"
                   />
                 )}
+                <Price price={finalPrice} size={"L"} />
               </div>
               <AddButton product={product} withIcon />
             </div>
