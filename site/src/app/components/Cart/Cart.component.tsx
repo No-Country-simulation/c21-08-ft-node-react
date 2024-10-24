@@ -23,21 +23,19 @@ const Cart = ({ changeCartVisibility, isCartVisible, display }: CartProps) => {
 
   return (
     <>
-      {display !== "checkout" && (
+      {display === "cart" && (
         <Overlay
           isVisible={isCartVisible}
           changeVisibility={changeCartVisibility}
-          display={display}
         />
       )}
       <div
         className={`${isCartVisible ? "flex" : "hidden"} ${positionStyles} flex-col gap-4 bg-white px-4 py-4 shadow-xl md:w-2/3 sm:w-full xs:gap-2 xs:px-1 xs:py-1`}
       >
-        {display === "cart" ? (
-          <CartHeader changeCartVisibility={changeCartVisibility} />
-        ) : (
-          <h3>Tus productos</h3>
-        )}
+        <CartHeader
+          changeCartVisibility={changeCartVisibility}
+          display={display}
+        />
         <CartProductList
           productsInCart={productsInCart}
           incrementProductQty={incrementProductQty}
