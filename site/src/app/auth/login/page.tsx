@@ -36,7 +36,6 @@ const LoginPage = () => {
         login(responseData.token)
         console.log(responseData)
         console.log("Login successful")
-        router.push("/profile")
       } else {
         console.error(responseData.message)
       }

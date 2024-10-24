@@ -9,6 +9,7 @@ import React, {
 
 import { jwtDecode } from "jwt-decode"
 import { useRouter } from "next/navigation"
+import { CartContext } from "./cart.context"
 
 // Define el tipo del usuario
 interface User {
@@ -43,6 +44,8 @@ interface AuthProviderProps {
 export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   const router = useRouter()
   const [user, setUser] = useState<User | null>(null)
+
+  const { productsInCart } = useContext(CartContext)
   console.log("contexto usuario", user)
   useEffect(() => {
     const token = window.localStorage.getItem("token")
@@ -62,6 +65,12 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     localStorage.setItem("token", token)
     const decodedToken = jwtDecode<DecodedToken>(token)
     setUser(decodedToken.user) // Actualiza el estado del usuario con el token decodificado
+
+    if (productsInCart.length != 0) {
+      router.push("/finalizar-compra")
+    } else {
+      router.push("/profile")
+    }
   }
 
   const logout = () => {

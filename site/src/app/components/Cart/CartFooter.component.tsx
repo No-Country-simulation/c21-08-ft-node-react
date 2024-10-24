@@ -24,7 +24,10 @@ const CartFooter = ({ productsInCart, display }: CartFooterProps) => {
         </button>
       ) : (
         <Link href={"/finalizar-compra"}>
-          <button className="mb-0 h-12 w-full rounded-lg bg-gray1000 text-2xl text-white">
+          <button
+            disabled={productsInCart.length === 0}
+            className="mb-0 h-12 w-full rounded-lg bg-gray1000 text-2xl text-white"
+          >
             Ir a la caja
           </button>
         </Link>
