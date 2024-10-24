@@ -32,7 +32,7 @@ const PaymentMethod = ({
             }}
             className="me-1"
           />
-          Whatsapp
+          Efectivo
         </label>
       </div>
     </div>

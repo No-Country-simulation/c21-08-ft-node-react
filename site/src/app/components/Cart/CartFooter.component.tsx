@@ -6,8 +6,6 @@ import { CartFooterProps } from "./types/CartFooterProps.type"
 import Link from "next/link"
 
 const CartFooter = ({ productsInCart, display }: CartFooterProps) => {
-  // const { user } = useAuth()
-
   return (
     <div className="flex flex-col gap-4 xs:gap-2">
       <div className="flex justify-between">
