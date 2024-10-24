@@ -114,7 +114,7 @@ const FilterPanel = ({
             <ul
               ref={marcaRef}
               className={
-                "flex flex-col gap-4 overflow-hidden transition-all duration-200 ease-in-out"
+                "flex flex-col gap-4 overflow-hidden transition-all duration-200 ease-in-out sm:px-2"
               }
             >
               {brands.map((brand, idx) => (
@@ -138,7 +138,7 @@ const FilterPanel = ({
           <div
             ref={ofertasRef}
             className={
-              "flex cursor-pointer items-center gap-2 overflow-hidden transition-all duration-200 ease-in-out"
+              "flex cursor-pointer items-center gap-2 overflow-hidden transition-all duration-200 ease-in-out sm:px-2"
             }
             onClick={handleCheckbox}
           >
@@ -165,7 +165,7 @@ const FilterPanel = ({
           <div
             ref={precioRef}
             className={
-              "overflow-hidden transition-all duration-200 ease-in-out"
+              "overflow-hidden transition-all duration-200 ease-in-out sm:px-2"
             }
           >
             {priceOptions.map((op, idx) => (

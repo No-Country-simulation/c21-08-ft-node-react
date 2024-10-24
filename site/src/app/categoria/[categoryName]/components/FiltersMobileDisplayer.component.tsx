@@ -14,7 +14,7 @@ const FiltersMobileDisplayer = ({
       <div>
         <button
           onClick={changeFiltersVisibility}
-          className="ml-auto flex cursor-pointer gap-2 rounded-lg px-2 py-2 hover:bg-gray300"
+          className="ml-auto mr-2 flex cursor-pointer gap-2 rounded-lg px-2 py-2 hover:bg-gray300"
         >
           <Icon iconType="variados" />
           <p>Filtros</p>
