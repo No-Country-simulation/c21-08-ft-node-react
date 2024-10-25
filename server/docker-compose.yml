@@ -1,16 +1,16 @@
 services:
-  # backend:
-  #   build:
-  #     context: .
-  #   ports:
-  #     - "3170:3170"
-  #   environment:
-  #     - DB_HOST=mysql
-  #     - DB_USER=root
-  #     - DB_PASSWORD=root
-  #     - DB_NAME=kramer
-  #   depends_on:
-  #     - mysql
+  backend:
+    build:
+      context: .
+    ports:
+      - "3170:3170"
+    environment:
+      - DB_HOST=mysql
+      - DB_USER=root
+      - DB_PASSWORD=root
+      - DB_NAME=kramer
+    depends_on:
+      - mysql
 
   mysql:
     image: mysql

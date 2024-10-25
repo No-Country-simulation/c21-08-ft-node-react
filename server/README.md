@@ -76,12 +76,6 @@ src/
 ![Captura de pantalla 2024-10-21 182813](https://github.com/user-attachments/assets/66016b47-1889-4e98-8402-a1083a4ae275)
 
 
-</br>
-
-
-
-</br>
-
 ## 5. Endpoints de la API
 
 ## **Usuarios**
@@ -96,7 +90,6 @@ src/
 - **Status:** `200 OK`
 - **Contenido:** Un arreglo de objetos de tipo User, si no hay usuarios devuelve un arreglo vacio `[]`
 - **Body:**
-
 ```json
 [
   {
@@ -132,7 +125,6 @@ src/
 - **Status:** `200 OK`
 - **Contenido:** Un arreglo de objetos de tipo Category, si no hay categorias devuelve un arreglo vacio `[]`
 - **Body:**
-
 ```json
 [
   {
@@ -152,7 +144,141 @@ src/
 
 </br>
 
-## **Productos**
+## **Crear Productos**
+
+### **GET:** `/product/createProduct`
+
+- **Descripcion:** Metedo que crea un nuevo producto. 
+- **Parametros:** No se requiere parametros
+
+### **Respuesta exitosa:**
+
+- **Status:** `201 Created`
+- **Contenido:** Si la creación es exitosa, se devuelve el nuevo producto en formato JSON
+- **Body:** 
+```json
+{
+  "productId": "uuid",     
+  "name": "string",
+  "price": number,
+  "unitOfMeasurement": "string",
+  "description": "string",
+  "stock": number,
+  "imgUrl": "string | null",
+  "brand": "string | null",
+  "category": { "categoryId": "string", "name": "string" }, 
+  "promotion": { "promotionId": "string", "name": "string" } 
+}
+```
+
+#### **Posibles errores:**
+
+- **400 Bad Request:** Este error ocurre cuando faltan parámetros requeridos o se proporcionan valores inválidos.
+```json
+{
+  "statusCode": 400,
+  "message": "Invalid or missing parameters",
+  "errors": [
+    "Name is required",
+    "Price must be a positive number",
+    "Invalid unit of measurement"
+  ]
+}
+```
+
+- **404 Not Found:** Ocurre cuando no se encuentra la categoría o promoción.
+```json
+{
+  "statusCode": 404,
+  "message": "Category not found"
+}
+```
+
+- **500 Internal Server Error:** Si ocurre un error interno del servidor al intentar crear el producto, se devuelve un mensaje genérico.
+```json
+{
+  "statusCode": 500,
+  "message": "Error creating product"
+}
+```
+
+## **Editar Producto**
+
+### **PUT:** `/product/editProduct/:productId`
+
+- **Descripcion:** Este endpoint permite actualizar la información de un producto existente en el sistema. Se debe enviar un objeto JSON en el cuerpo de la solicitud con los campos que se desean actualizar.
+- **Parametros:** productId (path parameter): ID del producto a actualizar.
+
+#### **Respuesta exitosa:**
+
+- **Status:** `200 OK`
+- **Contenido:** 
+- **Body:**
+```json
+{
+  "id": "producto_id",
+  "nameProduc": "Nuevo nombre",
+  "weight": 1.5,
+  "price": 20.99,
+  "stock": 50,
+  "imagen": "url_imagen",
+  "descripción": "Descripción actualizada",
+  "status": "activo",
+  "category": "categoría_id"
+}
+```
+#### **Posibles errores:**
+
+- **404 Not Found:** El producto con el ID especificado no fue encontrado.
+```json
+{
+  "message": "Product not found"
+}
+```
+
+- **500 Internal Server Error:** Error inesperado al intentar actualizar el producto.
+```json
+{
+  "message": "Error updating product"
+}
+```
+
+## **Eliminar Producto**
+
+### **DELETE:** `/product/deleteProduct/:productId`
+
+- **Descripcion:** Este endpoint permite eliminar un producto del sistema utilizando su ID. Si el producto se elimina con éxito, se devuelve un mensaje de confirmación.
+- **Parametros:** productId (path parameter): ID del producto a eliminar.
+
+#### **Respuesta exitosa:**
+
+- **Status:** `200 OK`
+- **Contenido:** 
+- **Body:**
+```json
+{
+  "message": "Producto eliminado exitosamente"
+}
+```
+
+#### **Posibles errores:**
+
+- **404 Not Found:** El producto con el ID especificado no fue encontrado.
+```json
+{
+  "message": "Product not found"
+}
+```
+
+- **500 Internal Server Error:** Error inesperado al intentar eliminar el producto.
+```json
+{
+  "message": "Error al eliminar el producto",
+  "error": "Descripción del error"
+}
+```
+
+## **Mostrar todos los productos**
 
 ### **GET:** `/product`
 
@@ -516,3 +642,52 @@ src/
 - **500 Internal Server Error:** Error al intentar conectarse a la base de datos
 - **404 Not Found:** Orden no existente
 
+<br/>
+
+## **Carrito (entidad "OrderProduct")**
+
+### **POST:** `/cart/:orderId`
+
+- **Descripcion:** Metodo para asignar productos a una orden existente
+- **Parametros:**
+  ```json
+  {
+    //Ejemplo: `http://localhost:3170/cart/4ec23eb3-4943-47f1-a6be-db14fc491150`
+    "orderId": "4ec23eb3-4943-47f1-a6be-db14fc491150"
+  }
+  ```
+- **Body:**
+  ```json
+  {
+    "products": [
+        {
+            "productId": "10VinoID",
+            "productQty": 2
+        },
+        {
+            "productId": "11ChampagneID",
+            "productQty": 3
+        }
+    ]
+}
+  ```
+
+#### **Respuesta exitosa:**
+
+- **Status:** `200 OK`
+- **Contenido:** Un mensaje que indica que los products fueron añadidos al carrito satisfactoriamente
+- **Body:**
+
+```json
+{
+    "message": "Products added to cart succesfully"
+}
+```
+
+#### **Posibles errores:**
+
+- **500 Internal Server Error:** Error al intentar conectarse a la base de datos
+- **404 Not Found:** Orden no encontrada
+- **404 Not Found:** Producto no encontrado
+
+</br>

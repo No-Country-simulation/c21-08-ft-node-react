@@ -56,15 +56,15 @@ VALUES
   ('5', 'limpieza', 'Limpieza', FALSE),
   (
     '6',
-    'bebidas-sin-alcohol ',
+    'bebidas-sin-alcohol',
     'Bebidas sin alcohol',
     TRUE
   ),
   (
     '7',
-    'bebidas-con-alcohol ',
+    'bebidas-con-alcohol',
     'Bebidas con alcohol',
-    TRUE
+    FALSE
   ),
   ('8', 'variados', 'Variados', FALSE);
 
