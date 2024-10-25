@@ -54,9 +54,34 @@ const config: Config = {
     function (api: PluginAPI) {
       const { addBase } = api
       addBase({
-        h1: { fontSize: "2.5rem" },
-        h2: { fontSize: "2.5rem" },
+        h1: {
+          fontSize: "2.25rem",
+          [`@screen md`]: { fontSize: "2rem" },
+          [`@screen lg`]: { fontSize: "2rem" },
+        },
+        h2: {
+          fontSize: "2.25rem",
+          [`@screen md`]: { fontSize: "2rem" },
+          [`@screen lg`]: { fontSize: "2rem" },
+          [`@screen xs`]: { fontSize: "1.6rem" },
+        },
         h3: { fontSize: "1.5rem" },
+        ".categoryCard": {
+          borderTopWidth: "1px",
+          borderRightWidth: "1px",
+          borderBottomWidth: "1px",
+          borderLeftWidth: "1px",
+          borderColor: "#292D32",
+          borderStyle: "solid",
+          [`@screen sm`]: {
+            borderTopWidth: "1px",
+            borderRightWidth: "1px",
+            borderBottomWidth: "1px",
+            borderLeftWidth: "0px",
+            borderColor: "#292D32",
+            borderStyle: "solid",
+          },
+        },
       })
     },
   ],

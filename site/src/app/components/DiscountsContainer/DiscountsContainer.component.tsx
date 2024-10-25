@@ -9,7 +9,7 @@ const DiscountsContainer = async () => {
 
   return (
     <IsClientProvider>
-      <CarouselContainer>
+      <CarouselContainer content="products">
         {discountedProducts.map((p, idx) => (
           <Card
             key={`products-${idx}`}

@@ -7,13 +7,17 @@ import { useContext } from "react"
 import { IsClient } from "@/app/contexts/isClient.context"
 import { useCarousel } from "./hooks/useCarousel.hook"
 
-const CarouselContainer = ({ children }: CarouselContainerProps) => {
+const CarouselContainer = ({
+  children,
+  arrows,
+  content,
+}: CarouselContainerProps) => {
   const isClient = useContext(IsClient)
-  const { silderRef, isLoaded, next, prev } = useCarousel()
+  const { silderRef, isLoaded, next, prev } = useCarousel(content)
 
   return (
-    <div className="relative flex h-[416px] items-center xs:h-[208px]">
-      {isLoaded && (
+    <div className="relative flex items-center">
+      {arrows && isLoaded && (
         <SliderNavigationArrow type="left" onClick={prev} isDisabled={false} />
       )}
 
@@ -27,7 +31,7 @@ const CarouselContainer = ({ children }: CarouselContainerProps) => {
         </h3>
       )}
 
-      {isLoaded && (
+      {arrows && isLoaded && (
         <SliderNavigationArrow type="right" onClick={next} isDisabled={false} />
       )}
     </div>
