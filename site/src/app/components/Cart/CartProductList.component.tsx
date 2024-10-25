@@ -2,6 +2,7 @@
 import { CartProductListProps } from "./types/CartProductListProps.type"
 import CartCard from "./CartCard.component"
 import style from "./styles/CartProductList.style.module.css"
+import { APP_BASE_URL } from "@/app/consts/api.consts"
 
 const CartProductList = ({
   productsInCart,
@@ -16,6 +17,7 @@ const CartProductList = ({
       {productsInCart.map((productInCart, i) => (
         <li key={i}>
           <CartCard
+            link={`${APP_BASE_URL}/categoria/${productInCart.category.categoryName}/${productInCart.productId}`}
             product={productInCart}
             incrementProductQty={incrementProductQty}
             decrementProductQty={decrementProductQty}
