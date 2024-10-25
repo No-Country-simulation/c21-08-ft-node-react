@@ -12,6 +12,7 @@ import useResetFilters from "./hooks/useResetFilters.hook"
 import useFetch from "@/app/hooks/useFetch.hook"
 import { API_BASE_URL } from "@/app/consts/api.consts"
 import FiltersMobileDisplayer from "./components/FiltersMobileDisplayer.component"
+import Breadcrumbs from "@/app/components/Breadcrumbs/Breadcrumbs.component"
 
 const formInitialState: FilterFields = {
   price: 99999,
@@ -40,24 +41,25 @@ export default function CategoriaPage() {
   }
 
   return (
-    <main
-      className={`md:mt-27 mt-44 w-full overflow-y-hidden lg:mt-32 sm:mt-24`}
-    >
+    <main className="md:mt-27 w-full overflow-y-hidden">
       <div className="mx-auto max-w-[1000px] sm:flex-col">
         <FiltersMobileDisplayer
           isFiltersVisible={isFiltersVisible}
           changeFiltersVisibility={changeFiltersVisibility}
         />
-        <div className="flex gap-10 lg:px-10 md:gap-5 md:px-4 sm:px-0">
-          <FilterPanel
-            setFormValues={setFormValues}
-            formValues={formValues}
-            setCurrentProducts={setCurrentProducts}
-            categoryName={categoryName}
-            source={products}
-            isFiltersVisible={isFiltersVisible}
-          />
-          <ProductsPanel products={currentProducts} />
+        <div className="flex flex-col gap-12 md:gap-10 sm:gap-8">
+          <Breadcrumbs />
+          <div className="flex gap-10 lg:px-10 md:gap-4 md:px-4 sm:px-0">
+            <FilterPanel
+              setFormValues={setFormValues}
+              formValues={formValues}
+              setCurrentProducts={setCurrentProducts}
+              categoryName={categoryName}
+              source={products}
+              isFiltersVisible={isFiltersVisible}
+            />
+            <ProductsPanel products={currentProducts} />
+          </div>
         </div>
       </div>
     </main>
