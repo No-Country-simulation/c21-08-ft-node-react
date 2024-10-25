@@ -12,12 +12,17 @@ import SearchBar from "./SearchBar.components"
 import MenuButton from "./MenuButton.component"
 import { IsClientProvider } from "@/app/contexts/isClient.context"
 import { usePathname } from "next/navigation"
+import { useRouter } from "next/navigation"
+import { useAuth } from "@/app/contexts/auth.context"
 
 const Navbar = () => {
   const [isCartVisible, setIsCartVisible] = useState(false)
   const [isCategoriesVisible, setIsCategoriesVisible] = useState(false)
   const [isMenuVisible, setIsMenuVisible] = useState(false)
   const pathname = usePathname()
+
+  const { user } = useAuth()
+  const router = useRouter()
 
   useEffect(() => {
     const handleResize = () => {
@@ -75,6 +80,14 @@ const Navbar = () => {
     )
   }
 
+  const handleUserClick = () => {
+    if (user) {
+      router.push("/profile")
+    } else {
+      router.push("/auth/login")
+    }
+  }
+
   return (
     <>
       <header className="fixed top-0 z-50 w-full border-b-[1px] border-solid border-gray300 bg-gray100">
@@ -89,9 +102,16 @@ const Navbar = () => {
                   changeCategoriesVisibility={changeCategoriesVisibility}
                 />
               </li>
-              <li className="flex gap-2 xs:hidden">
+              <li
+                className="flex cursor-pointer gap-2"
+                onClick={handleUserClick}
+              >
                 <Icon iconType="user" />
-                <span className="sm:hidden xs:inline">Joel</span>
+                {user ? (
+                  <span className="sm:hidden xs:inline">{user.name}</span> // Muestra el nombre del usuario
+                ) : (
+                  <span className="sm:hidden xs:inline">Iniciar sesión</span> // Texto alternativo si no hay usuario
+                )}
               </li>
               <li className="flex gap-2">
                 <CartButton changeCartVisibility={changeCartVisibility} />

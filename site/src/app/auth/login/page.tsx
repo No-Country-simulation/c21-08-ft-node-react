@@ -1,22 +1,29 @@
 "use client"
-//import { useRouter } from "next/router"
 import { useRouter } from "next/navigation"
 import { useAuth } from "@/app/contexts/auth.context"
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
+import { API_BASE_URL } from "@/app/consts/api.consts"
 
 const LoginPage = () => {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
+  const { user } = useAuth()
   const router = useRouter()
 
   const { login } = useAuth()
+
+  useEffect(() => {
+    if (user) {
+      router.push("/profile")
+    }
+  }, [user, router])
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     const data = { email, password }
     console.log(data)
     try {
-      const response = await fetch(`http://localhost:3170/auth/login`, {
+      const response = await fetch(`${API_BASE_URL}/auth/login`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -26,9 +33,7 @@ const LoginPage = () => {
       const responseData = await response.json()
       if (response.ok) {
         login(responseData.token)
-        console.log(responseData)
         console.log("Login successful")
-        router.push("/profile")
       } else {
         console.error(responseData.message)
       }
@@ -57,7 +62,6 @@ const LoginPage = () => {
               value={email}
               onChange={(e) => {
                 setEmail(e.target.value)
-                console.log(email)
               }}
             />
           </div>
@@ -76,7 +80,6 @@ const LoginPage = () => {
               value={password}
               onChange={(e) => {
                 setPassword(e.target.value)
-                console.log(password)
               }}
             />
           </div>

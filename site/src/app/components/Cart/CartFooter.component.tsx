@@ -1,7 +1,6 @@
 import Price from "../Price/Price.component"
 import { getCartTotal } from "./utils/getCartTotal.util"
 import { CartFooterProps } from "./types/CartFooterProps.type"
-// import { useAuth } from "../../contexts/auth.context"
 
 import Link from "next/link"
 
@@ -22,7 +21,10 @@ const CartFooter = ({ productsInCart, display }: CartFooterProps) => {
         </button>
       ) : (
         <Link href={"/finalizar-compra"}>
-          <button className="mb-0 h-12 w-full rounded-lg bg-gray1000 text-2xl text-white">
+          <button
+            disabled={productsInCart.length === 0}
+            className="mb-0 h-12 w-full rounded-lg bg-gray1000 text-2xl text-white disabled:bg-gray400"
+          >
             Ir a la caja
           </button>
         </Link>
