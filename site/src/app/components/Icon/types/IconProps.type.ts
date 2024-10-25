@@ -33,5 +33,10 @@ export type IconProps = {
     | "almacen-md-color"
     | "bebidas-sin-alcohol-md-color"
     | "bebidas-con-alcohol-md-color"
+    | "congelados-md-color"
+    | "libreria-md-color"
+    | "variados-md-color"
+    | "limpieza-md-color"
+    | "vinoteca-md-color"
   style?: string
 }
