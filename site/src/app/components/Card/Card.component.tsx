@@ -38,7 +38,7 @@ const Card = ({ additionalStyles, product, link, imgUrl }: CardProps) => {
           </Link>
           <button className="mb-auto" onClick={handleFavorite}>
             <Icon
-              style="scale-75"
+              style="md:scale-75"
               iconType={`${isFavorite ? "heartFilled" : "heart"}`}
             />
           </button>
