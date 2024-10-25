@@ -20,7 +20,7 @@ export class AuthController {
         );
       }
 
-      const token = jwt.sign({ id: user.userId }, jwtSecretKey, {
+      const token = jwt.sign({ user }, jwtSecretKey, {
         expiresIn: "1h",
       });
       return res.status(200).json({ token, user });
