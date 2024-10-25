@@ -2,18 +2,19 @@
 
 import Card from "@/app/components/Card/Card.component"
 import { ProductsPanelProps } from "../types/page.types"
-import { usePathname, useSearchParams } from "next/navigation"
+import { usePathname, useParams } from "next/navigation"
+import { strForDisplay } from "@/app/utils/strFormatting.util"
 
 const ProductsPanel = ({ products }: ProductsPanelProps) => {
   const pathname = usePathname()
-  const searchParams = useSearchParams()
-  const categoryLabel = searchParams.get("categorylabel")
+  const params = useParams()
+  const categoryName = strForDisplay(params.categoryName as string)
 
   return (
     <div className="flex w-full flex-col gap-4 px-4 xs:gap-2 xs:px-2">
       <div className="flex flex-col gap-2">
-        <h1 className="text-4xl font-bold sm:text-3xl xs:text-2xl">
-          {categoryLabel}
+        <h1 className="text-3xl font-bold sm:text-2xl xs:text-xl">
+          {categoryName}
         </h1>
       </div>
       <span className="sm:text-sm xs:text-xs">
