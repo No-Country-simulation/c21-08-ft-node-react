@@ -3,5 +3,5 @@ export type useSendOrderTypes = {
   userId: string
   delivery: boolean
   methodOfPayment: string
-  cart: CartFromBackend[]
+  products: CartFromBackend[]
 }

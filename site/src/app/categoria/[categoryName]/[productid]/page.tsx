@@ -9,6 +9,7 @@ import AddButton from "@/app/components/AddButton/AddButton.component"
 import { strForData } from "@/app/utils/strFormatting.util"
 import { computeDiscount } from "@/app/utils/price.util"
 import StockBadge from "./components/StockBadge/StockBadge.component"
+import FavoriteComponent from "@/app/components/favoriteComponent/FavoriteComponent"
 
 const getProduct = async (productid: string | undefined) => {
   const res = await fetch(`${API_BASE_URL}/product/${productid}`, {
@@ -25,9 +26,7 @@ const getProduct = async (productid: string | undefined) => {
 
 const ProductPage = async ({ params }: { params: { productid: string } }) => {
   const product = await getProduct(params.productid)
-  console.log("product: ", product)
   const { categoryId, categoryName } = product.category
-
   const finalPrice =
     product.promotion !== null
       ? computeDiscount(product.price, product.promotion.percentage)
@@ -60,9 +59,12 @@ const ProductPage = async ({ params }: { params: { productid: string } }) => {
             />
           </div>
           <div className="flex w-40 flex-1 flex-col gap-8 md:gap-4 sm:w-[90%] xs:w-full">
-            <h1 className="font-bold md:text-[32px] md:leading-[32px] xs:text-[24px] xs:leading-[24px]">
-              {product.name}
-            </h1>
+            <div className="flex justify-between">
+              <h1 className="font-bold md:text-[32px] md:leading-[32px] xs:text-[24px] xs:leading-[24px]">
+                {product.name}
+              </h1>
+              <FavoriteComponent></FavoriteComponent>
+            </div>
             <StockBadge stock={product.stock} />
             <p className="md:text-sm md:leading-[22px]">
               {product.description}

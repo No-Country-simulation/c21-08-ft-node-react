@@ -2,7 +2,7 @@
 import { CardProps } from "./types/CardProps.type"
 
 import Price from "../Price/Price.component"
-import Icon from "../Icon/Icon.component"
+import FavoriteComponent from "../favoriteComponent/FavoriteComponent"
 import Image from "next/image"
 import useCardLogic from "@/app/components/Card/hooks/useCardLogic.hook"
 import { getProductImageAlt } from "@/app/utils/getProductImageAlt.util"
@@ -10,8 +10,7 @@ import Link from "next/link"
 import AddButton from "../AddButton/AddButton.component"
 
 const Card = ({ additionalStyles, product, link, imgUrl }: CardProps) => {
-  const { finalPrice, discount, isFavorite, handleFavorite } =
-    useCardLogic(product)
+  const { finalPrice, discount } = useCardLogic(product)
 
   const { name, price } = product
 
@@ -36,12 +35,7 @@ const Card = ({ additionalStyles, product, link, imgUrl }: CardProps) => {
               {name}
             </h3>
           </Link>
-          <button className="mb-auto" onClick={handleFavorite}>
-            <Icon
-              style="md:scale-75"
-              iconType={`${isFavorite ? "heartFilled" : "heart"}`}
-            />
-          </button>
+          <FavoriteComponent></FavoriteComponent>
         </div>
         <div className="flex flex-col gap-2">
           <div className="flex justify-between">

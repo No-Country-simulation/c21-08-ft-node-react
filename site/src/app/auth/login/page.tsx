@@ -21,7 +21,6 @@ const LoginPage = () => {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     const data = { email, password }
-    console.log(data)
     try {
       const response = await fetch(`${API_BASE_URL}/auth/login`, {
         method: "POST",
@@ -33,7 +32,6 @@ const LoginPage = () => {
       const responseData = await response.json()
       if (response.ok) {
         login(responseData.token)
-        console.log("Login successful")
       } else {
         console.error(responseData.message)
       }

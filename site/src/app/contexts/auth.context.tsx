@@ -43,11 +43,8 @@ interface AuthProviderProps {
 export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   const router = useRouter()
   const [user, setUser] = useState<User | null>(null)
-
-  console.log("contexto usuario", user)
   useEffect(() => {
     const token = window.localStorage.getItem("token")
-    console.log(token)
     if (token) {
       try {
         const decodedToken = jwtDecode<DecodedToken>(token)

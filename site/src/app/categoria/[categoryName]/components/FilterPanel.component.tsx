@@ -82,7 +82,8 @@ const FilterPanel = ({
 
   return (
     <aside
-      className={`flex w-1/4 flex-col gap-9 bg-gray100 sm:fixed sm:z-20 sm:h-full sm:w-full sm:px-5 ${isFiltersVisible ? "" : "sm:hidden"}`}
+      id="hola soy un aside"
+      className={`flex w-1/4 flex-col gap-9 bg-gray100 sm:fixed sm:top-[150px] sm:z-20 sm:h-dvh sm:w-full sm:gap-4 sm:px-5 ${isFiltersVisible ? "" : "sm:hidden"}`}
     >
       <h2 className="text-2xl font-bold sm:px-2">Filtros</h2>
       <div className="flex flex-col gap-7">
