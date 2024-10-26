@@ -11,6 +11,7 @@
     "server": "json-server --watch ./assets/db.json --port 4000"
   },
   "dependencies": {
+    "cohere-ai": "^7.14.0",
     "dotenv": "^16.4.5",
     "fuse.js": "^7.0.0",
     "jwt-decode": "^4.0.0",
