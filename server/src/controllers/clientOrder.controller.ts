@@ -1,6 +1,7 @@
 import { NextFunction, Request, Response } from "express";
 import { ClientOrderService } from "../services/clientOrder.service";
 import { CreateOrderDto } from "../dto/CreateOrder.dto";
+import { ClientOrderException } from "../exceptions/ClientOrderException";
 
 export class ClientOrderController {
   private readonly clientOrderService: ClientOrderService;
@@ -41,5 +42,35 @@ export class ClientOrderController {
         .status(200)
         .json({ message: "Order has been confirmed", order: orderId });
     } catch (error) {}
+  }
+
+  async getOrderById(
+    req: Request,
+    res: Response,
+    next: NextFunction
+  ): Promise<any> {
+    try {
+      const { clientOrderId } = req.params;
+      const order = await this.clientOrderService.getOrderById(clientOrderId);
+
+      return res.status(200).json(order);
+    } catch (error) {
+      next(error);
+    }
+  }
+
+  async getOrdersByUserId(
+    req: Request,
+    res: Response,
+    next: NextFunction
+  ): Promise<any> {
+    try {
+      const { userId } = req.params;
+      const orders = await this.clientOrderService.getOrdersByUserId(userId);
+
+      return res.status(200).json(orders);
+    } catch (error) {
+      next(error);
+    }
   }
 }
