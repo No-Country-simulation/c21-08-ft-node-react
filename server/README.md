@@ -1,5 +1,9 @@
 </br>
 
+![Static Badge](https://img.shields.io/badge/Postman-orange?logo=postman&logoColor=white) - [Kramer-backend](https://documenter.getpostman.com/view/29130737/2sAY4skQP4)
+
+</br>
+
 # Documentacion del backend - E-commerce local de venta de frutas y verduras.
 
 </br>
