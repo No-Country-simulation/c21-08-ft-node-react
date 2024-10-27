@@ -626,6 +626,7 @@ src/
     "orderId": "4ec23eb3-4943-47f1-a6be-db14fc491150"
   }
   ```
+  
 - **Body:**
   ```json
   {
@@ -639,7 +640,7 @@ src/
             "productQty": 3
         }
     ]
-}
+  }
   ```
 
 #### **Respuesta exitosa:**
