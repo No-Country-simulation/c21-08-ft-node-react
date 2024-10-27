@@ -564,6 +564,43 @@ src/
 
 ## Ordenes
 
+### **GET:** `/order/all/confirmed`
+
+- **Descripcion:** Metodo que devuelve todos los pedidos confirmados
+
+#### **Respuesta exitosa:**
+
+- **Status:** `200 OK`
+- **Contenido:** Un arreglo de tipo ClientOrder[]
+- **Body:**
+
+```json
+[
+    {
+        "clientOrderId": "4ec23eb3-4943-47f1-a6be-db14fc491150",
+        "createdAt": "2024-10-24T12:33:58.000Z",
+        "isConfirmed": true,
+        "delivery": false,
+        "methodOfPayment": "cash",
+        "status": "unprepared"
+    },
+    {
+        "clientOrderId": "e23b209d-a2d8-446f-982f-82d0ed760b28",
+        "createdAt": "2024-10-27T01:58:09.000Z",
+        "isConfirmed": true,
+        "delivery": false,
+        "methodOfPayment": "cash",
+        "status": "unprepared"
+    }
+]
+```
+
+#### **Posibles errores:**
+
+- **500 Internal Server Error:** Error al intentar conectarse a la base de datos
+
+<br />
+
 ### **GET:** `/order/:clientOrderId`
 
 - **Descripcion:** Metodo que devuelve un pedido por Id.
