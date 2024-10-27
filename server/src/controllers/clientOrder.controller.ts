@@ -2,6 +2,7 @@ import { NextFunction, Request, Response } from "express";
 import { ClientOrderService } from "../services/clientOrder.service";
 import { CreateOrderDto } from "../dto/CreateOrder.dto";
 import { ClientOrderException } from "../exceptions/ClientOrderException";
+import { ClientOrder } from "../entities/ClientOrder.entity";
 
 export class ClientOrderController {
   private readonly clientOrderService: ClientOrderService;
@@ -14,7 +15,7 @@ export class ClientOrderController {
     req: Request,
     res: Response,
     next: NextFunction
-  ): Promise<any> {
+  ): Promise<void> {
     const { userId, delivery, methodOfPayment } = req.body;
 
     try {
@@ -24,7 +25,7 @@ export class ClientOrderController {
         methodOfPayment
       );
 
-      return res.status(201).json({
+      res.status(201).json({
         message: "Order succesfully created",
         orderId: order?.clientOrderId,
       });
@@ -33,27 +34,33 @@ export class ClientOrderController {
     }
   }
 
-  async confirmOrder(req: Request, res: Response): Promise<any> {
+  async confirmOrder(
+    req: Request,
+    res: Response,
+    next: NextFunction
+  ): Promise<void> {
     try {
       const orderId = req.query.orderId;
       await this.clientOrderService.confirmOrder(orderId);
 
-      return res
+      res
         .status(200)
         .json({ message: "Order has been confirmed", order: orderId });
-    } catch (error) {}
+    } catch (error) {
+      next(error);
+    }
   }
 
   async getOrderById(
     req: Request,
     res: Response,
     next: NextFunction
-  ): Promise<any> {
+  ): Promise<void> {
     try {
       const { clientOrderId } = req.params;
       const order = await this.clientOrderService.getOrderById(clientOrderId);
 
-      return res.status(200).json(order);
+      res.status(200).json(order);
     } catch (error) {
       next(error);
     }
@@ -63,12 +70,27 @@ export class ClientOrderController {
     req: Request,
     res: Response,
     next: NextFunction
-  ): Promise<any> {
+  ): Promise<void> {
     try {
       const { userId } = req.params;
       const orders = await this.clientOrderService.getOrdersByUserId(userId);
 
-      return res.status(200).json(orders);
+      res.status(200).json(orders);
+    } catch (error) {
+      next(error);
+    }
+  }
+
+  async getAllConfirmedOrders(
+    req: Request,
+    res: Response,
+    next: NextFunction
+  ): Promise<void> {
+    try {
+      const orders: ClientOrder[] =
+        await this.clientOrderService.getAllConfirmedOrders();
+
+      res.status(200).json(orders);
     } catch (error) {
       next(error);
     }

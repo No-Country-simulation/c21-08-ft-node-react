@@ -1,5 +1,6 @@
 import { AddToCartDto } from "../dto/AddToCart.dto";
 import { ClientOrder } from "../entities/ClientOrder.entity";
+import { OrderProduct } from "../entities/OrderProduct.entity";
 import { ClientOrderException } from "../exceptions/ClientOrderException";
 import { OrderProductException } from "../exceptions/OrderProductException";
 import { ProductException } from "../exceptions/ProductException";
@@ -50,6 +51,7 @@ export class OrderProductService {
         };
       });
 
+      //Esperamos que se resuelvan todas las promesas de la linea 41 y lo almacenamos en una variable
       const orderProducts = await Promise.all(orderProductsPromises);
 
       await orderProductRepository.save(orderProducts);
@@ -62,6 +64,37 @@ export class OrderProductService {
       }
 
       throw new OrderProductException("Error adding product in cart", 500);
+    }
+  }
+
+  //Metodo para obtener un pedido completo por id de la orden.
+  async getCartByOrderId(clientOrderId: string): Promise<OrderProduct[]> {
+    try {
+      const order: ClientOrder = await this.clientOrderService.getOrderById(
+        clientOrderId
+      );
+
+      const cart: OrderProduct[] = await orderProductRepository.find({
+        where: { clientOrder: order },
+      });
+
+      if (cart.length === 0) {
+        throw new OrderProductException("This order is empty", 400);
+      }
+
+      return cart;
+    } catch (error) {
+      if (
+        error instanceof OrderProductException ||
+        error instanceof ClientOrderException
+      ) {
+        throw error;
+      }
+
+      throw new OrderProductException(
+        "Error trying to get cart by orderId",
+        500
+      );
     }
   }
 }

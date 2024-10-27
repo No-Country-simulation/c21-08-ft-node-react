@@ -8,8 +8,8 @@ router.post("/create", (req, res, next) =>
   clientOrderController.createOrder(req, res, next)
 );
 
-router.get("/confirm", (req, res) =>
-  clientOrderController.confirmOrder(req, res)
+router.get("/confirm", (req, res, next) =>
+  clientOrderController.confirmOrder(req, res, next)
 );
 
 router.get("/:clientOrderId", (req, res, next) =>
@@ -18,6 +18,10 @@ router.get("/:clientOrderId", (req, res, next) =>
 
 router.get("/user/:userId", (req, res, next) =>
   clientOrderController.getOrdersByUserId(req, res, next)
+);
+
+router.get("/all/confirmed", (req, res, next) =>
+  clientOrderController.getAllConfirmedOrders(req, res, next)
 );
 
 export default router;

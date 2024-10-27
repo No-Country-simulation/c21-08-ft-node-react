@@ -8,4 +8,8 @@ router.post("/:orderId", (req, res, next) =>
   orderProductController.addProductToOrder(req, res, next)
 );
 
+router.get("/:clientOrderId", (req, res, next) =>
+  orderProductController.getCartByOrderId(req, res, next)
+);
+
 export default router;
