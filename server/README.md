@@ -120,6 +120,10 @@ src/
 
 </br>
 
+---
+
+</br>
+
 ## **Categorias**
 
 ### **GET:** `/category`
@@ -149,6 +153,10 @@ src/
 #### **Posibles errores:**
 
 - **500 Internal Server Error:** Error al intentar conectarse a la base de datos
+
+</br>
+
+---
 
 </br>
 
@@ -312,6 +320,10 @@ src/
 
 </br>
 
+---
+
+</br>
+
 ## Promociones
 
 ### **GET:** `/promotion`
@@ -418,9 +430,93 @@ src/
 
 - **500 Internal Server Error:** Error al intentar conectarse a la base de datos
 
-<br />
+</br>
+
+---
+
+</br>
 
 ## Ordenes
+
+### **GET:** `/order/:clientOrderId`
+
+- **Descripcion:** Metodo que devuelve un pedido por Id.
+- **Parametros:**
+```json
+  {
+    //Ejemplo: `http://localhost:3170/order/4ec23eb3-4943-47f1-a6be-db14fc491150`
+    "clientOrderId": "4ec23eb3-4943-47f1-a6be-db14fc491150"
+  }
+  ```
+
+#### **Respuesta exitosa:**
+
+- **Status:** `200 OK`
+- **Contenido:** Un objeto de tipo ClientOrder
+- **Body:**
+
+```json
+{
+    "clientOrderId": "4ec23eb3-4943-47f1-a6be-db14fc491150",
+    "createdAt": "2024-10-24T12:33:58.000Z",
+    "isConfirmed": false,
+    "delivery": false,
+    "methodOfPayment": "cash",
+    "status": "unprepared"
+}
+```
+
+#### **Posibles errores:**
+
+- **500 Internal Server Error:** Error al intentar conectarse a la base de datos
+- **404 Not Found:** Orden no encontrada
+
+<br />
+
+### **GET:** `/order/user/:userId`
+
+- **Descripcion:** Metodo que devuelve los pedidos de un usuario en particular
+- **Parametros:**
+```json
+  {
+    //Ejemplo: `http://localhost:3170/order/user/3LunarID`
+    "userId": "3LunarID"
+  }
+  ```
+
+#### **Respuesta exitosa:**
+
+- **Status:** `200 OK`
+- **Contenido:** Un arreglo de tipo ClientOrder
+- **Body:**
+
+```json
+[
+    {
+        "clientOrderId": "4ec23eb3-4943-47f1-a6be-db14fc491150",
+        "createdAt": "2024-10-24T12:33:58.000Z",
+        "isConfirmed": false,
+        "delivery": false,
+        "methodOfPayment": "cash",
+        "status": "unprepared"
+    },
+    {
+        "clientOrderId": "ca68b269-5627-48ab-81fe-95f888487626",
+        "createdAt": "2024-10-23T19:29:39.000Z",
+        "isConfirmed": false,
+        "delivery": false,
+        "methodOfPayment": "cash",
+        "status": "unprepared"
+    }
+]
+```
+
+#### **Posibles errores:**
+
+- **500 Internal Server Error:** Error al intentar conectarse a la base de datos
+- **404 Not Found:** Usuario no encontrado
+
+<br />
 
 ### **POST:** `/order/create`
 
@@ -563,5 +659,9 @@ src/
 - **500 Internal Server Error:** Error al intentar conectarse a la base de datos
 - **404 Not Found:** Orden no encontrada
 - **404 Not Found:** Producto no encontrado
+
+</br>
+
+---
 
 </br>
