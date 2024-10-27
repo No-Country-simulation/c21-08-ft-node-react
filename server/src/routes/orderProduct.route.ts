@@ -12,4 +12,8 @@ router.get("/:clientOrderId", (req, res, next) =>
   orderProductController.getCartByOrderId(req, res, next)
 );
 
+router.get("/history/:userId", (req, res, next) =>
+  orderProductController.getPurchaseHistory(req, res, next)
+);
+
 export default router;

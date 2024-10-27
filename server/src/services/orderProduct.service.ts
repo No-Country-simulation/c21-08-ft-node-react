@@ -4,6 +4,7 @@ import { OrderProduct } from "../entities/OrderProduct.entity";
 import { ClientOrderException } from "../exceptions/ClientOrderException";
 import { OrderProductException } from "../exceptions/OrderProductException";
 import { ProductException } from "../exceptions/ProductException";
+import { UserException } from "../exceptions/UserException";
 import { orderProductRepository } from "../repositories/orderProduct.repository";
 import { ClientOrderService } from "./clientOrder.service";
 import { ProductService } from "./product.service";
@@ -93,6 +94,42 @@ export class OrderProductService {
 
       throw new OrderProductException(
         "Error trying to get cart by orderId",
+        500
+      );
+    }
+  }
+
+  //Metodo para obtener el historial de compras por usuario
+  async getPurchaseHistory(userId: string) {
+    try {
+      const orders: ClientOrder[] =
+        await this.clientOrderService.getOrdersByUserId(userId);
+
+      const purchaseByEachOrderPromise = orders.map(async (order, index) => {
+        const cart = await orderProductRepository.find({
+          where: { clientOrder: order },
+        });
+
+        return {
+          date: order.createdAt,
+          cart,
+        };
+      });
+
+      const purchaseByEachOrder = Promise.all(purchaseByEachOrderPromise);
+
+      return purchaseByEachOrder;
+    } catch (error) {
+      if (
+        error instanceof ClientOrderException ||
+        error instanceof OrderProductException ||
+        error instanceof UserException
+      ) {
+        throw error;
+      }
+
+      throw new OrderProductException(
+        "Error getting purchase history of a user",
         500
       );
     }

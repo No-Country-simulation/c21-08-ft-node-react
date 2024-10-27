@@ -36,4 +36,17 @@ export class OrderProductController {
       next(error);
     }
   }
+
+  async getPurchaseHistory(req: Request, res: Response, next: NextFunction) {
+    try {
+      const { userId } = req.params;
+      const purchaseHistory = await this.orderProductService.getPurchaseHistory(
+        userId
+      );
+
+      res.status(200).json(purchaseHistory);
+    } catch (error) {
+      next(error);
+    }
+  }
 }
