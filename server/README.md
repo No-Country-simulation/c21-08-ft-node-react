@@ -917,6 +917,135 @@ src/
 
 </br>
 
+### **GET:** `/cart/history/:userId`
+
+- **Descripcion:** Metodo para obtener el historial de compras de un usuario
+- **Parametros:**
+  ```json
+  {
+    //Ejemplo: `http://localhost:3170/cart/history/2TomasID`
+    "userId": "2TomasID"
+  }
+  ```
+
+#### **Respuesta exitosa:**
+
+- **Status:** `200 OK`
+- **Contenido:** Un array de tipo `{ "date": string,  cart: OrderProduct[] }`
+- **Body:**
+
+```json
+[
+    {
+        "date": "2024-10-24T12:33:58.000Z",
+        "cart": [
+            {
+                "orderProductId": "1c9808fa-fe6a-4ef4-bed2-602c92750e63",
+                "quantity": 3,
+                "clientOrder": {
+                    "clientOrderId": "4ec23eb3-4943-47f1-a6be-db14fc491150",
+                    "createdAt": "2024-10-24T12:33:58.000Z",
+                    "isConfirmed": true,
+                    "delivery": false,
+                    "methodOfPayment": "cash",
+                    "status": "unprepared"
+                },
+                "product": {
+                    "productId": "11ChampagneID",
+                    "name": "Champagne brut",
+                    "price": 3449.75,
+                    "unitOfMeasurement": "unitary",
+                    "description": "Champagne brut, ideal para ocasiones especiales",
+                    "stock": 30,
+                    "imgUrl": "https://i.postimg.cc/fy9LFm8y/11-Champagne-ID.webp",
+                    "brand": "arcor",
+                    "category": {
+                        "categoryId": "4",
+                        "categoryName": "vinoteca",
+                        "categoryLabel": "Vinoteca",
+                        "featured": true
+                    },
+                    "promotion": null
+                }
+            },
+            {
+                "orderProductId": "b5365590-209a-4aa2-83de-c3e9eb3cc32b",
+                "quantity": 2,
+                "clientOrder": {
+                    "clientOrderId": "4ec23eb3-4943-47f1-a6be-db14fc491150",
+                    "createdAt": "2024-10-24T12:33:58.000Z",
+                    "isConfirmed": true,
+                    "delivery": false,
+                    "methodOfPayment": "cash",
+                    "status": "unprepared"
+                },
+                "product": {
+                    "productId": "10VinoID",
+                    "name": "Vino tinto reserva",
+                    "price": 2299.99,
+                    "unitOfMeasurement": "unitary",
+                    "description": "Vino tinto reserva, con 12 meses de crianza",
+                    "stock": 14,
+                    "imgUrl": "https://i.postimg.cc/FR11y2cj/10VinoID.webp",
+                    "brand": "arcor",
+                    "category": {
+                        "categoryId": "4",
+                        "categoryName": "vinoteca",
+                        "categoryLabel": "Vinoteca",
+                        "featured": true
+                    },
+                    "promotion": {
+                        "promotionId": "1",
+                        "percentage": "0.05"
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "date": "2024-10-23T19:29:39.000Z",
+        "cart": [
+            {
+                "orderProductId": "aa04733c-7832-4d32-b56d-e6e188e54be4",
+                "quantity": 10,
+                "clientOrder": {
+                    "clientOrderId": "ca68b269-5627-48ab-81fe-95f888487626",
+                    "createdAt": "2024-10-23T19:29:39.000Z",
+                    "isConfirmed": false,
+                    "delivery": false,
+                    "methodOfPayment": "cash",
+                    "status": "unprepared"
+                },
+                "product": {
+                    "productId": "21WhiskyID",
+                    "name": "Whisky single malt",
+                    "price": 4500,
+                    "unitOfMeasurement": "lt",
+                    "description": "Whisky single malt envejecido en barrica",
+                    "stock": 30,
+                    "imgUrl": "https://i.postimg.cc/WzYfCqfD/21-Whisky-ID.webp",
+                    "brand": "unilever",
+                    "category": {
+                        "categoryId": "7",
+                        "categoryName": "bebidas-con-alcohol ",
+                        "categoryLabel": "Bebidas con alcohol",
+                        "featured": true
+                    },
+                    "promotion": null
+                }
+            }
+        ]
+    }
+]
+```
+
+#### **Posibles errores:**
+
+- **500 Internal Server Error:** Error al intentar conectarse a la base de datos
+- **404 Not Found:** Usuario no encontrado
+
+</br>
+
 ---
 
 </br>
