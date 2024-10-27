@@ -789,6 +789,97 @@ src/
 
 </br>
 
+### **GET:** `/cart/:orderId`
+
+- **Descripcion:** Metodo para obtener el "carrito" completo de una orden en especifico
+- **Parametros:**
+  ```json
+  {
+    //Ejemplo: `http://localhost:3170/cart/4ec23eb3-4943-47f1-a6be-db14fc491150`
+    "orderId": "4ec23eb3-4943-47f1-a6be-db14fc491150"
+  }
+  ```
+
+#### **Respuesta exitosa:**
+
+- **Status:** `200 OK`
+- **Contenido:** Un array de tipo `OrderProduct`
+- **Body:**
+
+```json
+[
+    {
+        "orderProductId": "1c9808fa-fe6a-4ef4-bed2-602c92750e63",
+        "quantity": 3,
+        "clientOrder": {
+            "clientOrderId": "4ec23eb3-4943-47f1-a6be-db14fc491150",
+            "createdAt": "2024-10-24T12:33:58.000Z",
+            "isConfirmed": false,
+            "delivery": false,
+            "methodOfPayment": "cash",
+            "status": "unprepared"
+        },
+        "product": {
+            "productId": "11ChampagneID",
+            "name": "Champagne brut",
+            "price": 3449.75,
+            "unitOfMeasurement": "unitary",
+            "description": "Champagne brut, ideal para ocasiones especiales",
+            "stock": 30,
+            "imgUrl": "https://i.postimg.cc/fy9LFm8y/11-Champagne-ID.webp",
+            "brand": "arcor",
+            "category": {
+                "categoryId": "4",
+                "categoryName": "vinoteca",
+                "categoryLabel": "Vinoteca",
+                "featured": true
+            },
+            "promotion": null
+        }
+    },
+    {
+        "orderProductId": "b5365590-209a-4aa2-83de-c3e9eb3cc32b",
+        "quantity": 2,
+        "clientOrder": {
+            "clientOrderId": "4ec23eb3-4943-47f1-a6be-db14fc491150",
+            "createdAt": "2024-10-24T12:33:58.000Z",
+            "isConfirmed": false,
+            "delivery": false,
+            "methodOfPayment": "cash",
+            "status": "unprepared"
+        },
+        "product": {
+            "productId": "10VinoID",
+            "name": "Vino tinto reserva",
+            "price": 2299.99,
+            "unitOfMeasurement": "unitary",
+            "description": "Vino tinto reserva, con 12 meses de crianza",
+            "stock": 14,
+            "imgUrl": "https://i.postimg.cc/FR11y2cj/10VinoID.webp",
+            "brand": "arcor",
+            "category": {
+                "categoryId": "4",
+                "categoryName": "vinoteca",
+                "categoryLabel": "Vinoteca",
+                "featured": true
+            },
+            "promotion": {
+                "promotionId": "1",
+                "percentage": "0.05"
+            }
+        }
+    }
+]
+```
+
+#### **Posibles errores:**
+
+- **500 Internal Server Error:** Error al intentar conectarse a la base de datos
+- **400 Bad Request:** La orden esta vacia (no tiene productos asignados)
+- **404 Not Found:** Orden no encontrada
+
+</br>
+
 ---
 
 </br>
