@@ -99,6 +99,23 @@ export class ClientOrderService {
 
       return order;
     } catch (error) {
+      if (error instanceof ClientOrderException) {
+        throw error;
+      }
+      throw new ClientOrderException("Error getting orders by user id", 500);
+    }
+  }
+
+  async getOrdersByUserId(userId: string): Promise<ClientOrder[]> {
+    try {
+      const user = await this.userService.getUserById(userId);
+
+      const orders: ClientOrder[] = await clientOrderRepository.find({
+        where: { user },
+      });
+
+      return orders;
+    } catch (error) {
       if (error instanceof UserException) {
         throw error;
       }

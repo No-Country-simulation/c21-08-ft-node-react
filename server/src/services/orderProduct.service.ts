@@ -1,11 +1,8 @@
 import { AddToCartDto } from "../dto/AddToCart.dto";
 import { ClientOrder } from "../entities/ClientOrder.entity";
-import { OrderProduct } from "../entities/OrderProduct.entity";
-import { Product } from "../entities/Product.entity";
 import { ClientOrderException } from "../exceptions/ClientOrderException";
 import { OrderProductException } from "../exceptions/OrderProductException";
 import { ProductException } from "../exceptions/ProductException";
-import { UserException } from "../exceptions/UserException";
 import { orderProductRepository } from "../repositories/orderProduct.repository";
 import { ClientOrderService } from "./clientOrder.service";
 import { ProductService } from "./product.service";
