@@ -1,7 +1,7 @@
 'use client'
 
 import { useContext } from "react"
-import { CheckoutContextRefactor } from "../../contexts/checkout.context"
+import { CheckoutContext } from "../../contexts/checkout.context"
 import DeliveryFormSection from "./DeliveryFormSection.component"
 import AddressFormSection from "./AddressFormSection.component"
 import { addresses } from "@/mocks/addresses.mock"
@@ -16,7 +16,7 @@ const CheckoutForm = () => {
     handleSelectedAddressChange,
     handlePaymentMethodChange,
     handleSubmit,
-  } = useContext(CheckoutContextRefactor)
+  } = useContext(CheckoutContext)
 
   return (
     <section className="w-1/2 md:w-full px-4 py-4">
