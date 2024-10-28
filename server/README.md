@@ -1,5 +1,9 @@
 </br>
 
+![Static Badge](https://img.shields.io/badge/Postman-orange?logo=postman&logoColor=white) - [Kramer-backend](https://documenter.getpostman.com/view/29130737/2sAY4skQP4)
+
+</br>
+
 # Documentacion del backend - E-commerce local de venta de frutas y verduras.
 
 </br>
@@ -113,6 +117,10 @@ src/
 
 </br>
 
+---
+
+</br>
+
 ## **Categorias**
 
 ### **GET:** `/category`
@@ -141,6 +149,10 @@ src/
 #### **Posibles errores:**
 
 - **500 Internal Server Error:** Error al intentar conectarse a la base de datos
+
+</br>
+
+---
 
 </br>
 
@@ -438,6 +450,10 @@ src/
 
 </br>
 
+---
+
+</br>
+
 ## Promociones
 
 ### **GET:** `/promotion`
@@ -544,9 +560,130 @@ src/
 
 - **500 Internal Server Error:** Error al intentar conectarse a la base de datos
 
-<br />
+</br>
+
+---
+
+</br>
 
 ## Ordenes
+
+### **GET:** `/order/all/confirmed`
+
+- **Descripcion:** Metodo que devuelve todos los pedidos confirmados
+
+#### **Respuesta exitosa:**
+
+- **Status:** `200 OK`
+- **Contenido:** Un arreglo de tipo ClientOrder[]
+- **Body:**
+
+```json
+[
+    {
+        "clientOrderId": "4ec23eb3-4943-47f1-a6be-db14fc491150",
+        "createdAt": "2024-10-24T12:33:58.000Z",
+        "isConfirmed": true,
+        "delivery": false,
+        "methodOfPayment": "cash",
+        "status": "unprepared"
+    },
+    {
+        "clientOrderId": "e23b209d-a2d8-446f-982f-82d0ed760b28",
+        "createdAt": "2024-10-27T01:58:09.000Z",
+        "isConfirmed": true,
+        "delivery": false,
+        "methodOfPayment": "cash",
+        "status": "unprepared"
+    }
+]
+```
+
+#### **Posibles errores:**
+
+- **500 Internal Server Error:** Error al intentar conectarse a la base de datos
+
+<br />
+
+### **GET:** `/order/:clientOrderId`
+
+- **Descripcion:** Metodo que devuelve un pedido por Id.
+- **Parametros:**
+```json
+  {
+    //Ejemplo: `http://localhost:3170/order/4ec23eb3-4943-47f1-a6be-db14fc491150`
+    "clientOrderId": "4ec23eb3-4943-47f1-a6be-db14fc491150"
+  }
+  ```
+
+#### **Respuesta exitosa:**
+
+- **Status:** `200 OK`
+- **Contenido:** Un objeto de tipo ClientOrder
+- **Body:**
+
+```json
+{
+    "clientOrderId": "4ec23eb3-4943-47f1-a6be-db14fc491150",
+    "createdAt": "2024-10-24T12:33:58.000Z",
+    "isConfirmed": false,
+    "delivery": false,
+    "methodOfPayment": "cash",
+    "status": "unprepared"
+}
+```
+
+#### **Posibles errores:**
+
+- **500 Internal Server Error:** Error al intentar conectarse a la base de datos
+- **404 Not Found:** Orden no encontrada
+
+<br />
+
+### **GET:** `/order/user/:userId`
+
+- **Descripcion:** Metodo que devuelve los pedidos de un usuario en particular
+- **Parametros:**
+```json
+  {
+    //Ejemplo: `http://localhost:3170/order/user/3LunarID`
+    "userId": "3LunarID"
+  }
+  ```
+
+#### **Respuesta exitosa:**
+
+- **Status:** `200 OK`
+- **Contenido:** Un arreglo de tipo ClientOrder
+- **Body:**
+
+```json
+[
+    {
+        "clientOrderId": "4ec23eb3-4943-47f1-a6be-db14fc491150",
+        "createdAt": "2024-10-24T12:33:58.000Z",
+        "isConfirmed": false,
+        "delivery": false,
+        "methodOfPayment": "cash",
+        "status": "unprepared"
+    },
+    {
+        "clientOrderId": "ca68b269-5627-48ab-81fe-95f888487626",
+        "createdAt": "2024-10-23T19:29:39.000Z",
+        "isConfirmed": false,
+        "delivery": false,
+        "methodOfPayment": "cash",
+        "status": "unprepared"
+    }
+]
+```
+
+#### **Posibles errores:**
+
+- **500 Internal Server Error:** Error al intentar conectarse a la base de datos
+- **404 Not Found:** Usuario no encontrado
+
+<br />
 
 ### **POST:** `/order/create`
 
@@ -642,3 +779,277 @@ src/
 - **500 Internal Server Error:** Error al intentar conectarse a la base de datos
 - **404 Not Found:** Orden no existente
 
+<br/>
+
+## **Carrito (entidad "OrderProduct")**
+
+### **POST:** `/cart/:orderId`
+
+- **Descripcion:** Metodo para asignar productos a una orden existente
+- **Parametros:**
+  ```json
+  {
+    //Ejemplo: `http://localhost:3170/cart/4ec23eb3-4943-47f1-a6be-db14fc491150`
+    "orderId": "4ec23eb3-4943-47f1-a6be-db14fc491150"
+  }
+  ```
+  
+- **Body:**
+  ```json
+  {
+    "products": [
+        {
+            "productId": "10VinoID",
+            "productQty": 2
+        },
+        {
+            "productId": "11ChampagneID",
+            "productQty": 3
+        }
+    ]
+  }
+  ```
+
+#### **Respuesta exitosa:**
+
+- **Status:** `200 OK`
+- **Contenido:** Un mensaje que indica que los products fueron añadidos al carrito satisfactoriamente
+- **Body:**
+
+```json
+{
+    "message": "Products added to cart succesfully"
+}
+```
+
+#### **Posibles errores:**
+
+- **500 Internal Server Error:** Error al intentar conectarse a la base de datos
+- **404 Not Found:** Orden no encontrada
+- **404 Not Found:** Producto no encontrado
+
+</br>
+
+### **GET:** `/cart/:orderId`
+
+- **Descripcion:** Metodo para obtener el "carrito" completo de una orden en especifico
+- **Parametros:**
+  ```json
+  {
+    //Ejemplo: `http://localhost:3170/cart/4ec23eb3-4943-47f1-a6be-db14fc491150`
+    "orderId": "4ec23eb3-4943-47f1-a6be-db14fc491150"
+  }
+  ```
+
+#### **Respuesta exitosa:**
+
+- **Status:** `200 OK`
+- **Contenido:** Un array de tipo `OrderProduct`
+- **Body:**
+
+```json
+[
+    {
+        "orderProductId": "1c9808fa-fe6a-4ef4-bed2-602c92750e63",
+        "quantity": 3,
+        "clientOrder": {
+            "clientOrderId": "4ec23eb3-4943-47f1-a6be-db14fc491150",
+            "createdAt": "2024-10-24T12:33:58.000Z",
+            "isConfirmed": false,
+            "delivery": false,
+            "methodOfPayment": "cash",
+            "status": "unprepared"
+        },
+        "product": {
+            "productId": "11ChampagneID",
+            "name": "Champagne brut",
+            "price": 3449.75,
+            "unitOfMeasurement": "unitary",
+            "description": "Champagne brut, ideal para ocasiones especiales",
+            "stock": 30,
+            "imgUrl": "https://i.postimg.cc/fy9LFm8y/11-Champagne-ID.webp",
+            "brand": "arcor",
+            "category": {
+                "categoryId": "4",
+                "categoryName": "vinoteca",
+                "categoryLabel": "Vinoteca",
+                "featured": true
+            },
+            "promotion": null
+        }
+    },
+    {
+        "orderProductId": "b5365590-209a-4aa2-83de-c3e9eb3cc32b",
+        "quantity": 2,
+        "clientOrder": {
+            "clientOrderId": "4ec23eb3-4943-47f1-a6be-db14fc491150",
+            "createdAt": "2024-10-24T12:33:58.000Z",
+            "isConfirmed": false,
+            "delivery": false,
+            "methodOfPayment": "cash",
+            "status": "unprepared"
+        },
+        "product": {
+            "productId": "10VinoID",
+            "name": "Vino tinto reserva",
+            "price": 2299.99,
+            "unitOfMeasurement": "unitary",
+            "description": "Vino tinto reserva, con 12 meses de crianza",
+            "stock": 14,
+            "imgUrl": "https://i.postimg.cc/FR11y2cj/10VinoID.webp",
+            "brand": "arcor",
+            "category": {
+                "categoryId": "4",
+                "categoryName": "vinoteca",
+                "categoryLabel": "Vinoteca",
+                "featured": true
+            },
+            "promotion": {
+                "promotionId": "1",
+                "percentage": "0.05"
+            }
+        }
+    }
+]
+```
+
+#### **Posibles errores:**
+
+- **500 Internal Server Error:** Error al intentar conectarse a la base de datos
+- **400 Bad Request:** La orden esta vacia (no tiene productos asignados)
+- **404 Not Found:** Orden no encontrada
+
+</br>
+
+### **GET:** `/cart/history/:userId`
+
+- **Descripcion:** Metodo para obtener el historial de compras de un usuario
+- **Parametros:**
+  ```json
+  {
+    //Ejemplo: `http://localhost:3170/cart/history/2TomasID`
+    "userId": "2TomasID"
+  }
+  ```
+
+#### **Respuesta exitosa:**
+
+- **Status:** `200 OK`
+- **Contenido:** Un array de tipo `{ "date": string,  cart: OrderProduct[] }`
+- **Body:**
+
+```json
+[
+    {
+        "date": "2024-10-24T12:33:58.000Z",
+        "cart": [
+            {
+                "orderProductId": "1c9808fa-fe6a-4ef4-bed2-602c92750e63",
+                "quantity": 3,
+                "clientOrder": {
+                    "clientOrderId": "4ec23eb3-4943-47f1-a6be-db14fc491150",
+                    "createdAt": "2024-10-24T12:33:58.000Z",
+                    "isConfirmed": true,
+                    "delivery": false,
+                    "methodOfPayment": "cash",
+                    "status": "unprepared"
+                },
+                "product": {
+                    "productId": "11ChampagneID",
+                    "name": "Champagne brut",
+                    "price": 3449.75,
+                    "unitOfMeasurement": "unitary",
+                    "description": "Champagne brut, ideal para ocasiones especiales",
+                    "stock": 30,
+                    "imgUrl": "https://i.postimg.cc/fy9LFm8y/11-Champagne-ID.webp",
+                    "brand": "arcor",
+                    "category": {
+                        "categoryId": "4",
+                        "categoryName": "vinoteca",
+                        "categoryLabel": "Vinoteca",
+                        "featured": true
+                    },
+                    "promotion": null
+                }
+            },
+            {
+                "orderProductId": "b5365590-209a-4aa2-83de-c3e9eb3cc32b",
+                "quantity": 2,
+                "clientOrder": {
+                    "clientOrderId": "4ec23eb3-4943-47f1-a6be-db14fc491150",
+                    "createdAt": "2024-10-24T12:33:58.000Z",
+                    "isConfirmed": true,
+                    "delivery": false,
+                    "methodOfPayment": "cash",
+                    "status": "unprepared"
+                },
+                "product": {
+                    "productId": "10VinoID",
+                    "name": "Vino tinto reserva",
+                    "price": 2299.99,
+                    "unitOfMeasurement": "unitary",
+                    "description": "Vino tinto reserva, con 12 meses de crianza",
+                    "stock": 14,
+                    "imgUrl": "https://i.postimg.cc/FR11y2cj/10VinoID.webp",
+                    "brand": "arcor",
+                    "category": {
+                        "categoryId": "4",
+                        "categoryName": "vinoteca",
+                        "categoryLabel": "Vinoteca",
+                        "featured": true
+                    },
+                    "promotion": {
+                        "promotionId": "1",
+                        "percentage": "0.05"
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "date": "2024-10-23T19:29:39.000Z",
+        "cart": [
+            {
+                "orderProductId": "aa04733c-7832-4d32-b56d-e6e188e54be4",
+                "quantity": 10,
+                "clientOrder": {
+                    "clientOrderId": "ca68b269-5627-48ab-81fe-95f888487626",
+                    "createdAt": "2024-10-23T19:29:39.000Z",
+                    "isConfirmed": false,
+                    "delivery": false,
+                    "methodOfPayment": "cash",
+                    "status": "unprepared"
+                },
+                "product": {
+                    "productId": "21WhiskyID",
+                    "name": "Whisky single malt",
+                    "price": 4500,
+                    "unitOfMeasurement": "lt",
+                    "description": "Whisky single malt envejecido en barrica",
+                    "stock": 30,
+                    "imgUrl": "https://i.postimg.cc/WzYfCqfD/21-Whisky-ID.webp",
+                    "brand": "unilever",
+                    "category": {
+                        "categoryId": "7",
+                        "categoryName": "bebidas-con-alcohol ",
+                        "categoryLabel": "Bebidas con alcohol",
+                        "featured": true
+                    },
+                    "promotion": null
+                }
+            }
+        ]
+    }
+]
+```
+
+#### **Posibles errores:**
+
+- **500 Internal Server Error:** Error al intentar conectarse a la base de datos
+- **404 Not Found:** Usuario no encontrado
+
+</br>
+
+---
+
+</br>

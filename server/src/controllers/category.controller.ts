@@ -14,14 +14,12 @@ export class CategoryController {
       const categories: Category[] =
         await this.categoryService.getAllCategories();
 
-      return res.json(categories);
+      return res.status(200).json(categories);
     } catch (error) {
       if (error instanceof CategoryException) {
-        return res.status(error.statusCode).json({ message: error.message });
+        throw error;
       }
-      return res
-        .status(502)
-        .json({ message: "Error getting all categories", error: 502 });
+      throw new CategoryException("Error getting all categories", 502);
     }
   }
 }
