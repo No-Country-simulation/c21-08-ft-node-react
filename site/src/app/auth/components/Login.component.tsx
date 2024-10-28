@@ -3,8 +3,9 @@ import { useRouter } from "next/navigation"
 import { useAuth } from "@/app/contexts/auth.context"
 import React, { useEffect, useState } from "react"
 import { API_BASE_URL } from "@/app/consts/api.consts"
+import { PropsComponents } from "../types/propsComponents.types"
 
-const LoginPage = () => {
+const Login = ({ active }: PropsComponents) => {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const { user } = useAuth()
@@ -39,10 +40,16 @@ const LoginPage = () => {
       console.error("Error:", error)
     }
   }
+  const style = active
+    ? "w-1/2 h-full flex absolute z-30 justify-center items-center top-0 left-0 translate-x-full opacity-100"
+    : "w-1/2 h-full flex absolute z-10 justify-center items-center top-0 left-0 opacity-0"
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-gray-100">
-      <div className="w-full max-w-md space-y-6 rounded-lg bg-white p-8 shadow-md">
+    <div
+      className={`h-full w-1/2 bg-gray300 transition-all duration-500 ease-in-out ${style}`}
+      id="Login"
+    >
+      <div className="">
         <h2 className="text-center text-2xl font-bold">Iniciar Sesión</h2>
         <form className="space-y-4" onSubmit={handleSubmit}>
           <div>
@@ -84,16 +91,22 @@ const LoginPage = () => {
 
           <button
             type="submit"
-            className="mt-4 w-full rounded-md bg-blue-600 py-2 text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
+            className="mt-4 w-full rounded-md bg-krOrange py-2 text-black focus:outline-none"
           >
             Iniciar Sesión
           </button>
         </form>
         <div className="mt-4 flex flex-col justify-between">
-          <a href="/auth/register" className="text-blue-600 hover:underline">
+          <a
+            href="/auth/register"
+            className="font-bold text-krOrange shadow-sm hover:underline"
+          >
             Crear una cuenta
           </a>
-          <a href="/#" className="text-blue-600 hover:underline">
+          <a
+            href="/#"
+            className="font-bold text-krOrange shadow-sm hover:underline"
+          >
             Olvidé mi contraseña
           </a>
         </div>
@@ -102,4 +115,4 @@ const LoginPage = () => {
   )
 }
 
-export default LoginPage
+export default Login

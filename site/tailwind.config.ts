@@ -52,7 +52,7 @@ const config: Config = {
   },
   plugins: [
     function (api: PluginAPI) {
-      const { addBase } = api
+      const { addBase, addUtilities } = api
       addBase({
         h1: {
           fontSize: "2.25rem",
@@ -81,6 +81,17 @@ const config: Config = {
             borderColor: "#292D32",
             borderStyle: "solid",
           },
+        },
+      })
+      addUtilities({
+        ".rounded-customLeft": {
+          borderRadius: "150px 0 0 120px",
+        },
+        ".rounded-customRight": {
+          borderRadius: "0 150px 120px 0",
+        },
+        ".shadow-custom": {
+          boxShadow: "5px 5px 10px rgba(0, 0, 0, 0.5)",
         },
       })
     },
