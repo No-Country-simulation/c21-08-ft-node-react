@@ -7,6 +7,7 @@ import { ProductException } from "../exceptions/ProductException";
 import { productRepository } from "../repositories/product.repository";
 import { CategoryService } from "./category.service";
 import { CreateProductDto } from "../dto/ProductDto";
+import { ProductStatus } from "../common/statusProduct";
 
 export class ProductService {
   private readonly categoryService: CategoryService;
@@ -125,4 +126,25 @@ export class ProductService {
       throw new ProductException("Error deleting product", 500);
     }
   }
+
+  async statusProduct(productId: string, status?: ProductStatus): Promise<Product> {
+    try {
+      const product = await productRepository.findOne({ where: { productId } });
+  
+      if (!product) {
+        throw new ProductException("Product not found", 404);
+      }
+  
+      // Asignar el estado del producto desde el body o verificar el stock
+      if (status) {
+        product.status = status;
+      } else {
+        product.status = product.stock < 3 ? "inactivo" : "activo";
+      }
+  
+      return await productRepository.save(product);
+    } catch (error) {
+      throw new ProductException("Error updating product status", 500);
+    }
+  }  
 }

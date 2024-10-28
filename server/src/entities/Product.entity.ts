@@ -75,5 +75,4 @@ export class Product {
     default: ProductStatus.ACTIVE,
   })
   status!: string;
-
 }
