@@ -14,7 +14,7 @@ const Checkout = () => {
 
   useEffect(() => {
     if (!user && productsInCart.length != 0) {
-      router.push("/auth/login")
+      router.push("/auth")
     }
     if (user && productsInCart.length === 0) {
       router.push("/")

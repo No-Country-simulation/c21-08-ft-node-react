@@ -98,12 +98,6 @@ const Login = ({ active }: PropsComponents) => {
         </form>
         <div className="mt-4 flex flex-col justify-between">
           <a
-            href="/auth/register"
-            className="font-bold text-krOrange shadow-sm hover:underline"
-          >
-            Crear una cuenta
-          </a>
-          <a
             href="/#"
             className="font-bold text-krOrange shadow-sm hover:underline"
           >

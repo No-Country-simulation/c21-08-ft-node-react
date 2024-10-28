@@ -84,7 +84,7 @@ const Navbar = () => {
     if (user) {
       router.push("/profile")
     } else {
-      router.push("/auth/login")
+      router.push("/auth")
     }
   }
 

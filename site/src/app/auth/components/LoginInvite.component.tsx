@@ -12,7 +12,7 @@ const LoginInvite = ({ active, handleActive }: PropsComponents) => {
     >
       <h3 className="h3 mb-4">¿Ya tienes una cuenta?</h3>
       <p className="w-72">
-        Si ya tienes una cuenta solo necesitaras de tu Email y contraseña para
+        Si ya tienes una cuenta solo necesitarás de tu Email y contraseña para
         ingresar
       </p>
       <button
