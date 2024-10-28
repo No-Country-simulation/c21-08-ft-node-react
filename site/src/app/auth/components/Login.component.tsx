@@ -91,16 +91,22 @@ const Login = ({ active }: PropsComponents) => {
 
           <button
             type="submit"
-            className="mt-4 w-full rounded-md bg-blue-600 py-2 text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
+            className="mt-4 w-full rounded-md bg-krOrange py-2 text-black focus:outline-none"
           >
             Iniciar Sesión
           </button>
         </form>
         <div className="mt-4 flex flex-col justify-between">
-          <a href="/auth/register" className="text-blue-600 hover:underline">
+          <a
+            href="/auth/register"
+            className="font-bold text-krOrange shadow-sm hover:underline"
+          >
             Crear una cuenta
           </a>
-          <a href="/#" className="text-blue-600 hover:underline">
+          <a
+            href="/#"
+            className="font-bold text-krOrange shadow-sm hover:underline"
+          >
             Olvidé mi contraseña
           </a>
         </div>

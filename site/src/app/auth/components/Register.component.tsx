@@ -129,9 +129,12 @@ const Register = ({ active }: PropsComponents) => {
           </button>
         </form>
         <div className="mt-4 flex justify-center">
-          <p className="text-sm">
+          <p className="text-sm font-bold text-krOrange shadow-sm">
             ¿Ya tienes una cuenta?{" "}
-            <a href="/auth/login" className="hover:underline">
+            <a
+              href="/auth/login"
+              className="font-bold text-krOrange shadow-sm hover:underline"
+            >
               Iniciar sesión
             </a>
           </p>
