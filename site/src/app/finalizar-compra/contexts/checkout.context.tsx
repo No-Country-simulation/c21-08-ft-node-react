@@ -4,6 +4,7 @@ import { PaymentMethod } from "../types/checkoutForm.type"
 import { Address } from "../types/checkoutForm.type"
 import { sendOrder } from "../utils/sendOrder"
 import { CartContext } from "@/app/contexts/cart.context"
+import { useAuth } from "@/app/contexts/auth.context"
 
 export type CheckoutContextProviderProps = {
   children: React.ReactNode
@@ -35,6 +36,8 @@ export const CheckoutContextProvider = ({
 
   const { productsInCart } = useContext(CartContext)
 
+  const { user } = useAuth()
+
   const handleTipoEntregaChange = (tipoEntrega: TipoEntrega) => {
     setTipoEntrega(tipoEntrega)
     if (tipoEntrega === "retiro") setSelectedAddress(null)
@@ -49,13 +52,14 @@ export const CheckoutContextProvider = ({
   }
 
   const handleSubmit = async () => {
+    if (!user) return
     const productsForOrder = productsInCart.map((productInCart) => ({
       productId: productInCart.productId,
       productQty: productInCart.productQty,
     }))
 
     const order = await sendOrder({
-      userId: "3f71ed82-28ec-4a86-818b-4636bb53d42f",
+      userId: user.userId,
       delivery: tipoEntrega === "delivery",
       methodOfPayment: paymentMethod,
       products: productsForOrder,
