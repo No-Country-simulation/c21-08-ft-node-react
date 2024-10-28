@@ -1,8 +1,10 @@
 import { Request, Response, NextFunction } from 'express';
 import { Measurement } from '../common/measurement.enum';
 
+
 export const validateCreateProduct = (req: Request, res: Response, next: NextFunction): void => {
-  const { name, price, unitOfMeasurement, description, stock, imgUrl, brand, categoryId, promotionId } = req.body;
+  const { name, price, unitOfMeasurement, description, stock, imgUrl, brand, category, promotion } = req.body;
+  console.log("req.body", req.body);
 
   // Validación de 'name'
   if (!name || typeof name !== 'string' || name.trim() === '') {
@@ -17,7 +19,7 @@ export const validateCreateProduct = (req: Request, res: Response, next: NextFun
   }
 
   // Validación de 'unitOfMeasurement'
-  if (!unitOfMeasurement || !Object.values(Measurement).includes(unitOfMeasurement)) {
+  if (!unitOfMeasurement) {
     res.status(400).json({ message: 'Unit of measurement is required and must be valid.' });
     return;
   }
@@ -47,13 +49,13 @@ export const validateCreateProduct = (req: Request, res: Response, next: NextFun
   }
 
   // Validación de 'categoryId'
-  if (!categoryId || typeof categoryId !== 'string' || categoryId.trim() === '') {
+  if (!category || typeof category.categoryId !== 'string' || category.categoryId.trim() === '') {
     res.status(400).json({ message: 'Category ID is required and must be a non-empty string.' });
     return;
   }
 
   // Validación de 'promotionId'
-  if (!promotionId || typeof promotionId !== 'string') {
+  if (!promotion || typeof promotion.promotionId !== 'string') {
     res.status(400).json({ message: 'Promotion ID is required and must be a string.' });
     return;
   }

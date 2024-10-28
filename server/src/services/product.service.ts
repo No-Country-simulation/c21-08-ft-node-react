@@ -20,6 +20,7 @@ export class ProductService {
     try {
       const { categoryId, promotionId, ...productData } = createProductDto;
 
+      console.log("productData", productData);
       const category: Category | undefined =
         await this.categoryService.getCategoryById(categoryId);
       if (!category) {
