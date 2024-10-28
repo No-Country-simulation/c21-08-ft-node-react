@@ -233,7 +233,10 @@ src/
   "weight": 1.5,
   "price": 20.99,
   "stock": 50,
-  "imagen": "url_imagen",
+  "imagen": "{
+      full:https://i.postimg.cc/4dZSzH6d/1ArrozID.webp
+      medium:https://i.postimg.cc/GmjC6RXH/1-Arroz-IDTiny.webp
+    }",
   "descripción": "Descripción actualizada",
   "status": "activo",
   "category": "categoría_id"
@@ -313,7 +316,10 @@ src/
     "unitOfMeasurement": "unitary",
     "description": "Aceite de girasol de primera calidad",
     "stock": 19,
-    "imgUrl": "www.google.com/aceite-natura",
+    "imgUrl": "{
+        full:https://i.postimg.cc/4dZSzH6d/1ArrozID.webp
+        medium:https://i.postimg.cc/GmjC6RXH/1-Arroz-IDTiny.webp
+      }",
     "category": { "categoryId": "category04", "categoryName": "Almacen" },
     "promotion": {
       "promotionId": "promotion01",
@@ -363,7 +369,10 @@ src/
     "unitOfMeasurement": "unitary",
     "description": "Aceite de girasol de primera calidad",
     "stock": 19,
-    "imgUrl": "www.google.com/aceite-natura",
+    "imgUrl": "{
+        full:https://i.postimg.cc/4dZSzH6d/1ArrozID.webp
+        medium:https://i.postimg.cc/GmjC6RXH/1-Arroz-IDTiny.webp
+      }",
     "category": { "categoryId": "category04", "categoryName": "Almacen" },
     "promotion": {
       "promotionId": "promotion01",
@@ -378,7 +387,10 @@ src/
     "unitOfMeasurement": "unitary",
     "description": "Los mejores fideos de la ciudad",
     "stock": 40,
-    "imgUrl": "www.google.com/fideos-marolio",
+    "imgUrl": "{
+        full:https://i.postimg.cc/4dZSzH6d/1ArrozID.webp
+        medium:https://i.postimg.cc/GmjC6RXH/1-Arroz-IDTiny.webp
+        }",
     "category": { "categoryId": "category04", "categoryName": "Almacen" },
     "promotion": null
   }
@@ -412,7 +424,10 @@ src/
     "unitOfMeasurement": "lt",
     "description": "La leche mas fresca",
     "stock": 150,
-    "imgUrl": "www.google.com",
+    "imgUrl": "{
+        full:https://i.postimg.cc/4dZSzH6d/1ArrozID.webp
+        medium:https://i.postimg.cc/GmjC6RXH/1-Arroz-IDTiny.webp
+      }",
     "brand": null,
     "category": {
       "categoryId": "cate02",
@@ -430,7 +445,10 @@ src/
     "unitOfMeasurement": "lt",
     "description": "El mejor aceite",
     "stock": 150,
-    "imgUrl": "www.google.com",
+    "imgUrl": "{
+        full:https://i.postimg.cc/4dZSzH6d/1ArrozID.webp
+        medium:https://i.postimg.cc/GmjC6RXH/1-Arroz-IDTiny.webp
+      }",
     "brand": null,
     "category": {
       "categoryId": "cate02",
@@ -481,7 +499,10 @@ src/
         "unitOfMeasurement": "unitary",
         "description": "Aceite de girasol de primera calidad",
         "stock": 19,
-        "imgUrl": "www.google.com/aceite-natura",
+        "imgUrl": "{
+            full:https://i.postimg.cc/4dZSzH6d/1ArrozID.webp
+            medium:https://i.postimg.cc/GmjC6RXH/1-Arroz-IDTiny.webp
+          }",
         "category": {
           "categoryId": "category04",
           "categoryName": "Almacen"
@@ -499,7 +520,10 @@ src/
         "unitOfMeasurement": "unitary",
         "description": "Los mejores fideos de la ciudad",
         "stock": 40,
-        "imgUrl": "www.google.com/fideos-marolio",
+        "imgUrl": "{
+            full:https://i.postimg.cc/4dZSzH6d/1ArrozID.webp
+            medium:https://i.postimg.cc/GmjC6RXH/1-Arroz-IDTiny.webp
+          }",
         "category": {
           "categoryId": "category04",
           "categoryName": "Almacen"
@@ -523,7 +547,10 @@ src/
         "unitOfMeasurement": "unitary",
         "description": "Aceite de girasol de primera calidad",
         "stock": 19,
-        "imgUrl": "www.google.com/aceite-natura",
+        "imgUrl": "{
+            full:https://i.postimg.cc/4dZSzH6d/1ArrozID.webp
+            medium:https://i.postimg.cc/GmjC6RXH/1-Arroz-IDTiny.webp
+          }",
         "category": {
           "categoryId": "category04",
           "categoryName": "Almacen"
@@ -541,7 +568,10 @@ src/
         "unitOfMeasurement": "unitary",
         "description": "Los mejores fideos de la ciudad",
         "stock": 40,
-        "imgUrl": "www.google.com/fideos-marolio",
+        "imgUrl": "{
+            full:https://i.postimg.cc/4dZSzH6d/1ArrozID.webp
+            medium:https://i.postimg.cc/GmjC6RXH/1-Arroz-IDTiny.webp
+          }",
         "category": {
           "categoryId": "category04",
           "categoryName": "Almacen"
@@ -867,7 +897,10 @@ src/
             "unitOfMeasurement": "unitary",
             "description": "Champagne brut, ideal para ocasiones especiales",
             "stock": 30,
-            "imgUrl": "https://i.postimg.cc/fy9LFm8y/11-Champagne-ID.webp",
+        "imgUrl": "{
+            full:https://i.postimg.cc/4dZSzH6d/1ArrozID.webp
+            medium:https://i.postimg.cc/GmjC6RXH/1-Arroz-IDTiny.webp
+          }",
             "brand": "arcor",
             "category": {
                 "categoryId": "4",
@@ -896,7 +929,10 @@ src/
             "unitOfMeasurement": "unitary",
             "description": "Vino tinto reserva, con 12 meses de crianza",
             "stock": 14,
-            "imgUrl": "https://i.postimg.cc/FR11y2cj/10VinoID.webp",
+            "imgUrl": "{
+                full:https://i.postimg.cc/4dZSzH6d/1ArrozID.webp
+                medium:https://i.postimg.cc/GmjC6RXH/1-Arroz-IDTiny.webp
+              }",
             "brand": "arcor",
             "category": {
                 "categoryId": "4",
@@ -961,7 +997,10 @@ src/
                     "unitOfMeasurement": "unitary",
                     "description": "Champagne brut, ideal para ocasiones especiales",
                     "stock": 30,
-                    "imgUrl": "https://i.postimg.cc/fy9LFm8y/11-Champagne-ID.webp",
+                    "imgUrl": "{
+                        full:https://i.postimg.cc/4dZSzH6d/1ArrozID.webp
+                        medium:https://i.postimg.cc/GmjC6RXH/1-Arroz-IDTiny.webp
+                      }",
                     "brand": "arcor",
                     "category": {
                         "categoryId": "4",
@@ -990,7 +1029,10 @@ src/
                     "unitOfMeasurement": "unitary",
                     "description": "Vino tinto reserva, con 12 meses de crianza",
                     "stock": 14,
-                    "imgUrl": "https://i.postimg.cc/FR11y2cj/10VinoID.webp",
+                    "imgUrl": "{
+                        full:https://i.postimg.cc/4dZSzH6d/1ArrozID.webp
+                        medium:https://i.postimg.cc/GmjC6RXH/1-Arroz-IDTiny.webp
+                      }",
                     "brand": "arcor",
                     "category": {
                         "categoryId": "4",
@@ -1027,7 +1069,10 @@ src/
                     "unitOfMeasurement": "lt",
                     "description": "Whisky single malt envejecido en barrica",
                     "stock": 30,
-                    "imgUrl": "https://i.postimg.cc/WzYfCqfD/21-Whisky-ID.webp",
+                    "imgUrl": "{
+                        full:https://i.postimg.cc/4dZSzH6d/1ArrozID.webp
+                        medium:https://i.postimg.cc/GmjC6RXH/1-Arroz-IDTiny.webp
+                      }",
                     "brand": "unilever",
                     "category": {
                         "categoryId": "7",
