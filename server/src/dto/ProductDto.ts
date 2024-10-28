@@ -1,4 +1,5 @@
 import { Measurement } from '../common/measurement.enum';
+import { ProductStatus } from '../common/statusProduct';
 
 export class CreateProductDto {
   name!: string;
@@ -10,4 +11,5 @@ export class CreateProductDto {
   brand?: string;
   categoryId!: string; 
   promotionId?: string; 
+  status?: ProductStatus;
 }
