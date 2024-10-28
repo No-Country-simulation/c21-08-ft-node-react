@@ -13,6 +13,7 @@ import { Category } from "./Category.entity";
 import { OrderProduct } from "./OrderProduct.entity";
 import { Promotion } from "./Promotion.entity";
 import { User } from "./User.entity";
+import { ProductStatus } from "../common/statusProduct";
 
 @Entity()
 export class Product {
@@ -69,4 +70,10 @@ export class Product {
   })
   @JoinColumn({ name: "promotion" })
   promotion!: Promotion;
+
+  @Column({
+    default: ProductStatus.ACTIVE,
+  })
+  status!: string;
+
 }
