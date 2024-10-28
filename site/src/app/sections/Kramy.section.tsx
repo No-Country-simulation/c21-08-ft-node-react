@@ -3,7 +3,7 @@
 import Image from "next/image"
 import KramyBtn from "../components/KramyBtn/KramyBtn.component"
 import Overlay from "../components/Overlay/Overlay.component"
-import { useState, useEffect } from "react"
+import { useState } from "react"
 import Icon from "../components/Icon/Icon.component"
 
 const submitQuery = async (query: string) => {
