@@ -7,6 +7,7 @@ import { useContext, useState } from "react"
 import { CheckoutContext } from "../../contexts/checkout.context"
 import { CartContext } from "@/app/contexts/cart.context"
 import { sendOrder } from "../utils/sendOrder"
+import { useAuth } from "@/app/contexts/auth.context"
 const initialState = {
   isDeliverySelected: false,
   isPaymentSelected: "mercado-pago",
@@ -22,13 +23,14 @@ const FormCheckout = () => {
     setIsPaymentSelected,
   } = useContext(CheckoutContext)
   const { productsInCart } = useContext(CartContext)
+  const { user } = useAuth()
   const cartFromBackend = productsInCart.map((p) => {
     return { productId: p.productId, productQty: p.productQty }
   })
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     const order = await sendOrder({
-      userId: "3f71ed82-28ec-4a86-818b-4636bb53d42f",
+      userId: user?.userId,
       delivery: isDeliverySelected,
       methodOfPayment: isPaymentSelected,
       products: cartFromBackend,

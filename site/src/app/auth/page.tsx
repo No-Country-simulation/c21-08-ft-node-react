@@ -7,14 +7,14 @@ import LoginInvite from "./components/LoginInvite.component"
 import RegisterInvite from "./components/RegisterInvite.component"
 
 const LoginComponent = () => {
-  const [active, setActive] = useState(false)
+  const [active, setActive] = useState(true)
   const handleActive = () => {
     setActive((prev) => !prev)
   }
   console.log(active)
   return (
     <div
-      className="shadow-custom relative mx-auto mt-32 min-h-[480px] w-[768px] max-w-[100%] overflow-hidden rounded-xl bg-gray-300"
+      className="relative mx-auto mt-32 min-h-[480px] w-[768px] max-w-[100%] overflow-hidden rounded-xl bg-gray-300 shadow-custom"
       id="container-profile"
     >
       <Login active={active} handleActive={handleActive}></Login>
