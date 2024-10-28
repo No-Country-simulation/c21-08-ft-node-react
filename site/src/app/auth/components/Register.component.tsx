@@ -5,8 +5,9 @@ import { CartContext } from "@/app/contexts/cart.context"
 import { useRouter } from "next/navigation"
 import { useAuth } from "@/app/contexts/auth.context"
 import { API_BASE_URL } from "@/app/consts/api.consts"
+import { PropsComponents } from "../types/propsComponents.types"
 
-const RegisterPage = () => {
+const Register = ({ active }: PropsComponents) => {
   const [name, setName] = useState("")
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
@@ -49,9 +50,18 @@ const RegisterPage = () => {
     }
   }
 
+  const style = active
+    ? "w-1/2 h-full flex absolute z-10 justify-center items-center top-0 left-0 -translate-x-full opacity-0"
+    : "w-1/2 h-full flex absolute z-30 justify-center items-center top-0 left-0 opacity-100"
+
   return (
-    <div className="flex min-h-screen items-center justify-center bg-gray-100">
-      <div className="w-full max-w-md space-y-6 rounded-lg bg-white p-8 shadow-md">
+    <div
+      className={`h-full w-1/2 bg-gray300 transition-all duration-500 ease-in-out ${style}`}
+      id="Register"
+    >
+      <div
+        className="" /*"w-full max-w-md space-y-6 rounded-lg bg-white p-8 shadow-md"*/
+      >
         <h2 className="text-center text-2xl font-bold">Crear Cuenta</h2>
         <form className="space-y-4" onSubmit={handleSubmit}>
           <div>
@@ -65,7 +75,7 @@ const RegisterPage = () => {
               type="text"
               id="name"
               required
-              className="mt-1 block w-full rounded-md border border-gray-300 p-2 focus:border-blue-500 focus:ring focus:ring-blue-200"
+              className="mt-1 block w-full rounded-md border border-gray-300 p-2 focus:border-blue-500"
               value={name}
               onChange={(e) => {
                 setName(e.target.value)
@@ -84,7 +94,7 @@ const RegisterPage = () => {
               type="email"
               id="email"
               required
-              className="mt-1 block w-full rounded-md border border-gray-300 p-2 focus:border-blue-500 focus:ring focus:ring-blue-200"
+              className="mt-1 block w-full rounded-md border border-gray-300 p-2 focus:border-blue-500"
               value={email}
               onChange={(e) => {
                 setEmail(e.target.value)
@@ -113,7 +123,7 @@ const RegisterPage = () => {
           </div>
           <button
             type="submit"
-            className="mt-4 w-full rounded-md bg-blue-600 py-2 text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
+            className="mt-4 w-full rounded-md bg-krOrange py-2 text-black focus:outline-none"
           >
             Registrarse
           </button>
@@ -121,7 +131,7 @@ const RegisterPage = () => {
         <div className="mt-4 flex justify-center">
           <p className="text-sm">
             ¿Ya tienes una cuenta?{" "}
-            <a href="/auth/login" className="text-blue-600 hover:underline">
+            <a href="/auth/login" className="hover:underline">
               Iniciar sesión
             </a>
           </p>
@@ -131,4 +141,4 @@ const RegisterPage = () => {
   )
 }
 
-export default RegisterPage
+export default Register
