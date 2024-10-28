@@ -25,11 +25,20 @@ export async function GET(req: NextRequest) {
     console.log("response.text: ", response.text)
 
     const regex = /\[([\s\S]*?)\]/g
-    const matches = Array.from(response.text.matchAll(regex), (match) =>
-      match[1].split(/\s*,\s*/),
-    )
-    console.log("matches: ", matches)
-    return NextResponse.json(response.text, { status: 200 })
+    const matches = response.text.match(regex)
+    if (!matches)
+      throw new Error(`there was an error trying to parse the response`)
+    const arrays = matches.map((m) => JSON.parse(m))
+
+    const payload = {
+      allIngredients: arrays[0],
+      owned: arrays[1],
+      instructions: arrays[2],
+    }
+    // const matches = Array.from(response.text.matchAll(regex), (match) =>
+    //   match[1].split(/\s*,\s*/),
+    // )
+    return NextResponse.json(payload, { status: 200 })
   } catch (err) {
     return NextResponse.json(`there was an error: ${err}`)
   }
