@@ -16,11 +16,11 @@ export class OrderProduct {
   @Column()
   quantity!: number;
 
-  @ManyToOne(() => ClientOrder, (clientOrder) => clientOrder)
+  @ManyToOne(() => ClientOrder, (clientOrder) => clientOrder, { eager: true })
   @JoinColumn({ name: "clientOrder" })
   clientOrder!: ClientOrder;
 
-  @ManyToOne(() => Product, (product) => product.orderProduct)
+  @ManyToOne(() => Product, (product) => product.orderProduct, { eager: true })
   @JoinColumn({ name: "product" })
   product!: Product;
 }

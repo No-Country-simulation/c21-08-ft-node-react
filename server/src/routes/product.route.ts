@@ -25,5 +25,10 @@ router.delete("/deleteProduct/:productId", async (req: Request, res: Response) =
   await productController.deleteProduct(req, res);
 });
 
+router.put("/status/:productId", (req, res) => {
+  productController.updateProductStatus(req, res);
+});
+
+
 
 export default router;

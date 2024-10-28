@@ -111,4 +111,19 @@ export class ProductController {
         });
     }
   }
+
+  async updateProductStatus(req: Request, res: Response): Promise<Response> {
+    const { productId } = req.params;
+    const { status } = req.body;  // Extrae el estado del cuerpo de la solicitud
+  
+    try {
+      const updatedProduct = await this.productService.statusProduct(productId, status);
+      return res.status(200).json(updatedProduct);
+    } catch (error) {
+      if (error instanceof ProductException) {
+        return res.status(error.statusCode).json({ message: error.message });
+      }
+      return res.status(500).json({ message: "Internal server error" });
+    }
+  }  
 }
