@@ -1,3 +1,4 @@
+"use client"
 import { useAuth } from "@/app/contexts/auth.context"
 import Link from "next/link"
 
