@@ -158,26 +158,26 @@ const FilterPanel = ({
             {priceOptions.map((op, idx) => (
               <div key={`price-option-${idx}`} className="flex gap-2">
                 <input
-                  id="price-3"
+                  id={`price-${idx}`}
                   type="radio"
                   name="price"
                   checked={checkedPrice === op}
                   value={op}
                   onChange={handlePriceChange}
                 />
-                <label htmlFor="price-3">Hasta ${op}</label>
+                <label htmlFor={`price-${idx}`}>Hasta ${op}</label>
               </div>
             ))}
             <div className="flex gap-2">
               <input
-                id="price-3"
+                id="price-all"
                 type="radio"
                 name="price"
                 checked={checkedPrice === MAX_PRICE}
                 value={MAX_PRICE}
                 onChange={handlePriceChange}
               />
-              <label htmlFor="price-3">Todo</label>
+              <label htmlFor="price-all">Todo</label>
             </div>
           </div>
         </div>
