@@ -2,6 +2,10 @@
 
 import { strForDisplay } from "@/app/utils/strFormatting.util"
 import { KramySectionProps } from "../kramy.types"
+import Card from "@/app/components/Card/Card.component"
+import { IsClientProvider } from "@/app/contexts/isClient.context"
+import CarouselContainer from "@/app/components/CarouselContainer/CarouselContainer.component"
+import { strForData } from "@/app/utils/strFormatting.util"
 
 const KramySection = ({ response }: KramySectionProps) => {
   return response ? (
@@ -37,13 +41,19 @@ const KramySection = ({ response }: KramySectionProps) => {
       </div>
       <div className="flex flex-col gap-5">
         <h3>Te podemos ofrecer:</h3>
-        <ul className="flex-1">
-          {response.owned.map((i, idx) => (
-            <li key={`ingredient-{${idx}}`} className="list-disc">
-              {strForDisplay(i)}
-            </li>
-          ))}
-        </ul>
+        <IsClientProvider>
+          <CarouselContainer content="products">
+            {response.owned.map((p, idx) => (
+              <Card
+                key={`products-${idx}`}
+                additionalStyles="keen-slider__slide"
+                product={p}
+                link={`/categoria/${strForData(p.category.categoryName)}/${p.productId}`}
+                imgUrl={p.imgUrl.medium}
+              />
+            ))}
+          </CarouselContainer>
+        </IsClientProvider>
       </div>
     </div>
   ) : (

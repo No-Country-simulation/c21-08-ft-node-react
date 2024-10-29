@@ -18,7 +18,7 @@ const AddButton = ({ product, withIcon }: AddButtonProps) => {
   const { isOwner } = useAuth()
   return (
     <button
-      className={`relative flex h-10 items-center gap-2 rounded-md bg-krOrange px-3 py-1 font-bold text-white md:text-[14px] md:font-semibold md:leading-[14px] xs:h-8 xs:text-[12px] xs:leading-[12px] ${withIcon ? "justify-start" : "justify-center"}`}
+      className={`relative flex h-10 items-center gap-2 rounded-md bg-krOrange px-3 py-1 font-bold text-white hover:bg-[#EB6B42] md:text-[14px] md:font-semibold md:leading-[14px] xs:h-8 xs:text-[12px] xs:leading-[12px] ${withIcon ? "justify-start" : "justify-center"}`}
       onClick={handleAddToCart}
       disabled={isOwner || productExistInCart || product.stock === 0}
     >
