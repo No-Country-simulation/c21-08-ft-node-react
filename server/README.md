@@ -79,8 +79,25 @@ src/
 ### b) Diagrama de arquitectura
 ![Captura de pantalla 2024-10-21 182813](https://github.com/user-attachments/assets/66016b47-1889-4e98-8402-a1083a4ae275)
 
+</br>
 
-## 5. Endpoints de la API
+## 5. Mercado Pago - `Cuentas de prueba`
+
+### Comprador:
+``` bash
+Nombre de usuario: TESTUSER472292105
+Contraseña: urifnMnwFI
+```
+
+### Vendedor:
+``` bash
+Nombre de usuario: TESTUSER1599894772
+Contraseña: QbzG9hYbFt
+```
+
+</br>
+
+## 6. Endpoints de la API
 
 ## **Usuarios**
 
