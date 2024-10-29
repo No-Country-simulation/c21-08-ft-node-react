@@ -14,6 +14,7 @@ import OrderProductRoutes from "./routes/orderProduct.route";
 import productRoutes from "./routes/product.route";
 import promotionRoutes from "./routes/promotion.route";
 import userRoutes from "./routes/user.route";
+import iaRoutes from "./routes/ia.route";
 
 const PORT = process.env.PORT || 3170;
 
@@ -30,6 +31,7 @@ AppDataSource.initialize()
     app.use("/promotion", promotionRoutes);
     app.use("/order", orderRoutes);
     app.use("/cart", OrderProductRoutes);
+    app.use("/", iaRoutes);
 
     //Middleware de manejo de errores.
     app.use(
@@ -63,5 +65,3 @@ AppDataSource.initialize()
   .catch((error) => {
     console.error("Error during Data Source initialization:", error);
   });
-
-//
