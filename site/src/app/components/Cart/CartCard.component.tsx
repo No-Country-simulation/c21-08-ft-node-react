@@ -24,7 +24,7 @@ const CartCard = ({
       <Link href={link}>
         <Image
           className="rounded-l-[20px] xs:rounded-l-[12px]"
-          src={product.imgUrl}
+          src={product.imgUrl.medium}
           alt={getProductImageAlt(product.name)}
           width={128}
           height={128}

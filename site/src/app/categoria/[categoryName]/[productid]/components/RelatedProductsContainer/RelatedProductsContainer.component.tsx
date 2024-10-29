@@ -26,7 +26,7 @@ const RelatedProductsContainer = async ({
             additionalStyles="keen-slider__slide"
             product={p}
             link={`/categoria/${strForData(p.category.categoryName)}/${p.productId}`}
-            imgUrl={p.imgUrl}
+            imgUrl={p.imgUrl.medium}
           />
         ))}
       </CarouselContainer>

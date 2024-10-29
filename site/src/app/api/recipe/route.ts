@@ -31,6 +31,7 @@ export async function GET(req: NextRequest) {
     const arrays = matches.map((m) => JSON.parse(m))
 
     const payload = {
+      recipe: recipeQuery,
       allIngredients: arrays[0],
       owned: arrays[1],
       instructions: arrays[2],

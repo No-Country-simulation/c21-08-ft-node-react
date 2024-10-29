@@ -5,7 +5,10 @@
   "unitOfMeasurement": "kg",
   "description": "Arroz integral de calidad premium",
   "stock": 100,
-  "imgUrl": "/images/product-placeholder.webp",
+    "imgUrl": {
+      "full": "/images/product-placeholder.webp",
+      "medium": "/images/product-placeholder.webp"
+    },
   "brand": "unilever",
   "category": {
     "categoryId": "1",

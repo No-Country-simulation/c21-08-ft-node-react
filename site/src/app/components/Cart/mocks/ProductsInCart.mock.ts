@@ -7,7 +7,10 @@ export const productsInCart: ProductInCart[] = [
     name: "Galletas de Chocolate",
     description: "Galletas crocantes con trozos de chocolate.",
     price: 1999.99,
-    imgUrl: "/images/product-placeholder.webp",
+    imgUrl: {
+      full: "/images/product-placeholder.webp",
+      medium: "/images/product-placeholder.webp",
+    },
     category: {
       categoryId: "C001",
       categoryName: "category",
@@ -24,7 +27,10 @@ export const productsInCart: ProductInCart[] = [
     brand: "brand",
     description: "Papas fritas crujientes con sal.",
     price: 2199.99,
-    imgUrl: "/images/product-placeholder.webp",
+    imgUrl: {
+      full: "/images/product-placeholder.webp",
+      medium: "/images/product-placeholder.webp",
+    },
     category: {
       categoryId: "C001",
       categoryName: "category",
@@ -41,7 +47,10 @@ export const productsInCart: ProductInCart[] = [
     brand: "brand",
     description: "Gomitas dulces con sabor a frutas.",
     price: 699.99,
-    imgUrl: "/images/product-placeholder.webp",
+    imgUrl: {
+      full: "/images/product-placeholder.webp",
+      medium: "/images/product-placeholder.webp",
+    },
     category: {
       categoryId: "C001",
       categoryName: "category",
@@ -58,7 +67,10 @@ export const productsInCart: ProductInCart[] = [
     brand: "brand",
     description: "Barra de chocolate con relleno de caramelo.",
     price: 2499.99,
-    imgUrl: "/images/product-placeholder.webp",
+    imgUrl: {
+      full: "/images/product-placeholder.webp",
+      medium: "/images/product-placeholder.webp",
+    },
     category: {
       categoryId: "C001",
       categoryName: "category",
@@ -75,7 +87,10 @@ export const productsInCart: ProductInCart[] = [
     brand: "brand",
     description: "Bebida gaseosa sabor cola.",
     price: 2299.99,
-    imgUrl: "/images/product-placeholder.webp",
+    imgUrl: {
+      full: "/images/product-placeholder.webp",
+      medium: "/images/product-placeholder.webp",
+    },
     category: {
       categoryId: "C001",
       categoryName: "category",
@@ -92,7 +107,10 @@ export const productsInCart: ProductInCart[] = [
     brand: "brand",
     description: "Maní tostado con sal.",
     price: 1899.99,
-    imgUrl: "/images/product-placeholder.webp",
+    imgUrl: {
+      full: "/images/product-placeholder.webp",
+      medium: "/images/product-placeholder.webp",
+    },
     category: {
       categoryId: "C001",
       categoryName: "category",
@@ -109,7 +127,10 @@ export const productsInCart: ProductInCart[] = [
     brand: "brand",
     description: "Caramelos suaves con sabor a frutas.",
     price: 999.99,
-    imgUrl: "/images/product-placeholder.webp",
+    imgUrl: {
+      full: "/images/product-placeholder.webp",
+      medium: "/images/product-placeholder.webp",
+    },
     category: {
       categoryId: "C001",
       categoryName: "category",
@@ -126,7 +147,10 @@ export const productsInCart: ProductInCart[] = [
     brand: "brand",
     description: "Barra energética con cereales y frutos secos.",
     price: 1999.99,
-    imgUrl: "/images/product-placeholder.webp",
+    imgUrl: {
+      full: "/images/product-placeholder.webp",
+      medium: "/images/product-placeholder.webp",
+    },
     category: {
       categoryId: "C001",
       categoryName: "category",
@@ -143,7 +167,10 @@ export const productsInCart: ProductInCart[] = [
     brand: "brand",
     description: "Bebida refrescante de jugo de naranja natural.",
     price: 2499.99,
-    imgUrl: "/images/product-placeholder.webp",
+    imgUrl: {
+      full: "/images/product-placeholder.webp",
+      medium: "/images/product-placeholder.webp",
+    },
     category: {
       categoryId: "C001",
       categoryName: "category",

@@ -6,7 +6,10 @@ export const products: Product[] = [
     name: "Gomitas de Frutas",
     description: "Gomitas dulces con sabor a frutas.",
     price: 699.99,
-    imgUrl: "/images/product-placeholder.webp",
+    imgUrl: {
+      full: "/images/product-placeholder.webp",
+      medium: "/images/product-placeholder.webp",
+    },
     brand: "brand",
     category: {
       categoryId: "C001",

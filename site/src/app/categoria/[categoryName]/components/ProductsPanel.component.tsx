@@ -26,7 +26,7 @@ const ProductsPanel = ({ products }: ProductsPanelProps) => {
             key={`card-${idx}`}
             product={p}
             link={`${pathname}/${p.productId}`}
-            imgUrl={p.imgUrl}
+            imgUrl={p.imgUrl.medium}
           />
         ))}
       </div>
