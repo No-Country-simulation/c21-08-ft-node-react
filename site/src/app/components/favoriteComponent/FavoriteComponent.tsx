@@ -7,10 +7,11 @@ const FavoriteComponent = () => {
   const handleFavorite = () => {
     setFavorite((prev) => !prev)
   }
+
   return (
     <>
       <button onClick={() => handleFavorite()}>
-        <Icon iconType={favorite ? "heart" : "heartFilled"}></Icon>
+        <Icon iconType={favorite ? "heartFilled" : "heart"}></Icon>
       </button>
     </>
   )
