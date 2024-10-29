@@ -7,26 +7,26 @@ import {
   ManyToOne,
   OneToMany,
   PrimaryGeneratedColumn,
-} from "typeorm";
-import { Measurement } from "../common/measurement.enum";
-import { Category } from "./Category.entity";
-import { OrderProduct } from "./OrderProduct.entity";
-import { Promotion } from "./Promotion.entity";
-import { User } from "./User.entity";
-import { ProductStatus } from "../common/statusProduct";
+} from 'typeorm';
+import { Measurement } from '../common/measurement.enum';
+import { Category } from './Category.entity';
+import { OrderProduct } from './OrderProduct.entity';
+import { Promotion } from './Promotion.entity';
+import { User } from './User.entity';
+import { ProductStatus } from '../common/statusProduct';
 
 @Entity()
 export class Product {
-  @PrimaryGeneratedColumn("uuid")
+  @PrimaryGeneratedColumn('uuid')
   productId!: string;
 
   @Column()
   name!: string;
 
-  @Column("float")
+  @Column('float')
   price!: number;
 
-  @Column({ type: "enum", enum: Measurement, default: Measurement.UNITARY })
+  @Column({ type: 'enum', enum: Measurement, default: Measurement.UNITARY })
   unitOfMeasurement!: Measurement;
 
   @Column()
@@ -35,40 +35,40 @@ export class Product {
   @Column()
   stock!: number;
 
-  @Column({ nullable: true })
+  @Column({ nullable: true, type: 'json' })
   imgUrl!: string;
 
   @Column({ nullable: true })
   brand!: string;
 
-  @ManyToMany(() => User, (user) => user.product)
+  @ManyToMany(() => User, user => user.product)
   @JoinTable({
-    name: "favorite",
+    name: 'favorite',
     joinColumn: {
-      name: "product",
-      referencedColumnName: "productId",
+      name: 'product',
+      referencedColumnName: 'productId',
     },
     inverseJoinColumn: {
-      name: "user",
-      referencedColumnName: "userId",
+      name: 'user',
+      referencedColumnName: 'userId',
     },
   })
   user!: User[];
 
-  @ManyToOne(() => Category, (category) => category.product, {
-    onDelete: "CASCADE",
+  @ManyToOne(() => Category, category => category.product, {
+    onDelete: 'CASCADE',
     eager: true,
   })
-  @JoinColumn({ name: "category" })
+  @JoinColumn({ name: 'category' })
   category!: Category;
 
-  @OneToMany(() => OrderProduct, (orderProduct) => orderProduct.product)
+  @OneToMany(() => OrderProduct, orderProduct => orderProduct.product)
   orderProduct!: OrderProduct[];
 
-  @ManyToOne(() => Promotion, (promotion) => promotion.product, {
+  @ManyToOne(() => Promotion, promotion => promotion.product, {
     eager: true,
   })
-  @JoinColumn({ name: "promotion" })
+  @JoinColumn({ name: 'promotion' })
   promotion!: Promotion;
 
   @Column({
