@@ -37,11 +37,11 @@ const Login = ({ active }: PropsComponents) => {
 
   return (
     <div
-      className={`h-full w-1/2 bg-gray300 transition-all duration-500 ease-in-out ${style}`}
+      className={`h-full w-1/2 transition-all duration-500 ease-in-out ${style}`}
       id="Login"
     >
       <div className="">
-        <h2 className="text-center text-2xl font-bold">Iniciar Sesión</h2>
+        <h2 className="mb-3 text-center text-2xl font-bold">Iniciar Sesión</h2>
         <form className="space-y-4" onSubmit={handleSubmit}>
           <div>
             <label
@@ -82,7 +82,7 @@ const Login = ({ active }: PropsComponents) => {
 
           <button
             type="submit"
-            className="mt-4 w-full rounded-md bg-krOrange py-2 text-black focus:outline-none"
+            className="mt-4 w-full rounded-md bg-krBlue py-2 font-medium text-gray100 focus:outline-none"
           >
             Iniciar Sesión
           </button>
@@ -90,7 +90,7 @@ const Login = ({ active }: PropsComponents) => {
         <div className="mt-4 flex flex-col justify-between">
           <a
             href="/#"
-            className="font-bold text-krOrange shadow-sm hover:underline"
+            className="font-bold text-krBlue shadow-sm hover:underline"
           >
             Olvidé mi contraseña
           </a>

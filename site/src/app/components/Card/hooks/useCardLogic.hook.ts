@@ -4,7 +4,7 @@ import { CartContext } from "../../../contexts/cart.context"
 import { computeDiscount } from "@/app/utils/price.util"
 
 const useCardLogic = (product: Product) => {
-  const { addToCart } = useContext(CartContext)
+  const { addToCart, productsInCart } = useContext(CartContext)
   const { promotion, price } = product
   const handleAddToCart = () => {
     addToCart(product)
@@ -16,6 +16,7 @@ const useCardLogic = (product: Product) => {
     finalPrice,
     discount,
     handleAddToCart,
+    productsInCart,
   }
 }
 

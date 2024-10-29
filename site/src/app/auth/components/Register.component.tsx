@@ -47,13 +47,13 @@ const Register = ({ active }: PropsComponents) => {
 
   return (
     <div
-      className={`h-full w-1/2 bg-gray300 transition-all duration-500 ease-in-out ${style}`}
+      className={`h-full w-1/2 transition-all duration-500 ease-in-out ${style}`}
       id="Register"
     >
       <div
         className="" /*"w-full max-w-md space-y-6 rounded-lg bg-white p-8 shadow-md"*/
       >
-        <h2 className="text-center text-2xl font-bold">Crear Cuenta</h2>
+        <h2 className="mb-3 text-center text-2xl font-bold">Crear Cuenta</h2>
         <form className="space-y-4" onSubmit={handleSubmit}>
           <div>
             <label
@@ -111,7 +111,7 @@ const Register = ({ active }: PropsComponents) => {
           </div>
           <button
             type="submit"
-            className="mt-4 w-full rounded-md bg-krOrange py-2 text-black focus:outline-none"
+            className="mt-4 w-full rounded-md bg-krBlue py-2 font-medium text-white focus:outline-none"
           >
             Registrarse
           </button>

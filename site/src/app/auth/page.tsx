@@ -33,7 +33,7 @@ const LoginComponent = () => {
 
   return (
     <div
-      className="relative mx-auto mt-32 min-h-[480px] w-[768px] max-w-[100%] overflow-hidden rounded-xl bg-gray-300 shadow-custom"
+      className="relative mx-auto mt-32 min-h-[480px] w-[768px] max-w-[100%] overflow-hidden rounded-xl border-2 border-slate-300"
       id="container-profile"
     >
       <Login active={active} handleActive={handleActive}></Login>

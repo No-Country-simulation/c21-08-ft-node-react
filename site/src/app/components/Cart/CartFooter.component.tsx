@@ -5,6 +5,7 @@ import { CartFooterProps } from "./types/CartFooterProps.type"
 import Link from "next/link"
 
 const CartFooter = ({ productsInCart, display }: CartFooterProps) => {
+  const emptyCart = productsInCart.length === 0
   return (
     <div className="flex flex-col gap-4 xs:gap-2">
       <div className="flex justify-between">
@@ -22,10 +23,10 @@ const CartFooter = ({ productsInCart, display }: CartFooterProps) => {
       ) : (
         <Link href={"/finalizar-compra"}>
           <button
-            disabled={productsInCart.length === 0}
-            className="mb-0 h-12 w-full rounded-lg bg-gray1000 text-2xl text-white disabled:bg-gray400"
+            disabled={emptyCart}
+            className="mb-0 h-12 w-full rounded-lg bg-gray1000 text-2xl text-white disabled:bg-gray400 disabled:text-black"
           >
-            Ir a la caja
+            {emptyCart ? <span>Carrito vacio</span> : <span>Ir a la caja</span>}
           </button>
         </Link>
       )}
@@ -34,25 +35,3 @@ const CartFooter = ({ productsInCart, display }: CartFooterProps) => {
 }
 
 export default CartFooter
-
-/*      {display === "checkout" ? (
-        <button
-          form="checkoutForm"
-          type="submit"
-          className="mb-0 h-12 w-full rounded-lg bg-gray1000 text-2xl text-white"
-        >
-          Realizar pago
-        </button>
-      ) : display === "cart" && !user ? (
-        <Link href={"/auth/login"}>
-          <button className="mb-0 h-12 w-full rounded-lg bg-gray1000 text-2xl text-white">
-            Ir al login
-          </button>
-        </Link>
-      ) : (
-        <Link href={"/finalizar-compra"}>
-          <button className="mb-0 h-12 w-full rounded-lg bg-gray1000 text-2xl text-white">
-            Ir a la caja
-          </button>
-        </Link>
-      )}*/
