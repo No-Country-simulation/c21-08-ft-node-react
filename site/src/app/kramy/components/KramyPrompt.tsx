@@ -6,12 +6,12 @@ import KramyBtn from "../../components/KramyBtn/KramyBtn.component"
 import Overlay from "../../components/Overlay/Overlay.component"
 import { ChangeEvent, useState } from "react"
 import Icon from "../../components/Icon/Icon.component"
-import { useCallback } from "react"
 import { splitIngredients } from "../../utils/kramy.util"
 import { useRouter, useSearchParams } from "next/navigation"
 import { KramyProps, KramyResponse } from "@/app/kramy/kramy.types"
 import { strForDisplay } from "@/app/utils/strFormatting.util"
 import { API_BASE_URL } from "@/app/consts/api.consts"
+import Spinner from "@/app/components/Spinner/Spinner.component"
 
 type KramyState = "greeting" | "waiting" | "thinking" | "answering"
 
@@ -30,36 +30,33 @@ const getRecipe = async (query: string) => {
 }
 
 const KramyPrompt = ({ mode, setResponse, response }: KramyProps) => {
-  // console.log("setResponse: ", setResponse)
-  // console.log("response: ", response)
   const [showPopup, setShowPopup] = useState(false)
   const [query, setQuery] = useState("")
   const router = useRouter()
-  const [kramyState, setKramyState] = useState<KramyState>("greeting")
   const searchParams = useSearchParams()
   const recipeQuery = searchParams.get("recipequery")
-  // const isClient = useContext(IsClient)
+  const [loading, setLoading] = useState(false)
 
-  const submitQuery = useCallback(
-    async (query: string) => {
-      setKramyState("thinking")
-      console.log("query: ", query)
-      if (!recipeQuery) return
-
-      const recipe = await getRecipe(query)
-
-      // after the first request this 'recipequery' search params is not used
-      // anymore, but for the sake of having it synchronized with the 'query'
-      // state I'm modifying the url here
-      router.replace(`/kramy?recipequery=${recipeQuery}`)
-
-      if (setResponse) {
-        setKramyState("answering")
-        setResponse(recipe)
-      }
-    },
-    [recipeQuery, router, setResponse],
+  const [kramyState, setKramyState] = useState<KramyState>(
+    recipeQuery ? "thinking" : "greeting",
   )
+
+  const submitQuery = async (query: string) => {
+    setKramyState("thinking")
+    if (!recipeQuery) return
+
+    const recipe = await getRecipe(query)
+
+    // after the first request this 'recipequery' search params is not used
+    // anymore, but for the sake of having it synchronized with the 'query'
+    // state I'm modifying the url here
+    router.replace(`/kramy?recipequery=${recipeQuery}`)
+
+    if (setResponse) {
+      setKramyState("answering")
+      setResponse(recipe)
+    }
+  }
 
   const handleSubmit = () => {
     if (mode === "page") {
@@ -69,10 +66,6 @@ const KramyPrompt = ({ mode, setResponse, response }: KramyProps) => {
     }
   }
 
-  useEffect(() => {
-    console.log("kramyState: ", kramyState)
-  }, [kramyState])
-
   const handleOnChange = (e: ChangeEvent) => {
     setKramyState("waiting")
     if (setResponse) setResponse(undefined)
@@ -80,13 +73,16 @@ const KramyPrompt = ({ mode, setResponse, response }: KramyProps) => {
   }
 
   useEffect(() => {
+    if (!recipeQuery) return
+    if (mode !== "page") return
+    if (!setResponse) return
+
     const firstQuery = async () => {
-      if (!recipeQuery) return
       const recipe = await getRecipe(recipeQuery)
-      if (setResponse) setResponse(recipe)
+      setResponse(recipe)
+      setKramyState("answering")
     }
 
-    if (mode !== "page") return
     firstQuery()
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
@@ -127,9 +123,9 @@ const KramyPrompt = ({ mode, setResponse, response }: KramyProps) => {
                   />
                 ) : kramyState === "thinking" ? (
                   <Image
-                    alt="Asistenta virtual kramy mostrando los ingredientes, instrucciones de preparación y los productos que tiene para ofrecer"
-                    src="/images/kramy/kramy-response_transparent_small-size.png"
-                    width={102}
+                    alt="Asistenta virtual kramy esperando mientras procesa el pedido"
+                    src="/images/kramy/kramy-button_transparent_small-size.png"
+                    width={103}
                     height={200}
                     className="h-full w-16"
                   />
@@ -145,13 +141,26 @@ const KramyPrompt = ({ mode, setResponse, response }: KramyProps) => {
                   ""
                 )}
                 <h2 className="flex flex-col gap-5 text-xl md:gap-4 sm:gap-1 sm:text-lg xs:text-base">
+                  {kramyState === "thinking" ? <Spinner /> : ""}
                   {!response ? (
                     <>
                       <span className="text-2xl font-bold leading-3 sm:text-xl xs:text-lg">
-                        Hola! Soy Kramy,
+                        {kramyState === "greeting"
+                          ? "Hola! Soy Kramy,"
+                          : kramyState === "waiting"
+                            ? "Hola! Soy Kramy,"
+                            : kramyState === "thinking"
+                              ? "Un momento porfavor,"
+                              : ""}
                       </span>
                       <span className="leading-4">
-                        en qué te puedo ayudar hoy? :)
+                        {kramyState === "greeting"
+                          ? "en qué te puedo ayudar hoy? :)"
+                          : kramyState === "waiting"
+                            ? "en qué te puedo ayudar hoy?"
+                            : kramyState === "thinking"
+                              ? "Estoy buscando en mi base de datos"
+                              : ""}
                       </span>
                     </>
                   ) : (

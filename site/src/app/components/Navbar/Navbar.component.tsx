@@ -14,11 +14,13 @@ import { IsClientProvider } from "@/app/contexts/isClient.context"
 import { usePathname } from "next/navigation"
 import { useRouter } from "next/navigation"
 import { useAuth } from "@/app/contexts/auth.context"
+import MobileSearchBar from "./MobileSearchBar.component"
 
 const Navbar = () => {
   const [isCartVisible, setIsCartVisible] = useState(false)
   const [isCategoriesVisible, setIsCategoriesVisible] = useState(false)
   const [isMenuVisible, setIsMenuVisible] = useState(false)
+  const [showMobileSearch, setShowMobileSearch] = useState(false)
   const pathname = usePathname()
 
   const { user } = useAuth()
@@ -95,13 +97,20 @@ const Navbar = () => {
   return (
     <>
       <header className="fixed top-0 z-50 w-full border-b-[1px] border-solid border-gray300 bg-gray100">
-        <div className="mx-auto flex min-h-24 max-w-[1000px] items-center justify-between lg:gap-6 lg:px-10 md:gap-3 md:px-5 xs:px-1">
-          <MenuButton changeMenuVisibility={changeMenuVisibility} />
+        <div className="mx-auto flex min-h-24 max-w-[1000px] items-center justify-between lg:gap-6 lg:px-10 md:gap-3 md:px-5">
           <Logo />
-          <SearchBar />
-          <nav>
-            <ul className="flex items-center gap-6">
-              <li className="flex gap-2 xs:hidden">
+          <nav className="flex gap-5">
+            <div className="xs:hidden">
+              <SearchBar />
+            </div>
+            <div className="flex hidden items-center xs:flex">
+              <button onClick={() => setShowMobileSearch((prev) => !prev)}>
+                <Icon iconType="search" />
+              </button>
+              {showMobileSearch && <MobileSearchBar />}
+            </div>
+            <ul className="flex items-center gap-6 sm:gap-2">
+              <li className="flex gap-2">
                 <CategoriesButton
                   changeCategoriesVisibility={changeCategoriesVisibility}
                 />
@@ -113,14 +122,12 @@ const Navbar = () => {
                 <Icon iconType="user" />
                 {user ? (
                   user.role === "owner" ? (
-                    <span className="sm:hidden xs:inline">
-                      {user.name} - Panel Admin
-                    </span>
+                    <span className="sm:hidden">{user.name} - Panel Admin</span>
                   ) : (
-                    <span className="sm:hidden xs:inline">{user.name}</span>
+                    <span className="sm:hidden">{user.name}</span>
                   )
                 ) : (
-                  <span className="sm:hidden xs:inline">Iniciar sesión</span>
+                  <span className="sm:hidden">Iniciar sesión</span>
                 )}
               </li>
               <li className="flex gap-2">
