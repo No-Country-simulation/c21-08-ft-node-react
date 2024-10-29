@@ -12,7 +12,7 @@ const Footer = async () => {
   const categories = await getCategories()
   return (
     <footer className="w-full bg-gray200" id="footer">
-      <div className="mx-auto mt-20 flex h-[340px] max-w-[1000px] justify-between gap-10 px-8 py-20 md:mt-16 md:flex-col md:items-center md:gap-4 md:px-[25%] md:py-16 sm:px-[10%] xs:mt-10 xs:py-10">
+      <div className="mx-auto mt-20 flex min-h-[340px] max-w-[1000px] justify-between gap-10 px-8 pb-4 pt-20 md:mt-16 md:flex-col md:items-center md:gap-4 md:px-[25%] md:py-16 sm:px-[10%] xs:mt-10 xs:py-10">
         <div className="w-[40%] md:w-full">
           <Image
             alt={"logo"}
@@ -63,7 +63,21 @@ const Footer = async () => {
             <li>945 9867 9697</li>
             <li>consultas@kramer.com</li>
           </ul>
-        </div>
+        </div>{" "}
+      </div>{" "}
+      <div className="mx-auto w-fit">
+        <a href="" className="me-3 ms-auto font-semibold text-krBlue">
+          Terminos y condiciones
+        </a>
+        <a href="" className="me-3 font-semibold text-krBlue">
+          Defensa al consumidor
+        </a>
+        <a href="" className="me-3 font-semibold text-krBlue">
+          Libros de quejas online
+        </a>
+        <a href="" className="font-semibold text-krBlue">
+          Ayuda
+        </a>
       </div>
     </footer>
   )

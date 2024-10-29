@@ -41,7 +41,7 @@ const CartCard = ({
             className="mb-auto"
             onClick={() => removeProduct(product.productId)}
           >
-            <Icon style="xs:scale-75" iconType="trash" />
+            <Icon iconType="trash" />
           </button>
         </div>
         <div className="flex w-full items-end justify-between">

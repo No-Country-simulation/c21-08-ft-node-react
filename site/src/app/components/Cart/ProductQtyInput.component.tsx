@@ -8,14 +8,14 @@ const ProductQtyInput = ({
   decrementProductQty,
 }: ProductQtyInputProps) => {
   return (
-    <div className="h-au flex gap-1 rounded-lg outline outline-1 outline-gray300">
+    <div className="h-au flex items-center gap-1 rounded-lg outline outline-1 outline-gray300">
       {productQty !== 1 && (
         <button
           onClick={() => decrementProductQty(productId)}
           disabled={productQty === 1}
-          className="flex h-8 w-8 items-center justify-center rounded-l-[4px] border-r border-gray300 hover:bg-gray300 xs:h-6 xs:w-6"
+          className="flex h-8 w-8 items-center justify-center rounded-l-[4px] border-r border-gray300 hover:bg-gray300"
         >
-          <Icon style="xs:scale-75" iconType="minus" />
+          <Icon iconType="minus" />
         </button>
       )}
       <p className="w-6 text-center text-[20px] xs:w-4 xs:text-base">
@@ -23,9 +23,9 @@ const ProductQtyInput = ({
       </p>
       <button
         onClick={() => incrementProductQty(productId)}
-        className="flex h-8 w-8 items-center justify-center rounded-r-[4px] border-l border-gray300 hover:bg-gray300 xs:h-6 xs:w-6"
+        className="flex h-8 w-8 items-center justify-center rounded-r-[4px] border-l border-gray300 hover:bg-gray300"
       >
-        <Icon style="xs:scale-75" iconType="plus" />
+        <Icon iconType="plus" />
       </button>
     </div>
   )
