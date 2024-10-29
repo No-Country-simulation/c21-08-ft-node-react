@@ -1,22 +1,14 @@
 "use client"
-import { useRouter } from "next/navigation"
 import { useAuth } from "@/app/contexts/auth.context"
-import React, { useEffect, useState } from "react"
+import React, { useState } from "react"
 import { API_BASE_URL } from "@/app/consts/api.consts"
 import { PropsComponents } from "../types/propsComponents.types"
 
 const Login = ({ active }: PropsComponents) => {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
-  // const { user } = useAuth()
-  const router = useRouter()
 
-  const { login, isOwner } = useAuth()
-
-  useEffect(() => {
-    if (isOwner) router.push("/admin")
-    router.push("/auth")
-  }, [isOwner, router])
+  const { login } = useAuth()
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()

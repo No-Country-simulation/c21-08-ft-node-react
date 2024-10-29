@@ -8,7 +8,7 @@ import React, {
 } from "react"
 
 import { jwtDecode } from "jwt-decode"
-import { redirect, useRouter } from "next/navigation"
+import { useRouter } from "next/navigation"
 
 // Define el tipo del usuario
 interface User {
@@ -51,28 +51,28 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
       try {
         const decodedToken = jwtDecode<DecodedToken>(token)
         setUser(decodedToken.user) // Puedes almacenar el token decodificado
+        setIsOwner(decodedToken.user.role === "owner")
         if (decodedToken.user.role === "owner") {
-          console.log("ES UN ADMIN!", isOwner)
-          setIsOwner(true) //
+          router.push("/admin")
+        } else {
         }
       } catch (error) {
         console.error("Error decoding token:", error)
         setUser(null) // Si hay un error en la decodificación, no se establece el usuario
       }
     }
-  }, [isOwner])
+  }, [isOwner, router])
 
   const login = (token: string) => {
     localStorage.setItem("token", token)
     const decodedToken = jwtDecode<DecodedToken>(token)
-    setUser(decodedToken.user) // Actualiza el estado del usuario con el token decodificado
-    if (isOwner) {
-      redirect("/admin")
+    setUser(decodedToken.user)
+    setIsOwner(decodedToken.user.role === "owner")
+
+    if (decodedToken.user.role === "owner") {
       router.push("/admin")
     } else {
-      redirect("/admin")
-      router.push("/admin")
-      //router.back()
+      router.back()
     }
   }
 

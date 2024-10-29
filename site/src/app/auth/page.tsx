@@ -20,7 +20,13 @@ const LoginComponent = () => {
 
   useEffect(() => {
     if (user) {
-      // Si hay un usuario autenticado, redirige al perfil
+      // Redirigir según el rol del usuario
+      if (user.role === "owner") {
+        router.push("/admin")
+      } else {
+        router.push("/profile")
+      }
+    } else {
       router.push("/auth")
     }
   }, [user, router])
