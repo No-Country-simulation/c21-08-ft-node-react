@@ -49,7 +49,7 @@ export class IaController {
 
       console.log(payload);
 
-      return res.status(200).json({ payload });
+      return res.status(200).json(payload);
     } catch (error) {
       if (error instanceof UserException) {
         return res.status(error.statusCode).json({ message: error.message });
