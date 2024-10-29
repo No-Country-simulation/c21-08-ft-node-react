@@ -26,6 +26,8 @@ export class IaController {
     try {
       const recipeQuery = req.query.recipequery;
 
+      console.log("Recipe Quert recipeQuery", recipeQuery);
+
       const products = await this.productServices.getAllProducts();
 
       const prompt = getPrompt(products, recipeQuery as RecipeQuery);
@@ -45,7 +47,9 @@ export class IaController {
         instructions: arrays[2],
       };
 
-      return res.status(200).json({ response: payload });
+      console.log(payload);
+
+      return res.status(200).json({ payload });
     } catch (error) {
       if (error instanceof UserException) {
         return res.status(error.statusCode).json({ message: error.message });
