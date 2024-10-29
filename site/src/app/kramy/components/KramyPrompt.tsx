@@ -35,7 +35,6 @@ const KramyPrompt = ({ mode, setResponse, response }: KramyProps) => {
   const router = useRouter()
   const searchParams = useSearchParams()
   const recipeQuery = searchParams.get("recipequery")
-  const [loading, setLoading] = useState(false)
 
   const [kramyState, setKramyState] = useState<KramyState>(
     recipeQuery ? "thinking" : "greeting",

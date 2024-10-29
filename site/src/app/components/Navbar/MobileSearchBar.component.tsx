@@ -1,9 +1,8 @@
 "use client"
 
 import SearchResults from "./SearchResults.component"
-import { useState, useRef } from "react"
+import { useState } from "react"
 import { ProductResult } from "@/app/types/Product.type"
-import useClickOutside from "@/app/hooks/useClickOutside.hook"
 import useGetAllProducts from "./hooks/useGetAllProducts.hook"
 import useSearch from "./hooks/useSearch.hook"
 import useShowResults from "./hooks/useShowResults.hook"
