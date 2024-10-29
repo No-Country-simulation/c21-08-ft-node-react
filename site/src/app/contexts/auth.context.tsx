@@ -8,13 +8,13 @@ import React, {
 } from "react"
 
 import { jwtDecode } from "jwt-decode"
-import { useRouter } from "next/navigation"
+import { redirect, useRouter } from "next/navigation"
 
 // Define el tipo del usuario
 interface User {
   email: string
   name: string
-  role: "client" | "admin"
+  role: "client" | "owner"
   userId: string
 }
 
@@ -29,6 +29,7 @@ interface AuthContextType {
   user: User | null
   login: (token: string) => void
   logout: () => void
+  isOwner: boolean
 }
 
 // Crea el contexto y establece un valor inicial
@@ -43,24 +44,36 @@ interface AuthProviderProps {
 export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   const router = useRouter()
   const [user, setUser] = useState<User | null>(null)
+  const [isOwner, setIsOwner] = useState(false)
   useEffect(() => {
     const token = window.localStorage.getItem("token")
     if (token) {
       try {
         const decodedToken = jwtDecode<DecodedToken>(token)
         setUser(decodedToken.user) // Puedes almacenar el token decodificado
+        if (decodedToken.user.role === "owner") {
+          console.log("ES UN ADMIN!", isOwner)
+          setIsOwner(true) //
+        }
       } catch (error) {
         console.error("Error decoding token:", error)
         setUser(null) // Si hay un error en la decodificación, no se establece el usuario
       }
     }
-  }, [])
+  }, [isOwner])
 
   const login = (token: string) => {
     localStorage.setItem("token", token)
     const decodedToken = jwtDecode<DecodedToken>(token)
     setUser(decodedToken.user) // Actualiza el estado del usuario con el token decodificado
-    router.back()
+    if (isOwner) {
+      redirect("/admin")
+      router.push("/admin")
+    } else {
+      redirect("/admin")
+      router.push("/admin")
+      //router.back()
+    }
   }
 
   const logout = () => {
@@ -70,7 +83,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   }
 
   return (
-    <AuthContext.Provider value={{ user, login, logout }}>
+    <AuthContext.Provider value={{ isOwner, user, login, logout }}>
       {children}
     </AuthContext.Provider>
   )

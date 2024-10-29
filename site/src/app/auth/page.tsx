@@ -1,17 +1,30 @@
 "use client"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import Login from "./components/Login.component"
 import Register from "./components/Register.component"
 import Toggle from "./components/Toggle.component"
 import LoginInvite from "./components/LoginInvite.component"
 import RegisterInvite from "./components/RegisterInvite.component"
+import { useAuth } from "../contexts/auth.context"
+import { useRouter } from "next/navigation"
 
 const LoginComponent = () => {
   const [active, setActive] = useState(true)
+  const { user } = useAuth()
+  const router = useRouter()
+
   const handleActive = () => {
     setActive((prev) => !prev)
   }
   console.log(active)
+
+  useEffect(() => {
+    if (user) {
+      // Si hay un usuario autenticado, redirige al perfil
+      router.push("/auth")
+    }
+  }, [user, router])
+
   return (
     <div
       className="relative mx-auto mt-32 min-h-[480px] w-[768px] max-w-[100%] overflow-hidden rounded-xl bg-gray-300 shadow-custom"

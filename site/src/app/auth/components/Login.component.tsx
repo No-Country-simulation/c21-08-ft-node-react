@@ -8,16 +8,15 @@ import { PropsComponents } from "../types/propsComponents.types"
 const Login = ({ active }: PropsComponents) => {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
-  const { user } = useAuth()
+  // const { user } = useAuth()
   const router = useRouter()
 
-  const { login } = useAuth()
+  const { login, isOwner } = useAuth()
 
   useEffect(() => {
-    if (user) {
-      router.push("/profile")
-    }
-  }, [user, router])
+    if (isOwner) router.push("/admin")
+    router.push("/auth")
+  }, [isOwner, router])
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()

@@ -1,9 +1,9 @@
 "use client"
 
-import React, { useState, useContext, useEffect } from "react"
+import React, { useState, useContext } from "react"
 import { CartContext } from "@/app/contexts/cart.context"
 import { useRouter } from "next/navigation"
-import { useAuth } from "@/app/contexts/auth.context"
+//import { useAuth } from "@/app/contexts/auth.context"
 import { API_BASE_URL } from "@/app/consts/api.consts"
 import { PropsComponents } from "../types/propsComponents.types"
 
@@ -13,14 +13,14 @@ const Register = ({ active }: PropsComponents) => {
   const [password, setPassword] = useState("")
   const router = useRouter()
   const { productsInCart } = useContext(CartContext)
-  const { user } = useAuth()
+  //const { user } = useAuth()
 
-  useEffect(() => {
-    if (user) {
-      // Si hay un usuario autenticado, redirige al perfil
-      router.push("/auth/login")
-    }
-  }, [user, router])
+  // useEffect(() => {
+  //   if (user) {
+  //     // Si hay un usuario autenticado, redirige al perfil
+  //     router.push("/auth")
+  //   }
+  // }, [user, router])
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
@@ -79,7 +79,6 @@ const Register = ({ active }: PropsComponents) => {
               value={name}
               onChange={(e) => {
                 setName(e.target.value)
-                console.log(name)
               }}
             />
           </div>
@@ -98,7 +97,6 @@ const Register = ({ active }: PropsComponents) => {
               value={email}
               onChange={(e) => {
                 setEmail(e.target.value)
-                console.log(email)
               }}
             />
           </div>
@@ -117,7 +115,6 @@ const Register = ({ active }: PropsComponents) => {
               value={password}
               onChange={(e) => {
                 setPassword(e.target.value)
-                console.log(password)
               }}
             />
           </div>

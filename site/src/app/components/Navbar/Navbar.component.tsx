@@ -82,9 +82,13 @@ const Navbar = () => {
 
   const handleUserClick = () => {
     if (user) {
-      router.push("/profile")
+      if (user.role === "owner") {
+        router.push("/admin") // Redirige a la página de administración
+      } else {
+        router.push("/profile") // Redirige a la página de perfil para otros usuarios
+      }
     } else {
-      router.push("/auth")
+      router.push("/auth") // Redirige a la página de autenticación si no hay usuario
     }
   }
 
@@ -108,9 +112,15 @@ const Navbar = () => {
               >
                 <Icon iconType="user" />
                 {user ? (
-                  <span className="sm:hidden xs:inline">{user.name}</span> // Muestra el nombre del usuario
+                  user.role === "owner" ? (
+                    <span className="sm:hidden xs:inline">
+                      {user.name} - Panel Admin
+                    </span>
+                  ) : (
+                    <span className="sm:hidden xs:inline">{user.name}</span>
+                  )
                 ) : (
-                  <span className="sm:hidden xs:inline">Iniciar sesión</span> // Texto alternativo si no hay usuario
+                  <span className="sm:hidden xs:inline">Iniciar sesión</span>
                 )}
               </li>
               <li className="flex gap-2">
