@@ -13,7 +13,6 @@ export class ProductController {
   async createProduct(req: Request, res: Response): Promise<any> {
     try {
       const createProductDto: CreateProductDto = req.body;
-
       const newProduct = await this.productService.createProduct(createProductDto);
 
       return res.status(201).json(newProduct);

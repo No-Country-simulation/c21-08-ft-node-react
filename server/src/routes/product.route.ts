@@ -18,7 +18,7 @@ router.get("/promotion", (req, res) =>
 router.post("/createProduct", validateCreateProduct, (req, res) =>
   productController.createProduct(req, res)
 );
-router.put("/editProduct/:productId", validateCreateProduct, (req, res) =>
+router.put("/editProduct/:productId", (req, res) =>
   productController.updateProduct(req, res)
 );
 router.delete("/deleteProduct/:productId", async (req: Request, res: Response) => {

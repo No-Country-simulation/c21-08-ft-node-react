@@ -9,7 +9,7 @@ export class CreateProductDto {
   stock!: number;
   imgUrl?: string;
   brand?: string;
-  categoryId!: string; 
-  promotionId?: string; 
+  category!: string; 
+  promotion!: string; 
   status?: ProductStatus;
 }
