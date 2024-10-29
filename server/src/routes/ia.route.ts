@@ -5,6 +5,6 @@ const router = Router();
 
 const iaController = new IaController();
 
-router.get("/krammy", (req, res) => iaController.recipe(req, res));
+router.get("/kramy", (req, res) => iaController.recipe(req, res));
 
 export default router;
