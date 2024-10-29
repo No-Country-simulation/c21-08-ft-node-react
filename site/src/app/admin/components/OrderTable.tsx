@@ -1,5 +1,5 @@
 "use client"
-import React, { Key, useState } from "react"
+import React, { useState } from "react"
 import OrderModal from "./OrderModal"
 import ChangeStatusModal from "./ChangeStatusModal"
 
@@ -128,12 +128,39 @@ const initialOrders = [
   },
 ]
 
+interface Product {
+  name: string
+  quantity: number
+  price: number
+}
+
+interface User {
+  name: string
+  phone: string
+}
+
+interface Order {
+  id: number
+  createdAt: string
+  user: User
+  deliveryType: string
+  amount: number
+  status: string
+  products: Product[]
+}
+type SortKey = keyof Order
+
 const OrderTable = () => {
-  const [orders, setOrders] = useState(initialOrders)
-  const [statusFilter, setStatusFilter] = useState("")
-  const [selectedOrder, setSelectedOrder] = useState(null)
-  const [changingStatusOrder, setChangingStatusOrder] = useState(null)
-  const [sortConfig, setSortConfig] = useState({
+  const [orders, setOrders] = useState<Order[]>(initialOrders)
+  const [statusFilter, setStatusFilter] = useState<string>("")
+  const [selectedOrder, setSelectedOrder] = useState<Order | null>(null)
+  const [changingStatusOrder, setChangingStatusOrder] = useState<Order | null>(
+    null,
+  )
+  const [sortConfig, setSortConfig] = useState<{
+    key: SortKey | "userName" | "userPhone"
+    direction: "ascending" | "descending"
+  }>({
     key: "id",
     direction: "ascending",
   })
@@ -150,13 +177,25 @@ const OrderTable = () => {
     statusFilter ? order.status === statusFilter : true,
   )
 
+  const getSortValue = (
+    order: Order,
+    key: SortKey | "userName" | "userPhone",
+  ) => {
+    if (key === "userName") return order.user.name
+    if (key === "userPhone") return order.user.phone
+    return order[key]
+  }
+
   const sortedOrders = React.useMemo(() => {
-    let sortableOrders = [...filteredOrders]
-    sortableOrders.sort((a: any, b: any) => {
-      if (a[sortConfig.key] < b[sortConfig.key]) {
+    const sortableOrders = [...filteredOrders]
+    sortableOrders.sort((a, b) => {
+      const aValue = getSortValue(a, sortConfig.key)
+      const bValue = getSortValue(b, sortConfig.key)
+
+      if (aValue < bValue) {
         return sortConfig.direction === "ascending" ? -1 : 1
       }
-      if (a[sortConfig.key] > b[sortConfig.key]) {
+      if (aValue > bValue) {
         return sortConfig.direction === "ascending" ? 1 : -1
       }
       return 0
@@ -164,14 +203,13 @@ const OrderTable = () => {
     return sortableOrders
   }, [filteredOrders, sortConfig])
 
-  const requestSort = (key: string) => {
-    let direction = "ascending"
+  const requestSort = (key: SortKey | "userName" | "userPhone") => {
+    let direction: "ascending" | "descending" = "ascending"
     if (sortConfig.key === key && sortConfig.direction === "ascending") {
       direction = "descending"
     }
     setSortConfig({ key, direction })
   }
-
   return (
     <div>
       <div className="mb-4">
@@ -213,19 +251,19 @@ const OrderTable = () => {
                 (sortConfig.direction === "ascending" ? "↑" : "↓")}
             </th>
             <th
-              onClick={() => requestSort("user.name")}
+              onClick={() => requestSort("userName")}
               className="cursor-pointer border px-4 py-2"
             >
               Nombre{" "}
-              {sortConfig.key === "user.name" &&
+              {sortConfig.key === "userName" &&
                 (sortConfig.direction === "ascending" ? "↑" : "↓")}
             </th>
             <th
-              onClick={() => requestSort("user.phone")}
+              onClick={() => requestSort("userPhone")}
               className="cursor-pointer border px-4 py-2"
             >
               Teléfono{" "}
-              {sortConfig.key === "user.phone" &&
+              {sortConfig.key === "userPhone" &&
                 (sortConfig.direction === "ascending" ? "↑" : "↓")}
             </th>
             <th
@@ -256,7 +294,7 @@ const OrderTable = () => {
           </tr>
         </thead>
         <tbody>
-          {sortedOrders.map((order: any) => (
+          {sortedOrders.map((order) => (
             <tr key={order.id}>
               <td className="border px-4 py-2">{order.id}</td>
               <td className="border px-4 py-2">{order.createdAt}</td>

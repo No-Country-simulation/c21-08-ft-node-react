@@ -1,6 +1,32 @@
 import React from "react"
 
-const OrderModal = ({ order, onClose }: any) => {
+interface Product {
+  name: string
+  quantity: number
+  price: number
+}
+
+interface User {
+  name: string
+  phone: string
+}
+
+interface Order {
+  id: number
+  createdAt: string
+  user: User
+  deliveryType: string
+  amount: number
+  status: string
+  products: Product[]
+}
+
+interface OrderModalProps {
+  order: Order | null
+  onClose: () => void
+}
+
+const OrderModal: React.FC<OrderModalProps> = ({ order, onClose }) => {
   if (!order) return null
 
   return (
@@ -27,7 +53,7 @@ const OrderModal = ({ order, onClose }: any) => {
         </p>
         <h3 className="mt-4">Productos:</h3>
         <ul>
-          {order.products.map((product: any, index: string) => (
+          {order.products.map((product, index) => (
             <li key={index}>
               {product.name} - {product.quantity} x ${product.price} = $
               {product.quantity * product.price}

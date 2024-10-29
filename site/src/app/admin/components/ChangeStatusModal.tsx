@@ -8,7 +8,32 @@ const statuses = [
   "Entregado",
 ]
 
-const ChangeStatusModal = ({ order, onClose, onConfirm }: any) => {
+interface User {
+  name: string
+  phone: string
+}
+
+interface Order {
+  id: number
+  createdAt: string
+  user: User
+  deliveryType: string
+  amount: number
+  status: string
+  products: { name: string; quantity: number; price: number }[]
+}
+
+interface ChangeStatusModalProps {
+  order: Order
+  onClose: () => void
+  onConfirm: (id: number, newStatus: string) => void
+}
+
+const ChangeStatusModal: React.FC<ChangeStatusModalProps> = ({
+  order,
+  onClose,
+  onConfirm,
+}) => {
   const [newStatus, setNewStatus] = React.useState(order.status)
 
   const handleConfirm = () => {
