@@ -11,12 +11,13 @@ import { splitIngredients } from "../../utils/kramy.util"
 import { useRouter, useSearchParams } from "next/navigation"
 import { KramyProps, KramyResponse } from "@/app/kramy/kramy.types"
 import { strForDisplay } from "@/app/utils/strFormatting.util"
+import { API_BASE_URL } from "@/app/consts/api.consts"
 
 type KramyState = "greeting" | "waiting" | "thinking" | "answering"
 
 const getRecipe = async (query: string) => {
   // const res = await fetch(`/api/recipe?recipequery=${query}`)
-  const res = await fetch(`/kramy?recipequery=${query}`)
+  const res = await fetch(`${API_BASE_URL}/kramy?recipequery=${query}`)
   const kramyResponse: KramyResponse = await res.json()
   console.log("kramyResponse: ", kramyResponse)
   const splittedIngredients = splitIngredients(kramyResponse.allIngredients)
