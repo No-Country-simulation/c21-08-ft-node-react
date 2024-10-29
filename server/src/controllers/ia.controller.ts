@@ -1,8 +1,10 @@
 import { Request, Response } from "express";
-import { ProductService } from "../services/product.service";
+// import { ProductService } from "../services/product.service";
 import { UserException } from "../exceptions/UserException";
 import { CohereClient } from "cohere-ai";
 import { getPrompt } from "../utils/prompt";
+import { productRepository } from "../repositories/product.repository";
+import { ILike, In } from "typeorm";
 
 interface RecipeQuery {
   recipequery?: string;
@@ -20,7 +22,7 @@ async function chatWithCohere(userPrompt: string) {
 }
 
 export class IaController {
-  private productServices = new ProductService();
+  //private productServices = new ProductService();
 
   async recipe(req: Request, res: Response): Promise<any> {
     try {
@@ -28,7 +30,10 @@ export class IaController {
 
       console.log("Recipe Quert recipeQuery", recipeQuery);
 
-      const products = await this.productServices.getAllProducts();
+      const products = await productRepository.find();
+
+      const productNames = products.map((product) => product.name);
+      console.log("Proruct Names", productNames);
 
       const prompt = getPrompt(products, recipeQuery as RecipeQuery);
 
@@ -40,10 +45,17 @@ export class IaController {
         throw new Error(`there was an error trying to parse the response`);
       const arrays = matches.map((m) => JSON.parse(m));
 
+      const allIngredients = arrays[0];
+      const owned = await productRepository.find({
+        where: {
+          name: In(allIngredients),
+        },
+      });
+
       const payload = {
         recipe: recipeQuery,
-        allIngredients: arrays[0],
-        owned: arrays[1],
+        allIngredients: allIngredients,
+        owned: owned.map((p) => p),
         instructions: arrays[2],
       };
 
