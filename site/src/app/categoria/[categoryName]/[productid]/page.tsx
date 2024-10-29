@@ -53,7 +53,7 @@ const ProductPage = async ({ params }: { params: { productid: string } }) => {
           <div className="w-60 flex-1 sm:w-[90%] xs:w-full">
             <Image
               alt={product.description}
-              src={product.imgUrl}
+              src={product.imgUrl.full}
               width={IMG_WIDTH}
               height={IMG_HEIGHT}
             />

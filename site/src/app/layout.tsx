@@ -36,9 +36,7 @@ export default function RootLayout({
             <Suspense>
               <Navbar />
             </Suspense>
-            {/* <div className="mt-[96px]> */}
             {children}
-            {/* </div> */}
           </AuthProvider>
         </CartContextProvider>
         <Footer />
