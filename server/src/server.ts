@@ -7,13 +7,17 @@ import { ClientOrderException } from "./exceptions/ClientOrderException";
 import { ProductException } from "./exceptions/ProductException";
 import { PromotionException } from "./exceptions/PromotionException";
 import { UserException } from "./exceptions/UserException";
+import { PaymentsException } from "./exceptions/paymentsException";
+import { WebHookException } from "./exceptions/webHooksException";
 import userAuth from "./routes/auth.route";
 import categoryRoutes from "./routes/category.route";
 import orderRoutes from "./routes/clientOrder.route";
 import OrderProductRoutes from "./routes/orderProduct.route";
+import PaymentsRoutes from "./routes/payments.route";
 import productRoutes from "./routes/product.route";
 import promotionRoutes from "./routes/promotion.route";
 import userRoutes from "./routes/user.route";
+import WebHooksRoutes from "./routes/webhooks.route";
 
 const PORT = process.env.PORT || 3170;
 
@@ -30,6 +34,8 @@ AppDataSource.initialize()
     app.use("/promotion", promotionRoutes);
     app.use("/order", orderRoutes);
     app.use("/cart", OrderProductRoutes);
+    app.use("/payments", PaymentsRoutes);
+    app.use("/webhook", WebHooksRoutes);
 
     //Middleware de manejo de errores.
     app.use(
@@ -44,7 +50,9 @@ AppDataSource.initialize()
           err instanceof ClientOrderException ||
           err instanceof ProductException ||
           err instanceof CategoryException ||
-          err instanceof PromotionException
+          err instanceof PromotionException ||
+          err instanceof PaymentsException ||
+          err instanceof WebHookException
         ) {
           return res.status(err.statusCode).json({ message: err.message });
         }
