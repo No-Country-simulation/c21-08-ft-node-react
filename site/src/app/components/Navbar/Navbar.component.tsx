@@ -109,7 +109,7 @@ const Navbar = () => {
   return (
     <>
       <header className="fixed top-0 z-50 w-full border-b-[1px] border-solid border-gray300 bg-gray100">
-        <div className="mx-auto flex min-h-24 max-w-[1000px] items-center justify-between lg:gap-6 lg:px-10 md:gap-3 md:px-5 xs:gap-4 xs:px-2">
+        <div className="mx-auto flex min-h-24 max-w-[1000px] items-center justify-between lg:gap-6 lg:px-5 md:gap-3 md:px-5 xs:gap-4 xs:px-2">
           <Logo />
           <nav className="flex gap-5 xs:gap-2">
             <div className="flex gap-2 xs:hidden">
@@ -130,7 +130,7 @@ const Navbar = () => {
               </button>
               {showMobileSearch && <MobileSearchBar />}
             </div>
-            <ul className="flex items-center gap-6 sm:gap-2">
+            <ul className="flex items-center gap-6 lg:gap-4 sm:gap-2">
               <li className="flex gap-2">
                 <CategoriesButton
                   changeCategoriesVisibility={changeCategoriesVisibility}
