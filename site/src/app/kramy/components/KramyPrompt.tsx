@@ -204,7 +204,11 @@ const KramyPrompt = ({ mode, setResponse, response }: KramyProps) => {
           </div>
         </div>
       )}
-      {mode === "popup" ? <KramyBtn clickFn={toggleDisplay} /> : ""}
+      {mode === "popup" ? (
+        <KramyBtn clickFn={toggleDisplay} placement="float" />
+      ) : (
+        <KramyBtn placement="navbar" clickFn={toggleDisplay} />
+      )}
     </>
   ) : (
     ""

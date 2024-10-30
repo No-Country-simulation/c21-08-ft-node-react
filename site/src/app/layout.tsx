@@ -6,6 +6,7 @@ import Navbar from "./components/Navbar/Navbar.component"
 import { CartContextProvider } from "./contexts/cart.context"
 import Footer from "./components/Footer/Footer.component"
 import { AuthProvider } from "./contexts/auth.context"
+import MobileNavbar from "./components/MobileNavbar/MobileNavbar.component"
 
 // const geistSans = localFont({
 //   src: "./fonts/GeistVF.woff",
@@ -34,7 +35,12 @@ export default function RootLayout({
         <CartContextProvider>
           <AuthProvider>
             <Suspense>
-              <Navbar />
+              <div className="hidden md:block">
+                <MobileNavbar />
+              </div>
+              <div className="md:hidden">
+                <Navbar />
+              </div>
             </Suspense>
             {children}
           </AuthProvider>

@@ -2,7 +2,7 @@ import Discounts from "./sections/Discounts.section"
 import Categories from "./sections/Categories.section"
 import CustomerSteps from "./sections/CustomerSteps.section"
 import Hero from "./sections/Hero.section"
-import KramyInput from "./kramy/components/KramyPrompt"
+import KramyPrompt from "./kramy/components/KramyPrompt"
 import { Suspense } from "react"
 
 export default async function Home() {
@@ -13,7 +13,7 @@ export default async function Home() {
       <Discounts />
       <CustomerSteps />
       <Suspense>
-        <KramyInput mode="popup" />
+        <KramyPrompt mode="popup" />
       </Suspense>
     </main>
   )

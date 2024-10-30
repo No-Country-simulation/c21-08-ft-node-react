@@ -1,6 +1,9 @@
-import { useState, useEffect } from "react"
+import { useState, useEffect, Dispatch, SetStateAction } from "react"
 
-const useFetch = <T>(endpoint: string) => {
+const useFetch = <T>(
+  endpoint: string,
+  setter?: Dispatch<SetStateAction<T | null>>,
+) => {
   const [data, setData] = useState<T | null>(null)
 
   useEffect(() => {
@@ -21,6 +24,10 @@ const useFetch = <T>(endpoint: string) => {
     }
     getData()
   }, [endpoint])
+
+  if (setter) {
+    setter(data)
+  }
 
   return data
 }

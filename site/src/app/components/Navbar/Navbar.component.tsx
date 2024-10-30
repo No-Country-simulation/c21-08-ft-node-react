@@ -11,9 +11,11 @@ import Menu from "./Menu.components"
 import SearchBar from "./SearchBar.components"
 import { IsClientProvider } from "@/app/contexts/isClient.context"
 import { usePathname } from "next/navigation"
-import { useRouter } from "next/navigation"
-import { useAuth } from "@/app/contexts/auth.context"
+import Image from "next/image"
+// import { useRouter } from "next/navigation"
+// import { useAuth } from "@/app/contexts/auth.context"
 import MobileSearchBar from "./MobileSearchBar.component"
+import UserButton from "../UserButton/UserButton.component"
 
 const Navbar = () => {
   const [isCartVisible, setIsCartVisible] = useState(false)
@@ -22,8 +24,8 @@ const Navbar = () => {
   const [showMobileSearch, setShowMobileSearch] = useState(false)
   const pathname = usePathname()
 
-  const { user } = useAuth()
-  const router = useRouter()
+  // const { user } = useAuth()
+  // const router = useRouter()
 
   useEffect(() => {
     const handleResize = () => {
@@ -81,24 +83,24 @@ const Navbar = () => {
     )
   }
 
-  const handleUserClick = () => {
-    if (user) {
-      if (user.role === "owner") {
-        router.push("/admin") // Redirige a la página de administración
-      } else {
-        router.push("/profile") // Redirige a la página de perfil para otros usuarios
-      }
-    } else {
-      router.push("/auth") // Redirige a la página de autenticación si no hay usuario
-    }
-  }
+  // const handleUserClick = () => {
+  //   if (user) {
+  //     if (user.role === "owner") {
+  //       router.push("/admin") // Redirige a la página de administración
+  //     } else {
+  //       router.push("/profile") // Redirige a la página de perfil para otros usuarios
+  //     }
+  //   } else {
+  //     router.push("/auth") // Redirige a la página de autenticación si no hay usuario
+  //   }
+  // }
 
   return (
     <>
       <header className="fixed top-0 z-50 w-full border-b-[1px] border-solid border-gray300 bg-gray100">
-        <div className="mx-auto flex min-h-24 max-w-[1000px] items-center justify-between lg:gap-6 lg:px-10 md:gap-3 md:px-5">
+        <div className="mx-auto flex min-h-24 max-w-[1000px] items-center justify-between lg:gap-6 lg:px-10 md:gap-3 md:px-5 xs:gap-4 xs:px-2">
           <Logo />
-          <nav className="flex gap-5">
+          <nav className="flex gap-5 xs:gap-2">
             <div className="xs:hidden">
               <SearchBar />
             </div>
@@ -114,20 +116,8 @@ const Navbar = () => {
                   changeCategoriesVisibility={changeCategoriesVisibility}
                 />
               </li>
-              <li
-                className="flex cursor-pointer gap-2"
-                onClick={handleUserClick}
-              >
-                <Icon iconType="user" />
-                {user ? (
-                  user.role === "owner" ? (
-                    <span className="sm:hidden">{user.name} - Panel Admin</span>
-                  ) : (
-                    <span className="sm:hidden">{user.name}</span>
-                  )
-                ) : (
-                  <span className="sm:hidden">Iniciar sesión</span>
-                )}
+              <li>
+                <UserButton />
               </li>
               <li className="flex gap-2">
                 <CartButton changeCartVisibility={changeCartVisibility} />
@@ -136,10 +126,34 @@ const Navbar = () => {
           </nav>
         </div>
       </header>
-      <CategoriesPanel
-        changeCategoriesVisibility={changeCategoriesVisibility}
-        isCategoriesVisible={isCategoriesVisible}
-      />
+
+      <div className="fixed z-50 flex hidden h-[calc(100vh-96px)] w-full flex-col items-center gap-5 bg-gray200 md:flex">
+        <Logo />
+        <div className="flex w-full items-center justify-between">
+          <UserButton />
+          {/* why this image is not showing when Navbar is rendered?*/}
+          <button className="flex items-center gap-0">
+            <Image
+              src="/images/kramy/kramy-button-navbar.png"
+              alt="Asistenta virtual Kramy"
+              width={80}
+              height={80}
+            />
+            <h2 className="text-xl">Kramy</h2>
+          </button>
+        </div>
+        <CategoriesPanel
+          mobile
+          changeCategoriesVisibility={changeCategoriesVisibility}
+          isCategoriesVisible={isCategoriesVisible}
+        />
+      </div>
+      <div className="md:hidden">
+        <CategoriesPanel
+          changeCategoriesVisibility={changeCategoriesVisibility}
+          isCategoriesVisible={isCategoriesVisible}
+        />
+      </div>
       <IsClientProvider>
         <Cart
           changeCartVisibility={changeCartVisibility}
