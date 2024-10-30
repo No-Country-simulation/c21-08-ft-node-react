@@ -20,7 +20,7 @@ const CategoriesPanel = ({
 
   return (
     <>
-      {!mobile && (
+      {changeCategoriesVisibility && isCategoriesVisible && !mobile && (
         <Overlay
           isVisible={isCategoriesVisible}
           changeVisibility={changeCategoriesVisibility}

@@ -1,6 +1,5 @@
 "use client"
 
-import { KramyState } from "../Kramy.component"
 import Image from "next/image"
 import { strForDisplay } from "@/app/utils/strFormatting.util"
 import Spinner from "../../Spinner/Spinner.component"
@@ -10,8 +9,6 @@ const KramyDialogue = () => {
   const searchParams = useSearchParams()
   const recipe = searchParams.get("recipequery")
   const kramyState = searchParams.get("kramystate")
-
-  console.log("kramyState: ", kramyState)
 
   return (
     <div className="flex items-end justify-between gap-5">

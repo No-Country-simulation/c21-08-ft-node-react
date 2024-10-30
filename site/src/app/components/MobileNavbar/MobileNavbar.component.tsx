@@ -19,6 +19,7 @@ import LogoutButton from "../LogoutButton/LogoutButton.component"
 import styles from "./MobileNavbar.module.css"
 import KramyBtn from "../KramyBtn/KramyBtn.component"
 import Kramy from "../Kramy/Kramy.component"
+import { Suspense } from "react"
 
 const MobileNavbar = () => {
   const [isCartVisible, setIsCartVisible] = useState(false)
@@ -118,10 +119,14 @@ const MobileNavbar = () => {
         <div className="fixed z-50 flex h-[calc(100vh-96px)] w-full flex-col items-center gap-5 bg-gray200 p-5">
           <Logo />
           <KramyBtn placement="navbar" clickFn={handleKramyClick} />
-          {displayKramy && <Kramy setDisplay={setDisplayKramy} mode="float" />}
+          {displayKramy && (
+            <Suspense>
+              <Kramy setDisplay={setDisplayKramy} mode="float" />
+            </Suspense>
+          )}
 
           <Line />
-          <div className="flex w-full items-center justify-between">
+          <div className="flex w-full items-center justify-between px-5">
             <UserButton />
             <LogoutButton />
           </div>

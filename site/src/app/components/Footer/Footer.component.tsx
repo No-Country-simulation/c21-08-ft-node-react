@@ -12,7 +12,7 @@ const Footer = async () => {
   const categories = await getCategories()
   return (
     <footer className="w-full bg-gray200" id="footer">
-      <div className="max-h-500px mx-auto mt-20 flex min-h-[340px] max-w-[1000px] justify-between gap-10 px-8 pb-4 pt-20 md:mt-16 md:flex-col md:items-center md:gap-4 md:px-[25%] md:py-16 sm:px-[10%] xs:mt-10 xs:py-10">
+      <div className="max-h-500px mx-auto mt-20 flex min-h-[340px] max-w-[1000px] justify-between gap-10 px-8 pt-20 md:mt-16 md:flex-col md:items-center md:gap-4 md:px-[25%] md:py-16 sm:px-[10%] xs:mt-10 xs:py-10">
         <div className="w-[40%] md:w-full">
           <Image
             alt={"logo"}
@@ -65,7 +65,7 @@ const Footer = async () => {
           </ul>
         </div>{" "}
       </div>{" "}
-      <div className="mx-auto w-fit">
+      <div className="mx-auto w-fit pb-20 sm:px-14">
         <a href="" className="me-3 ms-auto font-semibold text-krBlue">
           Terminos y condiciones
         </a>
