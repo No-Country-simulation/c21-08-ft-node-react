@@ -59,11 +59,14 @@ export class ProductService {
       });
 
       if (!product) {
-        throw new ProductException("Product not found", 404);
+        throw new ProductException(`Product ${productId} not found`, 404);
       }
 
       return product;
     } catch (error) {
+      if (error instanceof ProductException) {
+        throw error;
+      }
       throw new ProductException("Error getting a product by id", 500);
     }
   }
