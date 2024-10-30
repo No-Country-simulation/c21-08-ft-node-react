@@ -10,12 +10,14 @@ import CategoriesButton from "./CategoriesButton.component"
 import Menu from "./Menu.components"
 import SearchBar from "./SearchBar.components"
 import { IsClientProvider } from "@/app/contexts/isClient.context"
+import Kramy from "../Kramy/Kramy.component"
 import { usePathname } from "next/navigation"
 import Image from "next/image"
 // import { useRouter } from "next/navigation"
 // import { useAuth } from "@/app/contexts/auth.context"
 import MobileSearchBar from "./MobileSearchBar.component"
 import UserButton from "../UserButton/UserButton.component"
+import KramyBtn from "../KramyBtn/KramyBtn.component"
 
 const Navbar = () => {
   const [isCartVisible, setIsCartVisible] = useState(false)
@@ -24,6 +26,7 @@ const Navbar = () => {
   const [showMobileSearch, setShowMobileSearch] = useState(false)
   const pathname = usePathname()
 
+  const [displayKramy, setDisplayKramy] = useState(false)
   // const { user } = useAuth()
   // const router = useRouter()
 
@@ -95,14 +98,31 @@ const Navbar = () => {
   //   }
   // }
 
+  const handleKramyClick = () => {
+    if (pathname === "/") {
+      setDisplayKramy(true)
+    } else {
+      setIsMenuVisible(false)
+    }
+  }
+
   return (
     <>
       <header className="fixed top-0 z-50 w-full border-b-[1px] border-solid border-gray300 bg-gray100">
         <div className="mx-auto flex min-h-24 max-w-[1000px] items-center justify-between lg:gap-6 lg:px-10 md:gap-3 md:px-5 xs:gap-4 xs:px-2">
           <Logo />
           <nav className="flex gap-5 xs:gap-2">
-            <div className="xs:hidden">
+            <div className="flex gap-2 xs:hidden">
               <SearchBar />
+              <KramyBtn
+                placement="navbar"
+                clickFn={handleKramyClick}
+                imgStyle="h-full w-[50px]"
+                textStyle="text-base"
+              />
+              {displayKramy && (
+                <Kramy setDisplay={setDisplayKramy} mode="float" />
+              )}
             </div>
             <div className="flex hidden items-center xs:flex">
               <button onClick={() => setShowMobileSearch((prev) => !prev)}>
