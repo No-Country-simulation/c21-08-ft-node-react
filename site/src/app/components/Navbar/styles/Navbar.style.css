@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .animation-notification {
+    width: 100%;
+    transition: width 0.3s ease;
+  }
+  .animation-notification-reverse {
+    width: 0;
+    right: 0;
+    transition: width 0.3s ease;
+  }
+}

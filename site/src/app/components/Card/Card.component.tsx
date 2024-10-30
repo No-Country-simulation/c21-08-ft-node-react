@@ -29,9 +29,9 @@ const Card = ({ additionalStyles, product, link, imgUrl }: CardProps) => {
         </div>
       </Link>
       <div className="flex grow flex-col justify-between p-4 xs:p-2">
-        <div className="flex justify-between">
+        <div className="flex items-center justify-between">
           <Link href={link}>
-            <h3 className="line-clamp-3 min-h-16 max-w-48 text-[20px] font-medium leading-[20px] sm:min-h-[48px] sm:text-[16px] sm:leading-[16px] xs:min-h-[42px] xs:text-[14px] xs:leading-[14px]">
+            <h3 className="line-clamp-3 flex min-h-16 max-w-48 items-center text-[20px] font-medium leading-[20px] sm:min-h-[48px] sm:text-[16px] sm:leading-[16px] xs:min-h-[42px] xs:text-[14px] xs:leading-[14px]">
               {name}
             </h3>
           </Link>

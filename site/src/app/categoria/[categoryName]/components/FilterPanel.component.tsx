@@ -101,7 +101,7 @@ const FilterPanel = ({
             <ul
               ref={marcaRef}
               className={
-                "flex flex-col gap-4 overflow-hidden transition-all duration-200 ease-in-out sm:px-2"
+                "duration-400 flex flex-col gap-4 overflow-hidden transition-all ease-in-out sm:px-2"
               }
             >
               {brands.map((brand, idx) => (
