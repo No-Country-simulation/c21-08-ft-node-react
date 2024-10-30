@@ -13,8 +13,9 @@ export class ProductController {
   async createProduct(req: Request, res: Response): Promise<any> {
     try {
       const createProductDto: CreateProductDto = req.body;
-
-      const newProduct = await this.productService.createProduct(createProductDto);
+      const newProduct = await this.productService.createProduct(
+        createProductDto
+      );
 
       return res.status(201).json(newProduct);
     } catch (error) {
@@ -39,17 +40,19 @@ export class ProductController {
   async getProductById(req: Request, res: Response): Promise<any> {
     try {
       const productId: string = req.params.productId;
-      const product: Product | null = await this.productService.getProductById(productId);
-  
+      const product: Product | null = await this.productService.getProductById(
+        productId
+      );
+
       if (!product) {
-        return res.status(404).json({ message: "Product ID not found" }); 
+        return res.status(404).json({ message: "Product ID not found" });
       }
-  
+
       return res.status(200).json(product);
     } catch (error) {
       return res.status(500).json({ message: "Error getting a product by Id" });
     }
-  }  
+  }
 
   // Obtener todos los productos por categoria
   async getProductsByCategory(req: Request, res: Response): Promise<any> {
@@ -61,9 +64,9 @@ export class ProductController {
       return res.status(200).json(products);
     } catch (error) {
       if (error instanceof ProductException) {
-        throw error;
+        return res.status(error.statusCode).json({ message: error.message });
       }
-      throw new ProductException("Error getting all products", 500);
+      res.status(500).json({ message: "Internal Server Error" });
     }
   }
 
@@ -78,37 +81,56 @@ export class ProductController {
       if (error instanceof ProductException) {
         throw error;
       }
-
-      throw new ProductException("Error getting products in promotion", 500);
     }
   }
 
   async updateProduct(req: Request, res: Response): Promise<void> {
-    const { productId } = req.params; 
-    const productData = req.body; 
+    const { productId } = req.params;
+    const productData = req.body;
 
     try {
-        const updatedProduct = await this.productService.updateProduct(productId, productData);
-        res.status(200).json(updatedProduct);
+      const updatedProduct = await this.productService.updateProduct(
+        productId,
+        productData
+      );
+      res.status(200).json(updatedProduct);
     } catch (error: any) {
-        res.status(404).json({ message: error.message });
+      res.status(404).json({ message: error.message });
     }
   }
 
   async deleteProduct(req: Request, res: Response): Promise<Response> {
-    const productId = req.params.productId; 
+    const productId = req.params.productId;
 
     try {
-        await this.productService.deleteProduct(productId); 
+      await this.productService.deleteProduct(productId);
 
-        return res.status(200).json({
-            message: 'Producto eliminado exitosamente', 
-        });
-    } catch (error: any) { 
-        return res.status(500).json({
-            message: 'Error al eliminar el producto', 
-            error: error.message,
-        });
+      return res.status(200).json({
+        message: "Producto eliminado exitosamente",
+      });
+    } catch (error: any) {
+      return res.status(500).json({
+        message: "Error al eliminar el producto",
+        error: error.message,
+      });
+    }
+  }
+
+  async updateProductStatus(req: Request, res: Response): Promise<Response> {
+    const { productId } = req.params;
+    const { status } = req.body; // Extrae el estado del cuerpo de la solicitud
+
+    try {
+      const updatedProduct = await this.productService.statusProduct(
+        productId,
+        status
+      );
+      return res.status(200).json(updatedProduct);
+    } catch (error) {
+      if (error instanceof ProductException) {
+        return res.status(error.statusCode).json({ message: error.message });
+      }
+      return res.status(500).json({ message: "Internal server error" });
     }
   }
 }
