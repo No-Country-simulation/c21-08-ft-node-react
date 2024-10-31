@@ -12,7 +12,6 @@ import { WebHookException } from "./exceptions/webHooksException";
 import userAuth from "./routes/auth.route";
 import categoryRoutes from "./routes/category.route";
 import orderRoutes from "./routes/clientOrder.route";
-import iaRoutes from "./routes/ia.route";
 import OrderProductRoutes from "./routes/orderProduct.route";
 import PaymentsRoutes from "./routes/preference.route";
 import productRoutes from "./routes/product.route";
