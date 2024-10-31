@@ -6,9 +6,10 @@ export class WebHooksController {
   constructor() {
     this.webHooksService = new WebHooksService();
   }
+
   async handleWebHook(req: Request, res: Response, next: NextFunction) {
-    const webHookData = req.body;
     try {
+      const webHookData = req.body;
       await this.webHooksService.handleWebHook(webHookData);
 
       res.status(201);

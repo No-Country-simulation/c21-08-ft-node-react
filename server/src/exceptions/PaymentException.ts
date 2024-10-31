@@ -1,4 +1,4 @@
-export class PaymentsException extends Error {
+export class PaymentException extends Error {
   public statusCode: number;
 
   constructor(message: string, statusCode: number) {
