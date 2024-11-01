@@ -1,16 +1,10 @@
-import {
-  Column,
-  Entity,
-  JoinColumn,
-  ManyToOne,
-  PrimaryGeneratedColumn,
-} from "typeorm";
+import { Column, Entity, JoinColumn, ManyToOne, PrimaryColumn } from "typeorm";
 import { PaymentStatus } from "../common/paymentStatus.enum";
 import { ClientOrder } from "./ClientOrder.entity";
 
 @Entity()
 export class Payment {
-  @PrimaryGeneratedColumn("uuid")
+  @PrimaryColumn()
   paymentId!: string;
 
   @Column()

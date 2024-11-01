@@ -6,9 +6,9 @@ import { getPrompt } from "../utils/prompt";
 import { productRepository } from "../repositories/product.repository";
 import { ILike, In } from "typeorm";
 
-interface RecipeQuery {
-  recipequery?: string;
-}
+// interface RecipeQuery {
+//   recipequery?: string;
+// }
 
 const cohere = new CohereClient({ token: process.env.COHERE_API_KEY });
 
@@ -35,7 +35,7 @@ export class IaController {
       const productNames = products.map((product) => product.name);
       console.log("Proruct Names", productNames);
 
-      const prompt = getPrompt(products, recipeQuery as RecipeQuery);
+      const prompt = getPrompt(products, recipeQuery as string);
 
       const response = await chatWithCohere(prompt);
 
