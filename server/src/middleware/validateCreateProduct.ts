@@ -1,5 +1,8 @@
 import { Request, Response, NextFunction } from 'express';
 import { Measurement } from '../common/measurement.enum';
+import { CategoryService } from '../services/category.service';
+import { promotionRepository } from '../repositories/promotion.repository';
+import { error } from 'console';
 
 export const validateCreateProduct = (
   req: Request,
@@ -14,8 +17,8 @@ export const validateCreateProduct = (
     stock,
     imgUrl,
     brand,
-    category,
-    promotion,
+    categoryId,
+    promotionId,
   } = req.body;
   console.log('req.body', req.body);
 
@@ -83,24 +86,28 @@ export const validateCreateProduct = (
   }
 
   // Validación de 'categoryId'
-  if (
-    !category ||
-    typeof category.categoryId !== 'string' ||
-    category.categoryId.trim() === ''
-  ) {
-    res.status(400).json({
-      message: 'Category ID is required and must be a non-empty string.',
-    });
-    return;
-  }
+  // if (
+  //   !category || typeof category.categoryId !== 'string' || category.categoryId.trim() === ''
+  // ) {
+  //   res.status(400).json({
+  //     message: 'Category ID is required and must be a non-empty string.',
+  //   });
+  //   return;
+  // }
+
+  // // Validación de 'promotionId'
+  // if (!promotion || typeof promotion.promotionId !== 'string') {
+  //   res
+  //     .status(400)
+  //     .json({ message: 'Promotion ID is required and must be a string.' });
+  //   return;
+  // }
+
+  // Validacion de de "categoryId"
+  if (!categoryId) throw new Error ( "Category ID is required." )
 
   // Validación de 'promotionId'
-  if (!promotion || typeof promotion.promotionId !== 'string') {
-    res
-      .status(400)
-      .json({ message: 'Promotion ID is required and must be a string.' });
-    return;
-  }
+  if(!promotionId) throw new Error ( "Promotion ID is required." )
 
   next();
 };
