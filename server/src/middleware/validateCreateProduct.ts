@@ -19,8 +19,6 @@ export const validateCreateProduct = (
     brand,
     categoryId,
     promotionId,
-    categoryId,
-    promotionId,
   } = req.body;
   console.log("req.body", req.body);
 
