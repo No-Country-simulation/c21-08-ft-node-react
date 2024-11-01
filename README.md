@@ -2,7 +2,7 @@
 
 ## Descripción
 
-Kramer es un minimarket que se planea digitalizar su negocio y así añadir valor al consumidor.
+Kramer es un minimarket que se plantea digitalizar su negocio y así añadir valor al consumidor.
 
 ## Equipo
 
