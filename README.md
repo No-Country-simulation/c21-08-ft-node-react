@@ -13,6 +13,6 @@ Kramer es un minimarket que se planea digitalizar su negocio y así añadir valo
 |  Facundo       | Frontend |[facuso162](https://github.com/facuso162) | [facuso](https://www.linkedin.com/in/facuso/)|
 |  Matías | Frontend |[MatiasMiguelGomez](https://github.com/MatiasMiguelGomez)| [matias](https://www.linkedin.com/in/matias-miguel-gomez-489a26210/)|
 |  Lucas            | Backend  |[LumSeg](https://github.com/LumSeg) | [lumseg](https://www.linkedin.com/in/lumseg/)|
-|  Tomas    | Backend  |[tomascardenas96](https://github.com/tomascardenas96) |- |
+|  Tomas    | Backend  |[tomascardenas96](https://github.com/tomascardenas96) |[tomascardenas96](https://www.linkedin.com/in/tomascardenas96/) |
 |  Franco     | Backend  |[francogaray](https://github.com/francogaray) | [francodavidgaray](https://www.linkedin.com/in/francodavidgaray/)|
 
