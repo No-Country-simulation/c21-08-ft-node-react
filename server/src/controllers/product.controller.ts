@@ -64,9 +64,9 @@ export class ProductController {
       return res.status(200).json(products);
     } catch (error) {
       if (error instanceof ProductException) {
-        return res.status(error.statusCode).json({ message: error.message });
+        throw error;
       }
-      res.status(500).json({ message: "Internal Server Error" });
+      throw new ProductException("Error getting all products", 500);
     }
   }
 
@@ -81,6 +81,8 @@ export class ProductController {
       if (error instanceof ProductException) {
         throw error;
       }
+
+      throw new ProductException("Error getting products in promotion", 500);
     }
   }
 

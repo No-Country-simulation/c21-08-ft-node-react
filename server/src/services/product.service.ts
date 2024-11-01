@@ -131,24 +131,27 @@ export class ProductService {
     }
   }
 
-  async statusProduct(productId: string, status?: ProductStatus): Promise<Product> {
+  async statusProduct(
+    productId: string,
+    status?: ProductStatus
+  ): Promise<Product> {
     try {
       const product = await productRepository.findOne({ where: { productId } });
-  
+
       if (!product) {
         throw new ProductException("Product not found", 404);
       }
-  
+
       // Asignar el estado del producto desde el body o verificar el stock
       if (status) {
         product.status = status;
       } else {
         product.status = product.stock < 3 ? "inactivo" : "activo";
       }
-  
+
       return await productRepository.save(product);
     } catch (error) {
       throw new ProductException("Error updating product status", 500);
     }
-  }  
+  }
 }
