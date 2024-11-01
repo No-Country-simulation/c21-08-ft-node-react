@@ -36,7 +36,7 @@ export class Product {
   stock!: number;
 
   @Column({ nullable: true, type: 'json' })
-  imgUrl!: string;
+  imgUrl!: { full: string, medium: string };
 
   @Column({ nullable: true })
   brand!: string;

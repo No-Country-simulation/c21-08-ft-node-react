@@ -7,7 +7,7 @@ export class CreateProductDto {
   unitOfMeasurement!: Measurement;
   description!: string;
   stock!: number;
-  imgUrl?: string;
+  imgUrl!: {full: string, medium: string};
   brand?: string;
   categoryId!: string;
   promotionId!: string;
