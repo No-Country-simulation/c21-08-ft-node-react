@@ -54,33 +54,6 @@
       "categoryId": "c2"
     }
   ],
-  "cart": [
-    {
-      "cartId": "cart1",
-      "userId": "u1"
-    },
-    {
-      "cartId": "cart2",
-      "userId": "u2"
-    }
-  ],
-  "cart_product": [
-    {
-      "cartId": "cart1",
-      "productId": "p1",
-      "quantity": 5
-    },
-    {
-      "cartId": "cart1",
-      "productId": "p2",
-      "quantity": 10
-    },
-    {
-      "cartId": "cart2",
-      "productId": "p3",
-      "quantity": 7
-    }
-  ],
   "clientOrder": [
     {
       "orderId": "order1",
