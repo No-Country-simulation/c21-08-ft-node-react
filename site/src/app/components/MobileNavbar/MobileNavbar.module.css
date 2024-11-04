@@ -1,0 +1,11 @@
+.categoryContainer > *:nth-child(even) {
+  border-left: 1px solid #D9D9D9;
+}
+
+.categoryContainer > * {
+  border-bottom: 1px solid #D9D9D9 !important;
+}
+
+.categoryContainer > *:nth-child(7), .categoryContainer > *:nth-child(8) {
+  border-bottom: none !important;
+}
