@@ -1,0 +1,300 @@
+{
+  "user": [
+    {
+      "userId": "user01",
+      "name": "Tomas Cardenas",
+      "email": "tomas@gmail.com",
+      "role": "client"
+    },
+    {
+      "userId": "user02",
+      "name": "Roberto Piazza",
+      "email": "roberto@gmail.com",
+      "role": "client"
+    },
+    {
+      "userId": "user03",
+      "name": "Juan Ramirez",
+      "email": "juan@gmail.com",
+      "role": "client"
+    },
+    {
+      "userId": "user04",
+      "name": "Marcelo Benitez",
+      "email": "marcelo@gmail.com",
+      "role": "client"
+    },
+    {
+      "userId": "user05",
+      "name": "Pedro Roldan",
+      "email": "pedro@gmail.com",
+      "role": "client"
+    }
+  ],
+  "category": [
+    { "categoryId": "category01", "categoryName": "Frutas" },
+    { "categoryId": "category02", "categoryName": "Bebidas" },
+    { "categoryId": "category03", "categoryName": "Postres" },
+    { "categoryId": "category04", "categoryName": "Almacen" }
+  ],
+  "product": [
+    {
+      "productId": "prod01",
+      "name": "aceite natura x 900ml.",
+      "brand": "Natura",
+      "price": 0,
+      "unitOfMeasurement": "unitary",
+      "description": "Aceite de girasol de primera calidad",
+      "stock": 19,
+      "imgUrl": "www.google.com/aceite-natura",
+      "category": { "categoryId": "category04", "categoryName": "Almacen" },
+      "promotion": {
+        "promotionId": "promotion01",
+        "percentage": 0.1
+      }
+    },
+    {
+      "productId": "prod02",
+      "name": "banana ecuador",
+      "brand": null,
+      "price": 3400,
+      "unitOfMeasurement": "kg",
+      "description": "Tremendas bananas",
+      "stock": 50,
+      "imgUrl": "www.google.com/banana-ecuador",
+      "category": { "categoryId": "category01", "categoryName": "Frutas" },
+      "promotion": null
+    },
+    {
+      "productId": "prod03",
+      "name": "Leche La Serenisima x 1L",
+      "brand": "La serenisima",
+      "price": 2100,
+      "unitOfMeasurement": "lt",
+      "description": "Leche fresca en sachet",
+      "stock": 15,
+      "imgUrl": "www.google.com/leche",
+      "category": { "categoryId": "category04", "categoryName": "Almacen" },
+      "promotion": null
+    }
+  ],
+  "order": [
+    {
+      "clientOrderId": "order01",
+      "status": "process",
+      "createdAt": "2024-10-14 18:29:29",
+      "user": {
+        "userId": "user03",
+        "name": "Juan Ramirez",
+        "email": "juan@gmail.com",
+        "role": "client"
+      }
+    },
+    {
+      "clientOrderId": "order02",
+      "status": "done",
+      "createdAt": "2024-10-14 18:29:29",
+      "user": {
+        "userId": "user05",
+        "name": "Pedro Roldan",
+        "email": "pedro@gmail.com",
+        "role": "client"
+      }
+    },
+    {
+      "clientOrderId": "order03",
+      "status": "process",
+      "createdAt": "2024-10-14 18:29:29",
+      "user": {
+        "userId": "user01",
+        "name": "Tomas Cardenas",
+        "email": "tomas@gmail.com",
+        "role": "client"
+      }
+    }
+  ],
+  "favorite": [
+    {
+      "user": {
+        "userId": "user02",
+        "name": "Roberto Piazza",
+        "email": "roberto@gmail.com",
+        "role": "client"
+      },
+      "product": {
+        "productId": "prod01",
+        "name": "aceite natura x 900ml.",
+        "brand": "Natura",
+        "price": 0,
+        "unitOfMeasurement": "unitary",
+        "description": "Aceite de girasol de primera calidad",
+        "stock": 19,
+        "imgUrl": "www.google.com/aceite-natura",
+        "category": { "categoryId": "category04", "categoryName": "Almacen" },
+        "promotion": {
+          "promotionId": "promotion01",
+          "percentage": 0.1
+        }
+      }
+    },
+    {
+      "user": {
+        "userId": "user04",
+        "name": "Marcelo Benitez",
+        "email": "marcelo@gmail.com",
+        "role": "client"
+      },
+      "product": {
+        "productId": "prod03",
+        "name": "Leche La Serenisima x 1L",
+        "brand": "La serenisima",
+        "price": 2100,
+        "unitOfMeasurement": "lt",
+        "description": "Leche fresca en sachet",
+        "stock": 15,
+        "imgUrl": "www.google.com/leche",
+        "category": { "categoryId": "category04", "categoryName": "Almacen" },
+        "promotion": null
+      }
+    },
+    {
+      "user": {
+        "userId": "user01",
+        "name": "Tomas Cardenas",
+        "email": "tomas@gmail.com",
+        "role": "client"
+      },
+      "product": {
+        "productId": "prod02",
+        "name": "banana ecuador",
+        "brand": null,
+        "price": 3400,
+        "unitOfMeasurement": "kg",
+        "description": "Tremendas bananas",
+        "stock": 50,
+        "imgUrl": "www.google.com/banana-ecuador",
+        "category": { "categoryId": "category01", "categoryName": "Frutas" },
+        "promotion": null
+      }
+    }
+  ],
+  "order-product": [
+    {
+      "orderProductId": "ordpro01",
+      "quantity": 2,
+      "order": {
+        "clientOrderId": "order01",
+        "status": "process",
+        "createdAt": "2024-10-14 18:29:29",
+        "user": {
+          "userId": "user03",
+          "name": "Juan Ramirez",
+          "email": "juan@gmail.com",
+          "role": "client"
+        }
+      },
+      "product": {
+        "productId": "prod02",
+        "name": "banana ecuador",
+        "brand": null,
+        "price": 3400,
+        "unitOfMeasurement": "kg",
+        "description": "Tremendas bananas",
+        "stock": 50,
+        "imgUrl": "www.google.com/banana-ecuador",
+        "category": { "categoryId": "category01", "categoryName": "Frutas" },
+        "promotion": null
+      }
+    },
+    {
+      "orderProductId": "ordpro02",
+      "quantity": 4,
+      "order": {
+        "clientOrderId": "order01",
+        "status": "process",
+        "createdAt": "2024-10-14 18:29:29",
+        "user": {
+          "userId": "user03",
+          "name": "Juan Ramirez",
+          "email": "juan@gmail.com",
+          "role": "client"
+        }
+      },
+      "product": {
+        "productId": "prod03",
+        "name": "Leche La Serenisima x 1L",
+        "brand": "La serenisima",
+        "price": 2100,
+        "unitOfMeasurement": "lt",
+        "description": "Leche fresca en sachet",
+        "stock": 15,
+        "imgUrl": "www.google.com/leche",
+        "category": { "categoryId": "category04", "categoryName": "Almacen" },
+        "promotion": null
+      }
+    }
+  ],
+  "facturation": [
+    {
+      "facturationId": "factur01",
+      "address": "Avellaneda 1022",
+      "phone": "2281-339944",
+      "user": {
+        "userId": "user01",
+        "name": "Tomas Cardenas",
+        "email": "tomas@gmail.com",
+        "role": "client"
+      }
+    },
+    {
+      "facturationId": "factur02",
+      "address": "Capitan Ramos 2233",
+      "phone": "2281-425533",
+      "user": {
+        "userId": "user02",
+        "name": "Roberto Piazza",
+        "email": "roberto@gmail.com",
+        "role": "client"
+      }
+    }
+  ],
+  "payment": [
+    {
+      "paymentId": "paym01",
+      "amount": 4500,
+      "status": "done",
+      "order": {
+        "clientOrderId": "order02",
+        "status": "done",
+        "createdAt": "2024-10-14 18:29:29",
+        "user": {
+          "userId": "user05",
+          "name": "Pedro Roldan",
+          "email": "pedro@gmail.com",
+          "role": "client"
+        }
+      }
+    },
+    {
+      "paymentId": "paym02",
+      "amount": 6100,
+      "status": "process",
+      "order": {
+        "clientOrderId": "order03",
+        "status": "process",
+        "createdAt": "2024-10-14 18:29:29",
+        "user": {
+          "userId": "user01",
+          "name": "Tomas Cardenas",
+          "email": "tomas@gmail.com",
+          "role": "client"
+        }
+      }
+    }
+  ],
+  "promotion": [
+    { "promotionId": "prom01", "percentage": 0.1 },
+    { "promotionId": "prom02", "percentage": 0.15 },
+    { "promotionId": "prom03", "percentage": 0.05 }
+  ]
+}

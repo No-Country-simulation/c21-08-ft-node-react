@@ -1,0 +1,36 @@
+{
+	"recipe": "lasagna",
+	"allIngredients": [
+		"hojas de lasaña",
+		"salsa bechamel",
+		"arroz",
+		"carne molida",
+		"tomate",
+		"mozarela",
+		"aceitunas",
+		"perejil",
+		"aceite de oliva",
+		"sal",
+		"pimienta",
+		"orégano"
+	],
+	"owned": [
+		"Arroz",
+		"Carne molida",
+		"Mozarela",
+		"Aceitunas",
+		"Perejil",
+		"Aceite de oliva",
+		"Sal",
+		"Pimienta",
+		"Orégano",
+		"Tomate"
+	],
+	"instructions": [
+		"Precalentar el horno a 180°C",
+		"Cocinar la carne con tomate y especias",
+		"Armar la lasaña en capas en una fuente para horno",
+		"Cubrir con bechamel y queso",
+		"Hornear durante 30-40 minutos hasta que esté dorada"
+	]
+}
